@@ -1,0 +1,24 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+#box {
+    padding: 20px 30px;
+    border: 1px solid #fff8e1;
+    box-shadow: 2px 2px 5px black;
+    background-color: #f3e8b8;
+    color: #53523d;
+    font-size: 1.3rem;
+    font-family: sans-serif;
+    border-radius: 5px;
+}
+
+#price {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #755531;
+}

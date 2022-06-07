@@ -1,0 +1,42 @@
+[
+    {
+        "email": "joao.silva@gmail.com",
+        "senha": "$2y$10$gbZO2ojbzdwOHFMACJ3qle31bONmTUqlnYo4I7OLq1BI9HA4EVbH2",
+        "nome": "João Silva",
+        "foto": "https://foo.bar/foto/joao",
+        "cidade": "Charqueadas",
+        "fone": "51987653465"
+    },
+    {
+        "email": "guiferraz@gmail.com",
+        "senha": "$2y$10$BqziwDvq9cROIHLtw31IZ./rF1AuuBnNba93y.jp9t3djTOo8PvDe",
+        "nome": "Guilherme Ferraz",
+        "foto": "https://foo.bar/foto/gui",
+        "cidade": "Pelotas",
+        "fone": "5396234567"
+    },
+    {
+        "email": "rafaweinzel@gmail.com",
+        "senha": "$2y$10$xWWztGXhYqBmC03O7GKFXOat5BWxngSJ2t0ZoJuviNgnXjWGZIxVG",
+        "nome": "Rafaella Weinzel",
+        "foto": "https://foo.bar/foto/rafa",
+        "cidade": "Charqueadas",
+        "fone": "5197345612"
+    },
+    {
+        "email": "claricebrum@gmail.com",
+        "senha": "$2y$10$4YDLnneo5BBYiyvOrrfJkOdcSiSPYG5A4/rWJNnWw0YySJn3y1pUG",
+        "nome": "Clarisse Brum",
+        "foto": "https://foo.bar/foto/clarice",
+        "cidade": "São Jerônimo",
+        "fone": "5197689975"
+    },
+    {
+        "email": "michel1989@gmail.com",
+        "senha": "$2y$10$feomll8LvHnRIt7oQMNGAuWCJ6MYyv60NMiyJn8HjmTj3qvlZVj3.",
+        "nome": "Michel Zimmermann",
+        "foto": "https://foo.bar/foto/michel",
+        "cidade": "Porto Alegre",
+        "fone": "5196345213"
+    }
+]

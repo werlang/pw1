@@ -1,0 +1,54 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#board {
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.row {
+    display: flex;
+}
+
+.cell {
+    background-color: white;
+    display: flex;
+    height: 75px;
+    width: 75px;
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    font-family: sans-serif;
+}
+
+.cell:first-child {
+    margin-left: 0;
+}
+
+.cell:last-child {
+    margin-right: 0;
+}
+
+.row:first-child {
+    margin-top: -5px;
+}
+
+.row:last-child {
+    margin-bottom: -5px;
+}
+
+.cell .x {
+    color: red;
+}
+
+.cell .o {
+    color: blue;
+}
