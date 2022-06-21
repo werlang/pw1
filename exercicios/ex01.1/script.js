@@ -1,5 +1,9 @@
-const div = document.querySelector('#deslocado');
-const box = document.querySelector('#box');
+const n = prompt('Quantos itens deseja?');
 
-box.insertAdjacentElement('beforeend', div);
+let items = '';
+for (let i=0 ; i<n ; i++) {
+    items += `<li>Item ${ i + 1 }</li>`;
+}
+
+document.querySelector('#content').innerHTML = `<ul>${ items }</ul>`;
 
