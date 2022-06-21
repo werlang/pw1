@@ -7,10 +7,6 @@
     flex-direction: column;
 }
 
-#deslocado {
-    color: green;
-}
-
 #box #title {
     display: flex;
     margin: 5px 1px 20px 0px;

@@ -6,4 +6,3 @@ for (let i=0 ; i<n ; i++) {
 }
 
 document.querySelector('#content').innerHTML = `<ul>${ items }</ul>`;
-
