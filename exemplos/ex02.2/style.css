@@ -1,0 +1,7 @@
+input {
+    width: 30px;
+}
+#result {
+    font-size: 1.5rem;
+    margin: 0;
+}

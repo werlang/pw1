@@ -1,0 +1,9 @@
+button {
+    padding: 5px 10px;
+    background: #202020;
+    color: white;
+    border-radius: 5px;
+    margin: 30px;
+    text-align: center;
+    width: 250px;
+}
