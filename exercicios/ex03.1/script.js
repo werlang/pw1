@@ -3,8 +3,7 @@ for (let i=0 ; i<100 ; i++){
     nums.push(parseInt(Math.random() * 1000));
 }
 
-nums = nums.slice(5);
-nums = nums.slice(0,-5);
+nums = nums.slice(5,-5);
 
 nums.sort((a,b) => a-b);
 
@@ -21,4 +20,4 @@ for (let i = 0 ; i < 10 ; i++){
     table += '</tr>';
 }
 table += '</tbody></table>';
-document.body.insertAdjacentHTML('beforeend', table);
+document.body.innerHTML = table;
