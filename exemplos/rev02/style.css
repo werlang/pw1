@@ -1,0 +1,7 @@
+#message div {
+    display: flex;
+}
+
+#message span {
+    width: 100px;
+}
