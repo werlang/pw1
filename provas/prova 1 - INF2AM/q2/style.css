@@ -1,0 +1,15 @@
+#box-container {
+    display: flex;
+}
+
+.box {
+    width: 20px;
+    height: 20px;
+    border: 1px solid black;
+    background-color: grey;
+    color: white;
+    margin: 5px;
+    text-align: center;
+}
+
+
