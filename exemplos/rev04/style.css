@@ -1,0 +1,26 @@
+#fog {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.395);
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#window {
+    width: 400px;
+    height: 300px;
+    background-color: #3a5422;
+    color: white;
+    padding: 20px 30px;
+    box-shadow: 2px 2px 5px black;
+    border-radius: 5px;
+}
+
+#window span {
+    margin: 0 10px;
+    font-size: 1.5rem;
+}
