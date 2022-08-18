@@ -2,41 +2,40 @@ h1 {
         font-family: sans-serif;
         margin-left: 40px;
         margin-bottom: 50px;
-    }
-    #box-container {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-    }
-    .box {
-        width: 200px;
-        border: 1px solid #af8a8a;
-        background-color: #686868;
-        color: #fff;
-        margin: 0 20px;
-        border-radius: 5px;
-        box-shadow: 0 0 5px black;
-        padding: 20px 15px;
-        font-family: sans-serif;
-        text-align: center;
-        transition: 0.3s all;
-        cursor: pointer;
-    }
+}
+#box-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.box {
+    width: 200px;
+    border: 1px solid #af8a8a;
+    background-color: #686868;
+    color: #fff;
+    margin: 0 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px black;
+    padding: 20px 15px;
+    font-family: sans-serif;
+    text-align: center;
+    transition: 0.3s all;
+    cursor: pointer;
+}
 
-    .box .name {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-            font-weight: bold;
-        }
-        .box .price {
-            font-size: 2rem;
-            color: #6399c5;
-            text-shadow: 1px 1px 3px #0000007c;
-            margin-bottom: 10px;
-        }
-        .box.active {
-            background-color: #7a6767;
-            border-color: #333333;
-            box-shadow: none;
-        }
-        
+.box .name {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+    .box .price {
+        font-size: 2rem;
+        color: #6399c5;
+        text-shadow: 1px 1px 3px #0000007c;
+        margin-bottom: 10px;
+    }
+    .box.active {
+        background-color: #7a6767;
+        border-color: #333333;
+        box-shadow: none;
+}

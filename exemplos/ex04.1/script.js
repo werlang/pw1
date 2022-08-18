@@ -6,7 +6,7 @@ const plans = [
 ];
     
 document.querySelectorAll('.box').forEach((e,i) => {
-        e.innerHTML = `
+    e.innerHTML = `
         <div class="name">${plans[i].name}</div>
         <div class="price">R$ ${plans[i].price.toFixed(2)}</div>
         <div class="description">${plans[i].description}</div>
