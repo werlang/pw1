@@ -1,39 +1,47 @@
-document.querySelector('button').addEventListener('click', async () => {
-    const data = await post('register.php', {
-        name: document.querySelector('#name').value,
-        birth: document.querySelector('#birth').value,
-        address: document.querySelector('#address').value,
-    });
-    console.log(data);
+const cron = document.querySelector('#cron');
+const start = document.querySelector('#start');
+const empty = document.querySelector('#empty');
+const laps = document.querySelector('#laps');
+let time = 0;
+let paused = true;
+let interval;
 
-    updateTable();
-});
-
-async function post(endpoint, body) {
-    const res = await fetch(endpoint, {
-        method: `POST`,
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(body).toString(),
-    });
-    return await res.json();
+function formatTime() {
+    if (time > 60) {
+        const m = Math.floor(parseFloat(time) / 60);
+        const s = (parseFloat(time) - m*60).toFixed(1);
+        return `${m}m ${s}s`;
+    }
+    return `${ parseFloat(time).toFixed(1) }s`;
 }
 
-async function updateTable() {
-    const res = await fetch('register.php', { method: 'GET' });
-    const data = await res.json();
-    console.log(data);
-
-    if (data.records.length) {
-        let content = '<table><thead><th>Nome</th><th>D.Nasc.</th><th>Endereço</th></thead><tbody>';
-        data.records.forEach(e => {
-            content += `<tr>
-                <td>${e.name}</td>
-                <td>${e.birth}</td>
-                <td>${e.address}</td>
-            </tr>`;
-        });
-        content += '</tbody></table>';
-        document.querySelector('#table').innerHTML = content;
+start.addEventListener('click', () => {
+    if (paused) {
+        interval = setInterval( () => {
+            time += 0.1;
+            cron.innerHTML = formatTime();
+        }, 100);
+        paused = false;
+        start.innerHTML = 'Parar';
+        empty.innerHTML = 'Volta';
     }
-};
-updateTable();
+    else {
+        clearInterval(interval);
+        paused = true;
+        start.innerHTML = 'Continuar';
+        empty.innerHTML = 'Zerar';
+    }
+});
+
+empty.addEventListener('click', () => {
+    if (paused) {
+        start.innerHTML = 'Iniciar';
+        laps.innerHTML = '';
+    }
+    else {
+        const t = laps.querySelectorAll('li').length;
+        laps.insertAdjacentHTML('beforeend', `<li>Volta ${ t + 1 }: <span class="highlight">${ formatTime()}</span></li>`);
+    }
+    time = 0;
+    cron.innerHTML = '0.0';;
+});

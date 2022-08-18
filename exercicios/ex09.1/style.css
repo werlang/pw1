@@ -1,97 +1,52 @@
 body {
-    font-family: sans-serif;
-    font-size: 16px;
     display: flex;
     justify-content: center;
     align-items: center;
-    position: fixed;
-    width: 100vw;
     height: 100vh;
-    margin: 0;
-    background-color: #c9c9c9;
 }
 
 #box {
-    border: 1px solid black;
     border-radius: 5px;
+    border: 1px solid #bebebe;
+    padding: 30px 50px;
     box-shadow: 2px 2px 5px black;
-    background-color: #323232;
-    padding: 15px 20px;
+    background-color: #f5f5f5;
+}
+
+#box #button-container {
     display: flex;
+    justify-content: space-around;
+    min-width: 230px;
+}
+
+#box button {
+    height: 35px;
+    width: 100px;
+    background-color: #e97b7b;
     color: white;
-}
-
-#box #fields,
-#box #table-container {
-    display: flex;
-    flex-direction: column;
-    width: 300px;
-    margin: 0 10px;
-}
-
-#box #table-container {
-    width: 500px;
-}
-
-#box span {
-    margin-bottom: 5px;
-}
-
-#box .text {
-    padding: 5px 10px;
-    margin-bottom: 20px;
-    border-radius: 3px;
-}
-
-#box .button {
-    margin-top: 20px;
-    margin-bottom: 20px;
-    background-color: #f3d188;
-    padding: 10px 20px;
-    font-size: 1.4rem;
-    font-weight: bold;
-    border-radius: 3px;
     border: none;
-    transition: 0.3s all;
-    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1.2rem;
 }
 
-#box .button:hover {
-    filter: brightness(1.3);
-}
-
-#box .error {
-    color: red;
-}
-
-#box table {
-    display: flex;
-    flex-direction: column;
+#box #cron {
+    font-family: monospace;
+    font-size: 3rem;
     width: 100%;
-}
-
-#box table tr {
     display: flex;
-    padding: 5px;
-    border-radius: 3px;
+    justify-content: center;
+    margin-bottom: 20px;
+    color: #585858;
 }
 
-#box table th,
-#box table td {
-    flex-grow: 1;
-    flex-basis: 0;
-    text-align: right;
+#box li {
+    font-family: sans-serif;
+    list-style: none;
+    color: #797979;
+    font-size: 0.9rem;
 }
 
-#box table th:last-child,
-#box table td:last-child {
-    flex-grow: 2;
-}
-
-#box table tbody tr:nth-child(even) {
-    background-color: #3a3a3a;
-}
-
-#box table thead tr {
-    background-color: #70644c;
+#box li .highlight {
+    color: #5e3333;
+    font-size: 1.1rem;
 }

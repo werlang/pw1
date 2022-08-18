@@ -1,52 +1,74 @@
-<?php
-    $nome = "Usuário";
-    if (isset($_GET["nome"]) && $_GET["nome"] != "") {
-        $nome = $_GET["nome"];
-    }
-    $letra = "o";
-    if (isset($_GET["sexo"]) && $_GET["sexo"] == "f") {
-        $letra = "a";
-    }
-    $tratamento = '';
-    if (isset($_GET["idade"]) && $_GET["idade"] >= 40) {
-        $tratamento = "Sra.";
-        if ($letra == "o") {
-            $tratamento = "Sr.";
-        }
-    }
-    echo "<h1>Bem-vind$letra $tratamento $nome.</h1>";
-
-    if (isset($_GET["salarios"])) {
-        $media = 0;
-        foreach($_GET["salarios"] as $salario) {
-            $media += $salario;
-        }
-        $n_salarios = count($_GET["salarios"]);
-        $media /= $n_salarios;
-    }
-    if ($n_salarios > 0) {
-        echo "<p>Sua média salarial dos últimos $n_salarios meses foi R$ $media</p>";
-    }  
+<?php 
+    $tabela = array(
+        array(
+            "nome" => "João Silva",
+            "idade" => 25,
+            "email" => "joao.silva@gmail.com",
+            "e.civil" => "Solteiro",
+            "salario" => 1950
+        ),
+        array(
+            "nome" => "Rafael Cardoso",
+            "idade" => 32,
+            "email" => "rafacardoso@gmail.com",
+            "e.civil" => "Casado",
+            "salario" => 5541
+        ),
+        array(
+            "nome" => "Gabriela Schidt",
+            "idade" => 21,
+            "email" => "gabischidt@gmail.com",
+            "e.civil" => "Solteira",
+            "salario" => 3214
+        ),
+        array(
+            "nome" => "Roberta Oliveira",
+            "idade" => 38,
+            "email" => "roberta.oliveira@gmail.com",
+            "e.civil" => "Divorciada",
+            "salario" => 4258
+        ),
+        array(
+            "nome" => "Pedro Santos",
+            "idade" => 17,
+            "email" => "pebolado@gmail.com",
+            "e.civil" => "Solteiro",
+            "salario" => 2100
+        )
+    );
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<form action="index.php" method="GET">
-    <input name="nome" placeholder="Nome">
-    <input name="idade" placeholder="Idade">
-    <label><input type="radio" name="sexo" value="m">Masculino</label>
-    <label><input type="radio" name="sexo" value="f">Feminino</label>
-    <div>
-        <span>Últimos três salários</span>
-        <input name="salarios[]">
-        <input name="salarios[]">
-        <input name="salarios[]">
-    </div>
-    <button>Enviar</button>
-</form>
-    
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Idade</th>
+                <th>E-mail</th>
+                <th>E.Civil</th>
+                <th>Salário</th>
+            </tr>
+        </thead>
+        <tbody>
+        <?php
+            foreach ($tabela as $item) {
+                echo "<tr>";
+                foreach ($item as $valor) {
+                    echo "<td>$valor</td>";
+                }
+                echo "</tr>";
+            }
+
+        ?>
+        </tbody>
+    </table>
 </body>
 </html>
+
