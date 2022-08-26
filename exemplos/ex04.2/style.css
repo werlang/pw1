@@ -1,0 +1,26 @@
+#text-box {
+    border: 0;
+    border-bottom: 2px solid #689dff;
+    background-color: #e4edf8;
+    border-radius: 5px 5px 0 0;
+    padding: 5px 10px;
+    outline: none;
+    margin-bottom: 15px;
+    color: #385996;
+    font-size: 1.4rem;
+    transition: 0.5s all;
+}
+#text-box:disabled {
+    border-bottom: 2px solid #747474;
+    background-color: #cfcfcf;
+    color: #6e6e6e;
+}
+label {
+    font-family: sans-serif;
+    display: flex;
+    align-items: center;
+}
+#checkbox {
+    transform: scale(1.5);
+    margin-right: 10px;
+}
