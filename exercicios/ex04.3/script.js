@@ -117,12 +117,13 @@ const pokemon = [
 let randomPok;
 const buttons = document.querySelectorAll('button');
 const images = document.querySelector('#images');
+const description = document.querySelector('#description');
 
 buttons.forEach((button, bi) => button.addEventListener('click', () => {
     const type = pokemon[bi];
     randomPok = parseInt(Math.random() * 4);
     
-    document.querySelector('#description').innerHTML = type[randomPok].description;
+    description.innerHTML = type[randomPok].description;
 
     document.querySelectorAll('#images img').forEach((img, i) => {
         img.src = type[i].img;
@@ -144,14 +145,18 @@ images.querySelectorAll('img').forEach((img, i) => img.addEventListener('click',
     }
 
     stage++;
+    let result = `Acertos: <span>${score}</span>`;
 
     buttons.forEach(e => e.setAttribute('disabled', true));
     if (stage < buttons.length) {
         buttons[stage].removeAttribute('disabled');
     }
+    else {
+        result = `Finalizou o quiz com <span>${score}</span> acertos!`;
+        description.remove();
+    }
 
-    const result = `<span>Acertos: ${score}</span>`;
     document.querySelector('#result').innerHTML = result;
-
+    description.innerHTML = 'Clique no botão para avançar para a próxima etapa';
     images.classList.add('hidden');
 }));

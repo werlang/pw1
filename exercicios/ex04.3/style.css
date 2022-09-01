@@ -88,3 +88,8 @@ button:disabled {
     margin-top: 30px;
     font-size: 2rem;
 }
+
+#result span {
+    font-weight: bold;
+    color: rgb(0, 90, 90);
+}
