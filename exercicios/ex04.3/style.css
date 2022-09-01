@@ -1,0 +1,90 @@
+body {
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+button {
+    outline: none;
+    padding: 5px 20px;
+    font-size: 1.4rem;
+    background-color: rgb(45, 86, 76);
+    color: white;
+    border-radius: 3px;
+    border: 1px solid rgb(80, 124, 113);
+    transition: 0.3s all;
+    cursor: pointer;
+    width: 150px;
+}
+
+button:hover {
+    filter: brightness(1.2);
+}
+
+button:disabled {
+    background-color: #cecece;
+    border-color: #4d4d4d;
+    filter: none;
+    cursor: not-allowed;
+}
+
+#quiz {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pk-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.pk-container .name {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+#description {
+    font-size: 1.3rem;
+    max-width: 500px;
+    margin: 30px 0;
+    height: 100px;
+    background-color: rgb(139, 215, 215);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 10px;
+}
+
+#images {
+    display: flex;
+}
+
+#images img {
+    height: 175px;
+    border: 2px solid black;
+    border-radius: 5px;
+    margin: 0 10px;
+    background-color: #cecece;
+    cursor: pointer;
+    transition: 0.5s all;
+}
+
+#images img:hover {
+    filter: brightness(1.2);
+    box-shadow: 2px 2px 5px black;
+}
+
+#images.hidden {
+    display: none;
+}
+
+#result {
+    margin-top: 30px;
+    font-size: 2rem;
+}
