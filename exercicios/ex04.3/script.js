@@ -80,9 +80,9 @@ const pokemon = [
             description: 'It has the world\'s largest petals. With every step, the petals shake out heavy clouds of toxic pollen.',
         },
         {
-            name: 'Scyther',
-            img: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/123.png',
-            description: 'As it fights more and more battles, its scythes become sharper and sharper. With a single slice, it can fell a massive tree.',
+            name: 'Paras',
+            img: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/046.png',
+            description: 'Burrows under the ground to gnaw on tree roots. The mushrooms on its back absorb most of the nutrition.',
         },
         {
             name: 'Bellsprout',
