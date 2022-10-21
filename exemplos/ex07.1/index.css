@@ -1,0 +1,21 @@
+.row {
+    margin: 10px 0;
+    display: flex;
+}
+
+.col {
+    border-radius: 5px;
+    margin: 0 10px;
+    display: flex;
+}
+
+span {
+    background-color: #d0cfee;
+    padding: 5px 10px;
+    border-radius: 5px 0 0 5px;
+}
+
+span.value {
+    background-color: #b6b5cf;
+    border-radius: 0 5px 5px 0;
+}
