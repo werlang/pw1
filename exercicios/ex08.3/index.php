@@ -29,7 +29,6 @@
                 // https://www.php.net/manual/pt_BR/function.password-verify.php
                 if ($item["email"] == $email && password_verify($password, $hash)){
                     $output["status"] = "sucesso";
-                    $output["message"] = "Cadastro alterado com sucesso.";
                     unset($output["error"]);
                     break;
                 }
@@ -82,11 +81,11 @@
         <input id="password" name="password" class="text" type="password">
 
         <?php 
-            if ($output){
-                if ($output["error"]){
+            if ($output && isset($output["status"])){
+                if ($output["status"] == "erro"){
                     echo '<div class="error">'. $output["error"] .'</div>';
                 }
-                elseif (isset($output["status"]) && $output["status"] == "sucesso"){
+                elseif ($output["status"] == "sucesso"){
                     header("Location: profile.php");
                 }
             }
