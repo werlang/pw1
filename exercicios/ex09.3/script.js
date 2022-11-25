@@ -7,10 +7,10 @@ document.querySelector('button').addEventListener('click', async () => {
 
     const error = document.querySelector('.error');
 
-    if (data.error){
-        error.innerHTML = data.error;
+    if (data.status == 'erro'){
+        error.innerHTML = data.message;
     }
-    else if (data.status && data.status == "sucesso"){
+    else if (data.status == "sucesso"){
         window.location.href = 'profile.html';
     }
 });
