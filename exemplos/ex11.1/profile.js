@@ -1,4 +1,4 @@
-import { request } from './utils';
+import { request } from './utils.js';
 
 async function main() {
     const data = await request('profile.php');

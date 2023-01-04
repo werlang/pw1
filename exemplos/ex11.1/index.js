@@ -1,4 +1,4 @@
-import { request } from './utils';
+import { request } from './utils.js';
 
 document.querySelector('button').addEventListener('click', async () => {
     const data = await request('login.php', {
