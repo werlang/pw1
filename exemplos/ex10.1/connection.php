@@ -1,8 +1,10 @@
 <?php
-$host = "localhost";
-$user = "aula";
-$password = "asdf1234";
-$database = "aula_pwii";
+
+$config = json_decode(file_get_contents('../../config.json'), true);
+$host = $config["mysql"]["host"];
+$user = $config["mysql"]["user"];
+$password = $config["mysql"]["password"];
+$database = $config["mysql"]["database"];
 
 $options = [
     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
