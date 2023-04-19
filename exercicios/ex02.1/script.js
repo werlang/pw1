@@ -1,14 +1,14 @@
 const button = document.querySelector('button');
+const user = document.querySelector('#user');
+const pass = document.querySelector('#pass');
 
 button.addEventListener('click', () => {
-    const user = document.querySelector('#user').value;
-    const pass = document.querySelector('#pass').value;
-
-    // console.log(user, pass);
-    if ((user == 'aluno' && pass == 'undererere123') || (user == 'professor' && pass == 'admin789')) {
-        document.querySelector('#box').innerHTML = `<h2><span id="highlight">${user}</span> logado com sucesso.</h2>`;
+    if (user.value == 'aluno' && pass.value == 'underere123' || user.value == 'professor' && pass.value == 'admin789') {
+        const box = document.querySelector('#box');
+        box.innerHTML = `<h2><span id="highlight">${ user.value }</span> logado com sucesso.</h2>`;
     }
     else {
-        document.querySelector('#message').innerHTML = 'Usuário ou senha inválidos';
+        const message = document.querySelector('#message');
+        message.innerHTML = `Usuário ou senha inválido`;
     }
 });
