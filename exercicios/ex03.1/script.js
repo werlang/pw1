@@ -7,17 +7,4 @@ nums = nums.slice(5,-5);
 
 nums.sort((a,b) => a-b);
 
-let table = '<table><tbody>';
-let cont = 0;
-for (let i = 0 ; i < 10 ; i++){
-    table += '<tr>';
-    for (let j = 0 ; j < 10 ; j++){
-        if (cont < nums.length){
-            table += `<td>${nums[cont]}</td>`;
-            cont++;
-        }
-    }
-    table += '</tr>';
-}
-table += '</tbody></table>';
-document.body.innerHTML = table;
+console.log(nums);
