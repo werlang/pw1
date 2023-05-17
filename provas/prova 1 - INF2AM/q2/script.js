@@ -1,17 +1,17 @@
 const cria = document.querySelector('#cria');
 const remove = document.querySelector('#remove');
 const texto = document.querySelector('#texto');
+const container = document.querySelector('#box-container');
 
 cria.addEventListener('click', () => {
-    let n = parseInt(texto.value);
-    console.log(n)
-    if (!n || n < 1 || n > 9) {
-        n = '';
+    const value = parseInt(texto.value);
+    let box = '<div class="box"></div>';
+    if (value >= 1 && value <= 9) {
+        box = `<div class="box">${value}</div>`;
     }
-
-    document.querySelector('#box-container').insertAdjacentHTML('beforeend', `<div class="box">${n}</div>`);
+    container.insertAdjacentHTML('beforeend', box);
 });
 
 remove.addEventListener('click', () => {
-    document.body.querySelector('.box').remove();
+    document.querySelector('.box').remove();
 });
