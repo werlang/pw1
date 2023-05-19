@@ -16,7 +16,7 @@ insert.addEventListener('click', () => {
 
 remove.addEventListener('click', () => {
     carros.shift();
-    // list = list.slice(1);
+    // carros = carros.slice(1);
     refreshList();
 });
 
