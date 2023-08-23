@@ -1,9 +1,11 @@
 <?php
     foreach ($_GET as $campo => $valor){
-        echo "<div>Recebi no campo $campo o valor $valor</div>";
         if (is_array($valor)) {
             $todos = implode(", ", $valor);
-            echo "<div>Este array possui os valores:$todos</div>";
+            echo "<div>Recebi no array $campo os valores: $todos</div>";
+        }
+        else {
+            echo "<div>Recebi no campo $campo o valor $valor</div>";
         }
     }
 ?>
