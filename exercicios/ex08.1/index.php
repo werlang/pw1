@@ -19,14 +19,17 @@
     if (isset($_GET["salarios"])) {
         $media = 0;
         foreach($_GET["salarios"] as $salario) {
-            $media += $salario;
+            if ($salario > 0) {
+                $media += $salario;
+            }
         }
         $n_salarios = count($_GET["salarios"]);
         $media /= $n_salarios;
+        
+        if ($n_salarios > 0) {
+            echo "<p>Sua média salarial dos últimos $n_salarios meses foi R$ $media</p>";
+        }  
     }
-    if ($n_salarios > 0) {
-        echo "<p>Sua média salarial dos últimos $n_salarios meses foi R$ $media</p>";
-    }  
 ?>
 <!DOCTYPE html>
 <html>

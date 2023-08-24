@@ -31,6 +31,7 @@
         <input name="salarios[]">
     </div>
     <button>Enviar</button>
+    <!-- <input type="submit" value="Enviar"> -->
 </form>
 </body>
 </html>
