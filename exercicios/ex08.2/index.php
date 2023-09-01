@@ -10,11 +10,8 @@
 
     if (isset($_POST["email"]) && isset($_POST["password"])){
 
-        $valida = validate_person();
-        if ($valida["status"] == "erro"){
-            $output = $valida;
-        }
-        else {
+        $output = validate_person();
+        if ($output["status"] == "sucesso"){
             $email = $_POST["email"];
             $password = $_POST["password"];
     
