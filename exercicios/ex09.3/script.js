@@ -1,8 +1,12 @@
-document.querySelector('button').addEventListener('click', async () => {
-    const data = await post('back.php', {
-        email: document.querySelector('#email').value,
-        password: document.querySelector('#password').value,
-    });
+const form = document.querySelector('form');
+form.addEventListener('submit', async e => {
+    e.preventDefault();
+    
+    const data = await fetch('back.php', {
+        method: `POST`,
+        body: new FormData(form),
+    }).then(res => res.json());
+
     console.log(data);
 
     const error = document.querySelector('.error');
@@ -14,13 +18,3 @@ document.querySelector('button').addEventListener('click', async () => {
         window.location.href = 'profile.html';
     }
 });
-
-async function post(endpoint, body) {
-    const res = await fetch(endpoint, {
-        method: `POST`,
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(body).toString(),
-    });
-    return await res.json();
-}
-
