@@ -6,11 +6,9 @@ async function request(endpoint, args, method='GET') {
         url += `?${query}`;
     }
     else {
-        opt.headers = { 'Content-Type': 'application/x-www-form-urlencoded' };
-        opt.body = new URLSearchParams(args).toString();
+        opt.body = new FormData(args);
     }
-    const res = await fetch(url, opt);
-    return await res.json();
+    return await fetch(url, opt).then(res => res.json());
 }
 
 export { request };
