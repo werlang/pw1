@@ -15,8 +15,16 @@ $id = $_GET["user"];
 $sql = "SELECT * FROM users WHERE id = ?";
 $stmt = $conn->prepare($sql);
 $stmt->execute([$id]);
+$row = $stmt->fetch();
 
-$output["result"] = $stmt->fetch();
+if (!$row) {
+    $output["status"] = "erro";
+    $output["message"] = "Usuário não encontrado.";
+    echo json_encode($output);
+    exit;
+}
+
+$output["result"] = $row;
 $output["status"] = "OK";
 
 echo json_encode($output);
