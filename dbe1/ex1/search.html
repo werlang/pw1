@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="search.js" async></script>
+    <title>Busca</title>
+</head>
+<body>
+    <h1>Buscar Produtos</h1>
+    <form>
+        <label for="product-name">Nome do Produto:</label>
+        <input type="text" id="product-name" name="product-name" required>
+    </form>
+    <div id="toast-container"></div>
+    <table>
+        <thead>
+            <tr>
+                <th>Nome do Produto</th>
+                <th>Preço</th>
+                <th>Descrição</th>
+            </tr>
+        </thead>
+        <tbody id="results-table">
+            <!-- Search results will be added here -->
+        </tbody>
+    </table>
+</body>
+</html>

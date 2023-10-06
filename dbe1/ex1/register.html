@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="register.js" async></script>
+    <title>Busca</title>
+</head>
+<body>
+    <h1>Registro de Produtos</h1>
+    <form>
+        <label for="product-name">Nome do Produto:</label>
+        <input type="text" id="product-name" name="product-name" required>
+        
+        <label for="product-description">Descrição do Produto:</label>
+        <textarea id="product-description" name="product-description" required></textarea>
+        
+        <label for="product-price">Preço do Produto:</label>
+        <input type="number" id="product-price" name="product-price" required>
+        
+        <label for="product-quantity">Quantidade do Produto:</label>
+        <input type="number" id="product-quantity" name="product-quantity" required>
+        
+        <input type="submit" id="submit-button" value="Enviar">
+    </form>
+    <div id="toast-container"></div>
+</body>
+</html>
