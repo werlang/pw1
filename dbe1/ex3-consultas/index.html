@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <script type="text/javascript" src="index.js" async></script>
+    <title>Agendar Consulta</title>
+</head>
+<body>
+    <h1>Agendar Consulta</h1>
+    <form>
+        <label for="patient-name">Nome do Paciente:</label>
+        <input type="text" id="patient-name" name="patient-name" required>
+        <label for="doctor-name">Nome do Médico:</label>
+        <select id="doctor-name" name="doctor-id" required>
+            <!-- aqui vão os options com as opções de médicos -->
+        </select>
+        <label for="appointment-date">Data da Consulta:</label>
+        <input type="date" id="appointment-date" name="appointment-date" required>
+        <label for="appointment-time">Horário da Consulta:</label>
+        <input type="time" id="appointment-time" name="appointment-time" required>
+        <label for="appointment-notes">Observações:</label>
+        <textarea id="appointment-notes" name="appointment-notes"></textarea>
+        <button type="submit">Agendar</button>
+    </form>
+    <div id="scheduled-appointment"></div>
+    <div id="toast-container"></div>        
+</body>
+</html>
