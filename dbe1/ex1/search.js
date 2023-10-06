@@ -4,9 +4,6 @@ const table = document.querySelector('#results-table');
 
 searchInput.addEventListener('input', async event => {
     const searchQuery = searchInput.value.trim();
-    // if (searchQuery.length < 3) {
-    //     return;
-    // }
 
     const url = `search.php?product=${encodeURIComponent(searchQuery)}`;
     const data = await fetch(url).then(res => res.json());

@@ -27,4 +27,13 @@ $products = [
     ['name' => 'Sony A7S III', 'price' => 3499.99, 'description' => 'The Sony A7S III is a full-frame mirrorless camera designed for professional videographers. With 4K video recording, advanced autofocus, and a 12.1MP sensor, this camera is designed to capture stunning video in any lighting conditions.']
 ];
 
+// recebe do JS
+$text = $_GET["product"];
+
 // lógica para buscar o produto
+
+// devolve json com os campos
+// error: true ou false
+// message: mensagem informativa
+// products: array com os produtos encontrados
+
