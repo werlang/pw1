@@ -28,19 +28,3 @@ $products = [
 ];
 
 // lógica para buscar o produto
-
-$text = $_GET["product"];
-
-// find products that contain $text, ignoring case
-$filteredProducts = [];
-foreach ($products as $product) {
-    if (stripos($product["name"], $text) !== false) {
-        $filteredProducts[] = $product;
-    }
-}
-
-echo json_encode([
-    "error" => false,
-    "message" => "Produtos encontrados com sucesso!",
-    "products" => $filteredProducts
-]);
