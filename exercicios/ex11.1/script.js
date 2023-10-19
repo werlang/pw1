@@ -1,26 +1,32 @@
-document.querySelector('button').addEventListener('click', async () => {
-    const data = await post('back.php', {
-        email: document.querySelector('#email').value,
-        password: document.querySelector('#password').value,
+const select = document.querySelector('select');
+const table = document.querySelector('#table');
+
+async function main() {
+    const data = await fetch('get-groups.php').then(res => res.json());
+    // console.log(data);
+
+    data.groups.forEach((group,i) => {
+        const option = document.createElement('option');
+        option.innerHTML = group;
+        option.value = i;
+        select.appendChild(option);
     });
-    console.log(data);
 
-    const error = document.querySelector('.error');
+    select.addEventListener('change', async () => {
+        const data = await fetch(`get-food.php?group=${ select.value }`).then(res => res.json());
+        // console.log(data);
 
-    if (data.error){
-        error.innerHTML = data.error;
-    }
-    else if (data.status && data.status == "sucesso"){
-        window.location.href = 'profile.html';
-    }
-});
-
-async function post(endpoint, body) {
-    const res = await fetch(endpoint, {
-        method: `POST`,
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(body).toString(),
+        table.innerHTML = '';
+        data.forEach(food => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${ food[0] }</td>
+                <td>${ food[1] }</td>
+                <td>${ food[2] }</td>
+                <td>${ food[3] }</td>
+            `;
+            table.appendChild(row);
+        });
     });
-    return await res.json();
 }
-
+main();
