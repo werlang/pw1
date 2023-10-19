@@ -1,31 +1,30 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Login</title>
-    <link rel="stylesheet" href="login.css">
-    <script type='module' src='script.js' async></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="script.js" async></script>
+    <title>Document</title>
 </head>
 <body>
-    <header>
-        <div id="title">Exercício de Login</div>
-        <div id="theme">
-            <span class="sun">☀️</span>
-            <span class="moon">🌙</span>
-        </div>
-    </header>
-    <div id="box">
-        <h1>Login</h1>
-        
-        <span>E-mail</span>
-        <input id="email" class="text" type="text">
-    
-        <span>Senha</span>
-        <input id="password" class="text" type="password">
-    
-        <div class="error"></div>
-    
-        <button class="button">Entrar</button>
-    </div>
+    <form>
+        <h1>Cadastro</h1>
+        <label>Nome</label>
+        <input type="text" name="name">
+        <label>Endereço</label>
+        <input type="text" name="address">
+        <label>Data de Nascimento</label>
+        <input type="date" name="birth">
+        <input type="submit">
+    </form>
+
+    <table>
+        <thead>
+            <th>Nome</th>
+            <th>Endereço</th>
+            <th>Data Nasc.</th>
+        </thead>
+        <tbody id="table"></tbody>
+    </table>
 </body>
 </html>

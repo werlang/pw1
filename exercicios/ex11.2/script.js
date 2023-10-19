@@ -1,36 +1,28 @@
- import { getCookies, setTheme, post } from './utils.js'
+const form = document.querySelector('form');
+const table = document.querySelector('#table');
 
-document.querySelector('button').addEventListener('click', async () => {
-    const data = await post('back.php', {
-        email: document.querySelector('#email').value,
-        password: document.querySelector('#password').value,
-    });
+form.addEventListener('submit', async e => {
+    e.preventDefault();
+    const data = await fetch('save.php', {
+        method: 'POST',
+        body: new FormData(form),
+    }).then(res => res.json());
     console.log(data);
-
-    const error = document.querySelector('.error');
-
-    if (data.error){
-        error.innerHTML = data.error;
-    }
-    else if (data.status && data.status == "sucesso"){
-        window.location.href = 'profile.html';
-    }
+    updateTable();
 });
 
-document.querySelector('#theme').addEventListener('click', async () => {
-    // let theme = getCookies().theme || 'dark';
-    let theme = getCookies().theme;
-    if (!theme) {
-        theme = 'dark';
-    }
-
-    // theme = theme == 'dark' ? 'light' : 'dark';
-    if (theme == 'dark') {
-        theme = 'light';
-    }
-    else {
-        theme = 'dark';
-    }
-    setTheme(theme);
-});
-setTheme();
+async function updateTable() {
+    const data = await fetch('get.php').then(res => res.json());
+    console.log(data);
+    table.innerHTML = ``;
+    data.record.forEach(item => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+            <td>${item.name}</td>
+            <td>${item.address}</td>
+            <td>${item.birth}</td>
+        `;
+        table.appendChild(tr);
+    });
+}
+updateTable();
