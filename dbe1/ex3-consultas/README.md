@@ -8,9 +8,20 @@ A `index.html` já está pronta e contém um formulário de agendamento de consu
 
 O schedule.php deve realizar as seguintes tarefas:
 
-* Receber dados do formulário de agendamento, incluindo o nome do paciente, o ID do médico, a data e a hora da consulta e as observações sobre a consulta.
+* Caso receba por get a variável `doctors`, deve retornar um JSON com os dados dos médicos no seguinte formato:
 
-* Buscar as informaçÕes dos médicos, pacientes e consultas nos respectivos arrays.
+```json
+[
+  {
+    "id": "id do médico",
+    "name": "nome do médico",
+  },
+]
+```
+
+* Caso contrátio, receber dados do formulário de agendamento por **POST**, incluindo o nome do paciente, o ID do médico, a data e a hora da consulta e as observações sobre a consulta.
+
+* Buscar as informações dos médicos, pacientes e consultas nos respectivos arrays.
 
 * Verificar se o médico está disponível na data e hora especificadas.
 
