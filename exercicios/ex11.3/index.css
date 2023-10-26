@@ -1,0 +1,109 @@
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Apply a dark background and white text color to the entire page */
+body {
+    background-color: #232323;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+}
+
+/* Style the form container */
+form {
+    background-color: #333;
+    padding: 40px 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    margin: 30px auto;
+}
+
+/* Style the form title */
+h1 {
+    font-size: 1.8rem;
+    margin-bottom: 40px;
+    color: #ff6b6b; /* Reddish color */
+    text-align: center;
+}
+
+/* Style the form labels and inputs */
+label {
+    display: block;
+    color: #ffffff;
+}
+
+input[type="text"],
+input[type="number"],
+select,
+input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #444;
+    border: none;
+    border-radius: 5px;
+    color: #ffffff;
+    margin-top: 10px;
+}
+
+/* Style the submit button */
+input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #4caf50; /* Green color */
+    border: none;
+    border-radius: 5px;
+    color: #ffffff;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 1.3rem;
+    transition: background-color 0.3s;
+    margin-top: 15px;
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049; /* Slightly darker green on hover */
+}
+
+/* Style the select element */
+select {
+    width: 100%;
+    padding: 10px;
+    background-color: #444;
+    border: none;
+    border-radius: 5px;
+    color: #ffffff;
+}
+
+/* Add some spacing for form elements */
+label:not(:last-child) {
+    margin-bottom: 20px;
+}
+
+
+/* Common toast styles */
+.toast {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    margin: 20px;
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 9999;
+}
+
+/* Toast for success message */
+.toast.success {
+    background-color: #4caf50; /* Green color */
+}
+
+/* Toast for error message */
+.toast.error {
+    background-color: #ff6b6b; /* Reddish color */
+}
