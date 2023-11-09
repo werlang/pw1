@@ -3,29 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
-    <link rel="stylesheet" href="style.css">
-    <script type='text/javascript' src='script.js' async></script>
+    <link rel="stylesheet" href="login.css">
 </head>
 <body>
-    <div id="box">
-        <div id="fields">
-            <h1>Cadastro</h1>
-            
-            <span>Nome</span>
-            <input id="name" class="text" type="text">
-            
-            <span>Endereço</span>
-            <input id="address" class="text" type="text">
-            
-            <span>Data de nascimento</span>
-            <input id="birth" class="text" type="text">
+    <form id="box">
+        <h1>Login</h1>
         
-            <button class="button">Cadastrar</button>
-        </div>
-        <div id="table-container">
-            <h1>Cadastrados</h1>
-            <div id="table">Nenhuma pessoa cadastrada</div>
-        </div>
-    </div>
+        <span>E-mail</span>
+        <input id="email" name="email" class="text" type="text">
+    
+        <span>Senha</span>
+        <input id="password" name="password" class="text" type="password">
+    
+        <div class="error"></div>
+    
+        <button class="button">Entrar</button>
+    </form>
 </body>
 </html>
+<script type='text/javascript' src='script.js' async></script>
