@@ -5,7 +5,7 @@ session_start();
 if (!isset($_SESSION["user"])) {
     echo json_encode([
         "status" => "error",
-        "message" => "Usuário não está logado"
+        "message" => "Sessão não existe"
     ]);
     exit;
 }

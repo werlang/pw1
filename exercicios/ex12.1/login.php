@@ -8,13 +8,13 @@ $password = $_POST["password"];
 
 $sql = "SELECT * FROM users WHERE email = ?";
 $stmt = $conn->prepare($sql);
-$stmt->execute([ $email ]);
+$stmt->execute([$email]);
 
 $user = $stmt->fetch();
 if (!$user) {
     echo json_encode([
         "status" => "error",
-        "message" => "Usuário não encontrado"
+        "message" => "Usuário não existe"
     ]);
     exit;
 }
@@ -28,11 +28,12 @@ if (!password_verify($password, $user["password"])) {
 }
 
 $_SESSION["user"] = [
-    "email" => $user["email"],
     "name" => $user["name"],
+    "email" => $user["email"]
 ];
 
 echo json_encode([
     "status" => "success",
-    "message" => "Usuário logado"
+    "message" => "Usuário logado com sucesso",
+    "user" => $_SESSION["user"]
 ]);
