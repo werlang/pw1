@@ -1,0 +1,8 @@
+version: '3'
+services:
+    apache:
+        image: pswerlang/php-apache
+        ports:
+            - 80:80
+        volumes:
+            - ./:/var/www/html
