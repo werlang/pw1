@@ -1,0 +1,52 @@
+[
+    {
+        "name": "João Silva",
+        "email": "joaosilva@example.com",
+        "password": "$2y$10$cni4FwMKw.2k8lf3Ct/7cutPPmyiUc6QbjLfWupnc7P79xovP7ZIe"
+    },
+    {
+        "name": "Maria Santos",
+        "email": "mariasantos@example.com",
+        "password": "$2y$10$cni4FwMKw.2k8lf3Ct/7cutPPmyiUc6QbjLfWupnc7P79xovP7ZIe"
+    },
+    {
+        "name": "Roberto Souza",
+        "email": "robertosouza@example.com",
+        "password": "$2y$10$cni4FwMKw.2k8lf3Ct/7cutPPmyiUc6QbjLfWupnc7P79xovP7ZIe"
+    },
+    {
+        "name": "Alice Ferreira",
+        "email": "aliceferreira@example.com",
+        "password": "$2y$10$cni4FwMKw.2k8lf3Ct/7cutPPmyiUc6QbjLfWupnc7P79xovP7ZIe"
+    },
+    {
+        "name": "Miguel Alves",
+        "email": "miguelalves@example.com",
+        "password": "$2y$10$cni4FwMKw.2k8lf3Ct/7cutPPmyiUc6QbjLfWupnc7P79xovP7ZIe"
+    },
+    {
+        "name": "Emília Costa",
+        "email": "emiliacosta@example.com",
+        "password": "$2y$10$cni4FwMKw.2k8lf3Ct/7cutPPmyiUc6QbjLfWupnc7P79xovP7ZIe"
+    },
+    {
+        "name": "Daniel Ribeiro",
+        "email": "danielribeiro@example.com",
+        "password": "$2y$10$cni4FwMKw.2k8lf3Ct/7cutPPmyiUc6QbjLfWupnc7P79xovP7ZIe"
+    },
+    {
+        "name": "Sara Gonçalves",
+        "email": "saragoncalves@example.com",
+        "password": "$2y$10$cni4FwMKw.2k8lf3Ct/7cutPPmyiUc6QbjLfWupnc7P79xovP7ZIe"
+    },
+    {
+        "name": "Matheus Oliveira",
+        "email": "matheusoliveira@example.com",
+        "password": "$2y$10$cni4FwMKw.2k8lf3Ct/7cutPPmyiUc6QbjLfWupnc7P79xovP7ZIe"
+    },
+    {
+        "name": "Júlia Martins",
+        "email": "juliamartins@example.com",
+        "password": "$2y$10$cni4FwMKw.2k8lf3Ct/7cutPPmyiUc6QbjLfWupnc7P79xovP7ZIe"
+    }
+]
