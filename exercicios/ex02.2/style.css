@@ -1,0 +1,64 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0;
+    margin-top: 50px;
+    font-family: sans-serif;
+}
+
+button {
+    margin-left: 20px;
+    background-color: #7baad4;
+    border-radius: 3px;
+    font-size: 16px;
+    padding: 5px 10px;
+}
+
+input {
+    border-radius: 3px;
+    padding: 5px 10px;
+}
+
+#lista {
+    list-style: none; 
+    padding: 0;   
+}
+
+#lista li {
+    width: 250px;
+    padding: 5px 10px;
+    display: flex;
+}
+
+#lista li:nth-child(odd) {
+    background-color: #f2f2f2;
+    
+}
+
+#lista li:hover span {
+    opacity: 1;
+}
+
+#lista span {
+    opacity: 0;
+    transition: 0.3s all;
+    color: #b02c2c;
+    font-family: sans-serif;
+    margin-right: 10px;
+    border-radius: 100%;
+    background-color: #c5d2dd;
+    height: 20px;
+    width: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+#lista span:hover {
+    filter: brightness(1.05);
+}
