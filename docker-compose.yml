@@ -12,7 +12,7 @@ services:
             - mysql:/var/lib/mysql
     apache:
         image: pswerlang/php-apache
-        restart: always
+        restart: unless-stopped
         ports:
             - '${APACHE_PORT}:80'
         volumes:
