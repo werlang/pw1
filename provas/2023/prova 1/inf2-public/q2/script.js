@@ -54,32 +54,3 @@ const moviesList = [
         image : "images/batman.jpg"
     }
 ];
-
-function criaCard(movie) {
-    return `<div class="movie-card">
-        <img src="${ movie.image }" alt="${ movie.title }">
-        <div class="movie-title">${ movie.title }</div>
-        <div class="movie-genre">${ movie.genre }</div>
-        <div class="movie-year">${ movie.year }</div>
-    </div>`;
-}
-
-let card = '';
-moviesList.forEach(movie => {
-    card += criaCard(movie);
-});
-
-document.querySelector('.movie-list').innerHTML = card;
-
-const select = document.querySelector('#genre-select');
-select.addEventListener('change', () => {
-    // select.value
-
-    let card = '';
-    moviesList.forEach(movie => {
-        if (movie.genre == select.value || select.value == 'Todos') {
-            card += criaCard(movie);
-        }
-    });
-    document.querySelector('.movie-list').innerHTML = card;
-})

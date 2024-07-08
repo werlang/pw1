@@ -4,3 +4,4 @@ config.json
 teste
 .env
 share
+.DS_Store
