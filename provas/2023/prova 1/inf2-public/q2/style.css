@@ -1,0 +1,70 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    background-color: #000;
+    padding: 20px;
+    color: #fff;
+}
+
+h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.movie-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.movie-card {
+    width: 200px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+
+.movie-card img {
+    width: 100%;
+    height: auto;
+}
+
+.movie-card .movie-title {
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+.movie-card .movie-genre {
+    margin-top: 5px;
+    font-size: 14px;
+    color: #888;
+}
+
+.movie-card .movie-year {
+    margin-top: 5px;
+    font-size: 14px;
+    color: #888;
+}
+
+.filter-container {
+    margin-bottom: 20px;
+}
+
+.filter-container label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.filter-container select {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    background-color: #f0f0f0;
+    color: #333;
+}
+
