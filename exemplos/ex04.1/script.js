@@ -12,9 +12,10 @@ document.querySelectorAll('.box').forEach((e,i) => {
         <div class="description">${plans[i].description}</div>
     `;
     e.addEventListener('click', () => {
-        document.querySelectorAll('.box').forEach(t => {
-            t.classList.remove('active');
-        });
+        const active = document.querySelector('.box.active');
+        if (active) {
+            active.classList.remove('active');
+        }
         e.classList.add('active');
     });
 
