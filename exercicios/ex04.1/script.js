@@ -1,12 +1,20 @@
-let x = true;
-document.querySelectorAll('.cell').forEach(e => e.addEventListener('click', () => {
-    if (e.innerHTML == ''){
-        if (x){
-            e.innerHTML = '<span class="x">X</span>';
+let isX = true;
+let winner = null;
+
+document.querySelectorAll('.cell').forEach(cell => {
+    cell.addEventListener('click', () => {
+        if (cell.innerHTML != '') {
+            return;
+        }
+        if (isX) {
+            cell.classList.add('x');
+            cell.innerHTML = 'X';
+            isX = false;
         }
         else {
-            e.innerHTML = '<span class="o">O</span>';
+            cell.classList.add('o');
+            cell.innerHTML = 'O';
+            isX = true;
         }
-        x = !x
-    }
-}));
+    });
+});

@@ -45,10 +45,10 @@ body {
     margin-bottom: -5px;
 }
 
-.cell .x {
+.cell.x {
     color: red;
 }
 
-.cell .o {
+.cell.o {
     color: blue;
 }
