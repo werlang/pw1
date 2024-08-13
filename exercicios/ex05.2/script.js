@@ -1,29 +1,21 @@
-const button = document.querySelector('button');
-const pass = document.querySelector('#pass');
 const email = document.querySelector('#email');
+const pass = document.querySelector('#pass');
+const button = document.querySelector('button');
+const message = document.querySelector('#message');
 
-let users = localStorage.getItem('users');
-if (!users) {
-    users = [];
+const ls = localStorage.getItem('users');
+let users = [];
+if (ls) {
+    users = JSON.parse(ls);
 }
-else {
-    users = JSON.parse(users);
-}
-console.log(users);
 
 button.addEventListener('click', () => {
-    let logged = false;
-    for (let i in users) {
-        if (users[i].email == email.value && users[i].password == pass.value) {
-            logged = users[i];
-            break;
+    users.forEach(user => {
+        if (user.email == email.value && user.password == pass.value) {
+            localStorage.setItem('logged-user', JSON.stringify(user));
+            location.href = 'profile.html';
         }
-    }
-    if (logged) {
-        localStorage.setItem('logged', JSON.stringify(logged));
-        location.href = 'profile.html';
-    }
-    else {
-        document.querySelector('#message').innerHTML = 'Usuário não encontrado';
-    }
+    });
+
+    message.innerHTML = `Usuário não encontrado`;
 });

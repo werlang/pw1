@@ -1,53 +1,49 @@
-const button = document.querySelector('button');
-const user = document.querySelector('#name');
-const pass = document.querySelector('#pass');
+const name = document.querySelector('#name');
 const email = document.querySelector('#email');
+const pass = document.querySelector('#pass');
+const button = document.querySelector('button');
 
-let users = localStorage.getItem('users');
-if (!users) {
-    users = [];
+const ls = localStorage.getItem('users');
+let users = [];
+if (ls) {
+    users = JSON.parse(ls);
 }
-else {
-    users = JSON.parse(users);
+
+let autoSave = sessionStorage.getItem('auto-save');
+if (autoSave) {
+    autoSave = JSON.parse(autoSave);
+    name.value = autoSave.name;
+    email.value = autoSave.email;
+    pass.value = autoSave.password;
 }
-console.log(users);
+
 
 button.addEventListener('click', () => {
-    users.push({
-        name: user.value,
-        password: pass.value,
+    const user = {
+        name: name.value,
         email: email.value,
-    });
+        password: pass.value,
+    }
+    users.push(user);
     localStorage.setItem('users', JSON.stringify(users));
-    document.querySelector('#message').innerHTML = `Usuário ${ user.value } cadastrado`;
-    sessionStorage.clear();
 
-    document.querySelectorAll('input').forEach(e => e.value = '');
+    name.value = '';
+    email.value = '';
+    pass.value = '';
+    sessionStorage.removeItem('auto-save');
+
+    document.querySelector('#message').innerHTML = `Usuário ${user.name} cadastrado com sucesso`;
 });
 
-document.querySelectorAll('input').forEach(e => e.addEventListener('input', () => {
-    const fields = {
-        user: user.value,
-        password: pass.value,
+name.addEventListener('input', save);
+email.addEventListener('input', save);
+pass.addEventListener('input', save);
+
+function save() {
+    const user = {
+        name: name.value,
         email: email.value,
-    };
-    const json = JSON.stringify(fields);
-    sessionStorage.setItem('autosave', json);
-}));
-
-let autosave = sessionStorage.getItem('autosave');
-let fields;
-if (!autosave) {
-    fields = {
-        user: "",
-        password: "",
-        email: "",
-    };
+        password: pass.value,
+    }
+    sessionStorage.setItem('auto-save', JSON.stringify(user));
 }
-else {
-    fields = JSON.parse(autosave);
-}
-
-user.value = fields.user;
-pass.value = fields.password;
-email.value = fields.email;

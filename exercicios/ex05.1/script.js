@@ -1,27 +1,26 @@
-const button = document.querySelector('button');
-const user = document.querySelector('#name');
-const pass = document.querySelector('#pass');
+const name = document.querySelector('#name');
 const email = document.querySelector('#email');
+const pass = document.querySelector('#pass');
+const button = document.querySelector('button');
 
-let users = localStorage.getItem('users');
-if (!users) {
-    users = [];
+const ls = localStorage.getItem('users');
+let users = [];
+if (ls) {
+    users = JSON.parse(ls);
 }
-else {
-    users = JSON.parse(users);
-}
-console.log(users);
 
 button.addEventListener('click', () => {
-    users.push({
-        name: user.value,
-        password: pass.value,
+    const user = {
+        name: name.value,
         email: email.value,
-    });
+        password: pass.value,
+    }
+    users.push(user);
     localStorage.setItem('users', JSON.stringify(users));
-    document.querySelector('#message').innerHTML = `Usuário ${ user.value } cadastrado`;
 
-    user.value = '';
-    pass.value = '';
+    name.value = '';
     email.value = '';
+    pass.value = '';
+
+    document.querySelector('#message').innerHTML = `Usuário ${user.name} cadastrado com sucesso`;
 });
