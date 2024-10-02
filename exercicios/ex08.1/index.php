@@ -1,4 +1,5 @@
 <?php
+    $message = "";
     $nome = "Usuário";
     if (isset($_GET["nome"]) && $_GET["nome"] != "") {
         $nome = $_GET["nome"];
@@ -14,7 +15,7 @@
             $tratamento = "Sr.";
         }
     }
-    echo "<h1>Bem-vind$letra $tratamento $nome.</h1>";
+    $message .= "<h1>Bem-vind$letra $tratamento $nome.</h1>";
 
     if (isset($_GET["salarios"])) {
         $media = 0;
@@ -27,7 +28,7 @@
         $media /= $n_salarios;
         
         if ($n_salarios > 0) {
-            echo "<p>Sua média salarial dos últimos $n_salarios meses foi R$ $media</p>";
+            $message .= "<p>Sua média salarial dos últimos $n_salarios meses foi R$ $media</p>";
         }  
     }
 ?>
@@ -50,6 +51,7 @@
     </div>
     <button>Enviar</button>
 </form>
+<?php echo $message; ?>
     
 </body>
 </html>
