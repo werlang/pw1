@@ -27,6 +27,12 @@ body {
     border: none;
     border-radius: 5px;
     font-size: 1.2rem;
+    transition: 0.3s all;
+    cursor: pointer;
+}
+
+#box button:hover {
+    background-color: #d66f6f;
 }
 
 #box #cron {

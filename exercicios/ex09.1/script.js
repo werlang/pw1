@@ -1,47 +1,52 @@
+const buttonStart = document.querySelector('#start');
+const buttonEmpty = document.querySelector('#empty');
 const cron = document.querySelector('#cron');
-const start = document.querySelector('#start');
-const empty = document.querySelector('#empty');
 const laps = document.querySelector('#laps');
+
 let time = 0;
-let paused = true;
+let running = false;
 let interval;
 
-function formatTime() {
-    if (time > 60) {
-        const m = Math.floor(parseFloat(time) / 60);
-        const s = (parseFloat(time) - m*60).toFixed(1);
-        return `${m}m ${s}s`;
-    }
-    return `${ parseFloat(time).toFixed(1) }s`;
-}
-
-start.addEventListener('click', () => {
-    if (paused) {
-        interval = setInterval( () => {
-            time += 0.1;
-            cron.innerHTML = formatTime();
-        }, 100);
-        paused = false;
-        start.innerHTML = 'Parar';
-        empty.innerHTML = 'Volta';
+buttonStart.addEventListener('click', () => {
+    if (running) {
+        clearInterval(interval);
+        buttonStart.innerHTML = 'Continua';
+        buttonEmpty.innerHTML = 'Zerar';
+        running = false;
     }
     else {
-        clearInterval(interval);
-        paused = true;
-        start.innerHTML = 'Continuar';
-        empty.innerHTML = 'Zerar';
+        interval = setInterval(() => {
+            time += 0.1;
+            let timeShow = `${time.toFixed(1)}s`;
+            if (time >= 60) {
+                const m = parseInt(time / 60);
+                const s = parseInt(time) % 60;
+                timeShow = `${m}m ${s}s`;
+            }
+            cron.innerHTML = timeShow;
+        }, 100);
+        buttonStart.innerHTML = 'Pausa';
+        buttonEmpty.innerHTML = 'Volta';
+        running = true;
     }
 });
 
-empty.addEventListener('click', () => {
-    if (paused) {
-        start.innerHTML = 'Iniciar';
-        laps.innerHTML = '';
+let voltas = 0;
+
+buttonEmpty.addEventListener('click', () => {
+    if (running) {
+        const li = document.createElement('li');
+        voltas++;
+        li.innerHTML = `Volta ${voltas}: <span class="highlight">${cron.innerHTML}</span>`;
+
+        laps.appendChild(li);
     }
     else {
-        const t = laps.querySelectorAll('li').length;
-        laps.insertAdjacentHTML('beforeend', `<li>Volta ${ t + 1 }: <span class="highlight">${ formatTime()}</span></li>`);
+        time = 0;
+        cron.innerHTML = '0.0';
+        buttonStart.innerHTML = 'Iniciar';
+        buttonEmpty.innerHTML = 'Zerar';
+        laps.innerHTML = '';
+        voltas = 0;
     }
-    time = 0;
-    cron.innerHTML = '0.0';;
 });
