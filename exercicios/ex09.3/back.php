@@ -6,60 +6,50 @@
     $cadastro[3] = array("email" => "claricebrum@gmail.com", "senha" => '$2y$10$4YDLnneo5BBYiyvOrrfJkOdcSiSPYG5A4/rWJNnWw0YySJn3y1pUG', "nome" => "Clarisse Brum", "foto" => "https://foo.bar/foto/clarice", "cidade" => "São Jerônimo", "fone" => "5197689975");
     $cadastro[4] = array("email" => "michel1989@gmail.com", "senha" => '$2y$10$feomll8LvHnRIt7oQMNGAuWCJ6MYyv60NMiyJn8HjmTj3qvlZVj3.', "nome" => "Michel Zimmermann", "foto" => "https://foo.bar/foto/michel", "cidade" => "Porto Alegre", "fone" => "5196345213");
     
-    $output = array();
+    $output = [];
 
-    if (isset($_POST["email"]) && isset($_POST["password"])){
+    function validate($email, $password) {
+        
+        if (strlen($password) < 8) {
+            return [
+                "error" => true,
+                "message" => "A senha deve possuir pelo menos 8 caracteres"
+            ];
+        }
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            return [
+                "error" => true,
+                "message" => "Email inválido"
+            ];
+        }
 
-        $valida = validate_person();
-        if ($valida["status"] == "erro"){
-            $output = $valida;
-        }
-        else {
-            $email = $_POST["email"];
-            $password = $_POST["password"];
-    
-            // para o caso de não nenhum item corresponder
-            $output["status"] = "erro";
-            $output["message"] = "Usuário com as credenciais informadas não foi encontrado.";
-    
-            // busca email
-            foreach($cadastro as $item){
-                $hash = $item["senha"];
-                // verifica se senha bate com hash
-                // https://www.php.net/manual/pt_BR/function.password-verify.php
-                if ($item["email"] == $email && password_verify($password, $hash)){
-                    $output["status"] = "sucesso";
-                    $output["message"] = "Login realizado com sucesso.";
-                    break;
-                }
-            }
-        }
+        return ["error" => false];
     }
 
-    function validate_person(){
-        $response = array();
-        $response["status"] = "sucesso";
+    if (isset($_POST["email"]) && isset($_POST["password"])) {
+        $email = $_POST["email"];
+        $password = $_POST["password"];
 
-        if (!$_POST["email"]){
-            $response["status"] = "erro";
-            $response["message"] = "Campo email deve estar presente.";
+        $output["error"] = true;
+        $output["message"] = "Usuário não encontrado";
+
+        $validateResponse = validate($email, $password);
+        if ($validateResponse["error"] == true) {
+            $output["message"] = $validateResponse["message"];
         }
-        // valida email
-        // https://www.php.net/manual/pt_BR/filter.examples.validation.php
-        elseif (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)){
-            $response["status"] = "erro";
-            $response["message"] = "Email inválido.";
-        }
-        elseif (!$_POST["password"]){
-            $response["status"] = "erro";
-            $response["message"] = "Campo senha deve estar presente.";
-        }
-        elseif (strlen($_POST["password"]) < 8){
-            $response["status"] = "erro";
-            $response["message"] = "Senha deve possuir no mínimo 8 caracteres.";
+        else {
+            foreach($cadastro as $user) {
+                if (
+                    $email == $user["email"] &&
+                    password_verify($password, $user["senha"])
+                ) {
+                    $output["error"] = false;
+                    $output["message"] = "Usuário encontrado";
+                }
+            }
+
         }
 
-        return $response;
     }
 
     echo json_encode($output);

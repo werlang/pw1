@@ -1,20 +1,28 @@
+const message = document.querySelector('.error');
+const button = document.querySelector('button');
+
 const form = document.querySelector('form');
-form.addEventListener('submit', async e => {
-    e.preventDefault();
-    
-    const data = await fetch('back.php', {
-        method: `POST`,
-        body: new FormData(form),
+form.addEventListener('submit', async event => {
+    event.preventDefault();
+
+    button.innerHTML = 'Aguarde...';
+    button.setAttribute('disabled', true);
+
+    const fd = new FormData(form);
+
+    const data = await fetch('login.php', {
+        method: 'POST',
+        body: fd,
     }).then(res => res.json());
+    // console.log(data);
 
-    console.log(data);
+    button.innerHTML = 'Entrar';
+    button.removeAttribute('disabled');
 
-    const error = document.querySelector('.error');
-
-    if (data.status == 'erro'){
-        error.innerHTML = data.message;
+    if (data.error) {
+        message.innerHTML = data.message;
     }
-    else if (data.status == "sucesso"){
-        window.location.href = 'profile.html';
+    else {
+        location.href = 'profile.html';
     }
-});
+})
