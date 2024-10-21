@@ -4,27 +4,29 @@
     <meta charset="UTF-8">
     <title>Login</title>
     <link rel="stylesheet" href="login.css">
-    <script type='text/javascript' src='script.js' async></script>
+    <script type='text/javascript' src='login.js' defer></script>
 </head>
 <body>
-    <form id="box">
-        <h1>Cadastro de usuário</h1>
+    <header>
+        <a href="index.html">Login</a>
+        <a href="cadastro.html">Cadastro</a>
+    </header>
+    <section>
+        <form id="box">
+            <h1>Login</h1>
+            
+            <span>E-mail</span>
+            <input id="email" name="email" class="text" type="text">
         
-        <span>Nome</span>
-        <input id="name" name="name" class="text" type="text">
+            <span>Senha</span>
+            <input id="password" name="password" class="text" type="password">
+        
+            <div class="error"></div>
+        
+            <button class="button">Entrar</button>
 
-        <span>E-mail</span>
-        <input id="email" name="email" class="text" type="email">
-    
-        <span>Senha</span>
-        <input id="password" name="password" class="text" type="password">
-
-        <span>Confirmação de senha</span>
-        <input id="confirm" name="confirm" class="text" type="password">
-    
-        <div class="error"></div>
-    
-        <button class="button">Cadastrar</button>
-    </form>
+            <span id="signup">Não possui conta?<a href="cadastro.html">Cadastre-se</a></span>
+        </form>
+    </section>
 </body>
 </html>

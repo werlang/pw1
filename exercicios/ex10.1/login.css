@@ -2,7 +2,8 @@ body {
     font-family: sans-serif;
     font-size: 16px;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
     position: fixed;
     width: 100vw;
@@ -11,8 +12,37 @@ body {
     background-color: #c9c9c9;
 }
 
+header {
+    width: 100%;
+    background-color: #323232;
+    color: white;
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px 0;
+}
+
+header a {
+    margin-right: 30px;
+    color: white;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: 0.3s all;
+}
+
+header a:hover {
+    color: #f3d188;
+}
+
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+}
+
 #box {
-    width: 350px;
+    width: 300px;
     border: 1px solid black;
     border-radius: 5px;
     box-shadow: 2px 2px 5px black;
@@ -52,4 +82,27 @@ body {
 
 #box .error {
     color: red;
+}
+
+#box #signup a {
+    color: #f3d188a0;
+    text-decoration: none;
+    transition: 0.3s all;
+    margin-left: 5px;
+}
+
+#box #signup a:hover {
+    color: #f3d188;
+}
+
+.toast {
+    position: fixed;
+    bottom: 0;
+    margin: auto;
+    background-color: #323232;
+    color: white;
+    padding: 15px 40px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    font-size: 1.7rem;
 }
