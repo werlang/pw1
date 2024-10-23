@@ -1,43 +1,49 @@
-const category = document.querySelector('#category');
-const table = document.querySelector('#productList');
-const input = document.querySelector('#productName');
+const categorySelect = document.querySelector('#category');
+const productList = document.querySelector('#productList');
+const productName = document.querySelector('#productName');
 
-fetch('api/categories-list.php')
-.then(res => res.json()).then(data => {
+fetch('categories.php').then(res => res.json().then(data => {
     // console.log(data);
-    category.innerHTML = '<option value="0">Todos</option>';
-    data.forEach(item => {
-        category.innerHTML += `<option value="${item.id}">${item.name}</option>`;
+
+    categorySelect.innerHTML = '<option value="0">Todos</option>';
+    data.categories.forEach(category => {
+        const option = document.createElement('option');
+        option.value = category.id;
+        option.innerHTML = category.name;
+        categorySelect.appendChild(option);
     });
 
+    categorySelect.addEventListener('change', changeCategory);
     changeCategory();
-});
-
-function insertTable(products) {
-    table.innerHTML = '';
-    products.forEach(item => {
-        table.innerHTML += `<tr>
-            <td>${ item.id }</td>
-            <td>${ item.name }</td>
-            <td>R$ ${ item.price.toFixed(2) }</td>
-        </tr>`;
-    });
-}
+}));
 
 async function changeCategory() {
-    const id = category.value;
-    const data = await fetch(`api/products-by-category.php?id=${ id }`)
-    .then(res => res.json());
+    const id = categorySelect.value;
+    const url = `products.php?id=${ id }`;
+    const data = await fetch(url).then(res => res.json());
     // console.log(data);
-    insertTable(data);
+    
+    fillTable(data.products);
 }
 
-category.addEventListener('change', changeCategory);
-
-input.addEventListener('input', async () => {
-    const text = input.value;
-    const data = await fetch(`api/products-by-name.php?name=${ text }`)
-    .then(res => res.json());
+productName.addEventListener('input', async () => {
+    const name = productName.value;
+    const url = `products.php?name=${ name }`;
+    const data = await fetch(url).then(res => res.json());
     // console.log(data);
-    insertTable(data);
+
+    fillTable(data.products);
 });
+
+function fillTable(products) {
+    productList.innerHTML = '';
+    products.forEach(product => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${ product.id }</td>
+            <td>${ product.name }</td>
+            <td>${ product.price }</td>
+        `;
+        productList.appendChild(row);
+    });
+}
