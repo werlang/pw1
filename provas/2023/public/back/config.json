@@ -1,0 +1,9 @@
+{
+    "mysql": {
+        "host": "mysql",
+        "user": "root",
+        "password": "asdf1234",
+        "database": "aula",
+        "port": 3306
+    }
+}

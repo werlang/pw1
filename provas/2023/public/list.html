@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>..:: Imobiliária Rudimentar ::..</title>
+    <link rel="stylesheet" href="assets/css/header.css">
+    <link rel="stylesheet" href="assets/css/list.css">
+</head>
+<body>
+<header>
+    <a id="logo" href="index.html">IR</a>
+    <div>
+        <a href="insert.html">Cadastro</a>
+        <a href="list.html">Imóveis</a>
+    </div>
+</header>
+    
+<div class="container">
+    <h1>Imóveis</h1>
+
+    <div class="filter-container">
+        <label for="category-select">Filtrar por categoria:</label>
+        <select id="category-select">
+            <option value="todos">Todos</option>
+            <option value="casa">Casas</option>
+            <option value="apartamento">Apartamentos</option>
+            <option value="terreno">Terrenos</option>
+        </select>
+    </div>
+
+    <div class="property-list">
+        <!-- A lista de filmes será exibida aqui, um filme em cada card -->
+    </div>
+</div>
+<script type="module" src="assets/js/list.js" async></script>
+
+</body>
+</html>

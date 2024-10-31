@@ -1,0 +1,23 @@
+version: '3'
+services:
+    mysql:
+        container_name: mysql
+        image: mysql:8.0
+        environment:
+            - MYSQL_DATABASE=aula
+            - MYSQL_ROOT_PASSWORD=asdf1234
+        ports:
+            - '3306:3306'
+        volumes:
+            - mysql:/var/lib/mysql
+            - ./back/database.sql:/docker-entrypoint-initdb.d/init.sql
+
+    apache:
+        container_name: apache
+        image: pswerlang/php-apache
+        ports:
+            - '80:80'
+        volumes:
+            - ./:/var/www/html
+volumes:
+    mysql:

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>..:: Imobiliária Rudimentar ::..</title>
+    <link rel="stylesheet" href="assets/css/header.css">
+    <link rel="stylesheet" href="assets/css/insert.css">
+    <link rel="stylesheet" href="assets/css/toast.css">
+</head>
+<body>
+<header>
+    <a id="logo" href="index.html">IR</a>
+    <div>
+        <a href="insert.html">Cadastro</a>
+        <a href="list.html">Imóveis</a>
+    </div>
+</header>
+<div class="form-container">
+    <form>
+        <h1>Cadastro de Imóveis</h1>
+        <label for="description">Descrição do Imóvel</label>
+        <input type="text" id="description" name="description" placeholder="Descrição do Imóvel">
+        <label for="category">Categoria</label>
+        <select name="category" id="category" name="category">
+            <option value="casa">Casa</option>
+            <option value="apartamento">Apartamento</option>
+            <option value="terreno">Terreno</option>
+        </select>
+        <label for="price">Preço</label>
+        <input type="number" id="price" name="price" placeholder="Preço">
+        <label for="image">Imagem</label>
+        <input type="file" id="image" name="image">
+        
+        <button id="btnInclude" class="button">Cadastrar</button>
+    </form>
+</div>
+<script type="module" src="assets/js/insert.js" async></script>
+</body>
+</html>

@@ -1,6 +1,6 @@
 *.ini
 hidden
-config.json
+# config.json
 teste
 .env
 share
