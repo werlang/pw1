@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Estacionamento</title>
+    <link rel="stylesheet" href="assets/styles.css">
+    <script type="text/javascript" src="assets/car-view-spots.js" defer></script>
+</head>
+<body>
+<header>
+    <nav>
+        <ul>
+            <li><a href="car-register.html">Cadastrar Veículo</a></li>
+            <li><a href="car-view-spots.html">Ver Vagas de Estacionamento</a></li>
+            <li><a href="#">Marcar Vaga</a></li>
+        </ul>
+    </nav>
+</header>
+<h1>Vagas de Estacionamento</h1>
+<main>
+    <section class="queue" id="queue-hourly">
+        <h2>Vagas por Hora</h2>
+        <ul>
+            <li>
+                <span>João Barcelos - Honda Civic</span>
+                <button class="btn-return">Retornar Carro</button>
+                <button class="btn-edit">Editar</button>
+            </li>
+            <li>
+                <span>José Ferreira - Ford Ka</span>
+                <button class="btn-return">Retornar Carro</button>
+                <button class="btn-edit">Editar</button>
+            </li>
+            <!-- Adicione mais veículos conforme necessário -->
+        </ul>
+    </section>
+    <section class="queue" id="queue-daily">
+        <h2>Vagas Diárias</h2>
+        <ul>
+            <li>
+                <span>Maria Silva - Toyota Corolla</span>
+                <button class="btn-return">Retornar Carro</button>
+                <button class="btn-edit">Editar</button>
+            </li>
+            <li>
+                <span>Ana Rosa Barcelar - Volkswagen Gol</span>
+                <button class="btn-return">Retornar Carro</button>
+                <button class="btn-edit">Editar</button>
+            </li>
+            <li>
+                <span>Alfredo Neves - Chevrolet Onix</span>
+                <button class="btn-return">Retornar Carro</button>
+                <button class="btn-edit">Editar</button>
+            </li>
+            <!-- Adicione mais veículos conforme necessário -->
+        </ul>
+    </section>
+    <section class="queue" id="queue-monthly">
+        <h2>Vagas Mensalistas</h2>
+        <ul>
+            <li>
+                <span>Antônio Pereira - Renault Sandero</span>
+                <button class="btn-return">Retornar Carro</button>
+                <button class="btn-edit">Editar</button>
+            </li>
+            <li>
+                <span>Godofredo Teles - Fiat Uno</span>
+                <button class="btn-return">Retornar Carro</button>
+                <button class="btn-edit">Editar</button>
+            </li>
+            <!-- Adicione mais veículos conforme necessário -->
+        </ul>
+    </section>
+</main>
+<div id="modal-edit" class="modal">
+    <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <h2>Editar Modalidade da Vaga</h2>
+        <form>
+            <label for="client-name">Nome do Cliente</label>
+            <input type="text" id="client-name" name="client-name" disabled>
+            <label for="spot-type">Modalidade da Vaga:</label>
+            <select id="spot-type" name="spot-type">
+                <option value="hourly">Por Hora</option>
+                <option value="daily">Diária</option>
+                <option value="monthly">Mensalista</option>
+            </select>
+            <input type="submit" value="Salvar">
+        </form>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Livros</title>
+    <link rel="stylesheet" href="assets/styles.css">
+    <script type="text/javascript" src="assets/patient-view-queues-script.js" defer></script>
+</head>
+<body>
+<header>
+    <nav>
+        <ul>
+            <li><a href="patient-register.html">Cadastrar Paciente</a></li>
+            <li><a href="patient-view-queues.html">Ver Filas de Atendimento</a></li>
+            <li><a href="#">Marcar Consulta</a></li>
+        </ul>
+    </nav>
+</header>
+<h1>Filas de Atendimento</h1>
+<main>
+    <section class="queue" id="queue-green">
+        <h2>Fila Verde</h2>
+        <ul>
+            <li>
+                <span>João Barcelos</span>
+                <button class="btn-attend">Atendimento</button>
+                <button class="btn-edit">Editar</button>
+            </li>
+            <li>
+                <span>José Ferreira</span>
+                <button class="btn-attend">Atendimento</button>
+                <button class="btn-edit">Editar</button>
+            </li>
+            <!-- Adicione mais pacientes conforme necessário -->
+        </ul>
+    </section>
+    <section class="queue" id="queue-yellow">
+        <h2>Fila Amarela</h2>
+        <ul>
+            <li>
+                <span>Maria Silva</span>
+                <button class="btn-attend">Atendimento</button>
+                <button class="btn-edit">Editar</button>
+            </li>
+            <li>
+                <span>Ana Rosa Barcelar</span>
+                <button class="btn-attend">Atendimento</button>
+                <button class="btn-edit">Editar</button>
+            </li>
+            <li>
+                <span>Alfredo Neves</span>
+                <button class="btn-attend">Atendimento</button>
+                <button class="btn-edit">Editar</button>
+            </li>
+            <!-- Adicione mais pacientes conforme necessário -->
+        </ul>
+    </section>
+    <section class="queue" id="queue-red">
+        <h2>Fila Vermelha</h2>
+        <ul>
+            <li>
+                <span>Antônio Pereira</span>
+                <button class="btn-attend">Atendimento</button>
+                <button class="btn-edit">Editar</button>
+            </li>
+            <li>
+                <span>Godofredo Teles</span>
+                <button class="btn-attend">Atendimento</button>
+                <button class="btn-edit">Editar</button>
+            </li>
+            <!-- Adicione mais pacientes conforme necessário -->
+        </ul>
+    </section>
+</main>
+<div id="modal-edit" class="modal">
+    <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <h2>Editar Classificação</h2>
+        <form>
+            <labe for="name">Nome</labe>
+            <input type="text" id="name" name="name" disabled>
+            <label for="classification">Classificação:</label>
+            <select id="classification" name="classification">
+                <option value="verde">Verde</option>
+                <option value="amarelo">Amarelo</option>
+                <option value="vermelho">Vermelho</option>
+            </select>
+            <input type="submit" value="Salvar">
+        </form>
+    </div>
+</div>
+</body>
+</html>

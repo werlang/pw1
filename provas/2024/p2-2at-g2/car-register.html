@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Estacionamento</title>
+    <link rel="stylesheet" href="assets/styles.css">
+    <script type="text/javascript" src="assets/car-register.js" defer></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="car-register.html">Cadastrar Veículo</a></li>
+                <li><a href="car-view-spots.html">Ver Vagas de Estacionamento</a></li>
+                <li><a href="#">Marcar Vaga</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <!-- Conteúdo principal da página -->
+        <form>
+            <label for="client-name">Nome do Cliente:</label>
+            <input type="text" id="client-name" name="client-name">
+
+            <label for="cpf">CPF:</label>
+            <input type="text" id="cpf" name="cpf">
+
+            <label for="car-model">Modelo do Carro:</label>
+            <input type="text" id="car-model" name="car-model">
+
+            <label for="car-plate">Placa do Carro:</label>
+            <input type="text" id="car-plate" name="car-plate">
+
+            <label for="spot-type">Modalidade da Vaga:</label>
+            <select id="spot-type" name="spot-type">
+                <option value="">Selecione opção...</option>
+                <option value="hourly">Por Hora</option>
+                <option value="daily">Diária</option>
+                <option value="monthly">Mensalista</option>
+            </select>
+
+            <input type="submit" value="Cadastrar Veículo">
+        </form>
+    </main>
+</body>
+</html>

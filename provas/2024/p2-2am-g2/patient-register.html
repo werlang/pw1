@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Hospitalar</title>
+    <link rel="stylesheet" href="assets/styles.css">
+    <script type="text/javascript" src="assets/patient-register-script.js" defer></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="patient-register.html">Cadastrar Paciente</a></li>
+                <li><a href="patient-view-queues.html">Ver Filas de Atendimento</a></li>
+                <li><a href="#">Marcar Consulta</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <!-- Conteúdo principal da página -->
+        <form>
+            <label for="name">Nome:</label>
+            <input type="text" id="name" name="name">
+
+            <label for="cpf">CPF:</label>
+            <input type="text" id="cpf" name="cpf">
+
+            <label for="symptoms">Sintomas:</label>
+            <textarea id="symptoms" name="symptoms"></textarea>
+
+            <label for="classification">Classificação:</label>
+            <select id="classification" name="classification">
+                <option value="">Selecione opção...</option>
+                <option value="green">Verde</option>
+                <option value="yellow">Amarelo</option>
+                <option value="red">Vermelho</option>
+            </select>
+
+            <input type="submit" value="Cadastrar Paciente">
+        </form>
+    </main>
+</body>
+</html>
