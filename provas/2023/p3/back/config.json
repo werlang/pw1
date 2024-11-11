@@ -1,0 +1,11 @@
+{
+    "mysql": {
+        "host_remote": "45.77.118.47",
+        "host_local": "mysql",
+        "user": "root",
+        "password": "asdf1234",
+        "database": "aula",
+        "port_remote": 3310,
+        "port_local": 3306
+    }
+}
