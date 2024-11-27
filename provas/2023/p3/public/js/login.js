@@ -10,15 +10,10 @@ form.addEventListener('submit', async e => {
     // Receba a resposta em um JSON na variável data
     // Caso o status seja success, redirecione para a página de perfil
 
-    const data = await fetch('/back/login.php', {
-        method: 'POST',
-        body: new FormData(form),
-    }).then(res => res.json());
-
-    // const data = {
-    //     status: 'error',
-    //     message: 'Requisição de login não implementada'
-    // }
+    const data = {
+        status: 'error',
+        message: 'Requisição de login não implementada'
+    }
 
     createToast(data.message, data.status);
 });

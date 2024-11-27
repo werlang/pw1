@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <script type="module" src="js/jobs.js" async></script>
+</head>
+<body>
+
+<header>
+    <h1>Empregos</h1>
+    <nav>
+        <a href="login.html">Login</a>
+        <a href="profile.html">Perfil</a>
+        <a href="jobs.html">Empregos</a>
+        <a href="back/logout.php">Logout</a>
+    </nav>
+</header>
+<form id="box">
+    <h1>Empregos</h1>
+    
+    <span>Candidato</span>
+    <input id="name" name="name" class="text" type="text" readonly>
+
+    <span>Vagas</span>
+    <select id="jobs" name="jobs" class="text"></select>
+
+    <div id="details"></div>
+
+    <button class="button">Candidatar-se</button>
+</form>
+
+</body>
+</html>

@@ -12,7 +12,48 @@ require "connection.php";
 // Caso credenciais válidas, criar sessão com os dados do usuário: email e name.
 // Retornar sucesso e os dados do usuário.
 
+if (
+    !isset($_POST["email"]) || $_POST["email"] == "" ||
+    !isset($_POST["password"]) || $_POST["password"] == ""
+) {
+    echo json_encode([
+        "status" => "error",
+        "message" => "Email e senha são obrigatórios",
+    ]);
+    exit;
+}
+
+$email = $_POST["email"];
+$password = $_POST["password"];
+
+$sql = "SELECT * FROM users WHERE email = ?";
+$stmt = $conn->prepare($sql);
+$stmt->execute([ $email ]);
+
+$user = $stmt->fetch();
+if (!$user) {
+    echo json_encode([
+        "status" => "error",
+        "message" => "Usuário não encontrado"
+    ]);
+    exit;
+}
+
+if (!password_verify($password, $user["password"])) {
+    echo json_encode([
+        "status" => "error",
+        "message" => "Senha incorreta"
+    ]);
+    exit;
+}
+
+session_start();
+$_SESSION["user"] = [
+    "name" => $user["name"],
+    "email" => $user["email"]
+];
+
 echo json_encode([
-    "status" => "error",
-    "message" => "Login não implementado",
+    "status" => "success",
+    "message" => "Usuário logado com sucesso",
 ]);
