@@ -15,6 +15,6 @@ services:
         ports:
             - '${APACHE_PORT}:80'
         volumes:
-            - ./:/var/www/html
+            - ${ROOT_DIR}:/var/www/html
 volumes:
     mysql:

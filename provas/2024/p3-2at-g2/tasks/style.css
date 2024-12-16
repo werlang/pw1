@@ -1,0 +1,160 @@
+@import "../helpers/css/common.css";
+@import "../helpers/css/toast.css";
+@import "../helpers/css/modal.css";
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 1rem;
+    text-align: left;
+}
+
+table th, table td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+}
+
+table th {
+    background-color: #007bff;
+    color: white;
+}
+
+table tr {
+    transition: 0.3s all;
+}
+
+table tr:nth-child(even) {
+    background-color: #ededed;
+}
+
+table tr:hover {
+    background-color: #007bff0f;
+}
+
+#submission-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#submission-form label {
+    font-weight: bold;
+}
+
+#submission-form input[type="file"] {
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+#submission-form button {
+    align-self: flex-end;
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#submission-form button:hover {
+    background-color: #218838;
+}
+
+#submission-form button:active {
+    background-color: #1e7e34;
+}
+
+#frame {
+    max-width: 1200px;
+    margin: auto;
+    margin-top: 100px;
+}
+
+#class-selection {
+    margin-bottom: 20px;
+    margin-left: 10px;
+}
+
+#class-selection label {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+#class-selection select {
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+button:active {
+    background-color: #004085;
+}
+
+.modal-body form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.modal-body form label {
+    font-weight: bold;
+}
+
+.modal-body form input[type="text"],
+.modal-body form input[type="number"],
+.modal-body form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+.modal-body form button {
+    align-self: flex-end;
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.modal-body form button:hover {
+    background-color: #218838;
+}
+
+.modal-body form button:active {
+    background-color: #1e7e34;
+}

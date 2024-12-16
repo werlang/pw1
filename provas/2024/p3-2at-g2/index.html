@@ -1,0 +1,19 @@
+<script>
+    // Questão 1
+    // Faça a requisição GET /core/session.php para receber a informação do usuário logado.
+    // Converta o resultado para do JSON retornado pela requisição para um objeto e guarde na variável data.
+    // Caso o PHP retornar um erro (data.error), redirecione o usuário para a página de login /login.
+    // Caso contrário, redirecione o usuário para a página de tarefas /tasks.
+
+    fetch('core/session.php').then(res => res.json().then(data => {
+        // console.log(data);
+
+        if (data.error) {
+            location.href = '/login';
+        }
+        else {
+            location.href = '/tasks';
+        }
+    }));
+    
+</script>

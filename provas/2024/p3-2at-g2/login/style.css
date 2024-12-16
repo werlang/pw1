@@ -1,0 +1,62 @@
+@import "../helpers/css/common.css";
+@import "../helpers/css/toast.css";
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: calc(100vh - 60px);
+}
+
+#box {
+    width: 350px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    padding: 20px 40px;
+    display: flex;
+    flex-direction: column;
+    color: #333;
+}
+
+#box span {
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+#box .text {
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    font-size: 1rem;
+}
+
+#box .button {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 4px;
+    border: none;
+    transition: 0.3s all;
+    cursor: pointer;
+}
+
+#box .button:hover {
+    background-color: #0056b3;
+}
+
+#box .button:active {
+    background-color: #004085;
+}
+
+#box .error {
+    color: red;
+    font-size: 0.9rem;
+}
