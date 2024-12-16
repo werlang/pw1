@@ -1,0 +1,121 @@
+body {
+    background-color: #2a2a2a;
+    color: #ffffff;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.form-container {
+    width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #333333;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 5px;
+    color: #ffffff;
+}
+
+input,
+select {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #555555;
+    border-radius: 5px;
+    background-color: #444444;
+    color: #ffffff;
+}
+
+.select-wrapper {
+    position: relative;
+}
+
+.select-wrapper select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 100%;
+    cursor: pointer;
+}
+
+.select-wrapper:after {
+    content: '\25BC';
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    color: #ffffff;
+}
+
+.button {
+    padding: 10px;
+    background-color: #1e90ff;
+    color: #ffffff;
+    border: 1px solid #1e90ff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 1.4rem;
+    margin-top: 20px;
+}
+
+.button:hover {
+    background-color: #0066cc;
+}
+
+.image {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 10px;
+    overflow-x: auto;
+    padding: 10px;
+    background-color: #333333;
+    border-radius: 5px;
+}
+
+.image input[type="radio"] {
+    display: none;
+}
+
+.image label {
+    position: relative;
+    cursor: pointer;
+}
+
+.image label img {
+    width: 100px; /* Adjust the width as needed */
+    height: 100px; /* Adjust the height as needed */
+    object-fit: cover;
+    border-radius: 5px;
+    border: 2px solid transparent;
+    transition: border-color 0.3s;
+}
+
+.image input[type="radio"]:checked + label {
+    border: 2px solid #1e90ff;
+}
+
+.message {
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.success {
+    background-color: #4caf50;
+}
+
+.error {
+    background-color: #f44336;
+}
