@@ -1,0 +1,32 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: sans-serif;
+}
+
+#box {
+    display: flex;
+    flex-direction: column;
+    background-color: antiquewhite;
+    padding: 30px 20px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 10px black;
+    width: 250px;
+}
+
+#box input,
+#box button {
+    margin: 5px 0;
+}
+
+#box #message,
+#box #result {
+    font-size: 0.8rem;
+    color: #a50000;
+}
+
+#box .destaque {
+    color: #f35d25;
+    font-weight: bold;
+}
