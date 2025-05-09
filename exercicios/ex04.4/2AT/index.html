@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Adoção de Animais</h1>
+    <div id="box">
+        <span>Nome</span>
+        <input id="nome">
+        <span>Idade</span>
+        <div>
+            <input id="idade" type="number" min="0">
+            <select id="idade-type">
+                <option value="m">meses</option>
+                <option value="a">anos</option>
+            </select>
+        </div>
+        <span>Peso (Kg)</span>
+        <input id="peso" type="number" min="0.1" step="0.1">
+        <span>Espécie</span>
+        <select id="especie">
+            <option value="c">Cachorro</option>
+            <option value="g">Gato</option>
+            <option value="a">Ave</option>
+            <option value="o">Outro</option>
+        </select>
+        <span>Raça</span>
+        <input id="raca">
+        <span>Sexo</span>
+        <select id="sexo">
+            <option value="m">Macho</option>
+            <option value="f">Fêmea</option>
+        </select>
+        <span>Descrição</span>
+        <textarea id="descricao"></textarea>
+
+        <button id="cadastro">Cadastrar</button>
+    </div>
+</body>
+</html>

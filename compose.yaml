@@ -1,5 +1,6 @@
 services:
     mysql:
+        container_name: mysql
         image: mysql:8.0
         restart: unless-stopped
         environment:
@@ -10,6 +11,7 @@ services:
         volumes:
             - mysql:/var/lib/mysql
     apache:
+        container_name: apache
         image: pswerlang/php-apache
         restart: unless-stopped
         ports:

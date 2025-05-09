@@ -1,0 +1,71 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 16px;
+    font-family: sans-serif;
+}
+
+#box {
+    width: 350px;
+    padding: 30px 20px;
+    background-color: #424242;
+    color: #e0dff4;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+#box h1 {
+    font-size: 1.4rem;
+    margin: 0 0 30px 0 ;
+}
+
+#box span {
+    margin-bottom: 5px;
+}
+
+#box input,
+#box select,
+#box textarea {
+    margin-bottom: 10px;
+    border-radius: 3px;
+    outline: none;
+    padding: 5px 10px;
+}
+
+#box {
+    button {
+        padding: 10px 15px;
+        border-radius: 3px;
+        background-color: #63ffc4;
+        color: black;
+        margin-top: 15px;
+        margin-bottom: 5px;
+        font-size: 1.2rem;
+        transition: 0.3s all;
+    }
+}
+
+#box button:hover {
+    background-color: #63ffa4;
+}
+
+#box #message-save,
+#box #message-low-price {
+    font-size: 0.8rem;
+    color: #ec6969
+}
+
+#box .text-bold {
+    color: #f1a28b
+}
+
+#box div {
+    display: flex;
+    gap: 10px;
+}
+
+#box div input {
+    flex-grow: 1;
+}
