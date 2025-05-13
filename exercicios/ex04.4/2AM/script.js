@@ -7,6 +7,26 @@ const especieInput = document.querySelector('#especie');
 const sexoInput = document.querySelector('#sexo');
 const tableLista = document.querySelector('#lista-container');
 
+const registroTab = document.querySelector('#registro-tab');
+const consultaTab = document.querySelector('#consulta-tab');
+const boxRegistro = document.querySelector('#registro-box');
+const boxConsulta = document.querySelector('#consulta-box');
+
+registroTab.addEventListener('click', () => {
+    registroTab.classList.add('active');
+    consultaTab.classList.remove('active');
+    boxRegistro.classList.add('active');
+    boxConsulta.classList.remove('active');
+});
+
+consultaTab.addEventListener('click', () => {
+    consultaTab.classList.add('active');
+    registroTab.classList.remove('active');
+    boxConsulta.classList.add('active');
+    boxRegistro.classList.remove('active');
+});
+
+
 const animais = [];
 
 const cadastroButton = document.querySelector('#cadastro');
