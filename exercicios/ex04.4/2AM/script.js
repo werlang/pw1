@@ -12,6 +12,8 @@ const consultaTab = document.querySelector('#consulta-tab');
 const boxRegistro = document.querySelector('#registro-box');
 const boxConsulta = document.querySelector('#consulta-box');
 
+const filtroInput = document.querySelector('#filtro-animais');
+
 registroTab.addEventListener('click', () => {
     registroTab.classList.add('active');
     consultaTab.classList.remove('active');
@@ -24,8 +26,9 @@ consultaTab.addEventListener('click', () => {
     registroTab.classList.remove('active');
     boxConsulta.classList.add('active');
     boxRegistro.classList.remove('active');
-});
 
+    listarAnimais();
+});
 
 const animais = [];
 
@@ -59,8 +62,7 @@ cadastroButton.addEventListener('click', () => {
     console.log(animais);
 });
 
-const listarButton = document.querySelector('#listar');
-listarButton.addEventListener('click', () => {
+function listarAnimais(busca = '') {
     tableLista.innerHTML = `<thead>
         <th>Nome</th>
         <th>Espécie</th>
@@ -69,6 +71,7 @@ listarButton.addEventListener('click', () => {
         <th>Peso (Kg)</th>
     </thead>`;
 
+    let cont = 0;
     animais.forEach(animal => {
         const linha = document.createElement('tr');
 
@@ -84,13 +87,28 @@ listarButton.addEventListener('click', () => {
             f: 'Fêmea'
         }
 
-        linha.innerHTML = `
-            <td>${animal.nome}</td>
-            <td>${especieObj[animal.especie]}</td>
-            <td>${sexoObj[animal.sexo]}</td>
-            <td>${animal.idade}</td>
-            <td>${animal.peso}</td>
-        `;
-        tableLista.append(linha);
+        if (
+            animal.nome.toLowerCase().includes(busca.toLowerCase()) ||
+            animal.descricao.toLowerCase().includes(busca.toLowerCase())
+        ) {
+            cont++;
+            linha.innerHTML = `
+                <td>${animal.nome}</td>
+                <td>${especieObj[animal.especie]}</td>
+                <td>${sexoObj[animal.sexo]}</td>
+                <td>${animal.idade}</td>
+                <td>${animal.peso}</td>
+            `;
+            tableLista.append(linha);
+        }
     });
+
+    if (cont == 0) {
+        tableLista.innerHTML = `Nenhum animal encontrado`;
+        return;
+    }
+}
+
+filtroInput.addEventListener('input', () => {
+    listarAnimais(filtroInput.value);
 });

@@ -9,7 +9,7 @@ body {
 #navegacao {
     display: flex;
     justify-content: space-around;
-    width: 350px;
+    width: 400px;
     border-radius: 5px 5px 0 0;
     background-color: #424242E0;
 
@@ -37,7 +37,7 @@ body {
 
 .box {
     display: none;
-    width: 350px;
+    width: 400px;
     padding: 30px 20px;
     box-sizing: border-box;
     background-color: #424242;
@@ -95,6 +95,16 @@ body {
     
     div input {
         flex-grow: 1;
+    }
+
+    table {
+        tr:nth-child(even) {
+            background-color: #ffffff14;
+        }
+
+        td {
+            padding: 3px 10px;
+        }
     }
 }
 
