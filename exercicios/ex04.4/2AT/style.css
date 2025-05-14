@@ -6,35 +6,34 @@ body {
     font-family: sans-serif;
 }
 
-#box {
-    width: 350px;
+.box {
+    display: none;
+    width: 450px;
+    box-sizing: border-box;
     padding: 30px 20px;
     background-color: #424242;
     color: #e0dff4;
-    border-radius: 5px;
-    display: flex;
+    border-radius: 0 0 5px 5px;
     flex-direction: column;
-}
 
-#box h1 {
-    font-size: 1.4rem;
-    margin: 0 0 30px 0 ;
-}
-
-#box span {
-    margin-bottom: 5px;
-}
-
-#box input,
-#box select,
-#box textarea {
-    margin-bottom: 10px;
-    border-radius: 3px;
-    outline: none;
-    padding: 5px 10px;
-}
-
-#box {
+    h1 {
+        font-size: 1.4rem;
+        margin: 0 0 30px 0 ;
+    }
+    
+    span {
+        margin-bottom: 5px;
+    }
+    
+    input,
+    select,
+    textarea {
+        margin-bottom: 10px;
+        border-radius: 3px;
+        outline: none;
+        padding: 5px 10px;
+    }
+    
     button {
         padding: 10px 15px;
         border-radius: 3px;
@@ -45,27 +44,58 @@ body {
         font-size: 1.2rem;
         transition: 0.3s all;
     }
+    
+    button:hover {
+        background-color: #63ffa4;
+    }
+    
+    #message-save,
+    #message-low-price {
+        font-size: 0.8rem;
+        color: #ec6969
+    }
+    
+    .text-bold {
+        color: #f1a28b
+    }
+    
+    div {
+        display: flex;
+        gap: 10px;
+    }
+    
+    div input {
+        flex-grow: 1;
+    }
 }
 
-#box button:hover {
-    background-color: #63ffa4;
-}
-
-#box #message-save,
-#box #message-low-price {
-    font-size: 0.8rem;
-    color: #ec6969
-}
-
-#box .text-bold {
-    color: #f1a28b
-}
-
-#box div {
+.box.active {
     display: flex;
-    gap: 10px;
 }
 
-#box div input {
-    flex-grow: 1;
+#navegacao {
+    display: flex;
+    width: 450px;
+    background-color: #8b8b8b;
+    border-radius: 5px 5px 0 0;
+
+    button {
+        border: none;
+        background-color: transparent;
+        color: #e0dff4;
+        padding: 15px 0;
+        flex-grow: 1;
+        font-size: 1.3rem;
+        border-radius: 5px 5px 0 0;
+        transition: 0.3s all;
+        cursor: pointer;
+    }
+    
+    button.active {
+        background-color: #424242;
+    }
+    
+    button:hover {
+        filter: brightness(1.1);
+    }
 }

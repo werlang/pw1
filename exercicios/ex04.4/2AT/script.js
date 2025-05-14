@@ -39,3 +39,23 @@ cadastroButton.addEventListener('click', () => {
 
     console.log(animais)
 });
+
+const buttonCadastro = document.querySelector('#cadastro-tab');
+const buttonConsulta = document.querySelector('#consulta-tab');
+const boxCadastro = document.querySelector('#box-cadastro');
+const boxConsulta = document.querySelector('#box-consulta');
+
+buttonCadastro.addEventListener('click', () => {
+    boxConsulta.classList.remove('active');
+    boxCadastro.classList.add('active');
+    buttonCadastro.classList.add('active');
+    buttonConsulta.classList.remove('active');
+});
+
+buttonConsulta.addEventListener('click', () => {
+    boxConsulta.classList.add('active');
+    boxCadastro.classList.remove('active');
+    buttonCadastro.classList.remove('active');
+    buttonConsulta.classList.add('active');
+});
+
