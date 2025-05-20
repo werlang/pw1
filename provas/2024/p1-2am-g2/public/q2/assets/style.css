@@ -1,0 +1,94 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f1f1f1;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    color: #333;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+#problems {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 800px;
+}
+
+#problems div {
+    padding: 20px;
+    background-color: #fff;
+    width: 100%;
+    max-width: 600px;
+    border: 1px solid #ddd;
+    transition: filter 0.3s;
+    cursor: pointer;
+}
+
+#problems div:nth-child(odd) {
+    background-color: #f9f9f9;
+}
+
+#problems div:hover {
+    filter: brightness(95%);
+}
+
+#fog {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#fog .modal {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    max-width: 600px;
+    width: 100%;
+    margin: 20px;
+    font-size: 1.2em;
+}
+
+#fog .modal #button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+
+}
+
+#fog .modal button {
+    padding: 10px 20px;
+    width: 120px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: filter 0.3s;
+}
+
+#fog .modal div {
+    margin: 10px;
+}
+
+#fog .modal .square {
+    border-radius: 5px;
+    border: 1px solid #333;
+    padding: 10px;
+    margin: 10px;
+}
