@@ -1,0 +1,114 @@
+/* Button component styles */
+button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-size: 1rem;
+  transition: var(--transition);
+}
+
+button:hover {
+  background-color: #2980b9;
+  transform: translateY(-2px);
+}
+
+button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Button variations */
+.add-balance {
+  background-color: var(--secondary-color);
+}
+
+.add-balance:hover {
+  background-color: #27ae60;
+}
+
+.remove-balance {
+  background-color: var(--accent-color);
+}
+
+.remove-balance:hover {
+  background-color: #d35400;
+}
+
+.remove-student {
+  background-color: var(--danger-color);
+}
+
+.remove-student:hover {
+  background-color: #c0392b;
+}
+
+.add-student-button {
+  background-color: var(--secondary-color);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 8px 15px;
+  font-weight: 500;
+  flex-grow: 1;
+}
+
+.add-student-button:hover {
+  background-color: #27ae60;
+}
+
+.bulk-action-button {
+  background-color: var(--accent-color);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 8px 15px;
+  font-weight: 500;
+}
+
+.bulk-action-button:hover {
+  background-color: #d35400;
+}
+
+.expense-button {
+  background-color: var(--danger-color);
+}
+
+.revenue-button {
+  background-color: var(--secondary-color);
+}
+
+.balance-action-button {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 16px;
+  padding: 0;
+  transition: all 0.2s ease;
+}
+
+.balance-action-button:hover {
+  transform: scale(1.1);
+}
+
+.delete-button {
+  background-color: var(--danger-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  transition: all 0.2s ease;
+  font-weight: 500;
+  flex-grow: 1;
+}
+
+.delete-button:hover {
+  background-color: #c0392b;
+  box-shadow: 0 2px 8px rgba(231, 76, 60, 0.3);
+}

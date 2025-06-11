@@ -1,0 +1,21 @@
+/* Base styles and variables */
+:root {
+  --primary-color: #3498db;
+  --secondary-color: #2ecc71;
+  --accent-color: #f39c12;
+  --danger-color: #e74c3c;
+  --text-color: #333;
+  --light-text: #f8f9fa;
+  --light-bg: #f8f9fa;
+  --dark-bg: #343a40;
+  --border-radius: 8px;
+  --box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  --card-padding: 20px;
+  --transition: all 0.3s ease;
+  
+  /* RGB versions for animations */
+  --primary-rgb: 52, 152, 219;
+  --secondary-rgb: 46, 204, 113;
+  --accent-rgb: 243, 156, 18;
+  --danger-rgb: 231, 76, 60;
+}

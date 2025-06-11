@@ -1,0 +1,65 @@
+/* Toast notification component */
+.toast {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 12px 20px;
+  border-radius: var(--border-radius);
+  background-color: white;
+  box-shadow: var(--box-shadow);
+  z-index: 9999;
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateY(20px);
+  max-width: 300px;
+}
+
+.toast-visible {
+  opacity: 1;
+  transform: translateY(0);
+  animation: slideIn 0.5s forwards;
+}
+
+.toast-info {
+  border-left: 4px solid var(--primary-color);
+}
+
+.toast-success {
+  border-left: 4px solid var(--secondary-color);
+}
+
+.toast-warning {
+  border-left: 4px solid var(--accent-color);
+}
+
+.toast-error {
+  border-left: 4px solid var(--danger-color);
+}
+
+/* Toast exit animation */
+.toast-exit {
+  animation: slideOut 0.5s forwards;
+}
+
+/* Toast animation keyframes */
+@keyframes slideIn {
+  0% {
+    transform: translateX(50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOut {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(50px);
+    opacity: 0;
+  }
+}

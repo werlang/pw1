@@ -1,0 +1,24 @@
+/**
+ * Main CSS entry point that imports all modular stylesheets
+ */
+
+/* Base styles */
+@import 'base/variables.css';
+@import 'base/reset.css';
+
+/* Layout components */
+@import 'layout/header-footer.css';
+@import 'layout/navigation.css';
+
+/* General components */
+@import 'components/card.css';
+@import 'components/buttons.css';
+@import 'components/forms.css';
+@import 'components/toast.css';
+
+/* Module-specific styles */
+@import 'modules/students.css';
+
+/* Utilities and responsive */
+@import 'utils/utilities.css';
+@import 'utils/responsive.css';

@@ -1,0 +1,39 @@
+/* Layout styles for header and footer */
+header, footer {
+  background-color: var(--primary-color);
+  color: var(--light-text);
+  text-align: center;
+  padding: 1.5rem 0;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 0.8rem 0;
+  background-color: var(--dark-bg);
+  font-size: 0.9rem;
+}
+
+.main-header {
+  background-color: var(--primary-color);
+  color: var(--light-text);
+  padding: 1rem 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.header-content {
+  text-align: center;
+  padding-bottom: 0.5rem;
+}
+
+/* Main content container */
+main {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.container {
+  margin-bottom: 2.5rem;
+}

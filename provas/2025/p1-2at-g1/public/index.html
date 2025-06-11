@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/index.css">
+    <script src="index.js" defer></script>
+    <title>BusiCode - Gerenciador de Atividades</title>
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-content">
+            <h1>BusiCode</h1>
+            <p>Gerenciador de atividades para professores</p>
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="#" class="nav-link" data-section="setup-section">Turmas e Alunos</a></li>
+                <li><a href="#" class="nav-link active" data-section="company-section">Gerenciar Empresas</a></li>
+                <li><a href="#" class="nav-link" data-section="product-launch-section">Lançamento de Produtos</a></li>
+                <li><a href="#" class="nav-link" data-section="settings-section">Configurações</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Seção de Operações de Empresas -->
+        <section class="app-section active" id="company-section">
+            <div class="section-header">
+                <h2>Gestão de Empresas</h2>
+            </div>
+
+            <div id="companies-display" class="container">
+                <h3>Empresas Ativas</h3>
+                <div id="companies-list" class="card-container">
+                    <!-- Companies will be dynamically added here -->
+                </div>
+            </div>
+
+            <div class="container" id="company-management">
+                <div class="card">
+                    <h3>Criar Nova Empresa</h3>
+                    <div class="form-group">
+                        <label for="company-class-select">Selecionar Turma:</label>
+                        <select id="company-class-select">
+                            <option value="">Selecione uma turma</option>
+                            <option value="INF-2AT">INF-2AT</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="company-name">Nome da Empresa:</label>
+                        <input type="text" id="company-name" placeholder="Ex: TechInova">
+                    </div>
+                    <button id="create-company-btn">Criar Empresa</button>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
