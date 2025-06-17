@@ -1,0 +1,194 @@
+/* Responsive utility styles */
+@media (max-width: 768px) {
+  .card-container {
+    grid-template-columns: 1fr;
+  }
+  
+  main {
+    margin: 1rem auto;
+  }
+  
+  .card {
+    padding: 15px;
+  }
+  
+  .main-nav ul {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .main-nav li {
+    margin: 0.5rem 0;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .nav-link {
+    padding: 0.8rem 1rem;
+  }
+  
+  .product-table {
+    font-size: 0.9rem;
+  }
+  
+  .edit-product-btn,
+  .delete-product-btn {
+    padding: 4px 8px;
+    font-size: 0.8rem;
+  }
+  
+  .sales-input-container {
+    gap: 5px;
+  }
+  
+  .add-sales-btn {
+    width: 100%;
+    border-radius: var(--border-radius);
+  }
+
+  .data-table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .data-table thead {
+    display: none; /* Hide headers on mobile */
+  }
+
+  .data-table tbody, 
+  .data-table tr, 
+  .data-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .data-table tr {
+    margin-bottom: 1rem;
+    border: 1px solid #eee;
+    border-radius: var(--border-radius);
+    padding: 0.5rem;
+    background: white;
+  }
+
+  .data-table td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    border: none;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 0.95rem;
+  }
+
+  .data-table td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-right: 1rem;
+    flex-shrink: 0;
+    min-width: 120px;
+  }
+
+  .sales-input-container {
+    width: 50%;
+    justify-content: flex-end;
+  }
+
+  .new-sales-input {
+    width: 80px;
+  }
+
+  .launch-actions {
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 0.5rem;
+  }
+
+  .launch-actions button {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .launch-actions button i {
+    font-size: 1.1rem;
+  }
+
+  #start-selling-round-btn,
+  #apply-sales-btn,
+  #clear-launch-btn {
+    border-radius: 8px;
+    font-weight: 500;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+
+  #start-selling-round-btn:active,
+  #apply-sales-btn:active,
+  #clear-launch-btn:active {
+    transform: translateY(1px);
+    box-shadow: none;
+  }
+
+  .sales-input-container {
+    background: #f8f9fa;
+    padding: 8px;
+    border-radius: var(--border-radius);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .new-sales-input {
+    width: calc(100% - 40px);
+    height: 40px;
+    font-size: 1rem;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+  }
+
+  .add-sales-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+
+  .product-selection-list {
+    grid-template-columns: 1fr;
+  }
+
+  .company-products-section {
+    margin: 0.5rem;
+    padding: 0.75rem;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .action-buttons button {
+    width: 100%;
+    padding: 10px;
+    justify-content: center;
+    font-size: 0.95rem;
+  }
+
+  .edit-product-btn,
+  .remove-btn {
+    margin: 0;
+  }
+
+  td[data-label="Ações"] {
+    padding-top: 16px;
+    border-top: 1px solid #eee;
+  }
+}

@@ -1,0 +1,92 @@
+/* Form component styles */
+.form-group {
+  margin-bottom: 1rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  transition: var(--transition);
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+}
+
+textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+select[multiple] {
+  height: 150px;
+}
+
+/* Sales input styling */
+.sales-input-container {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.new-sales-input {
+  width: 60px;
+  text-align: center;
+  padding: 5px;
+  border: 1px solid #ddd;
+  border-radius: var(--border-radius);
+}
+
+.sales-input {
+  width: 80px;
+  text-align: center;
+}
+
+/* Contribution styles */
+.contribution-container {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  border: 1px solid #eee;
+  border-radius: var(--border-radius);
+  padding: 15px;
+  background-color: #f9f9f9;
+}
+
+.contribution-title {
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: var(--primary-color);
+}
+
+.contribution-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.contribution-name {
+  flex: 1;
+  margin-right: 10px;
+}
+
+.contribution-input {
+  width: 120px;
+}
+
+.contribution-info {
+  font-style: italic;
+  color: #6c757d;
+  text-align: center;
+  padding: 10px;
+}
