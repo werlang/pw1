@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/index.css">
+    <script src="index.js" defer></script>
+    <title>BusiCode - Gerenciador de Atividades</title>
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-content">
+            <h1>BusiCode</h1>
+            <p>Gerenciador de atividades para professores</p>
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="#" class="nav-link active" data-section="setup-section">Turmas e Alunos</a></li>
+                <li><a href="#" class="nav-link" data-section="company-section">Gerenciar Empresas</a></li>
+                <li><a href="#" class="nav-link" data-section="product-launch-section">Lançamento de Produtos</a></li>
+                <li><a href="#" class="nav-link" data-section="settings-section">Configurações</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Seção de Configuração: Turmas e Alunos -->
+        <section class="app-section active" id="setup-section">
+            <div class="section-header">
+                <h2>Gerenciamento de Turmas e Alunos</h2>
+            </div>
+
+            <div class="container" id="class-display">
+                <h3>Turmas e Alunos Cadastrados</h3>
+                <div id="classes-list" class="card-container">
+                    <!-- Classes will be dynamically added here -->
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="card">
+                    <h3>Criar Nova Turma</h3>
+                    <div class="form-group">
+                        <label for="class-name">Nome da Turma:</label>
+                        <input type="text" id="class-name">
+                    </div>
+                    <button id="create-class-btn">Criar Turma</button>
+                </div>
+
+            </div>
+
+            </div>
+        </section>
+    </main>
+</body>
+</html>

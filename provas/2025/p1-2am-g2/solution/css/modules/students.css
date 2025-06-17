@@ -1,0 +1,72 @@
+/* Student module styles */
+.student-list {
+  margin-top: 15px;
+  list-style: none;
+  padding: 0;
+  max-height: 300px;
+  overflow-y: auto;
+  border-radius: var(--border-radius);
+  border: 1px solid #eee;
+  background-color: #f9f9f9;
+}
+
+.student-list-item {
+  padding: 10px 15px;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.2s ease;
+  background-color: white;
+}
+
+.student-list-item:hover {
+  background-color: rgba(52, 152, 219, 0.05);
+}
+
+.student-list-item:last-child {
+  border-bottom: none;
+}
+
+.student-info {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.student-name {
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+.student-balance {
+  color: var(--secondary-color);
+  font-weight: 600;
+  margin-left: 10px;
+  padding: 3px 8px;
+  background-color: rgba(46, 204, 113, 0.1);
+  border-radius: 4px;
+  min-width: 80px;
+  text-align: right;
+}
+
+.student-actions {
+  display: flex;
+  gap: 5px;
+}
+
+.student-list-empty {
+  padding: 15px;
+  text-align: center;
+  color: #6c757d;
+  font-style: italic;
+  background-color: white;
+  border-radius: var(--border-radius);
+  margin-top: 10px;
+}
+
+.class-actions {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
