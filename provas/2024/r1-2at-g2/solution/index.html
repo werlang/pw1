@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualização de Livros</title>
+    <link rel="stylesheet" href="assets/styles.css">
+    <script type="text/javascript" src="assets/book.js" defer></script>
+</head>
+<body>
+<h1>Biblioteca Virtual</h1>
+<main>
+    <ul id="book-list"></ul>
+</main>
+<div id="modal-edit" class="modal">
+    <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <h2>Editar/Novo Livro</h2>
+        <form>
+            <label for="edit-book-title">Título do Livro</label>
+            <input type="text" id="edit-book-title" name="edit-book-title">
+            <label for="edit-author">Autor</label>
+            <input type="text" id="edit-author" name="edit-author">
+            <label for="edit-genre">Gênero</label>
+            <input type="text" id="edit-genre" name="edit-genre">
+            <label for="edit-year">Ano de Publicação</label>
+            <input type="text" id="edit-year" name="edit-year">
+            <label for="edit-difficulty">Dificuldade de Leitura</label>
+            <select id="edit-difficulty" name="edit-difficulty">
+                <option value="1">Fácil</option>
+                <option value="2">Médio</option>
+                <option value="3">Difícil</option>
+            <input type="submit" value="Salvar">
+        </form>
+    </div>
+</div>
+<button id="btn-add-book" class="floating-btn">+</button>
+</body>
+</html>
