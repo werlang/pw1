@@ -3,28 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script type="text/javascript" src="script.js" async></script>
-    <title>Document</title>
+    <title>Login Form</title>
+    <link rel="stylesheet" href="assets/styles.css">
+    <script src="assets/script.js" defer></script>
 </head>
 <body>
-    <form>
-        <h1>Cadastro</h1>
-        <label>Nome</label>
-        <input type="text" name="name">
-        <label>Endereço</label>
-        <input type="text" name="address">
-        <label>Data de Nascimento</label>
-        <input type="date" name="birth">
-        <input type="submit">
-    </form>
 
+<div class="container">
+    <h1>Lista de Produtos</h1>
+    <div class="filter">
+        <label for="category">Categoria:</label>
+        <select id="category">
+            <!-- Os valores serão listados aqui via JavaScript -->
+        </select>
+        <label for="productName">Nome do Produto:</label>
+        <input type="text" id="productName">
+    </div>
     <table>
         <thead>
-            <th>Nome</th>
-            <th>Endereço</th>
-            <th>Data Nasc.</th>
+        <tr>
+            <th>ID</th>
+            <th>Nome do Produto</th>
+            <th>Preço</th>
+        </tr>
         </thead>
-        <tbody id="table"></tbody>
+        <tbody id="productList">
+        <!-- Os produtos serão listados aqui via JavaScript -->
+        </tbody>
     </table>
+</div>
+
 </body>
 </html>
