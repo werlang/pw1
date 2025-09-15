@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="module" src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="box">
+        <h2>Cadastro de Usuário</h2>
+        <form>
+            <label> Nome: <input type="text" name="name"> </label>
+            <label> E-mail: <input type="email" name="email"> </label>
+            <label> Senha: <input type="password" name="password"> </label>
+            <label> Confirmação de Senha: <input type="password" name="confirm"> </label>
+            <input type="submit" value="Cadastrar">
+        </form>
+    </div>
+
+    <!-- Toast para notificações -->
+    <div id="toast" class="toast">
+        <span id="toastMessage"></span>
+    </div>
+
+</body>
+</html>
