@@ -52,11 +52,17 @@ body {
     }
 }
 
-/* Toast */
-.toast {
+.toast-container {
+    pointer-events: none;
     position: fixed;
-    top: 20px;
-    right: 20px;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+}
+
+.toast {
     padding: 15px 25px;
     border-radius: 8px;
     color: white;
@@ -67,18 +73,10 @@ body {
     box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 
-.toast.show {
-    transform: translateX(0);
-}
-
 .toast.success {
     background: #38a169;
 }
 
 .toast.error {
     background: #e53e3e;
-}
-
-.toast.warning {
-    background: #d69e2e;
 }
