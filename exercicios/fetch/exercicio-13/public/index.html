@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="module" src="script.js" defer></script>
+    <link rel="stylesheet" href="css/index.css">
+    <title>Avaliações de Filmes</title>
+</head>
+<body>
+
+    <header class="header">
+        <div class="header-container">
+            <h1 class="header-title">🎬 Avaliações de Filmes</h1>
+            <p class="header-subtitle">Gerencie suas avaliações e comentários</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="card">
+            <div class="card-header">
+                <h2 class="card-title">🌟 Meus Filmes Avaliados</h2>
+            </div>
+            <div id="moviesList" class="movies-list">
+                <!-- Movies will be rendered here -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Edit Modal -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Editar Avaliação</h3>
+                <button class="modal-close" id="closeModal">&times;</button>
+            </div>
+            <form id="editForm" class="form">
+                <input type="hidden" id="movieId" name="id">
+                
+                <div class="form-group">
+                    <label class="form-label">Nota (1-5 estrelas)</label>
+                    <div class="rating-input">
+                        <input type="radio" name="rating" value="1" id="star1" required>
+                        <label for="star1">⭐</label>
+                        <input type="radio" name="rating" value="2" id="star2">
+                        <label for="star2">⭐⭐</label>
+                        <input type="radio" name="rating" value="3" id="star3">
+                        <label for="star3">⭐⭐⭐</label>
+                        <input type="radio" name="rating" value="4" id="star4">
+                        <label for="star4">⭐⭐⭐⭐</label>
+                        <input type="radio" name="rating" value="5" id="star5">
+                        <label for="star5">⭐⭐⭐⭐⭐</label>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <textarea id="reviewInput" name="review" class="form-input" rows="4" placeholder=" " required></textarea>
+                    <label class="form-label">Comentário</label>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

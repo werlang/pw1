@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="module" src="script.js" defer></script>
+    <link rel="stylesheet" href="css/style.css">
+    <title>Caixa de Entrada</title>
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <h1 class="header-title">📧 Caixa de Entrada</h1>
+            <p class="header-subtitle">Gerencie seus e-mails</p>
+        </div>
+    </header>
+    <main class="container">
+        <section class="card">
+            <div class="card-header">
+                <h2 class="card-title">📬 E-mails Não Lidos</h2>
+            </div>
+            <div class="card-body">
+                <button id="markReadBtn" class="btn btn-primary" disabled>Marcar Selecionados como Lidos</button>
+                <table class="emails-table">
+                    <thead>
+                        <tr>
+                            <th><input type="checkbox" id="selectAll"></th>
+                            <th>De</th>
+                            <th>Assunto</th>
+                            <th>Data</th>
+                        </tr>
+                    </thead>
+                    <tbody id="emailsBody">
+                        <tr><td colspan="4" class="loading">Carregando...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

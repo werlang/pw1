@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="module" src="script.js" defer></script>
+    <link rel="stylesheet" href="css/style.css">
+    <title>Loja Online</title>
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <h1 class="header-title">🛒 Loja Online</h1>
+            <p class="header-subtitle">Busque produtos por categoria</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="card">
+            <div class="card-header">
+                <h2 class="card-title">🔍 Filtrar Produtos</h2>
+            </div>
+            <div class="card-body">
+                <div class="filter-buttons">
+                    <button class="btn btn-filter" data-category="">Todos</button>
+                    <button class="btn btn-filter" data-category="Eletrônicos">Eletrônicos</button>
+                    <button class="btn btn-filter" data-category="Roupas">Roupas</button>
+                    <button class="btn btn-filter" data-category="Livros">Livros</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="card">
+            <div class="card-header">
+                <h2 class="card-title">📦 Produtos</h2>
+            </div>
+            <div class="card-body">
+                <table class="products-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>Categoria</th>
+                            <th>Preço</th>
+                            <th>Estoque</th>
+                        </tr>
+                    </thead>
+                    <tbody id="productsBody">
+                        <tr>
+                            <td colspan="5" class="loading">Carregando produtos...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

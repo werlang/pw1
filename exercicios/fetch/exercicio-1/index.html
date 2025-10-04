@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="module" src="script.js" defer></script>
+    <link rel="stylesheet" href="css/style.css">
+    <title>Coleção de Filmes</title>
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <h1 class="header-title">🎬 Minha Coleção de Filmes</h1>
+            <p class="header-subtitle">Adicione seus filmes favoritos</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="card">
+            <div class="card-header">
+                <h2 class="card-title">➕ Adicionar Filme</h2>
+            </div>
+            <div class="card-body">
+                <form id="movieForm" class="form">
+                    <div class="form-group">
+                        <input type="text" name="title" class="form-input" placeholder=" " required>
+                        <label class="form-label">Título do Filme</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="director" class="form-input" placeholder=" " required>
+                        <label class="form-label">Diretor</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="number" name="year" class="form-input" placeholder=" " min="1900" max="2030" value="2024" required>
+                        <label class="form-label">Ano de Lançamento</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="genre" class="form-input" placeholder=" " required>
+                        <label class="form-label">Gênero</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Adicionar Filme</button>
+                </form>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

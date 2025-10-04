@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="module" src="script.js" defer></script>
+    <link rel="stylesheet" href="css/index.css">
+    <title>Cardápio do Restaurante</title>
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <h1 class="header-title">🍽️ Cardápio Digital</h1>
+            <p class="header-subtitle">Explore nossos pratos especiais</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="card">
+            <div class="card-header">
+                <h2 class="card-title">📋 Nosso Cardápio</h2>
+                <select id="categoryFilter" class="form-input" style="max-width: 200px;">
+                    <option value="">Todas as categorias</option>
+                    <option value="Entrada">Entradas</option>
+                    <option value="Prato Principal">Pratos Principais</option>
+                    <option value="Sobremesa">Sobremesas</option>
+                    <option value="Bebida">Bebidas</option>
+                </select>
+            </div>
+            <div id="dishesList" class="dishes-list">
+                <!-- Dishes will be rendered here -->
+            </div>
+        </section>
+    </main>
+</body>
+</html>

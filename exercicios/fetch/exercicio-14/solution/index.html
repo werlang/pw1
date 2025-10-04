@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="module" src="script.js" defer></script>
+    <link rel="stylesheet" href="css/index.css">
+    <title>Lista de Tarefas</title>
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <h1 class="header-title">✅ Lista de Tarefas</h1>
+            <p class="header-subtitle">Organize suas atividades diárias</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="card">
+            <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
+                <h2 class="card-title">📋 Minhas Tarefas</h2>
+                <button id="deleteCompletedBtn" class="btn btn-danger" style="display:none;">
+                    🗑️ Excluir Concluídas
+                </button>
+            </div>
+            <div id="tasksList" class="tasks-list">
+                <!-- Tasks will be rendered here -->
+            </div>
+        </section>
+    </main>
+</body>
+</html>

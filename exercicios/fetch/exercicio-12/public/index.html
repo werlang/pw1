@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="module" src="script.js" defer></script>
+    <link rel="stylesheet" href="css/index.css">
+    <title>Lista de Contatos</title>
+</head>
+<body>
+
+    <header class="header">
+        <div class="header-container">
+            <h1 class="header-title">📇 Lista de Contatos</h1>
+            <p class="header-subtitle">Organize seus contatos pessoais e profissionais</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Filters Card -->
+        <section class="card">
+            <div class="card-header">
+                <h2 class="card-title">🔍 Buscar Contatos</h2>
+            </div>
+            <div class="form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <input id="searchInput" class="form-input" placeholder=" ">
+                        <label class="form-label">Buscar por nome ou email</label>
+                    </div>
+                    <div class="form-group">
+                        <select id="categoryFilter" class="form-input">
+                            <option value="">Todas as categorias</option>
+                            <option value="Trabalho">Trabalho</option>
+                            <option value="Pessoal">Pessoal</option>
+                            <option value="Família">Família</option>
+                        </select>
+                        <label class="form-label">Categoria</label>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contacts List Card -->
+        <section class="card">
+            <div class="card-header">
+                <h2 class="card-title">👥 Contatos</h2>
+            </div>
+            <div id="contactsList" class="contacts-list">
+                <!-- Contacts will be rendered here -->
+            </div>
+        </section>
+    </main>
+</body>
+</html>

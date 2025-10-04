@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="module" src="script.js" defer></script>
+    <link rel="stylesheet" href="css/style.css">
+    <title>Editar Perfil</title>
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <h1 class="header-title">👤 Meu Perfil</h1>
+            <p class="header-subtitle">Atualize suas informações</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="card">
+            <div class="card-header">
+                <h2 class="card-title">✏️ Editar Informações</h2>
+            </div>
+            <div class="card-body">
+                <form id="profileForm" class="form">
+                    <input type="hidden" name="id" value="1">
+                    
+                    <div class="form-group">
+                        <input type="text" id="name" name="name" class="form-input" placeholder=" " required>
+                        <label class="form-label">Nome Completo</label>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" class="form-input" placeholder=" " required>
+                        <label class="form-label">E-mail</label>
+                    </div>
+                    
+                    <div class="form-group">
+                        <textarea id="bio" name="bio" class="form-input" placeholder=" " rows="4"></textarea>
+                        <label class="form-label">Biografia</label>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+                </form>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

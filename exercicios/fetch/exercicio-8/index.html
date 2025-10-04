@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="module" src="script.js" defer></script>
+    <link rel="stylesheet" href="css/style.css">
+    <title>Buscar Receitas</title>
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <h1 class="header-title">🍳 Livro de Receitas</h1>
+            <p class="header-subtitle">Encontre receitas por ingredientes</p>
+        </div>
+    </header>
+    <main class="container">
+        <section class="card">
+            <div class="card-header">
+                <h2 class="card-title">🔍 Buscar por Ingrediente</h2>
+            </div>
+            <div class="card-body">
+                <input type="text" id="searchInput" class="form-input" placeholder="Digite um ingrediente (ex: tomate)">
+            </div>
+        </section>
+        <section class="card">
+            <div class="card-body">
+                <div id="recipesContainer" class="recipes-container">
+                    <p class="loading">Digite um ingrediente para buscar receitas</p>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

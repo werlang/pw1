@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="module" src="script.js" defer></script>
+    <link rel="stylesheet" href="css/index.css">
+    <title>Sistema de Notas</title>
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <h1 class="header-title">📊 Sistema de Notas</h1>
+            <p class="header-subtitle">Gerencie as avaliações dos estudantes</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="card">
+            <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
+                <h2 class="card-title">👨‍🎓 Estudantes</h2>
+                <div style="display: flex; gap: 12px; align-items: center;">
+                    <span id="averageDisplay" class="average-display"></span>
+                    <button id="calculateBtn" class="btn btn-primary" disabled>Calcular Média</button>
+                </div>
+            </div>
+            <div id="studentsList" class="students-list">
+                <!-- Students will be rendered here -->
+            </div>
+        </section>
+    </main>
+</body>
+</html>

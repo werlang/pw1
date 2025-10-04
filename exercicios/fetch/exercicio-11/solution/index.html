@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="module" src="script.js" defer></script>
+    <link rel="stylesheet" href="css/index.css">
+    <title>Sistema de Estoque</title>
+</head>
+<body>
+
+    <header class="header">
+        <div class="header-container">
+            <h1 class="header-title">📦 Sistema de Estoque</h1>
+            <p class="header-subtitle">Gerencie seu inventário de produtos</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Add Product Card -->
+        <section class="card">
+            <div class="card-header">
+                <h2 class="card-title">➕ Adicionar Produto</h2>
+            </div>
+            <form id="productForm" class="form">
+                <div class="form-group">
+                    <input name="name" class="form-input" placeholder=" " required>
+                    <label class="form-label">Nome do Produto</label>
+                </div>
+                <div class="form-group">
+                    <select name="category" class="form-input" required>
+                        <option value="">Selecione uma categoria</option>
+                        <option value="Eletrônicos">Eletrônicos</option>
+                        <option value="Alimentos">Alimentos</option>
+                        <option value="Vestuário">Vestuário</option>
+                        <option value="Livros">Livros</option>
+                        <option value="Ferramentas">Ferramentas</option>
+                        <option value="Outros">Outros</option>
+                    </select>
+                    <label class="form-label">Categoria</label>
+                </div>
+                <div class="form-group">
+                    <input name="price" type="number" step="0.01" class="form-input" placeholder=" " min="0.01" value="10.00" required>
+                    <label class="form-label">Preço Unitário (R$)</label>
+                </div>
+                <div class="form-group">
+                    <input name="quantity" type="number" class="form-input" placeholder=" " min="0" value="1" required>
+                    <label class="form-label">Quantidade em Estoque</label>
+                </div>
+                <button type="submit" class="btn btn-primary">Adicionar Produto</button>
+            </form>
+        </section>
+    </main>
+</body>
+</html>

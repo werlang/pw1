@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="module" src="script.js" defer></script>
+    <link rel="stylesheet" href="css/style.css">
+    <title>Notas dos Alunos</title>
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <h1 class="header-title">📊 Sistema de Notas</h1>
+            <p class="header-subtitle">Visualize e ordene as notas dos alunos</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="card">
+            <div class="card-header">
+                <h2 class="card-title">🔢 Ordenar Por</h2>
+            </div>
+            <div class="card-body">
+                <div class="sort-buttons">
+                    <button class="btn" data-orderby="name" data-order="asc">Nome ↑</button>
+                    <button class="btn" data-orderby="name" data-order="desc">Nome ↓</button>
+                    <button class="btn active" data-orderby="grade" data-order="desc">Nota ↓</button>
+                    <button class="btn" data-orderby="grade" data-order="asc">Nota ↑</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="card">
+            <div class="card-body">
+                <table class="students-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>Nota</th>
+                            <th>Turma</th>
+                        </tr>
+                    </thead>
+                    <tbody id="studentsBody">
+                        <tr><td colspan="4" class="loading">Carregando...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
