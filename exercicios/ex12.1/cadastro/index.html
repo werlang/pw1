@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script type="module" src="index.js" defer></script>
+</head>
+<body>
+    <header>
+        <a href="/login">Login</a>
+        <a href="/cadastro">Cadastro</a>
+    </header>
+    <section>
+        <form id="box">
+            <h1>Registro</h1>
+            
+            <span>Nome</span>
+            <input id="name" name="name" class="text" type="text">
+    
+            <span>E-mail</span>
+            <input id="email" name="email" class="text" type="email">
+    
+            <span>Senha</span>
+            <input id="password" name="password" class="text" type="password">
+    
+            <span>Confirmação de Senha</span>
+            <input id="confirm" name="confirm" class="text" type="password">
+    
+            <span class="error"></span>
+    
+            <button class="button">Cadastrar</button>
+        </form>
+    </section>
+</body>
+</html>
