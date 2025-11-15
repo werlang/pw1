@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feira de Trocas Comunitária</title>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/toast.css">
+</head>
+<body>
+    <div id="toast-container"></div>
+    
+    <header class="header">
+        <div class="header-container">
+            <div>
+                <h1 class="header-title">Feira de Trocas</h1>
+                <p class="header-subtitle">Compartilhe e troque itens com sua comunidade</p>
+            </div>
+            <div class="header-actions">
+                <div class="user-info" id="user-info" style="display: none;">
+                    <div class="user-avatar" id="user-avatar"></div>
+                    <span class="user-name" id="user-name"></span>
+                </div>
+                <a href="add-item/" class="btn btn-primary">+ Adicionar Item</a>
+                <button class="btn btn-outline" id="logout-btn">Sair</button>
+            </div>
+        </div>
+    </header>
+    
+    <main class="main-content">
+        <!-- Filtros -->
+        <div class="filters">
+            <div class="filter-group">
+                <label class="form-label" for="search">Buscar</label>
+                <input 
+                    type="text" 
+                    id="search" 
+                    class="form-input" 
+                    placeholder="Procurar por título ou descrição..."
+                >
+            </div>
+            
+            <div class="filter-group">
+                <label class="form-label" for="category">Categoria</label>
+                <select id="category" class="form-select">
+                    <option value="">Todas as categorias</option>
+                </select>
+            </div>
+            
+            <div class="filter-group" style="flex: 2;">
+                <label class="form-label">Status</label>
+                <div class="status-filters">
+                    <button class="status-filter-btn active" data-status="">Todos</button>
+                    <button class="status-filter-btn" data-status="open">Abertos</button>
+                    <button class="status-filter-btn" data-status="pending">Pendentes</button>
+                    <button class="status-filter-btn" data-status="closed">Fechados</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Loading -->
+        <div id="loading" class="loading" style="display: none;">
+            <div class="spinner"></div>
+            <p>Carregando itens...</p>
+        </div>
+        
+        <!-- Items Grid -->
+        <div id="items-container" class="items-grid"></div>
+        
+        <!-- Empty State -->
+        <div id="empty-state" class="empty-state" style="display: none;">
+            <div class="empty-state-icon">📦</div>
+            <h2 class="empty-state-title">Nenhum item encontrado</h2>
+            <p class="empty-state-description">Tente ajustar os filtros ou adicione um novo item</p>
+            <a href="add-item/" class="btn btn-primary btn-lg">Adicionar Primeiro Item</a>
+        </div>
+    </main>
+    
+    <script src="components/toast.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

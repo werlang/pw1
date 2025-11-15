@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GreenPulse · Login</title>
+    <link rel="stylesheet" href="../css/index.css" />
+    <link rel="stylesheet" href="../css/toast.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <section class="card" style="max-width: 520px; margin-inline: auto;">
+        <h1>Central GreenPulse</h1>
+        <p>Entre com suas credenciais para acompanhar os chamados de manutenção das estufas urbanas.</p>
+        <form id="login-form" class="grid-2">
+          <label>
+            Email corporativo
+            <input type="email" name="email" placeholder="voce@greenpulse.com" required />
+          </label>
+          <label>
+            Senha
+            <input type="password" name="password" placeholder="••••••••" required />
+          </label>
+          <div style="grid-column: 1 / -1; display: flex; gap: 12px;">
+            <button type="submit" class="primary" style="flex: 1;">Entrar</button>
+            <button type="reset" class="secondary">Limpar</button>
+          </div>
+        </form>
+        <small>Use os usuários de teste listados no README.</small>
+      </section>
+    </div>
+    <script type="module" src="./script.js"></script>
+  </body>
+</html>

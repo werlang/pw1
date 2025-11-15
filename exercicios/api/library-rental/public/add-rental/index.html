@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="module" src="script.js" defer></script>
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/toast.css">
+    <title>Novo Aluguel - Sistema de Biblioteca</title>
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <div>
+                <h1 class="header-title">📚 Novo Aluguel de Livro</h1>
+                <p class="header-subtitle">Registre um novo livro alugado</p>
+            </div>
+            <div class="header-actions">
+                <a href="../rentals/index.html" class="btn btn-secondary btn-small">Voltar</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="card">
+            <div class="card-header">
+                <h2 class="card-title">Informações do Livro</h2>
+            </div>
+            <form id="rentalForm" class="form">
+                <div class="form-group">
+                    <label class="form-label">Título do Livro *</label>
+                    <input 
+                        type="text" 
+                        name="book_title" 
+                        class="form-input" 
+                        required
+                        placeholder="Ex: 1984"
+                    >
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Autor *</label>
+                    <input 
+                        type="text" 
+                        name="author" 
+                        class="form-input" 
+                        required
+                        placeholder="Ex: George Orwell"
+                    >
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">ISBN *</label>
+                    <input 
+                        type="text" 
+                        name="isbn" 
+                        class="form-input" 
+                        required
+                        placeholder="Ex: 978-0451524935"
+                        pattern="\d{3}-\d{10}"
+                        title="Formato: XXX-XXXXXXXXXX"
+                    >
+                    <small style="color: #8b6f47; margin-top: 0.25rem;">Formato: XXX-XXXXXXXXXX</small>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Gênero *</label>
+                    <input 
+                        type="text" 
+                        name="genre" 
+                        class="form-input" 
+                        required
+                        placeholder="Ex: Ficção Científica"
+                    >
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Período de Empréstimo *</label>
+                    <select name="loan_days" class="form-select" required>
+                        <option value="7">7 dias</option>
+                        <option value="14" selected>14 dias</option>
+                        <option value="21">21 dias</option>
+                    </select>
+                    <small style="color: #8b6f47; margin-top: 0.25rem;">As datas serão calculadas automaticamente</small>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Status</label>
+                    <select name="status" class="form-select">
+                        <option value="active">Ativo</option>
+                        <option value="returned">Devolvido</option>
+                        <option value="overdue">Atrasado</option>
+                    </select>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Registrar Aluguel</button>
+            </form>
+        </section>
+    </main>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar Item - Feira de Trocas</title>
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/toast.css">
+</head>
+<body>
+    <div id="toast-container"></div>
+    
+    <header class="header">
+        <div class="header-container">
+            <div>
+                <h1 class="header-title">Feira de Trocas</h1>
+                <p class="header-subtitle">Adicionar novo item</p>
+            </div>
+            <div class="header-actions">
+                <a href="../" class="btn btn-outline">← Voltar</a>
+                <button class="btn btn-outline" id="logout-btn">Sair</button>
+            </div>
+        </div>
+    </header>
+    
+    <main class="main-content" style="max-width: 700px;">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title">Novo Item para Troca</h2>
+                <p class="card-description">Preencha as informações do item que você quer oferecer</p>
+            </div>
+            
+            <form id="add-item-form">
+                <div class="form-group">
+                    <label class="form-label" for="title">Título *</label>
+                    <input 
+                        type="text" 
+                        id="title" 
+                        class="form-input" 
+                        placeholder="Ex: Harry Potter - Coleção Completa"
+                        required
+                        maxlength="150"
+                    >
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="description">Descrição *</label>
+                    <textarea 
+                        id="description" 
+                        class="form-textarea" 
+                        placeholder="Descreva o item em detalhes: estado de conservação, características, etc."
+                        required
+                    ></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="category_id">Categoria *</label>
+                    <select id="category_id" class="form-select" required>
+                        <option value="">Selecione uma categoria</option>
+                        <option value="1">Livros</option>
+                        <option value="2">Eletrônicos</option>
+                        <option value="3">Roupas e Acessórios</option>
+                        <option value="4">Jogos e Brinquedos</option>
+                        <option value="5">Móveis e Decoração</option>
+                        <option value="6">Esportes e Lazer</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="suggested_value">Valor Sugerido (R$) *</label>
+                    <input 
+                        type="number" 
+                        id="suggested_value" 
+                        class="form-input" 
+                        placeholder="0.00"
+                        step="0.01"
+                        min="0"
+                        required
+                    >
+                    <small style="color: var(--gray-500); font-size: 0.8125rem;">
+                        Este é um valor de referência para trocas equivalentes
+                    </small>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="status">Status Inicial</label>
+                    <select id="status" class="form-select">
+                        <option value="open">Aberto para trocas</option>
+                        <option value="pending">Negociação em andamento</option>
+                        <option value="closed">Não disponível</option>
+                    </select>
+                </div>
+                
+                <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+                    <button type="submit" class="btn btn-primary btn-lg" style="flex: 1;">
+                        Adicionar Item
+                    </button>
+                    <a href="../" class="btn btn-outline btn-lg">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </main>
+    
+    <script src="../components/toast.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

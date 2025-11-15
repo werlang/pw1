@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Receitas - Recipe Manager</title>
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/toast.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <div>
+                <h1 class="header-title">🍳 Recipe Manager</h1>
+                <p class="header-subtitle">Descubra e compartilhe receitas</p>
+            </div>
+            <div class="header-actions">
+                <a href="../add-recipe/" class="btn btn-primary">+ Nova Receita</a>
+                <a href="../my-recipes/" class="btn btn-secondary">Minhas Receitas</a>
+                <button id="logoutBtn" class="btn btn-outline">Sair</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="filters-section">
+            <h2>Filtrar Receitas</h2>
+            <div class="filters-grid">
+                <div class="filter-group">
+                    <label>Categoria:</label>
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" data-filter-type="category" data-filter-value="">Todas</button>
+                        <button class="filter-btn" data-filter-type="category" data-filter-value="Sobremesas">Sobremesas</button>
+                        <button class="filter-btn" data-filter-type="category" data-filter-value="Pratos Principais">Pratos Principais</button>
+                        <button class="filter-btn" data-filter-type="category" data-filter-value="Massas e Grãos">Massas e Grãos</button>
+                        <button class="filter-btn" data-filter-type="category" data-filter-value="Entradas">Entradas</button>
+                    </div>
+                </div>
+                
+                <div class="filter-group">
+                    <label>Dificuldade:</label>
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" data-filter-type="difficulty" data-filter-value="">Todas</button>
+                        <button class="filter-btn" data-filter-type="difficulty" data-filter-value="fácil">Fácil</button>
+                        <button class="filter-btn" data-filter-type="difficulty" data-filter-value="médio">Médio</button>
+                        <button class="filter-btn" data-filter-type="difficulty" data-filter-value="difícil">Difícil</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="recipes-section">
+            <h2>Receitas Públicas</h2>
+            <div id="recipesContainer" class="recipes-grid">
+                <p class="loading">Carregando receitas...</p>
+            </div>
+        </div>
+    </main>
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>

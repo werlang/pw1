@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nova Reserva - CoWork Space</title>
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/toast.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">CoWork Space</div>
+            <div class="nav-links">
+                <a href="../rooms/" class="nav-link">Salas</a>
+                <a href="../my-bookings/" class="nav-link">Minhas Reservas</a>
+                <a href="../add-booking/" class="nav-link active">Nova Reserva</a>
+                <button id="logoutBtn" class="btn btn-secondary">Sair</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <header class="page-header">
+            <h1>Nova Reserva</h1>
+            <p>Preencha os dados para criar sua reserva</p>
+        </header>
+
+        <div class="form-container">
+            <form id="bookingForm" class="booking-form">
+                <div class="form-group">
+                    <label for="room_id">Sala *</label>
+                    <select id="room_id" name="room_id" required>
+                        <option value="">Selecione uma sala</option>
+                        <option value="1">Sala Inovação (R$ 45,00/h)</option>
+                        <option value="2">Escritório Premium (R$ 80,00/h)</option>
+                        <option value="3">Sala Workshop (R$ 120,00/h)</option>
+                        <option value="4">Cabine Focus 1 (R$ 15,00/h)</option>
+                        <option value="5">Cabine Focus 2 (R$ 15,00/h)</option>
+                        <option value="6">Sala Criativa (R$ 50,00/h)</option>
+                        <option value="7">Escritório Startup (R$ 65,00/h)</option>
+                        <option value="8">Auditório Tech (R$ 200,00/h)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="booking_date">Data *</label>
+                    <input type="date" id="booking_date" name="booking_date" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="start_time">Horário de Início *</label>
+                        <input type="time" id="start_time" name="start_time" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="end_time">Horário de Término *</label>
+                        <input type="time" id="end_time" name="end_time" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="notes">Observações</label>
+                    <textarea id="notes" name="notes" rows="4" placeholder="Ex: Reunião com investidores, necessito de café"></textarea>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" onclick="history.back()" class="btn btn-secondary">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Criar Reserva</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <script src="../components/toast.js"></script>
+    <script>
+        // Logout
+        document.getElementById('logoutBtn').addEventListener('click', async () => {
+            const response = await fetch('../api/auth/logout.php');
+            const data = await response.json();
+            showToast(data.message, 'success');
+            setTimeout(() => window.location.href = '../login/', 500);
+        });
+
+        // Pre-select room if passed in URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const roomId = urlParams.get('room_id');
+        if (roomId) {
+            document.getElementById('room_id').value = roomId;
+        }
+
+        // Set minimum date to today
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('booking_date').min = today;
+
+        // Handle form submission
+        const form = document.getElementById('bookingForm');
+        
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const formData = new FormData(form);
+            
+            try {
+                const response = await fetch('../api/bookings/add.php', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const data = await response.json();
+                
+                if (data.error) {
+                    showToast(data.message, 'error');
+                } else {
+                    showToast(data.message, 'success');
+                    setTimeout(() => {
+                        window.location.href = '../my-bookings/';
+                    }, 1500);
+                }
+            } catch (error) {
+                showToast('Erro ao conectar com o servidor', 'error');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Feira de Trocas Comunitária</title>
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/toast.css">
+</head>
+<body>
+    <div id="toast-container"></div>
+    
+    <div class="main-content" style="max-width: 500px;">
+        <div class="card">
+            <div class="card-header" style="text-align: center;">
+                <div style="font-size: 3rem; margin-bottom: 1rem;">🔄</div>
+                <h1 class="card-title">Feira de Trocas</h1>
+                <p class="card-description">Entre para começar a trocar itens com sua comunidade</p>
+            </div>
+            
+            <form id="login-form">
+                <div class="form-group">
+                    <label class="form-label" for="email">Email</label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        class="form-input" 
+                        placeholder="seu@email.com"
+                        required
+                    >
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="password">Senha</label>
+                    <input 
+                        type="password" 
+                        id="password" 
+                        class="form-input" 
+                        placeholder="Digite sua senha"
+                        required
+                    >
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">
+                    Entrar
+                </button>
+            </form>
+            
+            <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--gray-200);">
+                <p style="text-align: center; color: var(--gray-500); font-size: 0.875rem; margin-bottom: 1rem;">
+                    <strong>Usuários de teste:</strong>
+                </p>
+                <div style="background: var(--gray-50); padding: 1rem; border-radius: var(--radius); font-size: 0.8125rem;">
+                    <p style="margin-bottom: 0.5rem;"><strong>Ana Costa:</strong> ana@email.com</p>
+                    <p style="margin-bottom: 0.5rem;"><strong>Carlos Lima:</strong> carlos@email.com</p>
+                    <p style="margin-bottom: 0.5rem;"><strong>Beatriz Silva:</strong> beatriz@email.com</p>
+                    <p style="margin-top: 0.75rem; color: var(--gray-600);"><strong>Senha para todos:</strong> asdf1234</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="../components/toast.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

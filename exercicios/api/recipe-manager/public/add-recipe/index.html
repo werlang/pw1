@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nova Receita - Recipe Manager</title>
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/toast.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <div>
+                <h1 class="header-title">🍳 Recipe Manager</h1>
+                <p class="header-subtitle">Adicionar Nova Receita</p>
+            </div>
+            <div class="header-actions">
+                <a href="../recipes/" class="btn btn-secondary">← Voltar</a>
+                <button id="logoutBtn" class="btn btn-outline">Sair</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="form-container">
+            <h2>Nova Receita</h2>
+            
+            <form id="addRecipeForm" class="recipe-form">
+                <div class="form-group">
+                    <label for="title">Título da Receita *</label>
+                    <input type="text" id="title" name="title" required placeholder="Ex: Bolo de Chocolate">
+                </div>
+                
+                <div class="form-group">
+                    <label for="description">Descrição *</label>
+                    <textarea id="description" name="description" required rows="3" 
+                              placeholder="Descreva brevemente sua receita"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="ingredients">Ingredientes *</label>
+                    <textarea id="ingredients" name="ingredients" required rows="8" 
+                              placeholder="Liste os ingredientes, um por linha&#10;Ex:&#10;3 ovos&#10;2 xícaras de farinha&#10;1 xícara de açúcar"></textarea>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="category">Categoria *</label>
+                        <select id="category" name="category" required>
+                            <option value="">Selecione...</option>
+                            <option value="Sobremesas">Sobremesas</option>
+                            <option value="Pratos Principais">Pratos Principais</option>
+                            <option value="Massas e Grãos">Massas e Grãos</option>
+                            <option value="Entradas">Entradas</option>
+                            <option value="Lanches">Lanches</option>
+                            <option value="Bebidas">Bebidas</option>
+                            <option value="Saladas">Saladas</option>
+                            <option value="Sopas">Sopas</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="difficulty">Dificuldade</label>
+                        <select id="difficulty" name="difficulty">
+                            <option value="fácil">Fácil</option>
+                            <option value="médio" selected>Médio</option>
+                            <option value="difícil">Difícil</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="prep_time">Tempo de Preparo (minutos) *</label>
+                        <input type="number" id="prep_time" name="prep_time" required min="1" placeholder="45">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="servings">Porções</label>
+                        <input type="number" id="servings" name="servings" min="1" value="4" placeholder="4">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="is_public" value="1" checked>
+                        Tornar receita pública (visível para todos)
+                    </label>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" onclick="history.back()">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Adicionar Receita</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="module" src="script.js" defer></script>
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/toast.css">
+    <title>Novo Post - Blog System</title>
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <div>
+                <h1 class="header-title">📝 Novo Post</h1>
+                <p class="header-subtitle">Crie um novo artigo para o blog</p>
+            </div>
+            <div class="header-actions">
+                <a href="../posts" class="btn btn-secondary btn-small">Voltar</a>
+                <button id="btnLogout" class="btn btn-danger btn-small">Sair</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="card">
+            <div class="card-header">
+                <h2 class="card-title">Dados do Post</h2>
+            </div>
+            <form id="createPostForm" class="form">
+                <div class="form-group">
+                    <label class="form-label">Título *</label>
+                    <input 
+                        type="text" 
+                        name="title" 
+                        class="form-input" 
+                        required
+                    >
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Categoria *</label>
+                    <select name="category" class="form-select" required>
+                        <option value="">Selecione uma categoria</option>
+                        <option value="Tecnologia">Tecnologia</option>
+                        <option value="Programação">Programação</option>
+                        <option value="Design">Design</option>
+                        <option value="Carreira">Carreira</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Conteúdo *</label>
+                    <textarea 
+                        name="content" 
+                        class="form-textarea" 
+                        rows="10"
+                        required
+                    ></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Criar Post</button>
+            </form>
+        </section>
+    </main>
+</body>
+</html>

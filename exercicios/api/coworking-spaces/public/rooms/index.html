@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salas Disponíveis - CoWork Space</title>
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/toast.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">CoWork Space</div>
+            <div class="nav-links">
+                <a href="../rooms/" class="nav-link active">Salas</a>
+                <a href="../my-bookings/" class="nav-link">Minhas Reservas</a>
+                <a href="../add-booking/" class="nav-link">Nova Reserva</a>
+                <button id="logoutBtn" class="btn btn-secondary">Sair</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <header class="page-header">
+            <h1>Salas Disponíveis</h1>
+            <p>Conheça nossos espaços de trabalho</p>
+        </header>
+
+        <div class="rooms-grid" id="roomsGrid">
+            <!-- Rooms will be loaded dynamically -->
+        </div>
+    </main>
+
+    <script src="../components/toast.js"></script>
+    <script>
+        // Logout
+        document.getElementById('logoutBtn').addEventListener('click', async () => {
+            const response = await fetch('../api/auth/logout.php');
+            const data = await response.json();
+            showToast(data.message, 'success');
+            setTimeout(() => window.location.href = '../login/', 500);
+        });
+
+        // Load rooms (static data for demo)
+        const rooms = [
+            { id: 1, name: 'Sala Inovação', capacity: 8, type: 'meeting', hourly_rate: 45.00, floor: 1, amenities: 'TV 55", whiteboard, ar-condicionado' },
+            { id: 2, name: 'Escritório Premium', capacity: 4, type: 'private_office', hourly_rate: 80.00, floor: 2, amenities: 'Mesa executiva, cadeiras ergonômicas' },
+            { id: 3, name: 'Sala Workshop', capacity: 20, type: 'event_space', hourly_rate: 120.00, floor: 3, amenities: 'Projetor, sistema de som' },
+            { id: 4, name: 'Cabine Focus 1', capacity: 1, type: 'phone_booth', hourly_rate: 15.00, floor: 1, amenities: 'Mesa, cadeira, iluminação' },
+            { id: 5, name: 'Cabine Focus 2', capacity: 1, type: 'phone_booth', hourly_rate: 15.00, floor: 1, amenities: 'Mesa, cadeira, iluminação' },
+            { id: 6, name: 'Sala Criativa', capacity: 6, type: 'meeting', hourly_rate: 50.00, floor: 2, amenities: 'TV 65", quadro branco' },
+            { id: 7, name: 'Escritório Startup', capacity: 3, type: 'private_office', hourly_rate: 65.00, floor: 1, amenities: 'Mesas individuais, armário' },
+            { id: 8, name: 'Auditório Tech', capacity: 50, type: 'event_space', hourly_rate: 200.00, floor: 4, amenities: 'Palco, microfones, projetor 4K' }
+        ];
+
+        const typeLabels = {
+            'meeting': 'Reunião',
+            'private_office': 'Escritório',
+            'event_space': 'Evento',
+            'phone_booth': 'Cabine'
+        };
+
+        const roomsGrid = document.getElementById('roomsGrid');
+        
+        rooms.forEach(room => {
+            const card = document.createElement('div');
+            card.className = 'room-card';
+            card.innerHTML = `
+                <div class="room-header">
+                    <h3>${room.name}</h3>
+                    <span class="room-type">${typeLabels[room.type]}</span>
+                </div>
+                <div class="room-details">
+                    <p><strong>Capacidade:</strong> ${room.capacity} pessoa(s)</p>
+                    <p><strong>Andar:</strong> ${room.floor}º</p>
+                    <p><strong>Valor:</strong> R$ ${room.hourly_rate.toFixed(2)}/hora</p>
+                    <p><strong>Comodidades:</strong> ${room.amenities}</p>
+                </div>
+                <a href="../add-booking/?room_id=${room.id}" class="btn btn-primary">Reservar</a>
+            `;
+            roomsGrid.appendChild(card);
+        });
+    </script>
+</body>
+</html>

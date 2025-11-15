@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GreenPulse · Atualizar Chamado</title>
+    <link rel="stylesheet" href="../css/index.css" />
+    <link rel="stylesheet" href="../css/toast.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="navbar">
+        <a href="../requests/index.html">← Voltar para dashboard</a>
+        <strong>Atualizar progresso</strong>
+      </header>
+
+      <section class="card">
+        <div id="request-info"></div>
+        <form id="update-form" class="grid-2" style="margin-top: 24px;">
+          <label>
+            Novo status
+            <select name="status" required>
+              <option value="">Selecione</option>
+              <option value="scheduled">Agendado</option>
+              <option value="done">Concluído</option>
+            </select>
+          </label>
+          <label>
+            Data agendada
+            <input type="date" name="scheduled_date" />
+            <small>Obrigatório ao agendar; opcional ao concluir.</small>
+          </label>
+          <div style="grid-column: 1 / -1; display: flex; gap: 12px;">
+            <button type="submit" class="primary">Aplicar</button>
+            <button type="reset" class="secondary">Limpar</button>
+          </div>
+        </form>
+      </section>
+    </div>
+    <script type="module" src="./script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="module" src="script.js" defer></script>
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/toast.css">
+    <title>Meus Aluguéis - Sistema de Biblioteca</title>
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <div>
+                <h1 class="header-title">📚 Meus Aluguéis de Livros</h1>
+                <p class="header-subtitle">Gerencie seus livros alugados</p>
+            </div>
+            <div class="header-actions">
+                <a href="../add-rental/index.html" class="btn btn-primary btn-small">Novo Aluguel</a>
+                <button id="btnLogout" class="btn btn-secondary btn-small">Sair</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="card">
+            <div class="card-header">
+                <h2 class="card-title">Buscar e Filtrar</h2>
+            </div>
+            <div class="form-group" style="margin-bottom: 1rem;">
+                <label class="form-label">Buscar por título, autor ou gênero</label>
+                <input 
+                    type="text" 
+                    id="searchInput" 
+                    class="form-input" 
+                    placeholder="Digite para buscar..."
+                >
+            </div>
+            <div class="filter-buttons">
+                <button class="btn-filter active" data-status="all">Todos</button>
+                <button class="btn-filter" data-status="active">Ativos</button>
+                <button class="btn-filter" data-status="returned">Devolvidos</button>
+                <button class="btn-filter" data-status="overdue">Atrasados</button>
+            </div>
+        </section>
+
+        <section class="card">
+            <div class="card-header">
+                <h2 class="card-title">Lista de Aluguéis</h2>
+            </div>
+            <div id="rentalsList" class="rentals-container">
+                <!-- Os aluguéis serão carregados aqui pelo JavaScript -->
+            </div>
+        </section>
+    </main>
+</body>
+</html>

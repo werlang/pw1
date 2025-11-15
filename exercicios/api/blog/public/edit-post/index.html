@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="module" src="script.js" defer></script>
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/toast.css">
+    <title>Meus Posts - Blog System</title>
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <div>
+                <h1 class="header-title">📝 Meus Posts</h1>
+                <p class="header-subtitle">Gerencie e publique seus artigos</p>
+            </div>
+            <div class="header-actions">
+                <a href="../posts" class="btn btn-secondary btn-small">Ver Todos</a>
+                <a href="../create-post" class="btn btn-primary btn-small">Novo Post</a>
+                <button class="btn btn-danger btn-small" id="btnLogout">Sair</button>
+            </div>
+        </div>
+    </header>
+    
+    <main class="container">
+        <div class="card">
+            <div class="posts-container" id="myPostsList">
+                <!-- Posts do usuário serão carregados aqui -->
+            </div>
+        </div>
+    </main>
+</body>
+</html>

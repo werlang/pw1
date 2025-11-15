@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GreenPulse · Novo Chamado</title>
+    <link rel="stylesheet" href="../css/index.css" />
+    <link rel="stylesheet" href="../css/toast.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="navbar">
+        <a href="../requests/index.html">← Voltar para dashboard</a>
+        <strong>Registrar novo chamado</strong>
+      </header>
+
+      <section class="card">
+        <form id="request-form" class="grid-2">
+          <label>
+            Nome da estufa
+            <input type="text" name="greenhouse_name" placeholder="Ex: Horta da Escola Aurora" required />
+          </label>
+          <label>
+            Código da zona
+            <input type="text" name="zone_code" placeholder="Ex: Z-12" required />
+          </label>
+          <label>
+            Tipo de problema
+            <select name="issue_type" required>
+              <option value="">Selecione</option>
+              <option value="sensor">Sensores climáticos</option>
+              <option value="irrigation">Irrigação</option>
+              <option value="structure">Estrutura</option>
+              <option value="power">Energia</option>
+              <option value="climate">Climatização</option>
+            </select>
+          </label>
+          <label>
+            Prioridade
+            <select name="priority" required>
+              <option value="normal">Normal</option>
+              <option value="high">Alta</option>
+              <option value="low">Baixa</option>
+            </select>
+          </label>
+          <label style="grid-column: 1 / -1;">
+            Descrição detalhada
+            <textarea name="description" rows="4" placeholder="Descreva o que está acontecendo" required></textarea>
+          </label>
+          <label>
+            Data desejada para visita
+            <input type="date" name="desired_date" required />
+          </label>
+          <div style="display: flex; gap: 12px; align-items: flex-end;">
+            <button type="submit" class="primary">Salvar chamado</button>
+            <button type="reset" class="secondary">Limpar</button>
+          </div>
+        </form>
+      </section>
+    </div>
+    <script type="module" src="./script.js"></script>
+  </body>
+</html>

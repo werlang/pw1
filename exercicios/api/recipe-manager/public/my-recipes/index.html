@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minhas Receitas - Recipe Manager</title>
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/toast.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <div>
+                <h1 class="header-title">🍳 Recipe Manager</h1>
+                <p class="header-subtitle">Minhas Receitas</p>
+            </div>
+            <div class="header-actions">
+                <a href="../add-recipe/" class="btn btn-primary">+ Nova Receita</a>
+                <a href="../recipes/" class="btn btn-secondary">← Todas as Receitas</a>
+                <button id="logoutBtn" class="btn btn-outline">Sair</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="my-recipes-section">
+            <h2>Gerenciar Minhas Receitas</h2>
+            <p class="section-description">Aqui você pode visualizar e alterar a visibilidade das suas receitas.</p>
+            
+            <div id="myRecipesContainer" class="recipes-grid">
+                <p class="loading">Carregando suas receitas...</p>
+            </div>
+        </div>
+    </main>
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>

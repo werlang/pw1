@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minhas Reservas - CoWork Space</title>
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/toast.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">CoWork Space</div>
+            <div class="nav-links">
+                <a href="../rooms/" class="nav-link">Salas</a>
+                <a href="../my-bookings/" class="nav-link active">Minhas Reservas</a>
+                <a href="../add-booking/" class="nav-link">Nova Reserva</a>
+                <button id="logoutBtn" class="btn btn-secondary">Sair</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <header class="page-header">
+            <h1>Minhas Reservas</h1>
+            <p>Gerencie suas reservas de salas</p>
+        </header>
+
+        <div class="filters-section">
+            <div class="filters-row">
+                <div class="filter-group">
+                    <label for="filterStatus">Status</label>
+                    <select id="filterStatus">
+                        <option value="">Todos</option>
+                        <option value="confirmed">Confirmadas</option>
+                        <option value="cancelled">Canceladas</option>
+                        <option value="completed">Concluídas</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="filterRoomType">Tipo de Sala</label>
+                    <select id="filterRoomType">
+                        <option value="">Todos</option>
+                        <option value="meeting">Reunião</option>
+                        <option value="private_office">Escritório</option>
+                        <option value="event_space">Evento</option>
+                        <option value="phone_booth">Cabine</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="filterDateFrom">De</label>
+                    <input type="date" id="filterDateFrom">
+                </div>
+
+                <div class="filter-group">
+                    <label for="filterDateTo">Até</label>
+                    <input type="date" id="filterDateTo">
+                </div>
+
+                <button id="applyFilters" class="btn btn-primary">Filtrar</button>
+                <button id="clearFilters" class="btn btn-secondary">Limpar</button>
+            </div>
+        </div>
+
+        <div id="bookingsContainer" class="bookings-list">
+            <!-- Bookings will be loaded here -->
+        </div>
+
+        <div id="emptyState" class="empty-state" style="display: none;">
+            <p>Nenhuma reserva encontrada</p>
+            <a href="../add-booking/" class="btn btn-primary">Criar Nova Reserva</a>
+        </div>
+    </main>
+
+    <script src="../components/toast.js"></script>
+    <script>
+        const bookingsContainer = document.getElementById('bookingsContainer');
+        const emptyState = document.getElementById('emptyState');
+
+        // Logout
+        document.getElementById('logoutBtn').addEventListener('click', async () => {
+            const response = await fetch('../api/auth/logout.php');
+            const data = await response.json();
+            showToast(data.message, 'success');
+            setTimeout(() => window.location.href = '../login/', 500);
+        });
+
+        // Load bookings
+        async function loadBookings() {
+            const status = document.getElementById('filterStatus').value;
+            const roomType = document.getElementById('filterRoomType').value;
+            const dateFrom = document.getElementById('filterDateFrom').value;
+            const dateTo = document.getElementById('filterDateTo').value;
+
+            const params = new URLSearchParams();
+            if (status) params.append('status', status);
+            if (roomType) params.append('room_type', roomType);
+            if (dateFrom) params.append('date_from', dateFrom);
+            if (dateTo) params.append('date_to', dateTo);
+
+            try {
+                const response = await fetch(`../api/bookings/list.php?${params}`);
+                const data = await response.json();
+
+                if (data.error) {
+                    showToast(data.message, 'error');
+                    if (data.message.includes('autenticado')) {
+                        setTimeout(() => window.location.href = '../login/', 1000);
+                    }
+                    return;
+                }
+
+                renderBookings(data.data.bookings);
+            } catch (error) {
+                showToast('Erro ao carregar reservas', 'error');
+            }
+        }
+
+        // Render bookings
+        function renderBookings(bookings) {
+            bookingsContainer.innerHTML = '';
+
+            if (bookings.length === 0) {
+                bookingsContainer.style.display = 'none';
+                emptyState.style.display = 'block';
+                return;
+            }
+
+            bookingsContainer.style.display = 'grid';
+            emptyState.style.display = 'none';
+
+            const statusLabels = {
+                'confirmed': 'Confirmada',
+                'cancelled': 'Cancelada',
+                'completed': 'Concluída'
+            };
+
+            const typeLabels = {
+                'meeting': 'Reunião',
+                'private_office': 'Escritório',
+                'event_space': 'Evento',
+                'phone_booth': 'Cabine'
+            };
+
+            bookings.forEach(booking => {
+                const card = document.createElement('div');
+                card.className = `booking-card booking-${booking.status}`;
+                
+                const date = new Date(booking.booking_date + 'T00:00:00');
+                const formattedDate = date.toLocaleDateString('pt-BR');
+
+                card.innerHTML = `
+                    <div class="booking-header">
+                        <h3>${booking.room_name}</h3>
+                        <span class="status-badge status-${booking.status}">${statusLabels[booking.status]}</span>
+                    </div>
+                    <div class="booking-details">
+                        <p><strong>Data:</strong> ${formattedDate}</p>
+                        <p><strong>Horário:</strong> ${booking.start_time.substring(0, 5)} - ${booking.end_time.substring(0, 5)}</p>
+                        <p><strong>Duração:</strong> ${booking.duration_hours}h</p>
+                        <p><strong>Tipo:</strong> ${typeLabels[booking.room_type]}</p>
+                        <p><strong>Andar:</strong> ${booking.floor}º</p>
+                        <p><strong>Capacidade:</strong> ${booking.capacity} pessoa(s)</p>
+                        <p><strong>Valor Total:</strong> R$ ${parseFloat(booking.total_price).toFixed(2)}</p>
+                        ${booking.notes ? `<p><strong>Observações:</strong> ${booking.notes}</p>` : ''}
+                    </div>
+                    ${booking.status === 'confirmed' ? `
+                        <button onclick="cancelBooking(${booking.id})" class="btn btn-danger">Cancelar Reserva</button>
+                    ` : ''}
+                `;
+                
+                bookingsContainer.appendChild(card);
+            });
+        }
+
+        // Cancel booking
+        async function cancelBooking(bookingId) {
+            if (!confirm('Tem certeza que deseja cancelar esta reserva?')) {
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append('booking_id', bookingId);
+
+            try {
+                const response = await fetch('../api/bookings/cancel.php', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const data = await response.json();
+
+                if (data.error) {
+                    showToast(data.message, 'error');
+                } else {
+                    showToast(data.message, 'success');
+                    loadBookings();
+                }
+            } catch (error) {
+                showToast('Erro ao cancelar reserva', 'error');
+            }
+        }
+
+        // Filter handlers
+        document.getElementById('applyFilters').addEventListener('click', loadBookings);
+        document.getElementById('clearFilters').addEventListener('click', () => {
+            document.getElementById('filterStatus').value = '';
+            document.getElementById('filterRoomType').value = '';
+            document.getElementById('filterDateFrom').value = '';
+            document.getElementById('filterDateTo').value = '';
+            loadBookings();
+        });
+
+        // Initial load
+        loadBookings();
+    </script>
+</body>
+</html>

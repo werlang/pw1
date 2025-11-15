@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="module" src="script.js" defer></script>
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/toast.css">
+    <title>Login - Blog System</title>
+</head>
+<body>
+    <div class="login-container">
+        <div class="card login-card">
+            <div class="card-header">
+                <h1 class="card-title">📝 Login - Blog System</h1>
+            </div>
+            <form id="loginForm" class="form">
+                <div class="form-group">
+                    <label class="form-label">Email</label>
+                    <input 
+                        type="email" 
+                        name="email" 
+                        class="form-input" 
+                        required
+                    >
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Senha</label>
+                    <input 
+                        type="password" 
+                        name="password" 
+                        class="form-input" 
+                        required
+                    >
+                </div>
+                <button type="submit" class="btn btn-primary">Entrar</button>
+            </form>
+            <p style="margin-top: 1rem; text-align: center; color: #757575; font-size: 0.875rem;">
+                Use: ana@email.com / blog2025
+            </p>
+        </div>
+    </div>
+</body>
+</html>

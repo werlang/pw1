@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="module" src="script.js" defer></script>
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/toast.css">
+    <title>Posts - Blog System</title>
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <div>
+                <h1 class="header-title">📝 Blog System</h1>
+                <p class="header-subtitle">Explore e busque artigos</p>
+            </div>
+            <div class="header-actions">
+                <span class="user-info" id="userName"></span>
+                <a href="../create-post" class="btn btn-primary btn-small">Novo Post</a>
+                <a href="../edit-post" class="btn btn-secondary btn-small">Meus Posts</a>
+                <button class="btn btn-danger btn-small" id="btnLogout">Sair</button>
+            </div>
+        </div>
+    </header>
+    
+    <main class="container">
+        <div class="card">
+            <div class="search-container">
+                <form id="searchForm" class="search-form">
+                    <input 
+                        type="text" 
+                        id="searchQuery"
+                        name="query" 
+                        class="search-input" 
+                        placeholder="Buscar posts por título ou conteúdo..."
+                    >
+                    <button type="submit" class="btn btn-primary">Buscar</button>
+                    <button type="button" class="btn btn-secondary" id="btnClearSearch">Limpar</button>
+                </form>
+            </div>
+            
+            <div class="posts-container" id="postsList">
+                <!-- Posts serão carregados aqui -->
+            </div>
+        </div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="module" src="script.js" defer></script>
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/toast.css">
+    <title>Atualizar Aluguel - Sistema de Biblioteca</title>
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <div>
+                <h1 class="header-title">📚 Atualizar Status do Aluguel</h1>
+                <p class="header-subtitle">Altere o status do livro alugado</p>
+            </div>
+            <div class="header-actions">
+                <a href="../rentals/index.html" class="btn btn-secondary btn-small">Voltar</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="card">
+            <div class="card-header">
+                <h2 class="card-title">Alterar Status</h2>
+            </div>
+            <form id="statusForm" class="form">
+                <input type="hidden" name="action" value="change_status">
+                <div class="form-group">
+                    <label class="form-label">Novo Status *</label>
+                    <select name="status" class="form-select" required>
+                        <option value="">Selecione um status</option>
+                        <option value="active">Ativo</option>
+                        <option value="returned">Devolvido</option>
+                        <option value="overdue">Atrasado</option>
+                    </select>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Atualizar Status</button>
+            </form>
+        </section>
+
+        <section class="card">
+            <div class="card-header">
+                <h2 class="card-title">Renovar Aluguel</h2>
+            </div>
+            <form id="renewForm" class="form">
+                <input type="hidden" name="action" value="renew">
+                <div class="form-group">
+                    <label class="form-label">Estender por *</label>
+                    <select name="extend_days" class="form-select" required>
+                        <option value="">Selecione o período</option>
+                        <option value="7">7 dias</option>
+                        <option value="14">14 dias</option>
+                        <option value="21">21 dias</option>
+                    </select>
+                    <small style="color: #8b6f47; margin-top: 0.25rem;">Apenas aluguéis ativos podem ser renovados</small>
+                </div>
+                
+                <button type="submit" class="btn btn-secondary">Renovar Aluguel</button>
+            </form>
+        </section>
+    </main>
+</body>
+</html>

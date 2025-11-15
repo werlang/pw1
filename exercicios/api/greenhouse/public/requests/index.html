@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GreenPulse · Chamados</title>
+    <link rel="stylesheet" href="../css/index.css" />
+    <link rel="stylesheet" href="../css/toast.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="navbar">
+        <div>
+          <strong>GreenPulse</strong>
+          <p style="margin: 0; font-size: 0.85rem; color: #5a6d7c;">Monitoramento de estufas urbanas</p>
+        </div>
+        <div class="actions">
+          <a href="../add-request/index.html">Novo chamado</a>
+          <button id="logout" class="secondary">Sair</button>
+        </div>
+      </header>
+
+      <section class="card">
+        <div class="filters" style="margin-bottom: 18px;">
+          <input type="text" id="search" placeholder="Buscar por estufa ou zona" />
+          <select id="status-filter">
+            <option value="">Status (todos)</option>
+            <option value="open">Aberto</option>
+            <option value="scheduled">Agendado</option>
+            <option value="done">Finalizado</option>
+          </select>
+          <select id="priority-filter">
+            <option value="">Prioridade</option>
+            <option value="high">Alta</option>
+            <option value="normal">Normal</option>
+            <option value="low">Baixa</option>
+          </select>
+          <label style="display: flex; align-items: center; gap: 8px;">
+            <input type="checkbox" id="mine-filter" /> Só meus chamados
+          </label>
+          <button id="filter-btn" class="primary">Aplicar</button>
+        </div>
+
+        <div id="summary" class="grid-2" style="margin-bottom: 24px;"></div>
+
+        <div style="overflow-x: auto;">
+          <table class="table" id="requests-table">
+            <thead>
+              <tr>
+                <th>Estufa</th>
+                <th>Zona</th>
+                <th>Prioridade</th>
+                <th>Status</th>
+                <th>Responsável</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+    <script type="module" src="./script.js"></script>
+  </body>
+</html>
