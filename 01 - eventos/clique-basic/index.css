@@ -1,0 +1,50 @@
+
+html, body {
+	height: 100%;
+	margin: 0;
+}
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	background: #98acc5;
+	color: #ffffff;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 20px;
+}
+
+#b1, #b2 {
+	border: none;
+	border-radius: 10px;
+	padding: 12px 18px;
+	font-weight: 600;
+	cursor: pointer;
+}
+
+#b1 {
+	background: #6ee7b7;
+	color: #022a1f;
+	font-size: 18px;
+}
+
+#b2 {
+	margin-left: 12px;
+	background: rgba(255,255,255,0.8);
+	color: #60a5fa;
+	font-size: 14px;
+}
+
+#b1:hover, #b2:hover {
+	filter: brightness(1.06);
+	transform: translateY(-3px);
+}
+
+/* Active (pressed) states */
+#b1:active, #b2:active {
+	transform: translateY(-1px);
+}
+
+#b1:focus, #b2:focus {
+	outline: 3px solid rgba(96,165,250,0.25);
+	outline-offset: 4px;
+}
