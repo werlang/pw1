@@ -6,17 +6,24 @@ services:
         environment:
             - MYSQL_DATABASE=${MYSQL_DATABASE}
             - MYSQL_ROOT_PASSWORD=${MYSQL_PASSWORD}
-        ports:
-            - '127.0.0.1:${MYSQL_PORT}:3306'
+        # ports:
+        #     - '127.0.0.1:${MYSQL_PORT}:3306'
         volumes:
             - mysql:/var/lib/mysql
+        networks:
+            - pw1
     apache:
         container_name: apache
         image: pswerlang/php-apache
         restart: unless-stopped
-        ports:
-            - '${APACHE_PORT}:80'
+        # ports:
+        #     - '${APACHE_PORT}:80'
         volumes:
-            - ${ROOT_DIR}:/var/www/html
+            - ${PUBLIC_DIR}:/var/www/html
+        networks:
+            - pw1
 volumes:
     mysql:
+networks:
+    pw1:
+        name: pw1
