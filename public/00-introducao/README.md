@@ -1,9 +1,5 @@
 # Programação Web I - Introdução
 
-[cite_start]**Professor:** Pablo Werlang [cite: 4]  
-**Instituição:** Instituto Federal Sul-rio-grandense | [cite_start]Câmpus Charqueadas [cite: 1, 2, 16]  
-[cite_start]**Contato:** pablowerlang@ifsul.edu.br [cite: 4]
-
 ---
 
 ## Bem-vindo à Programação Web I!
