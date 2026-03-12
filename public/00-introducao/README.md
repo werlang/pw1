@@ -68,16 +68,18 @@ O arquivo HTML atua como a base. [cite_start]Observe como ele "chama" os outros 
 
 ### Aparência CSS (style.css)
 
-Este arquivo dita como o elemento <h1> do HTML acima deve se parecer:CSSh1 {
+Este arquivo dita como o elemento `<h1>` do HTML acima deve se parecer:
+
 
 ```css
+h1 {
     color: red;
 }
 ```
 
 ### Comportamento JavaScript (script.js)
 
-Este arquivo contém a lógica. No HTML, utilizamos o atributo defer na tag <script>. Isso é uma excelente prática, pois garante que o script execute somente após o documento HTML ser totalmente carregado, evitando erros.
+Este arquivo contém a lógica. No HTML, utilizamos o atributo defer na tag `<script>`. Isso é uma excelente prática, pois garante que o script execute somente após o documento HTML ser totalmente carregado, evitando erros.
 
 ```javascript
 console.log('Hello World!');
