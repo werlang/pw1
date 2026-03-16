@@ -1,13 +1,11 @@
-#game-area {
-	background: #000;
-	width: 400px;
-	height: 400px;
-	border-radius: 5px;
-}
+#background {
+   background-color: black;
+   width: 500px;
+   height: 500px;
+   border-radius: 10px;
 
-img {
-	position: absolute;
-	transform: translate(-50%, -50%);
-	width: 32px;
-	height: 32px;
+   img {
+      position: relative;
+      width: 40px;
+   }
 }
