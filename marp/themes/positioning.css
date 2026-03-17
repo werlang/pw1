@@ -1,0 +1,75 @@
+/*!
+ * @theme positioning
+*/
+
+section .grid {
+  display: grid;
+  gap: 24px;
+  align-items: start;
+}
+
+section .grid-2 {
+  grid-template-columns: 1fr 1fr;
+}
+
+section .grid-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+section .span-2 {
+  grid-column: span 2;
+}
+
+section .span-3 {
+  grid-column: span 3;
+}
+
+section .media img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+section .media--sm {
+  max-width: 320px;
+}
+
+section .media--md {
+  max-width: 460px;
+}
+
+section .media--lg {
+  max-width: 640px;
+}
+
+section .align-center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+section .align-left {
+  margin-right: auto;
+}
+
+section .align-right {
+  margin-left: auto;
+}
+
+section .media.size-v {
+    flex-grow: 1;
+    height: 100%;
+
+    img {
+        max-height: 100%;
+    }
+}
+
+section .align-bottom {
+    flex-grow: 1;
+    display: flex;
+    align-items: flex-end;
+
+    img {
+        margin: 0;
+    }
+}

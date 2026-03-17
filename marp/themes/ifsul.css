@@ -26,6 +26,7 @@
 
 /* ─── Google Font ─────────────────────────────────────────────────── */
 @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+@import 'positioning';
 
 /* ═══════════════════════════════════════════════════════════════════
    DESIGN TOKENS
@@ -46,6 +47,27 @@
     /* height of the bottom footer bar        */
     --pad-x: 60px;
     /* horizontal padding for content area    */
+
+    --code-foreground: #000000;
+    --code-string: #a31515;
+    --code-number: #098658;
+    --code-keyword: #0000ff;
+    --code-function: #795e26;
+    --code-comment: #008000;
+    --code-type: #267f99;
+    --code-class: #267f99;
+    --code-constant: #0070c1;
+    --code-variable: #001080;
+    --code-property: #001080;
+    --code-parameter: #001080;
+    --code-operator: #000000;
+    --code-punctuation: #000000;
+    --code-regex: #811f3f;
+    --code-tag: #800000;
+    --code-attribute: #e50000;
+    --code-namespace: #267f99;
+    --code-invalid: #cd3131;
+    --code-invalid-bg: #fbeaea;
 }
 
 /* ═══════════════════════════════════════════════════════════════════
@@ -96,7 +118,7 @@ section h1 {
     top: 0;
     left: 0;
     right: 0;
-    height: calc(var(--band-h) - 50px);
+    height: calc(var(--band-h) - 30px);
     padding: 0 var(--pad-x);
     margin: 0;
     box-sizing: border-box;
@@ -156,8 +178,7 @@ section ul,
 section ol {
     line-height: 1.7;
     padding-left: 1.4em;
-    margin-top: 0;
-    margin-bottom: 14px;
+    margin: 0;
 }
 
 section ul li p {
@@ -195,18 +216,194 @@ section pre {
     background: var(--code-bg);
     border-left: 5px solid var(--green);
     border-radius: 0 5px 5px 0;
-    padding: 16px 20px;
+    padding: 20px 16px;
     font-size: 21px;
     line-height: 1.5;
     overflow: auto;
     margin-bottom: 14px;
+    position: relative;
 }
 
 section pre code {
     background: transparent;
     padding: 0;
-    color: var(--text);
+    color: var(--code-foreground);
     font-size: 1em;
+    display: block;
+}
+
+section pre code[class*='language-']::before {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 0.65em;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--white);
+    background: var(--green);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+
+section pre code.language-html::before {
+    content: 'HTML';
+    background: #e34c26;
+}
+
+section pre code.language-css::before {
+    content: 'CSS';
+    background: #264de4;
+}
+
+section pre code.language-javascript::before,
+section pre code.language-js::before {
+    content: 'JavaScript';
+    background: #c59d00;
+}
+
+section pre code.language-python::before {
+    content: 'Python';
+    background: #3572A5;
+}
+
+section pre code.language-java::before {
+    content: 'Java';
+    background: #b07219;
+}
+
+section pre code.language-cpp::before,
+section pre code.language-c::before {
+    content: 'C/C++';
+    background: #555555;
+}
+
+section pre code.language-php::before {
+    content: 'PHP';
+    background: #777bb3;
+}
+
+section pre code.language-json::before {
+    content: 'JSON';
+    background: #5c6b73;
+}
+
+section pre code.language-sql::before {
+    content: 'SQL';
+    background: #0b6e4f;
+}
+
+section pre code .hljs-comment,
+section pre code .hljs-quote,
+section pre code .token.comment,
+section pre code .token.prolog,
+section pre code .token.doctype,
+section pre code .token.cdata {
+    color: var(--code-comment);
+}
+
+section pre code .hljs-keyword,
+section pre code .hljs-selector-tag,
+section pre code .hljs-meta .hljs-keyword,
+section pre code .token.keyword,
+section pre code .token.atrule,
+section pre code .token.selector,
+section pre code .token.important {
+    color: var(--code-keyword);
+}
+
+section pre code .hljs-string,
+section pre code .hljs-meta .hljs-string,
+section pre code .hljs-attribute,
+section pre code .token.string,
+section pre code .token.char,
+section pre code .token.attr-value,
+section pre code .token.inserted {
+    color: var(--code-string);
+}
+
+section pre code .hljs-number,
+section pre code .hljs-literal,
+section pre code .token.number,
+section pre code .token.boolean,
+section pre code .token.constant {
+    color: var(--code-number);
+}
+
+section pre code .hljs-title,
+section pre code .hljs-title.function_,
+section pre code .hljs-function .hljs-title,
+section pre code .token.function,
+section pre code .token.function-variable {
+    color: var(--code-function);
+}
+
+section pre code .hljs-type,
+section pre code .hljs-built_in,
+section pre code .token.type,
+section pre code .token.builtin,
+section pre code .token.symbol {
+    color: var(--code-type);
+}
+
+section pre code .hljs-class .hljs-title,
+section pre code .hljs-title.class_,
+section pre code .token.class-name {
+    color: var(--code-class);
+}
+
+section pre code .hljs-variable,
+section pre code .hljs-template-variable,
+section pre code .token.variable,
+section pre code .token.parameter {
+    color: var(--code-variable);
+}
+
+section pre code .token.property,
+section pre code .token.attr-name,
+section pre code .token.field {
+    color: var(--code-property);
+}
+
+section pre code .hljs-params,
+section pre code .token.parameter {
+    color: var(--code-parameter);
+}
+
+section pre code .hljs-operator,
+section pre code .token.operator {
+    color: var(--code-operator);
+}
+
+section pre code .token.punctuation {
+    color: var(--code-punctuation);
+}
+
+section pre code .hljs-regexp,
+section pre code .token.regex {
+    color: var(--code-regex);
+}
+
+section pre code .hljs-tag,
+section pre code .hljs-name,
+section pre code .token.tag {
+    color: var(--code-tag);
+}
+
+section pre code .token.namespace {
+    color: var(--code-namespace);
+}
+
+section pre code .hljs-deletion,
+section pre code .token.deleted,
+section pre code .token.invalid {
+    color: var(--code-invalid);
+}
+
+section pre code .token.invalid {
+    background: var(--code-invalid-bg);
 }
 
 /* ─── Blockquote ─────────────────────────────────────────────── */
