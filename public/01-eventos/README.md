@@ -1,30 +1,46 @@
-# Programação Web I - Eventos
+# Programacao Web I - Eventos em JavaScript
 
-## O que são eventos?
+## 1. O que este guia ensina
 
-Em JavaScript, um evento é um acontecimento detectado pelo navegador. Esse acontecimento pode ser causado pelo usuário, pela própria página ou pelo ciclo de vida do documento.
+Este README funciona como um guia de referencia sobre eventos no JavaScript. O objetivo e entender como o navegador detecta interacoes e como o codigo reage a elas para atualizar a interface.
+
+Ao final desta leitura, voce deve conseguir:
+
+- identificar o que e um evento;
+- registrar tratadores com `addEventListener()`;
+- usar o objeto `event` de forma correta;
+- escolher o tipo de evento adequado para cada situacao;
+- distinguir `target` de `currentTarget`;
+- entender `preventDefault()` e `stopPropagation()`;
+- aplicar esses conceitos em exemplos como clique, teclado e formularios.
+
+## 2. O que sao eventos
+
+Em JavaScript, um evento e um acontecimento detectado pelo navegador. Esse acontecimento pode ser provocado pelo usuario, pelo carregamento do documento ou por mudancas no proprio ambiente da pagina.
 
 Exemplos comuns:
 
-- clicar em um botão
-- digitar em um campo de texto
-- mover o mouse sobre um elemento
-- enviar um formulário
-- carregar a página
+- clicar em um botao;
+- digitar em um campo;
+- mover o mouse;
+- enviar um formulario;
+- carregar a pagina;
+- redimensionar a janela.
 
-A programação orientada a eventos permite que o código reaja a esses acontecimentos no momento em que eles ocorrem.
+A programacao orientada a eventos existe para que o codigo seja executado no momento em que algo acontece, em vez de rodar sem motivo o tempo todo.
 
-## Estrutura básica de um evento
+## 3. Estrutura mental de um evento
 
-Para trabalhar com eventos, normalmente seguimos três passos:
+Quase todo uso de eventos segue este fluxo:
 
-1. selecionar o elemento que será observado
-2. definir qual evento queremos escutar
-3. criar a função que será executada quando o evento acontecer
+1. selecionar o elemento que sera observado;
+2. escolher qual acontecimento sera escutado;
+3. definir a funcao que executara a resposta;
+4. registrar essa funcao com `addEventListener()`.
 
-Exemplo:
+Exemplo minimo:
 
-```javascript
+```js
 const botao = document.querySelector('button');
 
 function clicarNoBotao() {
@@ -34,82 +50,68 @@ function clicarNoBotao() {
 botao.addEventListener('click', clicarNoBotao);
 ```
 
-Nesse exemplo:
+Neste exemplo:
 
-- `botao` é o alvo do evento
-- `'click'` é o tipo do evento
-- `clicarNoBotao` é a função executada quando o evento dispara
+- `botao` e o elemento observado;
+- `click` e o tipo do evento;
+- `clicarNoBotao` e a funcao tratadora;
+- `addEventListener()` conecta o acontecimento a resposta.
 
-## `addEventListener()`
+## 4. `addEventListener()`
 
-O método mais recomendado para associar eventos a elementos é `addEventListener()`.
+`addEventListener()` e a forma mais recomendada de associar eventos a elementos.
 
-Sintaxe geral:
+Sintaxe basica:
 
-```javascript
+```js
 elemento.addEventListener('nomeDoEvento', funcao);
 ```
 
-Exemplo com função anônima:
+Exemplo com funcao nomeada:
 
-```javascript
+```js
+const botao = document.querySelector('#btn-enviar');
+
+function exibirMensagem() {
+    console.log('Botao pressionado');
+}
+
+botao.addEventListener('click', exibirMensagem);
+```
+
+Exemplo com funcao anonima:
+
+```js
 const botao = document.querySelector('#btn-enviar');
 
 botao.addEventListener('click', function() {
-    console.log('Botão pressionado');
+    console.log('Botao pressionado');
 });
 ```
 
 Exemplo com arrow function:
 
-```javascript
+```js
 const botao = document.querySelector('#btn-enviar');
 
 botao.addEventListener('click', () => {
-    console.log('Botão pressionado');
+    console.log('Botao pressionado');
 });
 ```
 
-## Formas de declarar funções
+### Quando usar cada forma
 
-Em eventos, qualquer função compatível pode ser usada como tratadora do evento.
+- funcao nomeada: quando a logica sera reutilizada ou removida depois;
+- funcao anonima: quando a logica e curta e local;
+- arrow function: quando voce quer uma sintaxe curta e nao precisa de uma referencia separada.
 
-### 1. Função declarada
+## 5. O objeto `event`
 
-```javascript
-function somar(a, b) {
-    return a + b;
-}
-```
-
-### 2. Função anônima atribuída a variável
-
-```javascript
-const somar = function(a, b) {
-    return a + b;
-};
-```
-
-### 3. Arrow function
-
-```javascript
-const somar = (a, b) => {
-    return a + b;
-};
-```
-
-Para eventos, normalmente escolhemos:
-
-- função nomeada quando a lógica será reutilizada
-- função anônima ou arrow function quando a lógica for curta e local
-
-## O objeto `event`
-
-Sempre que um evento ocorre, o navegador pode fornecer um objeto com informações sobre ele. Esse objeto costuma ser chamado de `event`, mas o nome da variável pode ser outro.
+Quando um evento acontece, o navegador envia um objeto com informacoes sobre esse acontecimento. Esse objeto costuma ser chamado de `event`.
 
 Exemplo:
 
-```javascript
+```js
 const campo = document.querySelector('#nome');
 
 campo.addEventListener('input', function(event) {
@@ -117,82 +119,91 @@ campo.addEventListener('input', function(event) {
 });
 ```
 
-Algumas propriedades úteis:
+Algumas propriedades importantes:
 
-- `event.target`: elemento onde o evento aconteceu
-- `event.currentTarget`: elemento que possui o `addEventListener()` atual
-- `event.type`: nome do evento
-- `event.key`: tecla pressionada em eventos de teclado
-- `event.clientX` e `event.clientY`: posição do mouse na janela
+- `event.target`: elemento onde o evento aconteceu;
+- `event.currentTarget`: elemento que possui o tratador atual;
+- `event.type`: nome do evento;
+- `event.key`: tecla pressionada;
+- `event.clientX` e `event.clientY`: coordenadas do mouse na janela.
 
 Exemplo com teclado:
 
-```javascript
+```js
 document.body.addEventListener('keydown', function(event) {
     console.log('Tecla pressionada:', event.key);
 });
 ```
 
-## Principais categorias de eventos
+## 6. Principais categorias de eventos
 
-### 1. Eventos de mouse
+### Eventos de mouse
 
-São disparados quando o usuário interage com o mouse ou com o ponteiro.
+Sao eventos disparados por interacao com mouse, trackpad ou ponteiro.
 
-- `click`: ocorre ao clicar no elemento
-- `dblclick`: ocorre ao dar duplo clique
-- `mousedown`: ocorre quando o botão do mouse é pressionado
-- `mouseup`: ocorre quando o botão do mouse é solto
-- `mouseenter`: ocorre quando o ponteiro entra no elemento
-- `mouseleave`: ocorre quando o ponteiro sai do elemento
-- `mousemove`: ocorre enquanto o ponteiro se move sobre a área observada
+- `click`;
+- `dblclick`;
+- `mousedown`;
+- `mouseup`;
+- `mouseenter`;
+- `mouseleave`;
+- `mousemove`.
 
 Exemplo:
 
-```javascript
+```js
 const caixa = document.querySelector('.caixa');
 
-caixa.addEventListener('mouseenter', () => {
-    caixa.style.backgroundColor = 'tomato';
+caixa.addEventListener('mouseenter', function() {
+    caixa.classList.add('ativa');
 });
 
-caixa.addEventListener('mouseleave', () => {
-    caixa.style.backgroundColor = 'steelblue';
+caixa.addEventListener('mouseleave', function() {
+    caixa.classList.remove('ativa');
 });
 ```
 
-### 2. Eventos de teclado
+Esse tipo de padrao aparece em efeitos visuais, menus e estados de destaque.
 
-Esses eventos dependem do foco da página ou do elemento.
+### Eventos de teclado
 
-- `keydown`: dispara quando a tecla é pressionada
-- `keyup`: dispara quando a tecla é solta
+Esses eventos dependem do foco do documento ou do elemento correto.
 
-Observação importante: `keypress` existiu por muito tempo, mas hoje é considerado obsoleto em muitos contextos. Em exemplos novos, prefira `keydown` e `keyup`.
+- `keydown`: dispara quando a tecla e pressionada;
+- `keyup`: dispara quando a tecla e solta.
+
+`keypress` existiu por muito tempo, mas hoje e considerado obsoleto para varios cenarios. Em exemplos novos, prefira `keydown` e `keyup`.
 
 Exemplo:
 
-```javascript
+```js
 document.body.addEventListener('keydown', function(event) {
     if (event.key === 'Enter') {
-        console.log('O usuário pressionou Enter');
+        console.log('O usuario pressionou Enter');
     }
 });
 ```
 
-### 3. Eventos de formulário e entrada de dados
+Na pasta `spaceship/`, esse tipo de evento aparece no controle de movimento por teclado.
 
-São muito usados com `input`, `textarea`, `select` e `form`.
+### Eventos de formulario e entrada de dados
 
-- `input`: dispara sempre que o valor é alterado
-- `change`: dispara quando a alteração é concluída
-- `focus`: dispara quando o elemento recebe foco
-- `blur`: dispara quando o elemento perde foco
-- `submit`: dispara quando o formulário é enviado
+Sao comuns em `input`, `textarea`, `select` e `form`.
+
+- `input`;
+- `change`;
+- `focus`;
+- `blur`;
+- `submit`.
+
+Comparacao importante:
+
+- `input` dispara a cada alteracao do valor;
+- `change` dispara quando a alteracao e concluida.
 
 Exemplo com `input`:
 
-```javascript
+```js
 const campoNome = document.querySelector('#nome');
 const saida = document.querySelector('#saida');
 
@@ -203,53 +214,45 @@ campoNome.addEventListener('input', function(event) {
 
 Exemplo com `submit`:
 
-```javascript
+```js
 const formulario = document.querySelector('form');
 
 formulario.addEventListener('submit', function(event) {
     event.preventDefault();
-    console.log('Formulário interceptado pelo JavaScript');
+    console.log('Formulario interceptado pelo JavaScript');
 });
 ```
 
-### 4. Eventos da página e da janela
+### Eventos de pagina e janela
 
-São úteis para detectar o carregamento do documento ou alterações na janela do navegador.
+Sao uteis para observar o estado geral do documento ou da janela.
 
-- `load`: ocorre quando a página termina de carregar
-- `DOMContentLoaded`: ocorre quando o HTML foi carregado e convertido em DOM
-- `resize`: ocorre quando a janela muda de tamanho
-- `scroll`: ocorre quando a página é rolada
+- `DOMContentLoaded`;
+- `load`;
+- `resize`;
+- `scroll`.
 
 Exemplo:
 
-```javascript
+```js
 document.addEventListener('DOMContentLoaded', function() {
     console.log('O HTML foi carregado');
 });
 ```
 
-## `target` e `currentTarget`
+Comparacao importante:
 
-Essas duas propriedades costumam gerar dúvida.
+- `DOMContentLoaded`: dispara quando o HTML ja virou DOM;
+- `load`: espera recursos adicionais, como imagens e outros arquivos.
 
-- `event.target`: elemento original que disparou o evento
-- `event.currentTarget`: elemento onde o tratador atual foi registrado
+## 7. `target` e `currentTarget`
 
-Exemplo conceitual: se uma `div` contém um `button` e o clique é detectado na `div`, mas o usuário clicou no botão, então:
+Essa diferenca e central para entender a propagacao.
 
-- `target` será o `button`
-- `currentTarget` será a `div`
+- `event.target`: elemento original onde o evento ocorreu;
+- `event.currentTarget`: elemento que esta executando o tratador atual.
 
-Isso é importante principalmente quando trabalhamos com propagação de eventos.
-
-## Propagação de eventos
-
-Quando um evento acontece, ele pode percorrer a árvore do DOM. Em termos práticos, o evento pode afetar não só o elemento clicado, mas também seus elementos ancestrais.
-
-O comportamento mais comum no dia a dia é o bubbling, em que o evento sobe do elemento mais interno para os elementos externos.
-
-Exemplo:
+Exemplo conceitual:
 
 ```html
 <div id="card">
@@ -257,57 +260,78 @@ Exemplo:
 </div>
 ```
 
-```javascript
+Se o clique do botao for tratado pela `div`, o `target` sera o botao e o `currentTarget` sera a `div`.
+
+Isso faz diferenca quando voce quer saber exatamente em que ponto da arvore o evento comecou e em que ponto ele esta sendo tratado.
+
+## 8. Propagacao de eventos
+
+Quando um evento acontece, ele pode percorrer a arvore do DOM.
+
+No uso mais comum da disciplina, o comportamento mais observado e o bubbling, em que o evento sobe do elemento mais interno para os elementos externos.
+
+Exemplo:
+
+```js
 const card = document.querySelector('#card');
 const botao = document.querySelector('#botao');
 
-card.addEventListener('click', () => {
+card.addEventListener('click', function() {
     console.log('Clique no card');
 });
 
-botao.addEventListener('click', () => {
-    console.log('Clique no botão');
+botao.addEventListener('click', function() {
+    console.log('Clique no botao');
 });
 ```
 
-Ao clicar no botão, o evento primeiro atinge o botão e depois pode subir até a `div`.
+Ao clicar no botao, o clique pode atingir o botao e depois subir ate o card.
 
-Se for necessário interromper essa subida, podemos usar:
+Para interromper essa subida:
 
-```javascript
-event.stopPropagation();
+```js
+botao.addEventListener('click', function(event) {
+    event.stopPropagation();
+});
 ```
 
-Esse recurso deve ser usado com cuidado, porque pode dificultar a manutenção do código quando aplicado sem necessidade.
+Use isso com criterio. Interromper propagacao sem necessidade pode tornar o comportamento da interface mais dificil de entender.
 
-## `preventDefault()`
+## 9. `preventDefault()`
 
-Alguns elementos possuem comportamentos padrão do navegador.
+Alguns elementos possuem comportamentos padrao do navegador.
 
 Exemplos:
 
-- um link navega para outra página
-- um formulário recarrega a página ao ser enviado
-- uma caixa de seleção muda de estado ao ser clicada
+- links navegam para outra pagina;
+- formularios enviam dados e podem recarregar a pagina;
+- alguns controles possuem acoes automaticas de interface.
 
-Quando queremos impedir esse comportamento padrão, usamos `event.preventDefault()`.
+Quando queremos impedir esse comportamento padrao, usamos `event.preventDefault()`.
 
-Exemplo com link:
+Exemplo:
 
-```javascript
+```js
 const link = document.querySelector('a');
 
 link.addEventListener('click', function(event) {
     event.preventDefault();
-    console.log('A navegação foi bloqueada');
+    console.log('A navegacao foi bloqueada');
 });
 ```
 
-## Removendo eventos
+Regra pratica:
 
-Também é possível remover um escutador com `removeEventListener()`. Para isso, a função precisa estar armazenada em uma referência.
+- use `preventDefault()` quando voce quiser substituir o comportamento do navegador por uma logica propria;
+- nao use apenas por habito.
 
-```javascript
+## 10. Removendo eventos
+
+Tambem e possivel remover um evento com `removeEventListener()`.
+
+Para isso, a funcao precisa existir como referencia reutilizavel.
+
+```js
 const botao = document.querySelector('#btn-contador');
 
 function exibirMensagem() {
@@ -318,24 +342,25 @@ botao.addEventListener('click', exibirMensagem);
 botao.removeEventListener('click', exibirMensagem);
 ```
 
-Isso é útil quando queremos ativar ou desativar interações em momentos específicos da aplicação.
+Isso e util quando uma interacao precisa ser ativada so em certos momentos.
 
-## Alterando CSS com eventos
+## 11. Eventos e alteracao visual
 
-Eventos frequentemente disparam mudanças visuais. Uma maneira simples de alterar o estilo é usar a propriedade `style`.
+Muitas vezes um evento existe para alterar a interface.
 
-```javascript
+Voce pode fazer isso diretamente com `style`:
+
+```js
 const imagem = document.querySelector('img');
 
 imagem.addEventListener('click', function() {
     imagem.style.width = '200px';
-    imagem.style.height = '200px';
 });
 ```
 
-Apesar disso, em muitos casos é mais organizado adicionar ou remover classes CSS:
+Mas, em geral, e mais organizado usar classes CSS:
 
-```javascript
+```js
 const caixa = document.querySelector('.caixa');
 
 caixa.addEventListener('click', function() {
@@ -343,27 +368,61 @@ caixa.addEventListener('click', function() {
 });
 ```
 
-Essa abordagem costuma separar melhor comportamento e apresentação.
+Essa abordagem separa melhor comportamento e apresentacao.
 
-## Boas práticas
+## 12. Relacao com os exemplos desta pasta
 
-- prefira `addEventListener()` em vez de atributos HTML como `onclick`
-- use nomes de funções claros quando a lógica não for trivial
-- mantenha a lógica de cada evento pequena e objetiva
-- use `preventDefault()` somente quando houver motivo real
-- use `stopPropagation()` com critério
-- prefira manipular classes CSS em vez de muitas alterações diretas em `style`
-- escolha eventos coerentes com a necessidade do problema
+As subpastas desta secao ajudam a enxergar os eventos em contextos diferentes:
 
-## Resumo
+- `clique-basic/`: clique simples para alterar pontuacao e estado;
+- `clique/`: clique com evolucao de estado e logica de progressao;
+- `spaceship/`: teclado para controlar movimento na tela.
 
-Ao estudar eventos em JavaScript, é importante dominar estes pontos:
+Esses tres cenarios mostram que evento nao e so "clicar em botao". Ele e a base de praticamente toda interacao de interface.
 
-- como selecionar o elemento correto
-- como registrar um evento com `addEventListener()`
-- como usar o objeto `event`
-- como distinguir `target` de `currentTarget`
-- como impedir comportamentos padrão com `preventDefault()`
-- como entender a propagação de eventos
+## 13. Erros comuns de iniciantes
 
-Esses conceitos formam a base da interação em páginas web e serão reutilizados em formulários, menus, validações, animações e interfaces mais complexas.
+### Registrar o evento no elemento errado
+
+Se voce seleciona o elemento errado, o evento pode nunca disparar.
+
+### Esquecer o objeto `event` quando ele e necessario
+
+Sem ele, voce nao consegue acessar propriedades como `target`, `key` ou chamar `preventDefault()`.
+
+### Usar `preventDefault()` sem precisar
+
+Isso pode bloquear comportamentos normais da interface sem motivo claro.
+
+### Confundir `input` com `change`
+
+Eles parecem parecidos, mas disparam em momentos diferentes.
+
+### Usar `stopPropagation()` sem entender o fluxo
+
+Isso pode quebrar interacoes de componentes maiores.
+
+## 14. Boas praticas
+
+- prefira `addEventListener()` em vez de atributos como `onclick`;
+- use nomes claros para tratadores reutilizaveis;
+- mantenha cada tratador pequeno e objetivo;
+- escolha o evento mais adequado ao problema;
+- use `preventDefault()` e `stopPropagation()` com justificativa;
+- para alteracoes visuais frequentes, prefira classes CSS;
+- teste o comportamento no navegador e observe o console.
+
+## 15. Resumo final
+
+Os pontos fundamentais sobre eventos sao:
+
+- um evento e um acontecimento detectado pelo navegador;
+- `addEventListener()` liga um elemento a uma resposta em JavaScript;
+- o objeto `event` carrega dados importantes sobre a interacao;
+- mouse, teclado, formulario e pagina sao categorias centrais;
+- `target` e `currentTarget` nao significam a mesma coisa;
+- `preventDefault()` impede comportamentos padrao;
+- `stopPropagation()` interrompe a subida do evento;
+- eventos sao a base das interfaces interativas desta disciplina.
+
+Com esse repertorio, voce tera base suficiente para entender melhor DOM, formularios, validacoes e interfaces mais dinamicas.
