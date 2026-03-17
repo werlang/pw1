@@ -18,7 +18,7 @@ Uso típico:
 
 ### `vscp.bat`
 
-Baixa a versão `.zip` estável do **Visual Studio Code** para Windows, extrai os arquivos em uma pasta `vscode`, cria uma pasta compartilhada `data`, monta um vínculo entre `vscode/data` e `data`, e gera o atalho `VSCode Portable.lnk`.
+Baixa a versão `.zip` estável do **Visual Studio Code** para Windows, extrai os arquivos em uma pasta `vscode`, cria uma pasta `data`, e gera o atalho `VSCode Portable.lnk`.
 
 Esse script foi pensado para um uso portátil do VS Code, mantendo os dados da aplicação fora da pasta principal do editor.
 
@@ -33,8 +33,6 @@ Uso típico:
 - Windows
 - `PowerShell` disponível no sistema
 - Conexão com a internet para download dos arquivos
-- Permissão para criar atalhos
-- No caso do `vscp.bat`, suporte a `mklink /J` para criar o vínculo de diretório
 
 ## Observações
 
