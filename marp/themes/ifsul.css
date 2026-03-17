@@ -1,0 +1,437 @@
+/*!
+ * @theme ifsul
+ *
+ * IFSul — Instituto Federal Sul-rio-grandense
+ * Câmpus Charqueadas
+ *
+ * ── How to use ────────────────────────────────────────────────────
+ *
+ *   ---
+ *   marp: true
+ *   theme: ifsul
+ *   header: ' '
+ *   footer: Instituto Federal Sul-rio-grandense | Campus Charqueadas
+ *   ---
+ *
+ * ── Slide classes (per-slide via <!-- _class: lead -->) ───────────
+ *
+ *   lead     → cover / title slide (tall green top bar, centred)
+ *   divider  → section break (full dark-green background)
+ *
+ * ── Registration in VS Code ───────────────────────────────────────
+ *
+ *   In .vscode/settings.json:
+ *   { "markdown.marp.themes": ["./ifsul.css"] }
+*/
+
+/* ─── Google Font ─────────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+/* ═══════════════════════════════════════════════════════════════════
+   DESIGN TOKENS
+   ═══════════════════════════════════════════════════════════════════ */
+:root {
+    --green: #3a7a28;
+    /* IFSul dark green – header bands       */
+    --green-light: #8dc63f;
+    /* Lime green – cover title, footer text  */
+    --white: #ffffff;
+    --text: #1a1a1a;
+    --muted: #555555;
+    --code-bg: #f0f5ec;
+    --stripe: #f6faf3;
+    --band-h: 130px;
+    /* height of the green header band        */
+    --footer-h: 40px;
+    /* height of the bottom footer bar        */
+    --pad-x: 60px;
+    /* horizontal padding for content area    */
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   CONTENT SLIDE (default)
+   ═══════════════════════════════════════════════════════════════════ */
+section {
+    /* Slide dimensions */
+    width: 1280px;
+    height: 720px;
+
+    font-family: 'Open Sans', Arial, sans-serif;
+    font-size: 28px;
+    color: var(--text);
+
+    /*
+   * The green header band is painted with a two-stop background-image
+   * gradient (solid colour, not an actual gradient). This is the correct
+   * Marp-idiomatic way: we don't use ::before/::after because
+   * section::after is reserved for the pagination number.
+   */
+    background-color: var(--white);
+    background-image: linear-gradient(to bottom,
+            var(--green) 0px,
+            var(--green) var(--band-h),
+            var(--white) var(--band-h),
+            var(--white) 100%);
+
+    /*
+   * padding-top clears the green band so body content starts below it.
+   * padding-bottom clears the footer bar.
+   */
+    padding: calc(var(--band-h) + 20px) var(--pad-x) calc(var(--footer-h) + 14px);
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+}
+
+/* ─── h1 — title in the green band ─────────────────────────────── */
+/*
+ * position: absolute lifts h1 out of the flex flow and places it
+ * directly over the background-image green band.
+ */
+section h1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: calc(var(--band-h) - 50px);
+    padding: 0 var(--pad-x);
+    margin: 0;
+    box-sizing: border-box;
+
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* ─── h2 — course subtitle shown below h1 in the band ──────────── */
+section h2 {
+    position: absolute;
+    top: calc(var(--band-h) - 50px);
+    height: 50px;
+    padding: 0 var(--pad-x);
+
+    left: 0;
+    right: 0;
+    font-size: 19px;
+    font-weight: 400;
+    color: var(--green-light);
+    margin-top: 0;
+    margin-bottom: 18px;
+}
+
+/* ─── h3, h4 — sub-headings inside body content ────────────────── */
+section h3 {
+    font-size: 23px;
+    font-weight: 700;
+    color: var(--green);
+    margin-top: 22px;
+    margin-bottom: 6px;
+}
+
+section h4 {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--green);
+    margin-top: 14px;
+    margin-bottom: 4px;
+}
+
+/* ─── Paragraphs ──────────────────────────────────────────────── */
+section p {
+    line-height: 1.55;
+    margin-top: 0;
+    margin-bottom: 14px;
+}
+
+/* ─── Lists ───────────────────────────────────────────────────── */
+section ul,
+section ol {
+    line-height: 1.7;
+    padding-left: 1.4em;
+    margin-top: 0;
+    margin-bottom: 14px;
+}
+
+section ul li p {
+    margin: 0;
+}
+
+section ul li::marker {
+    color: var(--green);
+}
+
+section ol li::marker {
+    color: var(--green);
+    font-weight: 700;
+}
+
+section ul ul,
+section ol ol,
+section ul ol,
+section ol ul {
+    font-size: 0.92em;
+    margin-top: 2px;
+}
+
+/* ─── Code ────────────────────────────────────────────────────── */
+section code {
+    font-family: 'Inconsolata', 'Courier New', monospace;
+    background: var(--code-bg);
+    border-radius: 4px;
+    padding: 2px 7px;
+    font-size: 0.82em;
+    color: var(--green);
+}
+
+section pre {
+    background: var(--code-bg);
+    border-left: 5px solid var(--green);
+    border-radius: 0 5px 5px 0;
+    padding: 16px 20px;
+    font-size: 21px;
+    line-height: 1.5;
+    overflow: auto;
+    margin-bottom: 14px;
+}
+
+section pre code {
+    background: transparent;
+    padding: 0;
+    color: var(--text);
+    font-size: 1em;
+}
+
+/* ─── Blockquote ─────────────────────────────────────────────── */
+section blockquote {
+    border-left: 5px solid var(--green-light);
+    background: #eef7e0;
+    padding: 12px 18px;
+    border-radius: 0 5px 5px 0;
+    font-style: italic;
+    margin: 0 0 14px;
+}
+
+/* ─── Table ──────────────────────────────────────────────────── */
+section table {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 23px;
+    margin-bottom: 14px;
+}
+
+section th {
+    background: var(--green);
+    color: var(--white);
+    padding: 9px 14px;
+    font-weight: 700;
+    text-align: left;
+}
+
+section td {
+    padding: 7px 14px;
+    border-bottom: 1px solid #cde8b8;
+}
+
+section tr:nth-child(even) td {
+    background: var(--stripe);
+}
+
+/* ─── Images ─────────────────────────────────────────────────── */
+section img {
+    max-width: 100%;
+    max-height: 360px;
+    display: block;
+    margin: auto;
+}
+
+/* ─── Misc typography ────────────────────────────────────────── */
+section strong {
+    color: var(--green);
+    font-weight: 700;
+}
+
+section a {
+    color: var(--green);
+    text-decoration: underline;
+}
+
+/* ─── header directive (<header> element) ─────────────────────
+ * The Marp `header:` directive injects a <header> element.
+ * On regular slides we hide it; lead slides show it in the band.
+ */
+header {
+    display: none;
+}
+
+/* ─── footer directive (<footer> element) ─────────────────────
+ * The `footer:` directive injects a <footer> element.
+ * We place it absolutely at the bottom of the slide.
+ * Recommendation: add to front matter as:
+ *   footer: Instituto Federal Sul-rio-grandense | Campus Charqueadas
+ */
+footer {
+    all: unset;
+    /* clear any inherited styles */
+    box-sizing: border-box;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: var(--footer-h);
+    padding: 0 var(--pad-x);
+    line-height: var(--footer-h);
+    text-align: center;
+    font-size: 15px;
+    color: var(--green-light);
+    background: var(--white);
+    border-top: 1px solid #cde8b8;
+}
+
+/* ─── Page number (section::after) ───────────────────────────
+ * Marp requires attr(data-marpit-pagination) in the content.
+ * We place the page number inside the green header band.
+ */
+section::after {
+    content: attr(data-marpit-pagination);
+    position: absolute;
+    top: 0;
+    right: var(--pad-x);
+    height: var(--band-h);
+    line-height: var(--band-h);
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.55);
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   COVER / TITLE SLIDE   <!-- _class: lead -->
+   ═══════════════════════════════════════════════════════════════════ */
+section.lead {
+    --cover-band: 230px;
+    /* tall green top bar on the cover */
+
+    background-image: linear-gradient(to bottom,
+            var(--green) 0px,
+            var(--green) var(--cover-band),
+            var(--white) var(--cover-band),
+            var(--white) 100%);
+
+    padding: 0 80px 60px;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+}
+
+/*
+ * On the cover slide, show the header element inside the green band.
+ * Put the institution logo/name text in the `header:` directive,
+ * e.g.:  header: "INSTITUTO FEDERAL | Sul-rio-grandense | Câmpus Charqueadas"
+ */
+section.lead header {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--cover-band);
+    padding: 0 60px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: 0.02em;
+    background-image: url('/marp/assets/ifsul-logo.webp');
+    background-size: auto 60%;
+    background-position: 50px center;
+    background-repeat: no-repeat;
+}
+
+/* h1 on cover: large lime-green course title */
+section.lead h1 {
+    position: static;
+    height: auto;
+    padding: 0;
+    margin-top: calc(var(--cover-band) + 150px);
+    margin-bottom: 10px;
+    font-size: 56px;
+    font-weight: 700;
+    color: var(--green-light);
+    text-align: center;
+    line-height: 1.1;
+    display: block;
+    width: 100%;
+}
+
+/* h2 on cover: topic/subtitle in muted grey */
+section.lead h2 {
+    font-size: 28px;
+    font-weight: 400;
+    color: var(--green);
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 0;
+    width: 100%;
+}
+
+/* paragraphs on cover: author name / email in bold lime green */
+section.lead p {
+    font-size: 21px;
+    font-weight: 700;
+    color: var(--green-light);
+    text-align: center;
+    margin-top: 100px;
+    line-height: 1.7;
+    width: 100%;
+}
+
+section.lead footer,
+section.lead::after {
+    display: none;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   SECTION DIVIDER   <!-- _class: divider -->
+   ═══════════════════════════════════════════════════════════════════ */
+section.divider {
+    background-image: none;
+    background-color: var(--green);
+    padding: 0 80px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+section.divider h1 {
+    position: static;
+    height: auto;
+    padding: 0;
+    font-size: 58px;
+    font-weight: 700;
+    color: var(--white);
+    display: block;
+    margin: 0 0 14px;
+    width: 100%;
+    text-align: center;
+}
+
+section.divider h2 {
+    font-size: 26px;
+    font-weight: 400;
+    color: var(--green-light);
+    text-align: center;
+    margin: 0;
+}
+
+section.divider footer,
+section.divider::after {
+    display: none;
+}
