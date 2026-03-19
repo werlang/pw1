@@ -1,6 +1,6 @@
 ---
 name: guia-readme
-description: "Use when creating, revising, or expanding README files so they become guias de referencia for a section, lesson, topic, or mini-project. Trigger for requests like: melhorar README, transformar slide em guia, criar material de apoio, padronizar documentacao didatica, escrever guia de JS/DOM/eventos/PHP/API/fetch."
+description: "Transform section, lesson, topic, or mini-project README files into clear didactic reference guides in Portuguese, with consistent structure, small examples, and student-friendly explanations. Use when Agent needs to create, expand, rewrite, or standardize a README for aula, material de apoio, referencia conceitual, guia pratico, enunciado de exercicio, documentacao de API, or when requests mention: melhorar README, transformar slide em guia, criar guia de JS/DOM/eventos/PHP/fetch, padronizar documentacao didatica."
 ---
 
 # Guia READMEs
@@ -25,6 +25,13 @@ Produzir um README que funcione como material de consulta. O texto deve equilibr
 - precisao tecnica suficiente para servir de referencia
 - exemplos pequenos e concretos
 - organizacao que facilite leitura posterior
+
+## Recursos desta skill
+
+Use estes arquivos quando precisar acelerar a execucao:
+
+- `README-TEMPLATE.md` para partir de uma estrutura base
+- `CHECKLIST.md` para revisar clareza, profundidade e consistencia final
 
 ## Regras do repositorio
 
@@ -187,20 +194,13 @@ Antes de concluir, confira:
 - se os exemplos nao contradizem o restante do repositorio
 - se a progressao vai do simples para o importante
 
-## Checklist de qualidade
-
-Um bom README-guia deste repositorio deve:
-
-- ensinar o conceito principal sem depender do professor explicar tudo oralmente
-- servir como material de consulta depois da aula
-- usar exemplos plausiveis para quem esta aprendendo
-- ser tecnicamente correto
-- estar organizado com secoes curtas e previsiveis
-- evitar excesso de floreio ou de formalidade
-
 ## Template
 
 Use o arquivo `README-TEMPLATE.md` desta skill como ponto de partida. Adapte a estrutura ao tipo de secao, sem seguir o template de forma rigida.
+
+## Revisao final
+
+Antes de concluir, releia `CHECKLIST.md` e confirme que o README ficou realmente melhor como guia, e nao apenas maior.
 
 ## Saida esperada
 

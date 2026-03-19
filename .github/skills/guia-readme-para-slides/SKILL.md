@@ -1,6 +1,6 @@
 ---
 name: guia-readme-para-slides
-description: "Use when creating, revising, or expanding Marp slides from a README guide for a class topic. Trigger for requests like: criar slide a partir do README, transformar guia em slides, resumir README para aula, montar apresentacao Marp, criar material resumido para o professor, converter guia em slide de apoio."
+description: "Transform a didactic README guide into a concise Marp slide deck for class, aligned with the ifsul theme and the pattern of marp/content/00-introducao.md. Use when Agent needs to create, revise, or expand lecture slides from a README, summarize a long guide for aula, montar apresentacao Marp, criar slide de apoio para o professor, or produce a short teaching deck with image placeholders."
 ---
 
 # Guia README para Slides
@@ -36,6 +36,13 @@ O deck final deve equilibrar:
 - ritmo de apresentacao
 - legibilidade em projetor
 - reutilizacao posterior pelo professor
+
+## Recursos desta skill
+
+Use estes arquivos durante a execucao:
+
+- `MARP-TEMPLATE.md` para iniciar o deck no formato da disciplina
+- `CHECKLIST.md` para revisar densidade visual, estrutura e consistencia final
 
 ## Entradas esperadas
 
@@ -207,19 +214,13 @@ Evite despejar no slide:
 
 Esses itens podem permanecer no README e serem apenas mencionados na apresentacao.
 
-## Checklist de revisao
-
-Antes de entregar:
-
-- confirme que o deck segue o tema e a estrutura do exemplo
-- confirme que o texto foi resumido de verdade, e nao apenas copiado
-- confirme que nao ha slide visualmente apertado
-- confirme que cada slide sustenta uma fala do professor
-- confirme que o material ainda funciona como resumo posterior
-
 ## Template
 
 Use o arquivo `MARP-TEMPLATE.md` desta skill como ponto de partida e revise com o apoio de `CHECKLIST.md`.
+
+## Revisao final
+
+Antes de concluir, releia `CHECKLIST.md` slide a slide. Se um slide parecer apertado no editor, reescreva ou divida.
 
 ## Saida esperada
 
