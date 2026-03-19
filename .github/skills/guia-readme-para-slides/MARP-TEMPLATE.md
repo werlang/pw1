@@ -18,11 +18,12 @@ pablowerlang@ifsul.edu.br
 # {{ASSUNTO}}
 
 - ideia central do tema em 1 frase curta
-- 3 a 4 objetivos ou pontos de orientacao
-- evitar detalhes tecnicos longos logo na abertura
+- 3 a 4 objetivos ou pontos de orientação
+- linguagem viva e próxima da aula
+- evitar detalhes técnicos longos logo na abertura
 
 <div class="media align-bottom">
-    <!-- Imagem sugerida: visao geral do assunto {{ASSUNTO}} -->
+    <!-- Imagem sugerida: visão geral do assunto {{ASSUNTO}}, de preferência com apelo visual ou toque bem-humorado -->
 </div>
 
 ---
@@ -36,7 +37,7 @@ pablowerlang@ifsul.edu.br
 # {{BLOCO 1}}
 ## {{SLIDE CONCEITUAL}}
 
-- definicao curta
+- definição curta
 - ponto essencial 1
 - ponto essencial 2
 - ponto essencial 3
@@ -52,7 +53,7 @@ pablowerlang@ifsul.edu.br
 4. passo curto 4
 
 <div class="media align-center">
-    <!-- Imagem sugerida: diagrama do fluxo ou mecanismo principal -->
+    <!-- Imagem sugerida: diagrama do fluxo ou metáfora visual marcante para o mecanismo principal -->
 </div>
 
 ---
@@ -81,6 +82,10 @@ pablowerlang@ifsul.edu.br
 </div>
 </div>
 
+<div class="media align-center">
+    <!-- Imagem sugerida: comparação visual chamativa ou engraçada entre {{ITEM A}} e {{ITEM B}} -->
+</div>
+
 ---
 
 # {{BLOCO 2}}
@@ -93,6 +98,20 @@ elemento.addEventListener('evento', () => {
     console.log('acao principal');
 });
 ```
+
+---
+
+# {{ASSUNTO}}
+## Exercício ou demo
+
+- o que o estudante vai construir
+- qual pasta ou exercício observar
+- qual conceito da aula será praticado
+- link da demo rodando, quando houver
+
+<div class="media align-center">
+    <!-- Imagem sugerida: algo divertido ou memorável ligado ao exercício -->
+</div>
 
 ---
 

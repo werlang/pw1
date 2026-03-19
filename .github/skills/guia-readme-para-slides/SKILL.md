@@ -5,15 +5,16 @@ description: "Transform a didactic README guide into a concise Marp slide deck f
 
 # Guia README para Slides
 
-Esta skill serve para transformar um README-guia extenso em uma apresentacao Marp curta, clara e utilizavel em aula.
+Esta skill serve para transformar um README-guia extenso em uma apresentação Marp curta, clara, envolvente e utilizável em aula.
 
-O resultado esperado nao e um texto corrido repartido em telas. O objetivo e produzir slides que:
+O resultado esperado não é um texto corrido repartido em telas. O objetivo é produzir slides que:
 
-- resumam o conteudo essencial
-- apoiem a apresentacao oral do professor
-- tambem funcionem como material resumido de consulta
-- sigam o padrao visual da disciplina em `marp/content/00-introducao.md`
+- resumam o conteúdo essencial
+- apoiem a apresentação oral do professor
+- também funcionem como material resumido de consulta
+- sigam o padrão visual da disciplina em `marp/content/00-introducao.md`
 - respeitem o limite visual de cada slide
+- tenham voz didática própria, com mais personalidade e mais apelo visual
 
 ## Quando usar
 
@@ -27,15 +28,16 @@ Use esta skill quando o pedido envolver:
 
 ## Objetivo
 
-Produzir um arquivo Markdown para Marp com foco didatico. Cada slide deve carregar uma ideia central e evitar excesso de texto.
+Produzir um arquivo Markdown para Marp com foco didático. Cada slide deve carregar uma ideia central, evitar excesso de texto e ajudar a manter a turma engajada.
 
 O deck final deve equilibrar:
 
-- sintese do conteudo
-- precisao tecnica
+- síntese do conteúdo
+- precisão técnica
 - ritmo de apresentacao
 - legibilidade em projetor
-- reutilizacao posterior pelo professor
+- reutilização posterior pelo professor
+- linguagem mais viva e mais próxima dos estudantes
 
 ## Recursos desta skill
 
@@ -51,21 +53,73 @@ Antes de escrever os slides, identifique:
 1. o README-guia que sera resumido
 2. o nome do assunto e da secao
 3. o local do arquivo de saida em `marp/content/`
-4. se ha exemplos praticos na pasta que merecem mencao curta
+4. se há exemplos práticos na pasta que merecem menção curta
+5. se há exercícios, demos ou páginas publicadas que devam ser linkados
 
-Se existir material complementar na pasta do assunto, use-o apenas para calibrar exemplos e vocabulario. O README continua sendo a fonte principal.
+Se existir material complementar na pasta do assunto, use-o para calibrar exemplos, vocabulário, exercícios e links úteis. O README continua sendo a fonte principal, mas o deck deve conversar com a prática da seção.
 
-## Regras do repositorio
+## Regras do repositório
 
-Antes de gerar os slides, respeite estas convencoes:
+Antes de gerar os slides, respeite estas convenções:
 
 - siga o padrao do arquivo `marp/content/00-introducao.md`
 - use `theme: ifsul`
 - mantenha `header: ' '` e o mesmo footer institucional
-- preserve o tom didatico em portugues
-- mantenha o conteudo claro para estudantes iniciantes
-- trate o slide como apoio de aula, nao como apostila completa
-- se precisar de imagens, deixe apenas a descricao do que deve ser ilustrado
+- preserve o tom didático em português
+- use acentuação correta no texto dos slides; só deixe sem acento quando for código, identificador, caminho, URL ou citação literal
+- mantenha o conteúdo claro para estudantes iniciantes, especialmente ensino médio
+- trate o slide como apoio de aula, não como apostila completa
+- se precisar de imagens, deixe apenas a descrição do que deve ser ilustrado
+
+## Tom e linguagem
+
+O tom esperado não é neutro demais. Prefira uma linguagem:
+
+- didática, leve e conversada
+- compatível com estudantes do ensino médio
+- com humor pontual, sem virar piada interna o tempo todo
+- tecnicamente correta, mas sem formalismo excessivo
+- com vocabulário que soe próximo da aula ao vivo
+
+Boas direções de tom:
+
+- usar frases como “quando algo acontece”, “o navegador avisa”, “esse evento sobe pelo DOM”
+- usar exemplos que soem concretos e familiares
+- incluir títulos ou chamadas com energia quando isso melhorar o ritmo da apresentação
+
+Evite:
+
+- texto burocrático demais
+- linguagem universitária excessivamente formal
+- humor que dependa de humilhação do aluno ou de referência muito obscura
+
+## Padrão de títulos
+
+Quando fizer sentido para a fluidez do deck, prefira reforçar o assunto principal no `#` de cada slide e usar o `##` para o foco da tela.
+
+Exemplo:
+
+- `# Eventos em JavaScript`
+- `## O objeto event`
+
+Esse padrão ajuda a manter contexto visual constante durante a aula.
+
+## Uso de imagens e apelo visual
+
+As imagens sugeridas não precisam ser apenas literais. Prefira descrições de imagens que:
+
+- ilustrem o conceito de forma figurativa
+- chamem atenção e ajudem a engajar
+- possam ser engraçadas, inesperadas ou memoráveis
+- usem animais, memes, situações absurdas leves ou comparações visuais quando isso ajudar a aula
+
+Exemplos de boas descrições:
+
+- “animal protegendo a entrada para representar `preventDefault()`”
+- “meme de reação para representar um evento sendo disparado”
+- “imagem engraçada de algo escalando para ilustrar bubbling no DOM”
+
+Se a imagem tiver função mais didática do que técnica, isso é aceitável. O objetivo é apoiar a explicação e prender atenção.
 
 ## Fluxo de trabalho
 
@@ -75,8 +129,10 @@ Antes de escrever qualquer slide:
 
 - leia o README inteiro
 - identifique objetivos de aprendizagem
-- separe conceitos centrais de detalhes secundarios
-- marque trechos que devem virar fala do professor, nao texto de slide
+- separe conceitos centrais de detalhes secundários
+- marque trechos que devem virar fala do professor, não texto de slide
+- observe o vocabulário da seção para aproximar o tom da aula
+- procure exemplos, demos, exercícios e links publicados relacionados ao tema
 
 ### 2. Extrair a espinha dorsal do assunto
 
@@ -90,6 +146,7 @@ Monte um roteiro curto com 5 a 10 blocos, por exemplo:
 6. erros comuns
 7. boas praticas
 8. fechamento
+9. exercícios ou próximos passos práticos
 
 Nem todo assunto precisa usar todos esses blocos. Prefira cortar do que condensar demais um slide.
 
@@ -105,16 +162,30 @@ Cada slide deve responder a uma pergunta clara, como:
 
 Se um trecho exigir explicacao longa, divida em dois ou mais slides.
 
-### 4. Ajustar para apresentacao
+### 4. Ajustar para apresentação
 
 Ao resumir:
 
 - mantenha apenas palavras-chave, listas curtas e exemplos pequenos
-- remova frases redundantes e explicacoes completas que pertencem ao README
+- remova frases redundantes e explicações completas que pertencem ao README
 - troque paragrafos extensos por bullets ou comparacoes lado a lado
 - use slide divisor para separar blocos grandes do assunto
+- prefira formulações com mais personalidade do que descrições excessivamente neutras
+- preserve a energia de aula: clareza primeiro, secura nunca por padrão
 
-### 5. Revisar o espaco visual
+### 5. Mapear prática, exercícios e links
+
+Quando a seção tiver subpastas com exemplos, exercícios ou demos:
+
+- inclua um bloco final de exercícios ou aplicações
+- diga brevemente o que o aluno vai construir
+- cite a pasta ou exercício correspondente
+- inclua o link da versão publicada em GitHub Pages quando existir ou quando puder ser inferido com segurança a partir do padrão do repositório
+- quando útil, inclua também links de assets relevantes usados pelo exercício
+
+O slide de exercício deve funcionar como ponte entre teoria e prática, não como mera lista de links.
+
+### 6. Revisar o espaço visual
 
 Antes de concluir, confira se cada slide cabe confortavelmente na area util.
 
@@ -124,6 +195,7 @@ Se houver risco de excesso:
 - reduza exemplos
 - substitua texto por uma imagem sugerida
 - use layout em grade quando fizer sentido
+- considere dividir o conteúdo em duas telas: conceito e exercício, teoria e meme visual, definição e exemplo
 
 ## Estrutura recomendada do deck
 
@@ -135,17 +207,19 @@ Adapte ao assunto, mas em geral siga esta ordem:
 4. slides de mecanismo, fluxo ou sintaxe
 5. slides de exemplos minimos ou comparacoes
 6. slide de erros comuns ou boas praticas
-7. slide final de resumo
+7. bloco final de exercícios, demos ou aplicações práticas
+8. slide final de resumo
 
-## Padrao visual esperado
+## Padrão visual esperado
 
-Use o padrao do exemplo fornecido:
+Use o padrão do exemplo fornecido:
 
 - frontmatter Marp no topo
 - slide inicial com `<!-- _class: lead -->`
 - separadores com `<!-- _class: divider -->` quando houver mudanca de bloco
 - uso moderado de `grid`, `media`, `align-right`, `align-center`, `align-bottom`, `size-v`
-- imagens apenas quando realmente ajudarem o professor a explicar
+- imagens quando realmente ajudarem o professor a explicar ou quando deixarem o conceito mais memorável
+- preferência por placeholders de imagem com intenção visual clara, não descrições genéricas demais
 
 ## Regras de densidade por slide
 
@@ -159,6 +233,7 @@ Estas regras sao obrigatorias para manter legibilidade:
 - codigo apenas quando for essencial e com no maximo 6 a 10 linhas visiveis
 - comparacoes com muito texto devem usar grade em 2 colunas ou virar 2 slides
 - se um slide parece apertado no editor, ele esta grande demais
+- links podem aparecer no slide quando fizerem parte da condução prática da aula
 
 ## Como resumir conteudo extenso
 
@@ -172,7 +247,7 @@ Ao transformar texto longo em slide:
 
 ## Uso de imagens e diagramas
 
-Quando uma imagem for desejavel, nao invente um arquivo real. Use apenas a estrutura visual com descricao da ilustracao.
+Quando uma imagem for desejável, não invente um arquivo real. Use apenas a estrutura visual com descrição da ilustração.
 
 Padrao recomendado:
 
@@ -182,13 +257,14 @@ Padrao recomendado:
 </div>
 ```
 
-Descricoes boas de imagem:
+Descrições boas de imagem:
 
 - dizem o que precisa ser ilustrado
 - ajudam o professor a produzir o material depois
 - evitam ser vagas como "imagem sobre o tema"
+- podem indicar humor, contraste visual ou atmosfera da tela
 
-## Tratamento de exemplos e codigo
+## Tratamento de exemplos e código
 
 Exemplos em slide devem obedecer a estas regras:
 
@@ -196,14 +272,28 @@ Exemplos em slide devem obedecer a estas regras:
 - caber confortavelmente na tela
 - reforcar um conceito que acabou de ser apresentado
 - evitar duplicar exemplos muito parecidos
+- soar relevantes para quem vai praticar logo depois
 
 Se o README tiver muitos exemplos, escolha apenas:
 
 - o exemplo minimo correto
 - um contraste importante
 - um erro comum pequeno, se isso ajudar a aula
+- um exemplo prático ou exercício que dê vontade de testar
 
-## Conteudos que costumam virar fala, nao slide
+## Exercícios, demos e links
+
+Se houver exercícios ou demos associados à seção, isso deve aparecer explicitamente no deck.
+
+Preferências para esse bloco:
+
+- incluir uma explicação curta do que cada exercício pede
+- apontar a pasta ou nome do exercício
+- incluir o link da demo rodando, quando existir
+- usar formulações motivadoras, por exemplo jogos, nave, clique, bônus, desafios extras
+- quando fizer sentido, separar um exercício principal e um slide só de bônus ou extensões
+
+## Conteúdos que costumam virar fala, não slide
 
 Evite despejar no slide:
 
@@ -212,17 +302,17 @@ Evite despejar no slide:
 - listas muito extensas de propriedades ou eventos
 - detalhes de excecao que nao sao centrais para a aula
 
-Esses itens podem permanecer no README e serem apenas mencionados na apresentacao.
+Esses itens podem permanecer no README e serem apenas mencionados na apresentação.
 
 ## Template
 
 Use o arquivo `MARP-TEMPLATE.md` desta skill como ponto de partida e revise com o apoio de `CHECKLIST.md`.
 
-## Revisao final
+## Revisão final
 
 Antes de concluir, releia `CHECKLIST.md` slide a slide. Se um slide parecer apertado no editor, reescreva ou divida.
 
-## Saida esperada
+## Saída esperada
 
 Ao aplicar esta skill, o agente deve:
 
@@ -231,4 +321,7 @@ Ao aplicar esta skill, o agente deve:
 3. montar um roteiro curto de apresentacao
 4. gerar um arquivo Marp no padrao da disciplina
 5. revisar a densidade visual slide a slide
-6. deixar descricoes de imagens quando elas fizerem falta
+6. deixar descrições de imagens quando elas fizerem falta
+7. usar português com acentuação correta
+8. adotar um tom mais vivo, leve e compatível com ensino médio
+9. incluir exercícios, demos e links publicados quando houver material correspondente

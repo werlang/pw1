@@ -18,6 +18,9 @@ Use esta lista antes de concluir um deck gerado a partir de README.
 - a ordem dos slides vai do basico ao importante
 - os termos tecnicos foram mantidos apenas quando necessarios
 - exemplos foram reduzidos ao minimo util
+- o texto usa acentuacao correta quando nao for codigo ou URL
+- o tom soa proximo da fala em sala, sem ficar burocratico demais
+- a linguagem conversa bem com estudantes do ensino medio
 
 ## Densidade visual
 
@@ -27,12 +30,14 @@ Use esta lista antes de concluir um deck gerado a partir de README.
 - nao ha paragrafos extensos na tela
 - nao ha bloco de codigo maior do que o necessario
 - nao ha combinacao de lista longa + imagem + codigo no mesmo slide
+- os links presentes na tela sao poucos e entram como parte da aula, nao como excesso visual
 
 ## Layout
 
 - grades foram usadas apenas quando ajudam a comparar informacoes
 - slides divisores foram usados para separar blocos grandes
 - imagens foram substituidas por descricoes claras quando necessario
+- as descricoes de imagem tem intencao visual clara e, quando util, um toque bem-humorado ou memoravel
 - nenhum slide parece apertado no editor
 
 ## Consistencia com o repositorio
@@ -40,3 +45,5 @@ Use esta lista antes de concluir um deck gerado a partir de README.
 - o estilo segue `marp/content/00-introducao.md`
 - o texto esta em portugues e com tom didatico
 - o slide funciona como apoio ao professor e como resumo posterior
+- ha bloco de exercicios, demos ou aplicacoes quando a secao pede isso
+- os exercicios explicam rapidamente o que fazer e trazem link da demonstracao quando houver
