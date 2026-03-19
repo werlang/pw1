@@ -151,7 +151,7 @@ section h2 {
 
 /* ─── h3, h4 — sub-headings inside body content ────────────────── */
 section h3 {
-    font-size: 23px;
+    font-size: 32px;
     font-weight: 700;
     color: var(--green);
     margin-top: 22px;
@@ -570,6 +570,7 @@ section.lead h1 {
 
 /* h2 on cover: topic/subtitle in muted grey */
 section.lead h2 {
+    position: static;
     font-size: 28px;
     font-weight: 400;
     color: var(--green);
