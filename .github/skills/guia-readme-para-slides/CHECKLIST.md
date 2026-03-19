@@ -1,0 +1,42 @@
+# Checklist de Slides
+
+Use esta lista antes de concluir um deck gerado a partir de README.
+
+## Estrutura geral
+
+- o arquivo esta em Markdown para Marp
+- o frontmatter usa `marp: true`
+- o tema e `ifsul`
+- `header: ' '` e o footer institucional foram mantidos
+- existe slide de abertura no padrao da disciplina
+- existe slide final de resumo
+
+## Qualidade didatica
+
+- o deck resume o README em vez de copiar blocos grandes de texto
+- cada slide sustenta uma explicacao oral clara
+- a ordem dos slides vai do basico ao importante
+- os termos tecnicos foram mantidos apenas quando necessarios
+- exemplos foram reduzidos ao minimo util
+
+## Densidade visual
+
+- cada slide tem uma ideia principal
+- a maioria dos slides tem de 3 a 5 bullets
+- nao ha bullets longos quebrando varias linhas
+- nao ha paragrafos extensos na tela
+- nao ha bloco de codigo maior do que o necessario
+- nao ha combinacao de lista longa + imagem + codigo no mesmo slide
+
+## Layout
+
+- grades foram usadas apenas quando ajudam a comparar informacoes
+- slides divisores foram usados para separar blocos grandes
+- imagens foram substituidas por descricoes claras quando necessario
+- nenhum slide parece apertado no editor
+
+## Consistencia com o repositorio
+
+- o estilo segue `marp/content/00-introducao.md`
+- o texto esta em portugues e com tom didatico
+- o slide funciona como apoio ao professor e como resumo posterior
