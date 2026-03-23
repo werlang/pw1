@@ -1,8 +1,12 @@
 #!/usr/bin/env node
 
-const fs = require('node:fs/promises');
-const path = require('node:path');
-const { spawn } = require('node:child_process');
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import { spawn } from 'node:child_process';
+import { fileURLToPath } from 'node:url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const ROOT_DIR = path.resolve(__dirname);
 const REPO_DIR = path.resolve(ROOT_DIR, '..');

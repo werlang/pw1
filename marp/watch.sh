@@ -12,8 +12,8 @@ if ! command -v docker >/dev/null 2>&1; then
     exit 1
 fi
 
-if [ ! -f "$SCRIPT_DIR/watch.js" ]; then
-    echo "Erro: arquivo nao encontrado: $SCRIPT_DIR/watch.js" >&2
+if [ ! -f "$SCRIPT_DIR/watch.mjs" ]; then
+    echo "Erro: arquivo nao encontrado: $SCRIPT_DIR/watch.mjs" >&2
     exit 1
 fi
 
@@ -24,4 +24,4 @@ exec docker run --rm -it \
     --env "LANG=$LANG_VALUE" \
     --env "HOME=/tmp" \
     node:24-alpine \
-    node ./watch.js
+    node ./watch.mjs
