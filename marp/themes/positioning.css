@@ -2,74 +2,406 @@
  * @theme positioning
 */
 
-section .grid {
+section :where(.grid, .inline-grid) {
   display: grid;
   gap: 24px;
   align-items: start;
+  align-content: start;
+  min-width: 0;
+  min-height: 0;
+  height: 100%;
 }
 
-section .grid-2 {
-  grid-template-columns: 1fr 1fr;
+section :where(.inline-grid) {
+  display: inline-grid;
 }
 
-section .grid-3 {
-  grid-template-columns: repeat(3, 1fr);
+section :where(.flex, .inline-flex) {
+  display: flex;
+  min-width: 0;
+  min-height: 0;
 }
 
-section .span-2 {
-  grid-column: span 2;
+section :where(.inline-flex) {
+  display: inline-flex;
 }
 
-section .span-3 {
-  grid-column: span 3;
+section :where(.flex-row) {
+  flex-direction: row;
+}
+
+section :where(.flex-col) {
+  flex-direction: column;
+}
+
+section :where(.flex-wrap) {
+  flex-wrap: wrap;
+}
+
+section :where(.flex-nowrap) {
+  flex-wrap: nowrap;
+}
+
+section :where(.grow) {
+  flex-grow: 1;
+}
+
+section :where(.shrink-0) {
+  flex-shrink: 0;
+}
+
+section :where(.grid-cols-1) {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+section :where(.grid-cols-2) {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+section :where(.grid-cols-3) {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+section :where(.grid-cols-4) {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+section :where(.grid-rows-1) {
+  grid-template-rows: repeat(1, minmax(0, 1fr));
+}
+
+section :where(.grid-rows-2) {
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+}
+
+section :where(.grid-rows-3) {
+  grid-template-rows: repeat(3, minmax(0, 1fr));
+}
+
+section :where(.grid-rows-4) {
+  grid-template-rows: repeat(4, minmax(0, 1fr));
+}
+
+section :where(.col-span-1) {
+  grid-column: span 1 / span 1;
+}
+
+section :where(.col-span-2) {
+  grid-column: span 2 / span 2;
+}
+
+section :where(.col-span-3) {
+  grid-column: span 3 / span 3;
+}
+
+section :where(.col-span-4) {
+  grid-column: span 4 / span 4;
+}
+
+section :where(.row-span-1) {
+  grid-row: span 1 / span 1;
+}
+
+section :where(.row-span-2) {
+  grid-row: span 2 / span 2;
+}
+
+section :where(.row-span-3) {
+  grid-row: span 3 / span 3;
+}
+
+section :where(.row-span-4) {
+  grid-row: span 4 / span 4;
+}
+
+section :where(.gap-0) {
+  gap: 0;
+}
+
+section :where(.gap-2) {
+  gap: 8px;
+}
+
+section :where(.gap-4) {
+  gap: 16px;
+}
+
+section :where(.gap-6) {
+  gap: 24px;
+}
+
+section :where(.gap-8) {
+  gap: 32px;
+}
+
+section :where(.justify-start) {
+  justify-content: flex-start;
+}
+
+section :where(.justify-center) {
+  justify-content: center;
+}
+
+section :where(.justify-end) {
+  justify-content: flex-end;
+}
+
+section :where(.justify-between) {
+  justify-content: space-between;
+}
+
+section :where(.justify-around) {
+  justify-content: space-around;
+}
+
+section :where(.justify-evenly) {
+  justify-content: space-evenly;
+}
+
+section :where(.items-start) {
+  align-items: flex-start;
+}
+
+section :where(.items-center) {
+  align-items: center;
+}
+
+section :where(.items-end) {
+  align-items: flex-end;
+}
+
+section :where(.items-stretch) {
+  align-items: stretch;
+}
+
+section :where(.justify-items-start) {
+  justify-items: start;
+}
+
+section :where(.justify-items-center) {
+  justify-items: center;
+}
+
+section :where(.justify-items-end) {
+  justify-items: end;
+}
+
+section :where(.justify-items-stretch) {
+  justify-items: stretch;
+}
+
+section :where(.content-start) {
+  align-content: start;
+}
+
+section :where(.content-center) {
+  align-content: center;
+}
+
+section :where(.content-end) {
+  align-content: end;
+}
+
+section :where(.content-between) {
+  align-content: space-between;
+}
+
+section :where(.content-around) {
+  align-content: space-around;
+}
+
+section :where(.content-evenly) {
+  align-content: space-evenly;
+}
+
+section :where(.content-stretch) {
+  align-content: stretch;
+}
+
+section :where(.place-items-start) {
+  place-items: start;
+}
+
+section :where(.place-items-center) {
+  place-items: center;
+}
+
+section :where(.place-items-end) {
+  place-items: end;
+}
+
+section :where(.place-items-stretch) {
+  place-items: stretch;
+}
+
+section :where(.self-start) {
+  align-self: flex-start;
+}
+
+section :where(.self-center) {
+  align-self: center;
+}
+
+section :where(.self-end) {
+  align-self: flex-end;
+}
+
+section :where(.self-stretch) {
+  align-self: stretch;
+}
+
+section :where(.justify-self-start) {
+  justify-self: start;
+}
+
+section :where(.justify-self-center) {
+  justify-self: center;
+}
+
+section :where(.justify-self-end) {
+  justify-self: end;
+}
+
+section :where(.justify-self-stretch) {
+  justify-self: stretch;
+}
+
+section :where(.place-self-start) {
+  place-self: start;
+}
+
+section :where(.place-self-center) {
+  place-self: center;
+}
+
+section :where(.place-self-end) {
+  place-self: end;
+}
+
+section :where(.place-self-stretch) {
+  place-self: stretch;
+}
+
+section :where(.w-full) {
+  width: 100%;
+}
+
+section :where(.h-auto) {
+  height: auto;
+}
+
+section :where(.h-full) {
+  height: 100%;
+}
+
+section :where(.size-full) {
+  width: 100%;
+  height: 100%;
+}
+
+section :where(.relative) {
+  position: relative;
+}
+
+section :where(.absolute) {
+  position: absolute;
+}
+
+section :where(.inset-0) {
+  inset: 0;
+}
+
+section :where(.inset-x-0) {
+  left: 0;
+  right: 0;
+}
+
+section :where(.inset-y-0) {
+  top: 0;
+  bottom: 0;
+}
+
+section :where(.top-0) {
+  top: 0;
+}
+
+section :where(.right-0) {
+  right: 0;
+}
+
+section :where(.bottom-0) {
+  bottom: 0;
+}
+
+section :where(.left-0) {
+  left: 0;
+}
+
+section :where(.overflow-hidden) {
+  overflow: hidden;
+}
+
+section :where(.overflow-auto) {
+  overflow: auto;
+}
+
+section :where(.overflow-visible) {
+  overflow: visible;
+}
+
+section :where(.mx-auto) {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+section :where(.my-auto) {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+section :where(.ml-auto) {
+  margin-left: auto;
+}
+
+section :where(.mr-auto) {
+  margin-right: auto;
+}
+
+section :where(.mt-auto) {
+  margin-top: auto;
+}
+
+section :where(.mb-auto) {
+  margin-bottom: auto;
+}
+
+section :where(.bleed-bottom) {
+  margin-bottom: calc(-1 * var(--bleed-bottom, 100px));
+}
+
+section :where(.object-contain) {
+  object-fit: contain;
+}
+
+section :where(.object-cover) {
+  object-fit: cover;
+}
+
+section :where(.object-center) {
+  object-position: center;
+}
+
+section :where(.object-left) {
+  object-position: left;
+}
+
+section :where(.object-right) {
+  object-position: right;
 }
 
 section .media img {
   display: block;
-  width: 100%;
-  height: auto;
-}
-
-section .media--sm {
-  max-width: 320px;
-}
-
-section .media--md {
-  max-width: 460px;
-}
-
-section .media--lg {
-  max-width: 640px;
-}
-
-section .align-center {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-section .align-left {
-  margin-right: auto;
-}
-
-section .align-right {
-  margin-left: auto;
-}
-
-section .media.size-v {
-    flex-grow: 1;
-    height: 100%;
-
-    img {
-        max-height: 100%;
-    }
-}
-
-section .align-bottom {
-    flex-grow: 1;
-    display: flex;
-    align-items: flex-end;
-
-    img {
-        margin: 0;
-    }
+  max-width: 100%;
+  max-height: 100%;
+  margin: 0;
 }
