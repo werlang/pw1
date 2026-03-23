@@ -4,7 +4,8 @@ const fs = require('node:fs/promises');
 const path = require('node:path');
 const { spawn } = require('node:child_process');
 
-const ROOT_DIR = process.cwd();
+const ROOT_DIR = path.resolve(__dirname);
+const REPO_DIR = path.resolve(ROOT_DIR, '..');
 const CONTENT_DIR = path.join(ROOT_DIR, 'content');
 const THEMES_DIR = path.join(ROOT_DIR, 'themes');
 const ASSETS_DIR = path.join(ROOT_DIR, 'assets');
@@ -164,7 +165,7 @@ async function moveGeneratedFiles() {
 
     const name = path.basename(entry.name, '.html');
     const sourcePath = path.join(CONTENT_DIR, entry.name);
-    const targetDir = path.resolve(ROOT_DIR, '..', name, 'slide');
+    const targetDir = path.join(REPO_DIR, name, 'slide');
     const targetPath = path.join(targetDir, 'index.html');
 
     await fs.mkdir(targetDir, { recursive: true });

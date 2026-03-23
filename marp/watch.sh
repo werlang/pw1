@@ -5,6 +5,7 @@
 
 LANG_VALUE="pt-BR.UTF-8"
 SCRIPT_DIR=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+REPO_DIR=$(CDPATH= cd -- "$SCRIPT_DIR/.." && pwd)
 
 if ! command -v docker >/dev/null 2>&1; then
     echo "Erro: docker nao encontrado." >&2
@@ -18,8 +19,8 @@ fi
 
 exec docker run --rm -it \
     --user "$(id -u):$(id -g)" \
-    --volume "$SCRIPT_DIR:/app" \
-    --workdir /app \
+    --volume "$REPO_DIR:/workspace" \
+    --workdir /workspace/marp \
     --env "LANG=$LANG_VALUE" \
     --env "HOME=/tmp" \
     node:24-alpine \
