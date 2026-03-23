@@ -22,7 +22,7 @@ pablowerlang@ifsul.edu.br
   - Back-end (Executa em um servidor remoto / na nuvem)
 - Desenvolveremos aplicações para Web de ponta-a-ponta
 
-<div class="media align-bottom">
+<div class="media flex items-end h-full">
     <img src="/marp/assets/00-flow.webp" alt="Fluxo da aplicacao web">
 </div>
 
@@ -31,8 +31,8 @@ pablowerlang@ifsul.edu.br
 # Introdução
 ## Front-end
 
-<div class="grid grid-3">
-    <div class="grid span-2">
+<div class="grid grid-cols-3">
+<div class="col-span-2">
 
 - Executa na máquina do usuário (navegador)
 - Estrutura do Documento — **HTML**
@@ -41,26 +41,22 @@ pablowerlang@ifsul.edu.br
 - Permite a construção de interfaces ricas e interativas
 - Não requer consulta aos dados armazenados em um servidor externo
 
-    </div>
-
-    <div>
-        <div class="media align-right">
-            <img src="/marp/assets/00-frontend.webp" alt="Front-end">
-        </div>
-    </div>
-</div>
-<div class="media align-center">
-    <img src="/marp/assets/00-flow.webp" alt="Fluxo da aplicacao web">
 </div>
 
+<div>
+    <div class="media ml-auto">
+        <img src="/marp/assets/00-frontend.webp" alt="Front-end">
+    </div>
+</div>
+</div>
 
 ---
 
 # Introdução
 ## Back-end
 
-<div class="grid grid-3">
-    <div class="grid span-2">
+<div class="grid grid-cols-3">
+<div class="col-span-2">
 
 - Executa em um servidor remoto / na nuvem
   - Fluxo dos dados e lógica da aplicação central
@@ -71,16 +67,13 @@ pablowerlang@ifsul.edu.br
   - Se comunica com banco de dados
   - Entrega dados estruturados **(JSON)**
 
-    </div>
+</div>
 
-    <div>
-        <div class="media align-right">
-            <img src="/marp/assets/00-backend.webp" alt="Back-end">
-        </div>
+<div>
+    <div class="media ml-auto">
+        <img src="/marp/assets/00-backend.webp" alt="Back-end">
     </div>
 </div>
-<div class="media align-center">
-    <img src="/marp/assets/00-flow.webp" alt="Fluxo da aplicacao web">
 </div>
 
 ---
@@ -88,8 +81,8 @@ pablowerlang@ifsul.edu.br
 # Introdução
 ## Front-end e Back-end
 
-<div class="media size-v">
-    <img src="/marp/assets/00-front-back.webp" alt="Front-end e Back-end">
+<div class="media size-full">
+    <img class="size-full" src="/marp/assets/00-front-back.webp" alt="Front-end e Back-end">
 </div>
 
 ---
@@ -103,7 +96,7 @@ pablowerlang@ifsul.edu.br
 # Separação de Conceitos
 ## Cada arquivo com uma finalidade
 
-<div class="grid grid-2">
+<div class="grid grid-cols-2">
 <div>
 
 **HTML** — Estrutura inicial do documento
