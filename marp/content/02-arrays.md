@@ -53,9 +53,9 @@ pablowerlang@ifsul.edu.br
 const nomes = ['Ana', 'Bruno', 'Carla'];
 ```
 
-- É uma estrutura para guardar vários valores
+- É uma estrutura para guardar **vários valores**
 - Cada item ocupa uma posição na lista
-- O acesso é feito por índice com colchetes
+- O acesso é feito por **índice** com colchetes
 - Em JavaScript, o primeiro índice é `0`
 
 ---
@@ -331,7 +331,10 @@ const aprovadas = notas.filter((nota) => nota >= 7); // [7, 9, 8]
 const primeiras = notas.slice(0, 3); // [5, 7, 9]
 ```
 
+**OBS**: Uma função que possui **somente uma expressão** pode ser escrita sem chaves e `return`. Esta função **retorna o resultado da expressão**.
+
 ---
+
 # Arrays em JavaScript
 ## Transformar, filtrar, resumir
 
