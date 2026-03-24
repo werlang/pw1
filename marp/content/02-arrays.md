@@ -448,25 +448,61 @@ function removerNome(nome) {
 
 ---
 
+<!-- _class: divider -->
+
+# Exercícios
+
+---
+
 # Arrays em JavaScript
-## Exercícios da seção
+## Exercício: Lista básica
 
-<div class="grid grid-cols-2 gap-6">
-<div>
+- Crie uma lista em que o usuário digita um item e adiciona ao array
+- Mostre a quantidade total, o último item inserido e a lista em texto com `join()`
+- Inclua um botão para limpar tudo e restaurar a interface
+- A tela deve sempre ser reconstruída a partir do array atual
+- [Veja um exemplo de como pode ficar](https://werlang.github.io/pw1/02-arrays/lista-basica/)
 
-**Primeiro bloco**
+---
 
-- [`lista-basica/`](https://github.com/werlang/pw1/tree/main/02-arrays/lista-basica): cadastro, contagem e `join()`
-- [`busca-nomes/`](https://github.com/werlang/pw1/tree/main/02-arrays/busca-nomes): filtro parcial e busca exata
-- [`fila-atendimento/`](https://github.com/werlang/pw1/tree/main/02-arrays/fila-atendimento/): ordem de chegada e prioridade
+# Arrays em JavaScript
+## Exercício: Busca de nomes
 
-</div>
-<div>
+- Comece com um array já preenchido com vários nomes
+- Filtre a lista enquanto o usuário digita, ignorando maiúsculas e minúsculas
+- Se não houver resultado, a interface deve deixar isso claro
+- Adicione um botão para verificar a posição exata de um nome usando `indexOf()`
+- [Veja um exemplo de como pode ficar](https://werlang.github.io/pw1/02-arrays/busca-nomes/)
 
-**Segundo bloco**
+---
 
-- [`analisador-numeros/`](https://github.com/werlang/pw1/tree/main/02-arrays/analisador-numeros/): soma, média, maior e menor
-- [`playlist/`](https://github.com/werlang/pw1/tree/main/02-arrays/playlist/): início, fim, `indexOf()` e `splice()`
+# Arrays em JavaScript
+## Exercício: Fila de atendimento
 
-</div>
-</div>
+- Modele a fila com um array de nomes
+- Um botão adiciona no fim com `push()` e outro adiciona prioridade no início com `unshift()`
+- Um terceiro botão chama a próxima pessoa usando `shift()`
+- Exiba quem será o próximo atendimento, quantas pessoas aguardam e a fila completa
+- [Veja um exemplo de como pode ficar](https://werlang.github.io/pw1/02-arrays/fila-atendimento/)
+
+---
+
+# Arrays em JavaScript
+## Exercício: Analisador de números
+
+- Monte um array numérico a partir dos valores digitados no formulário
+- Converta a entrada com `Number()` antes de adicionar
+- Mostre a lista de números e um resumo com soma, média, maior e menor valor
+- Inclua um botão para limpar a análise e voltar ao estado inicial
+- [Veja um exemplo de como pode ficar](https://werlang.github.io/pw1/02-arrays/analisador-numeros/)
+
+---
+
+# Arrays em JavaScript
+## Exercício: Playlist
+
+- Crie uma playlist em array com ações para adicionar música no início e no fim
+- Mostre sempre qual é a primeira e a última música da lista
+- Permita remover uma música pelo nome, procurando antes com `indexOf()`
+- Use `splice()` para alterar a ordem real da playlist e renderizar novamente
+- [Veja um exemplo de como pode ficar](https://werlang.github.io/pw1/02-arrays/playlist/)
