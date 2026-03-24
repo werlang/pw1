@@ -16,15 +16,23 @@ pablowerlang@ifsul.edu.br
 ---
 
 # Eventos em JavaScript
+## O que é um evento?
+
+<div class="grid grid-cols-3 h-full">
+<div class="media flex h-full">
+  <img class="h-full" src="/marp/assets/01-events.png">
+</div>
+<div class="col-span-2 flex items-center h-full">
 
 - O navegador detecta interacoes e avisa o codigo
 - JavaScript reage no momento certo
 - Eventos sao a base de interfaces interativas
 - Hoje: clique, teclado, formularios e fluxo do DOM
 
-<div class="media align-center">
-    <!-- Imagem sugerida: usuario clicando, digitando e enviando formulario enquanto o navegador dispara eventos -->
 </div>
+</div>
+
+
 
 ---
 
@@ -51,8 +59,8 @@ pablowerlang@ifsul.edu.br
 
 ### O Que é um Evento?
 
-<div class="grid grid-3">
-<div class="grid span-2">
+<div class="grid grid-cols-3">
+<div class="col-span-2">
 
 - Um acontecimento detectado pelo navegador
 - Pode vir do usuário, da página ou da janela
@@ -64,9 +72,8 @@ Exemplos: `click`, `keydown`, `input`, `submit`, `load`
 </div>
 
 <div>
-<div class="media align-right">
-<!-- Imagem sugerida: algo que remeta de maneira bem-humorada a um evento sendo "escutado". -->
-<!-- Imagem sugerida: ação acontecendo que remeta que o evento foi disparado -->
+<div class="media ml-auto">
+  <img src="/marp/assets/01-listening.png">
 </div>
 </div>
 
@@ -114,7 +121,7 @@ function funcao() {
 
 - `addEventListener()`:  Forma recomendada para associar eventos
 
-<div class="grid grid-2">
+<div class="grid grid-cols-2">
 <div>
 
 - **Função anônima: lógica curta**
@@ -141,7 +148,7 @@ botao.addEventListener('click', () => {
 </div>
 </div>
 
-<div class="media align-center">
+<div class="media mx-auto">
     <!-- Imagem sugerida: comparação visual entre função nomeada, função anônima e arrow function -->
 </div>
 
@@ -176,7 +183,7 @@ campo.addEventListener('input', (event) => {
 # Eventos em JavaScript
 ## Categorias Mais Comuns
 
-<div class="grid grid-2">
+<div class="grid grid-cols-2">
 <div>
 
 **Mouse**
@@ -221,11 +228,14 @@ campo.addEventListener('input', (event) => {
 # Eventos em JavaScript
 ## `target` x `currentTarget`
 
-- `target`: elemento original do evento
-- `currentTarget`: elemento com o tratador atual
+<div class="grid grid-cols-3">
+<div class="col-span-2">
 
-<div class="grid grid-2">
-<div>
+```html
+<div id="card">
+  <button id="botao">Clique</button>
+</div>
+```
 
 ```javascript
 const card = document.querySelector('#card');
@@ -239,19 +249,24 @@ card.addEventListener('click', (event) => {
 </div>
 <div>
 
-```html
-<div id="card">
-  <button id="botao">Clique</button>
-</div>
-```
+<div class="flex flex-col gap-8">
+<div>
+
+- `target`: elemento original do evento
+- `currentTarget`: elemento com o tratador atual
 
 </div>
-</div>
+<div>
 
 Se a `div` tratar o clique do botao:
 
 - `target` sera o `button`
 - `currentTarget` sera a `div`
+
+</div>
+
+</div>
+</div>
 
 ---
 
@@ -262,13 +277,24 @@ Se a `div` tratar o clique do botao:
 - Um clique no botão pode chegar ao card
 - Isso explica tratadores disparando em cadeia
 
+<div class="grid grid-cols-2">
+<div>
+
 ```js
-card.addEventListener('click', () => console.log('card'));
-botao.addEventListener('click', () => console.log('botao'));
+card.addEventListener('click', () => {
+  console.log('card');
+});
+botao.addEventListener('click', () => {
+  console.log('botao');
+});
 ```
 
-<div class="media align-center">
-    <!-- Imagem sugerida: fluxo de propagacao de eventos, mostrando o clique no botao transicionando para o card -->
+</div>
+<div>
+  <div class="media flex">
+      <img class="h-full" src="/marp/assets/01-propagation.webp">
+  </div>
+</div>
 </div>
 
 ---
@@ -276,7 +302,7 @@ botao.addEventListener('click', () => console.log('botao'));
 # Eventos em JavaScript
 ## `preventDefault()` x `stopPropagation()`
 
-<div class="grid grid-2">
+<div class="flex gap-8 h-full items-center">
 <div>
 
 **`preventDefault()`**
@@ -285,7 +311,7 @@ botao.addEventListener('click', () => console.log('botao'));
 - Ex.: impedir envio do formulário
 - Ex.: impedir navegação do link
 
-<div class="media align-center">
+<div class="media mx-auto">
     <!-- Imagem sugerida: animal impedindo o comportamento padrao de outro animal -->
 </div>
 
@@ -298,7 +324,7 @@ botao.addEventListener('click', () => console.log('botao'));
 - Afeta o fluxo entre elementos
 - Use so quando houver necessidade clara
 
-<div class="media align-center">
+<div class="media mx-auto">
     <!-- Imagem sugerida: animal com um escudo bloqueando a propagacao do evento -->
 </div>
 
@@ -346,20 +372,23 @@ botao.addEventListener('click', () => console.log('botao'));
 # Eventos em JavaScript
 ## Exercício: Nave espacial
 
-<div class="grid grid-3">
-<div class="grid span-2">
+<div class="grid grid-cols-3">
+<div class="col-span-2">
 
 - Crie um jogo onde o usuário controla uma nave com as setas do teclado
-- Use o evento `keydown` para detectar as teclas pressionadas
+- Use o evento `keydown` para detectar as teclas pressionadas:
+    - `document.body.addEventListener('keydown', (event) => {...});`
+    - `event.key` traz a tecla pressionada
 - Atualize a posição da nave usando `style.left` e `style.top`
+    - `nave.style.left = novaPosicaoX + 'px';`
 - Use [esta imagem](https://werlang.github.io/pw1/01-eventos/spaceship/spaceship.png) para a nave
 - [Veja um exemplo de como pode ficar](https://werlang.github.io/pw1/01-eventos/spaceship/)
 
 </div>
 <div>
 
-<div class="media align-right">
-    <!-- Imagem sugerida: nave espacial do exemplo -->
+<div class="media ml-auto">
+    <img class="h-full" src="/marp/assets/01-spaceship.png">
 </div>
 
 </div>
@@ -370,8 +399,8 @@ botao.addEventListener('click', () => console.log('botao'));
 # Eventos em JavaScript
 ## Exercício: Nave espacial
 
-<div class="grid grid-3">
-<div class="grid span-2">
+<div class="grid grid-cols-3">
+<div class="col-span-2">
 
 - **[Bônus]** Implemente limites para que a nave não saia da tela
 - **[Bônus 2]** Adicione um plano de fundo estrelado que se move para dar a sensação de voo
@@ -380,7 +409,7 @@ botao.addEventListener('click', () => console.log('botao'));
 </div>
 <div>
 
-<div class="media align-right">
+<div class="media ml-auto">
     <!-- Imagem sugerida: nave espacial do exemplo -->
 </div>
 
