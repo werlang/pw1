@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boletim com Array de Objetos</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <main class="container">
+        <h1>Boletim com Array de Objetos</h1>
+        <p class="intro">Cadastre alunos, analise a turma e veja como arrays de objetos aparecem em cenários reais.</p>
+
+        <section class="painel formulario">
+            <div class="campo">
+                <label for="input-nome">Nome do aluno</label>
+                <input id="input-nome" type="text" placeholder="Ex.: Marina">
+            </div>
+            <div class="campo">
+                <label for="input-nota">Nota</label>
+                <input id="input-nota" type="number" min="0" max="10" step="0.1" placeholder="Ex.: 8.5">
+            </div>
+            <div class="acoes">
+                <button id="btn-adicionar" type="button">Adicionar aluno</button>
+                <button id="btn-analisar" type="button" class="secundario">Analisar turma</button>
+            </div>
+            <p id="mensagem" class="mensagem"></p>
+        </section>
+
+        <section class="painel tabela">
+            <h2>Turma</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Aluno</th>
+                        <th>Nota</th>
+                        <th>Situacao</th>
+                    </tr>
+                </thead>
+                <tbody id="lista-alunos"></tbody>
+            </table>
+        </section>
+
+        <section class="painel resumo">
+            <div class="card-resumo">
+                <span class="rotulo">Média da turma</span>
+                <strong id="media-turma">-</strong>
+            </div>
+            <div class="card-resumo">
+                <span class="rotulo">Maior nota</span>
+                <strong id="maior-nota">-</strong>
+            </div>
+            <div class="card-resumo destaque">
+                <span class="rotulo">Aprovados</span>
+                <strong id="aprovados">-</strong>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
