@@ -23,7 +23,7 @@ pablowerlang@ifsul.edu.br
 - Desenvolveremos aplicações para Web de ponta-a-ponta
 
 <div class="media flex items-end h-full">
-    <img src="/marp/assets/00-flow.webp" alt="Fluxo da aplicacao web">
+    <img src="../../marp/assets/00-flow.webp" alt="Fluxo da aplicacao web">
 </div>
 
 ---
@@ -45,7 +45,7 @@ pablowerlang@ifsul.edu.br
 
 <div>
     <div class="media ml-auto">
-        <img src="/marp/assets/00-frontend.webp" alt="Front-end">
+        <img src="../../marp/assets/00-frontend.webp" alt="Front-end">
     </div>
 </div>
 </div>
@@ -71,7 +71,7 @@ pablowerlang@ifsul.edu.br
 
 <div>
     <div class="media ml-auto">
-        <img src="/marp/assets/00-backend.webp" alt="Back-end">
+        <img src="../../marp/assets/00-backend.webp" alt="Back-end">
     </div>
 </div>
 </div>
@@ -82,7 +82,7 @@ pablowerlang@ifsul.edu.br
 ## Front-end e Back-end
 
 <div class="media size-full">
-    <img class="size-full" src="/marp/assets/00-front-back.webp" alt="Front-end e Back-end">
+    <img class="size-full" src="../../marp/assets/00-front-back.webp" alt="Front-end e Back-end">
 </div>
 
 ---

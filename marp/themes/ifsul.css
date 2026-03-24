@@ -546,7 +546,7 @@ section.lead header {
     font-weight: 700;
     color: var(--white);
     letter-spacing: 0.02em;
-    background-image: url('/marp/assets/ifsul-logo.webp');
+    background-image: url('../../marp/assets/ifsul-logo.webp');
     background-size: auto 60%;
     background-position: 50px center;
     background-repeat: no-repeat;

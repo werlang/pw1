@@ -78,7 +78,7 @@ Esses nomes foram removidos para manter um vocabulário previsível, escalável 
         </ul>
     </div>
     <div class="media ml-auto">
-        <img src="/marp/assets/exemplo.webp" alt="Exemplo">
+        <img src="..../../marp/assets/exemplo.webp" alt="Exemplo">
     </div>
 </div>
 ```
@@ -95,7 +95,7 @@ Esses nomes foram removidos para manter um vocabulário previsível, escalável 
 
 ```html
 <div class="relative h-full overflow-hidden">
-    <img class="absolute inset-0 size-full object-cover object-center" src="/marp/assets/fundo.webp" alt="Fundo">
+    <img class="absolute inset-0 size-full object-cover object-center" src="..../../marp/assets/fundo.webp" alt="Fundo">
     <div class="relative grid h-full place-items-center">
         <div class="w-full">
             <h3>Título</h3>

@@ -153,7 +153,7 @@ Grid, flex e alinhamento sem sofrer com CSS novo a cada slide.
         </ul>
     </div>
     <div class="media self-center ml-auto">
-        <img src="/marp/assets/exemplo.webp" alt="Exemplo">
+        <img src="../../marp/assets/exemplo.webp" alt="Exemplo">
     </div>
 </div>
 ```

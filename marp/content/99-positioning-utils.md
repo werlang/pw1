@@ -155,7 +155,7 @@ Classes utilitárias para controlar o slide com mais precisão.
 <div class="relative h-full overflow-hidden">
     <img
         class="absolute inset-0 size-full object-cover object-center"
-        src="/marp/assets/fundo.webp"
+        src="../../marp/assets/fundo.webp"
         alt="Imagem de fundo"
     >
 

@@ -20,7 +20,7 @@ pablowerlang@ifsul.edu.br
 
 <div class="grid grid-cols-3 h-full">
 <div class="media flex h-full">
-  <img class="h-full" src="/marp/assets/01-events.png">
+  <img class="h-full" src="../../marp/assets/01-events.png">
 </div>
 <div class="col-span-2 flex items-center h-full">
 
@@ -73,7 +73,7 @@ Exemplos: `click`, `keydown`, `input`, `submit`, `load`
 
 <div>
 <div class="media ml-auto">
-  <img src="/marp/assets/01-listening.png">
+  <img src="../../marp/assets/01-listening.png">
 </div>
 </div>
 
@@ -292,7 +292,7 @@ botao.addEventListener('click', () => {
 </div>
 <div>
   <div class="media flex">
-      <img class="h-full" src="/marp/assets/01-propagation.webp">
+      <img class="h-full" src="../../marp/assets/01-propagation.webp">
   </div>
 </div>
 </div>
@@ -388,7 +388,7 @@ botao.addEventListener('click', () => {
 <div>
 
 <div class="media ml-auto">
-    <img class="h-full" src="/marp/assets/01-spaceship.png">
+    <img class="h-full" src="../../marp/assets/01-spaceship.png">
 </div>
 
 </div>
