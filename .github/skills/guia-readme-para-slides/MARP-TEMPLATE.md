@@ -26,6 +26,8 @@ pablowerlang@ifsul.edu.br
     <img class="placeholder" alt="Prompt de IA: visão geral do assunto {{ASSUNTO}}, com apelo visual, composição para slide e um toque bem-humorado">
 </div>
 
+<!-- Na criacao inicial, mantenha o placeholder. So substitua por asset real em uma etapa posterior, se a imagem ja existir em marp/assets/. -->
+
 ---
 
 <!-- _class: divider -->
@@ -92,12 +94,13 @@ pablowerlang@ifsul.edu.br
 ## {{EXEMPLO MINIMO}}
 
 ```javascript
-const elemento = document.querySelector('seletor');
-
-elemento.addEventListener('evento', () => {
-    console.log('acao principal');
+const itens = ['Ana', 'Bruno', 'Carla'];
+itens.forEach((item, indice) => {
+    console.log(`${indice}: ${item}`); // 0: Ana, 1: Bruno, 2: Carla
 });
 ```
+
+<!-- Se o assunto tiver varias variacoes importantes, repita a estrutura do slide em vez de compactar tudo em uma tela so -->
 
 ---
 
@@ -132,3 +135,5 @@ elemento.addEventListener('evento', () => {
 - mecanismo principal
 - comparacao importante
 - boa pratica essencial
+
+<!-- Este slide e opcional. Remova se ele apenas repetir a apresentacao sem acrescentar fechamento util. -->

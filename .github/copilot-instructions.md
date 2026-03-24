@@ -38,7 +38,7 @@ PUBLIC_DIR=./exemplos/ex13.1 docker compose up -d
 ## Repository skills and documentation workflows
 - The workspace contains custom skills under `.github/skills/` and they should be preferred when the request matches their scope.
 - Use the `guia-readme` skill when creating, expanding, standardizing, or rewriting section READMEs into didactic reference guides in Portuguese.
-- Use the `guia-readme-para-slides` skill when converting a README-guia into a Marp slide deck for class, following the visual and structural pattern of `marp/content/00-introducao.md`.
+- Use the `guia-readme-para-slides` skill when converting a README-guia into a Marp slide presentation for class, following the visual and structural pattern of `marp/content/00-introducao.md`.
 - Slides generated from README content should summarize aggressively, keep one main idea per slide, and keep image slots as descriptions/placeholders when the final asset does not exist yet.
 - For Marp slide work, follow the utility-only layout vocabulary documented in `marp/README.md` and `marp/themes/positioning.css`.
 - Do not introduce or restore legacy Marp helper classes such as `grid-2`, `grid-3`, `span-2`, `vcenter`, `vbottom`, `vfill`, `align-center`, `align-left`, or `align-right`.

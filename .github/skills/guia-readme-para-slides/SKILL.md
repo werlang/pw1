@@ -1,6 +1,6 @@
 ---
 name: guia-readme-para-slides
-description: "Transform a didactic README guide into a concise Marp slide deck for class, aligned with the ifsul theme and the pattern of marp/content/00-introducao.md. Use when Agent needs to create, revise, or expand lecture slides from a README, summarize a long guide for aula, montar apresentacao Marp, criar slide de apoio para o professor, or produce a short teaching deck with image placeholders."
+description: "Transform a didactic README guide into a concise Marp slide presentation for class, aligned with the ifsul theme and the pattern of marp/content/00-introducao.md. Use when Agent needs to create, revise, or expand lecture slides from a README, summarize a long guide for aula, montar apresentacao Marp, criar slide de apoio para o professor, or produce a short teaching presentation with image placeholders."
 ---
 
 # Guia README para Slides
@@ -30,7 +30,7 @@ Use esta skill quando o pedido envolver:
 
 Produzir um arquivo Markdown para Marp com foco didático. Cada slide deve carregar uma ideia central, evitar excesso de texto e ajudar a manter a turma engajada.
 
-O deck final deve equilibrar:
+A apresentação final deve equilibrar:
 
 - síntese do conteúdo
 - precisão técnica
@@ -38,12 +38,13 @@ O deck final deve equilibrar:
 - legibilidade em projetor
 - reutilização posterior pelo professor
 - linguagem mais viva e mais próxima dos estudantes
+- exemplos concretos e imediatamente legiveis
 
 ## Recursos desta skill
 
 Use estes arquivos durante a execucao:
 
-- `MARP-TEMPLATE.md` para iniciar o deck no formato da disciplina
+- `MARP-TEMPLATE.md` para iniciar a apresentacao no formato da disciplina
 - `CHECKLIST.md` para revisar densidade visual, estrutura e consistencia final
 
 ## Entradas esperadas
@@ -56,7 +57,7 @@ Antes de escrever os slides, identifique:
 4. se há exemplos práticos na pasta que merecem menção curta
 5. se há exercícios, demos ou páginas publicadas que devam ser linkados
 
-Se existir material complementar na pasta do assunto, use-o para calibrar exemplos, vocabulário, exercícios e links úteis. O README continua sendo a fonte principal, mas o deck deve conversar com a prática da seção.
+Se existir material complementar na pasta do assunto, use-o para calibrar exemplos, vocabulário, exercícios e links úteis. O README continua sendo a fonte principal, mas a apresentacao deve conversar com a prática da seção.
 
 ## Regras do repositório
 
@@ -70,7 +71,9 @@ Antes de gerar os slides, respeite estas convenções:
 - mantenha o conteúdo claro para estudantes iniciantes, especialmente ensino médio
 - trate o slide como apoio de aula, não como apostila completa
 - se precisar de imagens, deixe apenas a descrição do que deve ser ilustrado
-- quando o deck ainda nao tiver asset final, use `img` com classe `placeholder` e coloque o prompt completo no atributo `alt` para forcar a renderizacao do espaco no slide
+- quando a apresentacao ainda nao tiver asset final, use `img` com classe `placeholder` e coloque o prompt completo no atributo `alt` para forcar a renderizacao do espaco no slide
+- durante a criacao inicial da apresentacao, mantenha placeholders com prompt de IA, porque os assets finais ainda nao vao existir
+- quando o asset final ja existir em `marp/assets/`, ele pode substituir o placeholder em uma etapa posterior de refinamento
 - em `marp/content/`, use apenas a nomenclatura utilitária atual de `marp/themes/positioning.css`
 - nao use classes legadas como `grid-2`, `grid-3`, `span-2`, `vcenter`, `vbottom`, `vfill`, `align-center`, `align-left` ou `align-right`
 
@@ -92,6 +95,7 @@ Regra pratica:
 
 - se o slide pede comparacao lado a lado, comece com `grid grid-cols-2 gap-6`
 - se o slide pede texto com imagem lateral, comece com `grid grid-cols-3 gap-6` e use `col-span-2` para o texto
+- se o slide combina conceito curto com codigo maior, `flex items-center size-full justify-between gap-8` costuma funcionar melhor do que grade simetrica
 - se o conteudo precisa centralizar verticalmente, use `flex items-center`
 - se a imagem precisa ir para a direita, use `ml-auto`
 - se a imagem ou bloco precisa centralizar, use `mx-auto`
@@ -121,7 +125,7 @@ Evite:
 
 ## Padrão de títulos
 
-Quando fizer sentido para a fluidez do deck, prefira reforçar o assunto principal no `#` de cada slide e usar o `##` para o foco da tela.
+Quando fizer sentido para a fluidez da apresentacao, prefira reforçar o assunto principal no `#` de cada slide e usar o `##` para o foco da tela.
 
 Exemplo:
 
@@ -157,6 +161,16 @@ Quando ainda nao existir um asset final, o placeholder oficial deve seguir este 
 
 Use outras classes na tag `img` apenas se elas realmente ajudarem no layout, como `h-full`, `w-full`, `object-contain` ou `ml-auto`.
 
+Quando o asset ja existir, ele pode substituir o placeholder com este formato:
+
+```html
+<div class="media mx-auto h-full">
+    <img class="h-full" alt="Descricao curta da ilustracao" src="../../marp/assets/exemplo.png">
+</div>
+```
+
+Regra pratica: na primeira versao da apresentacao, placeholder e o padrao; asset real entra depois, quando ja tiver sido produzido.
+
 ## Fluxo de trabalho
 
 ### 1. Ler e decompor o README
@@ -169,7 +183,7 @@ Antes de escrever qualquer slide:
 - marque trechos que devem virar fala do professor, não texto de slide
 - observe o vocabulário da seção para aproximar o tom da aula
 - procure exemplos, demos, exercícios e links publicados relacionados ao tema
-- confira os decks ja existentes em `marp/content/` para manter ritmo, divisores e densidade visual compatíveis com o estado atual do projeto
+- confira as apresentacoes ja existentes em `marp/content/` para manter ritmo, divisores e densidade visual compatíveis com o estado atual do projeto
 
 ### 2. Extrair a espinha dorsal do assunto
 
@@ -186,6 +200,8 @@ Monte um roteiro curto com 5 a 10 blocos, por exemplo:
 9. exercícios ou próximos passos práticos
 
 Nem todo assunto precisa usar todos esses blocos. Prefira cortar do que condensar demais um slide.
+
+Se um subtópico render bons exemplos concretos, prefira quebrar em mais slides curtos em vez de concentrar tudo em uma tela ampla.
 
 ### 3. Converter topicos em slides
 
@@ -209,6 +225,7 @@ Ao resumir:
 - use slide divisor para separar blocos grandes do assunto
 - prefira formulações com mais personalidade do que descrições excessivamente neutras
 - preserve a energia de aula: clareza primeiro, secura nunca por padrão
+- se um metodo, operador ou estrutura ficar mais claro com um exemplo proprio, dê a ele um slide proprio
 
 ### 5. Mapear prática, exercícios e links
 
@@ -235,7 +252,7 @@ Se houver risco de excesso:
 - use layout em grade quando fizer sentido
 - considere dividir o conteúdo em duas telas: conceito e exercício, teoria e meme visual, definição e exemplo
 
-## Estrutura recomendada do deck
+## Estrutura recomendada da apresentacao
 
 Adapte ao assunto, mas em geral siga esta ordem:
 
@@ -246,7 +263,7 @@ Adapte ao assunto, mas em geral siga esta ordem:
 5. slides de exemplos minimos ou comparacoes
 6. slide de erros comuns ou boas praticas
 7. bloco final de exercícios, demos ou aplicações práticas
-8. slide final de resumo
+8. slide final de resumo, se ele realmente agregar e nao repetir o resto da apresentacao
 
 ## Padrão visual esperado
 
@@ -256,8 +273,10 @@ Use o padrão do exemplo fornecido:
 - slide inicial com `<!-- _class: lead -->`
 - separadores com `<!-- _class: divider -->` quando houver mudanca de bloco
 - uso moderado de `grid`, `media`, `grid-cols-*`, `col-span-*`, `flex`, `items-*`, `justify-*`, `mx-auto`, `ml-auto`, `mr-auto`, `bleed-bottom`, `relative`, `absolute`, `size-full`
-- imagens quando realmente ajudarem o professor a explicar ou quando deixarem o conceito mais memorável
-- preferência por placeholders de imagem com intenção visual clara, não descrições genéricas demais
+- placeholders de imagem com intenção visual clara como padrao de criacao inicial
+- imagens reais em `marp/assets/` apenas quando elas ja existirem e a etapa do trabalho incluir substituir placeholders
+- exemplos de código concretos, com valores plausiveis e, quando couber, comentario curto mostrando a saida esperada
+- blocos conceituais longos podem virar uma sequencia de slides com o mesmo subtitulo, cada um cobrindo um metodo ou variacao
 
 ## Regras de densidade por slide
 
@@ -272,6 +291,7 @@ Estas regras sao obrigatorias para manter legibilidade:
 - comparacoes com muito texto devem usar grade em 2 colunas ou virar 2 slides
 - se um slide parece apertado no editor, ele esta grande demais
 - links podem aparecer no slide quando fizerem parte da condução prática da aula
+- se houver varios metodos parecidos, prefira repetir a estrutura do slide com um exemplo por metodo em vez de empilhar tudo junto
 
 ## Como resumir conteudo extenso
 
@@ -312,6 +332,8 @@ Exemplos em slide devem obedecer a estas regras:
 - reforcar um conceito que acabou de ser apresentado
 - evitar duplicar exemplos muito parecidos
 - soar relevantes para quem vai praticar logo depois
+- usar dados mais concretos e legiveis do que placeholders abstratos, como nomes, filas, notas, musicas ou listas reais
+- quando ajudar a leitura, incluir comentario curto com o resultado esperado do trecho
 
 Se o README tiver muitos exemplos, escolha apenas:
 
@@ -322,7 +344,7 @@ Se o README tiver muitos exemplos, escolha apenas:
 
 ## Exercícios, demos e links
 
-Se houver exercícios ou demos associados à seção, isso deve aparecer explicitamente no deck.
+Se houver exercícios ou demos associados à seção, isso deve aparecer explicitamente na apresentacao.
 
 Preferências para esse bloco:
 
@@ -331,6 +353,7 @@ Preferências para esse bloco:
 - incluir o link da demo rodando, quando existir
 - usar formulações motivadoras, por exemplo jogos, nave, clique, bônus, desafios extras
 - quando fizer sentido, separar um exercício principal e um slide só de bônus ou extensões
+- se houver varios exercicios fortes na secao, prefira um slide por exercicio em vez de um mosaico muito denso
 
 ## Conteúdos que costumam virar fala, não slide
 
@@ -360,7 +383,8 @@ Ao aplicar esta skill, o agente deve:
 3. montar um roteiro curto de apresentacao
 4. gerar um arquivo Marp no padrao da disciplina
 5. revisar a densidade visual slide a slide
-6. deixar placeholders de imagem com `img.placeholder` e `alt="Prompt de IA: ..."` quando eles fizerem falta
-7. usar português com acentuação correta
-8. adotar um tom mais vivo, leve e compatível com ensino médio
-9. incluir exercícios, demos e links publicados quando houver material correspondente
+6. gerar a apresentacao inicial com placeholders usando `img.placeholder` e `alt="Prompt de IA: ..."`
+7. substituir placeholders por assets reais apenas em uma etapa posterior, quando esses arquivos ja existirem
+8. usar português com acentuação correta
+9. adotar um tom mais vivo, leve e compatível com ensino médio
+10. incluir exercícios, demos e links publicados quando houver material correspondente

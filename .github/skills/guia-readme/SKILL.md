@@ -47,7 +47,7 @@ Antes de editar, respeite estas convencoes:
 
 ## Compatibilidade com slides da disciplina
 
-Quando o README tiver alta chance de virar deck Marp depois:
+Quando o README tiver alta chance de virar slides para aula, organize o texto em blocos claros que possam virar telas curtas. Siga as regras de estrutura e escrita de `CHECKLIST.md` para garantir que o material seja facilmente resumido em bullets e exemplos pequenos, e que os conceitos mais importantes possam ser destacados em telas separadas.
 
 - mantenha secoes com uma ideia central por bloco
 - prefira comparacoes curtas e exemplos pequenos

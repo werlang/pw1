@@ -4,17 +4,17 @@ Este diretório concentra o material de slides da disciplina em Marp.
 
 ## Estrutura
 
-- `content/`: arquivos Markdown fonte dos decks
+- `content/`: arquivos Markdown fonte das apresentacoes
 - `themes/ifsul.css`: tema visual principal
 - `themes/positioning.css`: utilitários de layout e posicionamento usados nos slides
-- `build.sh`: gera os HTMLs e publica cada deck em sua pasta `../<nome>/slide/index.html`
+- `build.sh`: gera os HTMLs e publica cada apresentacao em sua pasta `../<nome>/slide/index.html`
 - `watch.sh` e `watch.mjs`: apoio para fluxo de observação local
 
 ## Fonte de verdade para layout
 
 O arquivo `themes/positioning.css` deve ser tratado como a API oficial de layout dos slides.
 
-Os decks em `content/` devem usar apenas a nomenclatura utilitária atual.
+As apresentacoes em `content/` devem usar apenas a nomenclatura utilitária atual.
 
 ## Classes recomendadas
 
@@ -92,7 +92,9 @@ Esses nomes foram removidos para manter um vocabulário previsível, escalável 
 </div>
 ```
 
-Use esse padrão quando o slide precisa reservar o espaço visual da imagem, mas o asset final ainda não existe.
+Use esse padrão na criação inicial da apresentacao, quando o slide precisa reservar o espaço visual da imagem e o asset final ainda não existe.
+
+Quando o asset final existir, ele pode substituir o placeholder em uma etapa posterior de refinamento.
 
 Regras práticas:
 
@@ -100,6 +102,20 @@ Regras práticas:
 - comece o `alt` com `Prompt de IA:`
 - adicione outras classes na `img` só quando ajudarem no layout, como `h-full`, `w-full`, `object-contain` ou `ml-auto`
 - não use `src` vazio nem comentário HTML como placeholder oficial
+
+### Imagem real em asset local
+
+```html
+<div class="media mx-auto h-full">
+    <img class="h-full" alt="Ilustração didática do conceito" src="../../marp/assets/exemplo.png">
+</div>
+```
+
+Regra prática:
+
+- placeholder serve como formato padrão de criação inicial dos slides
+- se a imagem já foi produzida depois, use `src` real e um `alt` descritivo normal na etapa de refinamento
+- para conceitos extensos, prefira quebrar em mais slides com exemplos concretos em vez de condensar métodos demais na mesma tela
 
 ### Centralização vertical simples
 
@@ -125,11 +141,11 @@ Regras práticas:
 
 ## Fluxo de trabalho recomendado
 
-1. Criar ou editar o deck em `content/`.
+1. Criar ou editar a apresentacao em `content/`.
 2. Reusar a linguagem didática da disciplina e o padrão estrutural de `content/00-introducao.md`.
 3. Usar apenas classes utilitárias atuais de `themes/positioning.css`.
 4. Executar `./build.sh` dentro de `marp/`.
-5. Conferir o resultado em `../<nome-do-deck>/slide/index.html`.
+5. Conferir o resultado em `../<nome-da-apresentacao>/slide/index.html`.
 
 ## Para agentes
 
@@ -138,4 +154,4 @@ Se você estiver gerando ou revisando slides:
 - consulte este arquivo antes de inventar classes de layout
 - prefira combinações pequenas e explícitas
 - trate utilitário legado como regressão
-- se precisar de um novo padrão visual recorrente, documente primeiro e só depois espalhe o uso pelos decks
+- se precisar de um novo padrão visual recorrente, documente primeiro e só depois espalhe o uso pelas apresentacoes

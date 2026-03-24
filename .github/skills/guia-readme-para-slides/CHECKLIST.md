@@ -1,6 +1,6 @@
 # Checklist de Slides
 
-Use esta lista antes de concluir um deck gerado a partir de README.
+Use esta lista antes de concluir uma apresentacao gerada a partir de README.
 
 ## Estrutura geral
 
@@ -9,15 +9,16 @@ Use esta lista antes de concluir um deck gerado a partir de README.
 - o tema e `ifsul`
 - `header: ' '` e o footer institucional foram mantidos
 - existe slide de abertura no padrao da disciplina
-- existe slide final de resumo
+- existe slide final de resumo quando ele realmente agrega ao encerramento
 
 ## Qualidade didatica
 
-- o deck resume o README em vez de copiar blocos grandes de texto
+- a apresentacao resume o README em vez de copiar blocos grandes de texto
 - cada slide sustenta uma explicacao oral clara
 - a ordem dos slides vai do basico ao importante
 - os termos tecnicos foram mantidos apenas quando necessarios
 - exemplos foram reduzidos ao minimo util
+- exemplos usam dados concretos e legiveis, nao placeholders genericos demais
 - o texto usa acentuacao correta quando nao for codigo ou URL
 - o tom soa proximo da fala em sala, sem ficar burocratico demais
 - a linguagem conversa bem com estudantes do ensino medio
@@ -31,6 +32,7 @@ Use esta lista antes de concluir um deck gerado a partir de README.
 - nao ha bloco de codigo maior do que o necessario
 - nao ha combinacao de lista longa + imagem + codigo no mesmo slide
 - os links presentes na tela sao poucos e entram como parte da aula, nao como excesso visual
+- metodos ou variacoes importantes foram separados em slides proprios quando isso melhora a leitura
 
 ## Layout
 
@@ -41,6 +43,8 @@ Use esta lista antes de concluir um deck gerado a partir de README.
 - imagens foram substituidas por descricoes claras quando necessario
 - quando nao houver asset final, os placeholders de imagem usam `<img class="placeholder">`
 - o atributo `alt` do placeholder contem o prompt completo no formato `Prompt de IA: ...`
+- na apresentacao inicial, placeholders com `img.placeholder` foram mantidos nos pontos em que a imagem ainda nao existe
+- quando houver uma etapa posterior de refinamento visual, placeholders podem ser substituidos por `src` real e `alt` descritivo normal
 - os prompts de imagem tem intencao visual clara e, quando util, um toque bem-humorado ou memoravel
 - nenhum slide parece apertado no editor
 
@@ -52,3 +56,4 @@ Use esta lista antes de concluir um deck gerado a partir de README.
 - ha bloco de exercicios, demos ou aplicacoes quando a secao pede isso
 - os exercicios explicam rapidamente o que fazer e trazem link da demonstracao quando houver
 - os links publicados seguem o padrao atual do repositorio quando ele puder ser inferido com seguranca
+- quando a secao tiver varios exercicios relevantes, eles podem aparecer em slides separados para preservar legibilidade
