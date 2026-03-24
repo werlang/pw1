@@ -70,7 +70,7 @@ Antes de gerar os slides, respeite estas convenções:
 - mantenha o conteúdo claro para estudantes iniciantes, especialmente ensino médio
 - trate o slide como apoio de aula, não como apostila completa
 - se precisar de imagens, deixe apenas a descrição do que deve ser ilustrado
-- quando o deck ainda nao tiver asset final, prefira um bloco `media` com comentario HTML no formato `Prompt de IA: ...` em vez de usar tag `img`
+- quando o deck ainda nao tiver asset final, use `img` com classe `placeholder` e coloque o prompt completo no atributo `alt` para forcar a renderizacao do espaco no slide
 - em `marp/content/`, use apenas a nomenclatura utilitária atual de `marp/themes/positioning.css`
 - nao use classes legadas como `grid-2`, `grid-3`, `span-2`, `vcenter`, `vbottom`, `vfill`, `align-center`, `align-left` ou `align-right`
 
@@ -132,20 +132,30 @@ Esse padrão ajuda a manter contexto visual constante durante a aula.
 
 ## Uso de imagens e apelo visual
 
-As imagens sugeridas não precisam ser apenas literais. Prefira descrições de imagens que:
+As imagens sugeridas não precisam ser apenas literais. Prefira prompts de imagem que:
 
 - ilustrem o conceito de forma figurativa
 - chamem atenção e ajudem a engajar
 - possam ser engraçadas, inesperadas ou memoráveis
 - usem animais, memes, situações absurdas leves ou comparações visuais quando isso ajudar a aula
 
-Exemplos de boas descrições:
+Exemplos de bons prompts:
 
 - “animal protegendo a entrada para representar `preventDefault()`”
 - “meme de reação para representar um evento sendo disparado”
 - “imagem engraçada de algo escalando para ilustrar bubbling no DOM”
 
 Se a imagem tiver função mais didática do que técnica, isso é aceitável. O objetivo é apoiar a explicação e prender atenção.
+
+Quando ainda nao existir um asset final, o placeholder oficial deve seguir este formato:
+
+```html
+<div class="media mx-auto">
+    <img class="placeholder" alt="Prompt de IA: ilustração didática e levemente bem-humorada do conceito principal, com composição adequada para slide educacional">
+</div>
+```
+
+Use outras classes na tag `img` apenas se elas realmente ajudarem no layout, como `h-full`, `w-full`, `object-contain` ou `ml-auto`.
 
 ## Fluxo de trabalho
 
@@ -275,13 +285,13 @@ Ao transformar texto longo em slide:
 
 ## Uso de imagens e diagramas
 
-Quando uma imagem for desejável, não invente um arquivo real. Use apenas a estrutura visual com descrição da ilustração.
+Quando uma imagem for desejável, não invente um arquivo real. Use a estrutura visual com um placeholder renderizável no próprio slide.
 
 Padrao recomendado:
 
 ```html
 <div class="media mx-auto">
-    <!-- Prompt de IA: fluxo do evento saindo do elemento filho e subindo pela arvore DOM, em estilo de infografico didatico -->
+    <img class="placeholder" alt="Prompt de IA: fluxo do evento saindo do elemento filho e subindo pela arvore DOM, em estilo de infografico didatico">
 </div>
 ```
 
@@ -350,7 +360,7 @@ Ao aplicar esta skill, o agente deve:
 3. montar um roteiro curto de apresentacao
 4. gerar um arquivo Marp no padrao da disciplina
 5. revisar a densidade visual slide a slide
-6. deixar placeholders de imagem como comentarios `Prompt de IA: ...` quando eles fizerem falta
+6. deixar placeholders de imagem com `img.placeholder` e `alt="Prompt de IA: ..."` quando eles fizerem falta
 7. usar português com acentuação correta
 8. adotar um tom mais vivo, leve e compatível com ensino médio
 9. incluir exercícios, demos e links publicados quando houver material correspondente

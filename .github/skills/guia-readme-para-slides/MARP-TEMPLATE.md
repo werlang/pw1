@@ -23,7 +23,7 @@ pablowerlang@ifsul.edu.br
 - evitar detalhes técnicos longos logo na abertura
 
 <div class="media flex items-end">
-    <!-- Prompt de IA: visão geral do assunto {{ASSUNTO}}, com apelo visual, composição para slide e um toque bem-humorado -->
+    <img class="placeholder" alt="Prompt de IA: visão geral do assunto {{ASSUNTO}}, com apelo visual, composição para slide e um toque bem-humorado">
 </div>
 
 ---
@@ -53,7 +53,7 @@ pablowerlang@ifsul.edu.br
 4. passo curto 4
 
 <div class="media mx-auto">
-    <!-- Prompt de IA: diagrama do fluxo ou metáfora visual marcante para o mecanismo principal, em estilo de infográfico didático -->
+    <img class="placeholder" alt="Prompt de IA: diagrama do fluxo ou metáfora visual marcante para o mecanismo principal, em estilo de infográfico didático">
 </div>
 
 ---
@@ -83,7 +83,7 @@ pablowerlang@ifsul.edu.br
 </div>
 
 <div class="media mx-auto">
-    <!-- Prompt de IA: comparação visual chamativa ou engraçada entre {{ITEM A}} e {{ITEM B}}, adequada para slide de aula -->
+    <img class="placeholder" alt="Prompt de IA: comparação visual chamativa ou engraçada entre {{ITEM A}} e {{ITEM B}}, adequada para slide de aula">
 </div>
 
 ---
@@ -110,7 +110,7 @@ elemento.addEventListener('evento', () => {
 - link da demo rodando, quando houver
 
 <div class="media mx-auto">
-    <!-- Prompt de IA: algo divertido ou memorável ligado ao exercício, com visual limpo para apresentação -->
+    <img class="placeholder" alt="Prompt de IA: algo divertido ou memorável ligado ao exercício, com visual limpo para apresentação">
 </div>
 
 ---

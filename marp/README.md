@@ -44,6 +44,7 @@ Os decks em `content/` devem usar apenas a nomenclatura utilitária atual.
 - `object-contain`, `object-cover`, `object-center`
 - `bleed-bottom`
 - `media` como contêiner visual simples para imagens e placeholders
+- `placeholder` para imagens temporárias que precisam renderizar espaço no slide sem asset real
 
 ## Classes que não devem voltar
 
@@ -82,6 +83,23 @@ Esses nomes foram removidos para manter um vocabulário previsível, escalável 
     </div>
 </div>
 ```
+
+### Placeholder de imagem com prompt de IA
+
+```html
+<div class="media mx-auto">
+    <img class="placeholder" alt="Prompt de IA: ilustração didática e levemente bem-humorada do conceito principal, com composição horizontal para slide educacional">
+</div>
+```
+
+Use esse padrão quando o slide precisa reservar o espaço visual da imagem, mas o asset final ainda não existe.
+
+Regras práticas:
+
+- o prompt vai no atributo `alt`
+- comece o `alt` com `Prompt de IA:`
+- adicione outras classes na `img` só quando ajudarem no layout, como `h-full`, `w-full`, `object-contain` ou `ml-auto`
+- não use `src` vazio nem comentário HTML como placeholder oficial
 
 ### Centralização vertical simples
 
