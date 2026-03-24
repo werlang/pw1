@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diário Virtual</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <main class="container">
+        <h1>Diário Virtual</h1>
+        <p class="intro">Publique textos, edite postagens e remova cards dinamicamente.</p>
+
+        <section class="painel formulario">
+            <label for="input-postagem">Nova postagem</label>
+            <textarea id="input-postagem" rows="5" placeholder="Escreva aqui o que aconteceu hoje..."></textarea>
+            <div class="acoes">
+                <button id="btn-publicar" type="button">Publicar</button>
+                <button id="btn-limpar" type="button" class="secundario">Limpar tudo</button>
+            </div>
+            <p id="mensagem" class="mensagem"></p>
+        </section>
+
+        <section class="painel">
+            <h2>Postagens</h2>
+            <div id="lista-postagens" class="lista-postagens"></div>
+        </section>
+    </main>
+</body>
+</html>

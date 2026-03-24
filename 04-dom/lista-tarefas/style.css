@@ -1,0 +1,81 @@
+body {
+    margin: 0;
+    font-family: sans-serif;
+    background: #eef2ef;
+    color: #223127;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 32px 20px 48px;
+}
+
+.painel {
+    background: #ffffff;
+    border: 2px solid #d5dfd6;
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 18px;
+}
+
+input,
+button {
+    font: inherit;
+}
+
+input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 14px;
+    border: 1px solid #b8c7ba;
+    border-radius: 10px;
+    margin-bottom: 12px;
+}
+
+button {
+    padding: 12px 16px;
+    border: 0;
+    border-radius: 10px;
+    background: #2e7a58;
+    color: #fff;
+    cursor: pointer;
+}
+
+.lista-tarefas {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 12px;
+}
+
+.item-tarefa {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    align-items: center;
+    padding: 14px;
+    border-radius: 12px;
+    background: #f7fbf7;
+    border: 1px solid #d5dfd6;
+}
+
+.item-tarefa.concluida span {
+    text-decoration: line-through;
+    opacity: 0.65;
+}
+
+.acoes-item {
+    display: flex;
+    gap: 8px;
+}
+
+.status {
+    color: #2e7a58;
+    font-weight: 700;
+}
+
+.remover {
+    background: #6c5e54;
+}

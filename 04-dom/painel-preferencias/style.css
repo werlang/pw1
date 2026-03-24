@@ -1,0 +1,65 @@
+body {
+    margin: 0;
+    font-family: sans-serif;
+    background: #eef3f8;
+    color: #1f2a36;
+}
+
+.container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 32px 20px 48px;
+}
+
+.painel {
+    background: #ffffff;
+    border: 2px solid #d5e1ee;
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 18px;
+}
+
+.formulario {
+    display: grid;
+    gap: 12px;
+}
+
+input,
+select,
+button {
+    font: inherit;
+}
+
+input,
+select {
+    padding: 12px 14px;
+    border: 1px solid #b7c8db;
+    border-radius: 10px;
+}
+
+button {
+    width: fit-content;
+    padding: 12px 16px;
+    border: 0;
+    border-radius: 10px;
+    background: #2f6ea8;
+    color: #fff;
+    cursor: pointer;
+}
+
+.checkbox {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.card-preview {
+    border-radius: 14px;
+    padding: 18px;
+    color: #fff;
+}
+
+.azul { background: #2f6ea8; }
+.verde { background: #2d7a5a; }
+.laranja { background: #b56b2f; }
+.forte { font-weight: 700; }

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel de Preferências</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <main class="container">
+        <h1>Painel de Preferências</h1>
+
+        <section class="painel formulario">
+            <label for="input-nome">Nome</label>
+            <input id="input-nome" type="text" placeholder="Ex.: Camila">
+
+            <label for="select-cor">Cor de destaque</label>
+            <select id="select-cor">
+                <option value="azul">Azul</option>
+                <option value="verde">Verde</option>
+                <option value="laranja">Laranja</option>
+            </select>
+
+            <label class="checkbox"><input id="input-negrito" type="checkbox"> Destacar nome em negrito</label>
+
+            <button id="btn-aplicar" type="button">Aplicar preferências</button>
+        </section>
+
+        <section class="painel">
+            <h2>Pré-visualização</h2>
+            <div id="card-preview" class="card-preview azul">
+                <h3 id="preview-nome">Visitante</h3>
+                <p id="preview-texto">Escolha as preferências e aplique no card.</p>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

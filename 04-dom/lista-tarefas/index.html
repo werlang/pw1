@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Tarefas com DOM</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <main class="container">
+        <h1>Lista de Tarefas com DOM</h1>
+
+        <section class="painel formulario">
+            <input id="input-tarefa" type="text" placeholder="Nova tarefa">
+            <button id="btn-adicionar" type="button">Adicionar tarefa</button>
+            <p id="status" class="status">Nenhuma tarefa pendente.</p>
+        </section>
+
+        <section class="painel">
+            <ul id="lista-tarefas" class="lista-tarefas"></ul>
+        </section>
+    </main>
+</body>
+</html>
