@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Busca de Nomes com Arrays</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <main class="container">
+        <h1>Busca de Nomes com Arrays</h1>
+        <p class="intro">Digite para filtrar a lista e depois teste a busca exata com `indexOf()`.</p>
+
+        <section class="painel busca">
+            <label for="input-busca">Busca parcial</label>
+            <input id="input-busca" type="text" placeholder="Ex.: ana">
+
+            <div class="acoes">
+                <button id="btn-verificar" type="button">Verificar nome exato</button>
+                <button id="btn-restaurar" type="button" class="secundario">Mostrar lista completa</button>
+            </div>
+
+            <p id="status-busca" class="status"></p>
+            <p id="status-indice" class="status destaque"></p>
+        </section>
+
+        <section class="painel lista">
+            <div class="cabecalho-lista">
+                <h2>Nomes exibidos</h2>
+                <span id="contador">0 nomes</span>
+            </div>
+            <ul id="lista-nomes"></ul>
+        </section>
+    </main>
+</body>
+</html>

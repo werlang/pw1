@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista Básica com Arrays</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <main class="container">
+        <h1>Lista Básica com Arrays</h1>
+        <p class="intro">Cadastre itens em um array e veja a interface ser atualizada.</p>
+
+        <section class="painel formulario">
+            <label for="input-item">Novo item</label>
+            <div class="linha-formulario">
+                <input id="input-item" type="text" placeholder="Ex.: arroz">
+                <button id="btn-adicionar" type="button">Adicionar</button>
+                <button id="btn-limpar" type="button" class="secundario">Limpar lista</button>
+            </div>
+            <p id="mensagem" class="mensagem"></p>
+        </section>
+
+        <section class="painel resumo">
+            <div>
+                <span class="rotulo">Total de itens</span>
+                <strong id="total-itens">0</strong>
+            </div>
+            <div>
+                <span class="rotulo">Último item</span>
+                <strong id="ultimo-item">Nenhum</strong>
+            </div>
+        </section>
+
+        <section class="painel lista">
+            <h2>Itens cadastrados</h2>
+            <ul id="lista-itens"></ul>
+        </section>
+
+        <section class="painel texto">
+            <h2>Mesmo array com join()</h2>
+            <p id="lista-texto">Nenhum item cadastrado.</p>
+        </section>
+    </main>
+</body>
+</html>
