@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playlist com Arrays</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <main class="container">
+        <h1>Playlist com Arrays</h1>
+        <p class="intro">Monte a ordem das músicas e remova itens específicos da lista.</p>
+
+        <section class="painel formulario">
+            <label for="input-musica">Música</label>
+            <input id="input-musica" type="text" placeholder="Ex.: Evidências">
+
+            <div class="acoes">
+                <button id="btn-fim" type="button">Adicionar ao fim</button>
+                <button id="btn-inicio" type="button" class="secundario">Adicionar ao início</button>
+                <button id="btn-remover" type="button" class="terciario">Remover por nome</button>
+            </div>
+
+            <p id="mensagem" class="mensagem"></p>
+        </section>
+
+        <section class="painel resumo">
+            <div><span class="rotulo">Primeira música</span><strong id="primeira-musica">Nenhuma</strong></div>
+            <div><span class="rotulo">Última música</span><strong id="ultima-musica">Nenhuma</strong></div>
+            <div><span class="rotulo">Quantidade</span><strong id="quantidade-musicas">0</strong></div>
+        </section>
+
+        <section class="painel lista">
+            <h2>Ordem da playlist</h2>
+            <ol id="lista-playlist"></ol>
+            <p id="playlist-texto">Nenhuma música na playlist.</p>
+        </section>
+    </main>
+</body>
+</html>

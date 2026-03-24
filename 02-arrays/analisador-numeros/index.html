@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analisador de Números</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <main class="container">
+        <h1>Analisador de Números</h1>
+        <p class="intro">Cadastre valores em um array e veja o resumo ser calculado automaticamente.</p>
+
+        <section class="painel formulario">
+            <label for="input-numero">Número</label>
+            <div class="linha">
+                <input id="input-numero" type="number" step="0.1" placeholder="Ex.: 7.5">
+                <button id="btn-adicionar" type="button">Adicionar</button>
+                <button id="btn-limpar" type="button" class="secundario">Limpar</button>
+            </div>
+            <p id="mensagem" class="mensagem"></p>
+        </section>
+
+        <section class="painel lista">
+            <h2>Valores cadastrados</h2>
+            <ul id="lista-numeros"></ul>
+        </section>
+
+        <section class="painel resumo">
+            <div><span class="rotulo">Quantidade</span><strong id="quantidade">0</strong></div>
+            <div><span class="rotulo">Soma</span><strong id="soma">0</strong></div>
+            <div><span class="rotulo">Média</span><strong id="media">0</strong></div>
+            <div><span class="rotulo">Maior</span><strong id="maior">0</strong></div>
+            <div><span class="rotulo">Menor</span><strong id="menor">0</strong></div>
+        </section>
+    </main>
+</body>
+</html>

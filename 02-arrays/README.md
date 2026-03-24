@@ -457,7 +457,7 @@ const nota = Number(inputNota.value);
 
 Sem essa conversão, operações numéricas podem se comportar de forma errada.
 
-## 16. Boas praticas
+## 16. Boas práticas
 
 - use nomes claros para os arrays, como `nomes`, `produtos`, `tarefas`;
 - mantenha o array com uma responsabilidade clara;
@@ -470,12 +470,18 @@ Sem essa conversão, operações numéricas podem se comportar de forma errada.
 As subpastas desta seção mostram arrays em níveis diferentes:
 
 - `lista-basica/`: cadastro simples, exibição e contagem de itens;
-- `busca-nomes/`: busca parcial, verificação exata e filtragem.
+- `busca-nomes/`: busca parcial, verificação exata e filtragem;
+- `fila-atendimento/`: ordem de chegada, prioridade e chamada do próximo nome;
+- `analisador-numeros/`: soma, média, maior e menor valor a partir de um array numérico;
+- `playlist/`: inserção no início e no fim, busca por nome e remoção com `splice()`.
 
-Esses dois cenários mostram uma progressão útil:
+Esses cinco cenários mostram uma progressão útil:
 
 1. primeiro você aprende a guardar valores;
-2. depois aprende a buscar e filtrar.
+2. depois aprende a buscar e filtrar;
+3. em seguida trabalha ordem e fila;
+4. depois analisa dados numéricos;
+5. por fim altera listas com mais controle.
 
 Na próxima seção, `03-objetos/`, o foco passa a ser representar entidades com propriedades e combinar isso com arrays.
 

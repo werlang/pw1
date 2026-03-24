@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fila de Atendimento</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <main class="container">
+        <h1>Fila de Atendimento</h1>
+        <p class="intro">Use arrays para simular ordem de chegada e prioridade.</p>
+
+        <section class="painel formulario">
+            <label for="input-nome">Nome</label>
+            <input id="input-nome" type="text" placeholder="Ex.: Fernanda">
+
+            <div class="acoes">
+                <button id="btn-adicionar" type="button">Adicionar ao fim</button>
+                <button id="btn-prioridade" type="button" class="secundario">Adicionar com prioridade</button>
+                <button id="btn-chamar" type="button" class="terciario">Chamar próxima pessoa</button>
+            </div>
+
+            <p id="mensagem" class="mensagem"></p>
+        </section>
+
+        <section class="painel resumo">
+            <div>
+                <span class="rotulo">Aguardando</span>
+                <strong id="total-fila">0</strong>
+            </div>
+            <div>
+                <span class="rotulo">Próxima pessoa</span>
+                <strong id="proximo-nome">Ninguém</strong>
+            </div>
+            <div>
+                <span class="rotulo">Último chamado</span>
+                <strong id="ultimo-chamado">Ninguém</strong>
+            </div>
+        </section>
+
+        <section class="painel lista">
+            <h2>Fila atual</h2>
+            <ul id="lista-fila"></ul>
+            <p id="fila-texto" class="fila-texto">A fila está vazia.</p>
+        </section>
+    </main>
+</body>
+</html>

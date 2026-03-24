@@ -1,0 +1,70 @@
+body {
+    margin: 0;
+    font-family: sans-serif;
+    background: #eef3ea;
+    color: #253126;
+}
+
+.container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 32px 20px 48px;
+}
+
+.painel {
+    background: #fbfffa;
+    border: 2px solid #cbd8c9;
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 18px;
+}
+
+.linha {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 8px;
+}
+
+input,
+button {
+    font: inherit;
+}
+
+input {
+    flex: 1 1 220px;
+    padding: 12px 14px;
+    border: 1px solid #aebeab;
+    border-radius: 10px;
+}
+
+button {
+    border: 0;
+    border-radius: 10px;
+    padding: 12px 16px;
+    background: #2f7d4d;
+    color: #fff;
+    cursor: pointer;
+}
+
+button.secundario {
+    background: #6a5d50;
+}
+
+.mensagem {
+    min-height: 24px;
+    color: #2f7d4d;
+    font-weight: 700;
+}
+
+.resumo {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 16px;
+}
+
+.rotulo {
+    display: block;
+    color: #677567;
+    margin-bottom: 6px;
+}

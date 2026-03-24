@@ -1,0 +1,76 @@
+body {
+    margin: 0;
+    font-family: sans-serif;
+    background: #f1eef9;
+    color: #231f35;
+}
+
+.container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 32px 20px 48px;
+}
+
+.painel {
+    background: #fbfaff;
+    border: 2px solid #d7d0eb;
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 18px;
+}
+
+input,
+button {
+    font: inherit;
+}
+
+input {
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 8px;
+    padding: 12px 14px;
+    border: 1px solid #b9aed9;
+    border-radius: 10px;
+}
+
+.acoes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 14px;
+}
+
+button {
+    border: 0;
+    border-radius: 10px;
+    padding: 12px 16px;
+    background: #5b4db2;
+    color: #fff;
+    cursor: pointer;
+}
+
+button.secundario {
+    background: #8d4a7a;
+}
+
+button.terciario {
+    background: #465071;
+}
+
+.mensagem {
+    min-height: 24px;
+    color: #5b4db2;
+    font-weight: 700;
+}
+
+.resumo {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+}
+
+.rotulo {
+    display: block;
+    color: #685f88;
+    margin-bottom: 6px;
+}
