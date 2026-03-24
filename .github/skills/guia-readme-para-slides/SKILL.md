@@ -70,6 +70,7 @@ Antes de gerar os slides, respeite estas convenções:
 - mantenha o conteúdo claro para estudantes iniciantes, especialmente ensino médio
 - trate o slide como apoio de aula, não como apostila completa
 - se precisar de imagens, deixe apenas a descrição do que deve ser ilustrado
+- quando o deck ainda nao tiver asset final, prefira um bloco `media` com comentario HTML no formato `Prompt de IA: ...` em vez de usar tag `img`
 - em `marp/content/`, use apenas a nomenclatura utilitária atual de `marp/themes/positioning.css`
 - nao use classes legadas como `grid-2`, `grid-3`, `span-2`, `vcenter`, `vbottom`, `vfill`, `align-center`, `align-left` ou `align-right`
 
@@ -158,6 +159,7 @@ Antes de escrever qualquer slide:
 - marque trechos que devem virar fala do professor, não texto de slide
 - observe o vocabulário da seção para aproximar o tom da aula
 - procure exemplos, demos, exercícios e links publicados relacionados ao tema
+- confira os decks ja existentes em `marp/content/` para manter ritmo, divisores e densidade visual compatíveis com o estado atual do projeto
 
 ### 2. Extrair a espinha dorsal do assunto
 
@@ -206,6 +208,7 @@ Quando a seção tiver subpastas com exemplos, exercícios ou demos:
 - diga brevemente o que o aluno vai construir
 - cite a pasta ou exercício correspondente
 - inclua o link da versão publicada em GitHub Pages quando existir ou quando puder ser inferido com segurança a partir do padrão do repositório
+- neste repositório, quando a secao estiver publicada no padrão atual, os links normalmente seguem `https://werlang.github.io/pw1/<secao>/<subpasta>/`
 - quando útil, inclua também links de assets relevantes usados pelo exercício
 
 O slide de exercício deve funcionar como ponte entre teoria e prática, não como mera lista de links.
@@ -278,16 +281,17 @@ Padrao recomendado:
 
 ```html
 <div class="media mx-auto">
-    <!-- Imagem sugerida: fluxo do evento saindo do elemento filho e subindo pela arvore DOM -->
+    <!-- Prompt de IA: fluxo do evento saindo do elemento filho e subindo pela arvore DOM, em estilo de infografico didatico -->
 </div>
 ```
 
-Descrições boas de imagem:
+Prompts bons de imagem:
 
 - dizem o que precisa ser ilustrado
 - ajudam o professor a produzir o material depois
 - evitam ser vagas como "imagem sobre o tema"
 - podem indicar humor, contraste visual ou atmosfera da tela
+- podem indicar estilo visual, enquadramento e composicao quando isso ajudar a gerar a imagem depois
 
 ## Tratamento de exemplos e código
 
@@ -346,7 +350,7 @@ Ao aplicar esta skill, o agente deve:
 3. montar um roteiro curto de apresentacao
 4. gerar um arquivo Marp no padrao da disciplina
 5. revisar a densidade visual slide a slide
-6. deixar descrições de imagens quando elas fizerem falta
+6. deixar placeholders de imagem como comentarios `Prompt de IA: ...` quando eles fizerem falta
 7. usar português com acentuação correta
 8. adotar um tom mais vivo, leve e compatível com ensino médio
 9. incluir exercícios, demos e links publicados quando houver material correspondente

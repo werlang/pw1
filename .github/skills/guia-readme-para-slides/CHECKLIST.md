@@ -39,7 +39,8 @@ Use esta lista antes de concluir um deck gerado a partir de README.
 - nao ha classes legadas como `grid-2`, `grid-3`, `span-2`, `vcenter`, `vbottom`, `vfill`, `align-center`, `align-left` ou `align-right`
 - slides divisores foram usados para separar blocos grandes
 - imagens foram substituidas por descricoes claras quando necessario
-- as descricoes de imagem tem intencao visual clara e, quando util, um toque bem-humorado ou memoravel
+- quando nao houver asset final, os placeholders de imagem usam comentario HTML com `Prompt de IA: ...`
+- os prompts de imagem tem intencao visual clara e, quando util, um toque bem-humorado ou memoravel
 - nenhum slide parece apertado no editor
 
 ## Consistencia com o repositorio
@@ -49,3 +50,4 @@ Use esta lista antes de concluir um deck gerado a partir de README.
 - o slide funciona como apoio ao professor e como resumo posterior
 - ha bloco de exercicios, demos ou aplicacoes quando a secao pede isso
 - os exercicios explicam rapidamente o que fazer e trazem link da demonstracao quando houver
+- os links publicados seguem o padrao atual do repositorio quando ele puder ser inferido com seguranca
