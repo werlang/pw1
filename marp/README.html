@@ -49,6 +49,7 @@
 <li><code>object-contain</code>, <code>object-cover</code>, <code>object-center</code></li>
 <li><code>bleed-bottom</code></li>
 <li><code>media</code> como contêiner visual simples para imagens e placeholders</li>
+<li><code>placeholder</code> para imagens temporárias que precisam renderizar espaço no slide sem asset real</li>
 </ul>
 <h2 id="classes-que-n%C3%A3o-devem-voltar">Classes que não devem voltar</h2>
 <p>Não reintroduza aliases legados. Evite:</p>
@@ -79,6 +80,19 @@
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 </code></pre>
+<h3 id="placeholder-de-imagem-com-prompt-de-ia">Placeholder de imagem com prompt de IA</h3>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;media mx-auto&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;placeholder&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;Prompt de IA: ilustração didática e levemente bem-humorada do conceito principal, com composição horizontal para slide educacional&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+<p>Use esse padrão quando o slide precisa reservar o espaço visual da imagem, mas o asset final ainda não existe.</p>
+<p>Regras práticas:</p>
+<ul>
+<li>o prompt vai no atributo <code>alt</code></li>
+<li>comece o <code>alt</code> com <code>Prompt de IA:</code></li>
+<li>adicione outras classes na <code>img</code> só quando ajudarem no layout, como <code>h-full</code>, <code>w-full</code>, <code>object-contain</code> ou <code>ml-auto</code></li>
+<li>não use <code>src</code> vazio nem comentário HTML como placeholder oficial</li>
+</ul>
 <h3 id="centraliza%C3%A7%C3%A3o-vertical-simples">Centralização vertical simples</h3>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;flex items-center h-full&quot;</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Conteúdo centralizado no eixo vertical.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>

@@ -444,7 +444,6 @@ section tr:nth-child(even) td {
 /* ─── Images ─────────────────────────────────────────────────── */
 section img {
     max-width: 100%;
-    max-height: 360px;
     display: block;
     margin: auto;
 }
