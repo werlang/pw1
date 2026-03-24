@@ -304,9 +304,14 @@ section pre code .token.cdata {
     color: var(--code-comment);
 }
 
+section pre code .hljs-subst {
+    color: var(--code-keyword);
+}
+
 section pre code .hljs-keyword,
 section pre code .hljs-selector-tag,
 section pre code .hljs-meta .hljs-keyword,
+section pre code .hljs-literal,
 section pre code .token.keyword,
 section pre code .token.atrule,
 section pre code .token.selector,
@@ -317,6 +322,8 @@ section pre code .token.important {
 section pre code .hljs-string,
 section pre code .hljs-meta .hljs-string,
 section pre code .hljs-attribute,
+section pre code .hljs-attr,
+section pre code .hljs-template-tag,
 section pre code .token.string,
 section pre code .token.char,
 section pre code .token.attr-value,
@@ -325,7 +332,6 @@ section pre code .token.inserted {
 }
 
 section pre code .hljs-number,
-section pre code .hljs-literal,
 section pre code .token.number,
 section pre code .token.boolean,
 section pre code .token.constant {
@@ -342,6 +348,7 @@ section pre code .token.function-variable {
 
 section pre code .hljs-type,
 section pre code .hljs-built_in,
+section pre code .hljs-meta,
 section pre code .token.type,
 section pre code .token.builtin,
 section pre code .token.symbol {
@@ -361,6 +368,7 @@ section pre code .token.parameter {
     color: var(--code-variable);
 }
 
+section pre code .hljs-property,
 section pre code .token.property,
 section pre code .token.attr-name,
 section pre code .token.field {
@@ -377,6 +385,7 @@ section pre code .token.operator {
     color: var(--code-operator);
 }
 
+section pre code .hljs-punctuation,
 section pre code .token.punctuation {
     color: var(--code-punctuation);
 }
@@ -388,8 +397,27 @@ section pre code .token.regex {
 
 section pre code .hljs-tag,
 section pre code .hljs-name,
+section pre code .hljs-selector-class,
+section pre code .hljs-selector-id,
+section pre code .hljs-selector-attr,
+section pre code .hljs-selector-pseudo,
+section pre code .hljs-section,
 section pre code .token.tag {
     color: var(--code-tag);
+}
+
+section pre code .hljs-doctag {
+    color: var(--muted);
+}
+
+section pre code .hljs-symbol,
+section pre code .hljs-bullet,
+section pre code .hljs-link {
+    color: var(--code-constant);
+}
+
+section pre code .hljs-addition {
+    color: var(--code-number);
 }
 
 section pre code .token.namespace {
