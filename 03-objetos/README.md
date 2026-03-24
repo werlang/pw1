@@ -120,7 +120,7 @@ const aluno = {
 };
 
 aluno.nota = 9;
-aluno.cidade = 'Sao Jeronimo';
+aluno.cidade = 'São Jerônimo';
 ```
 
 Depois disso, o objeto passa a ter a nova nota e também a nova propriedade `cidade`.
@@ -133,7 +133,7 @@ Para remover uma propriedade, use `delete`.
 const aluno = {
     nome: 'Ana',
     nota: 8,
-    cidade: 'Sao Jeronimo'
+    cidade: 'São Jerônimo'
 };
 
 delete aluno.cidade;
@@ -273,7 +273,7 @@ const aluno = {
 
 Prefira padrões consistentes.
 
-## 14. Boas praticas
+## 14. Boas práticas
 
 - use nomes claros para propriedades;
 - mantenha o mesmo padrão de escrita nas chaves;
@@ -285,6 +285,9 @@ Prefira padrões consistentes.
 
 As práticas desta seção mostram objetos em uso real:
 
+- `perfil-aluno/`: criação e atualização de um objeto único com dados de formulário;
+- `vitrine-produtos/`: renderização de um array de objetos em cards e resumo de preços;
+- `agenda-contatos/`: cadastro e busca de contatos representados por objetos;
 - `boletim/`: cadastro de alunos, cálculo de média, aprovados e maior nota usando array de objetos.
 
 Essa seção serve como ponte entre fundamentos de JavaScript e interfaces mais completas com DOM, formulários e persistência.

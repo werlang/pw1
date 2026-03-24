@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vitrine de Produtos</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <main class="container">
+        <h1>Vitrine de Produtos</h1>
+        <p class="intro">Cadastre produtos como objetos e renderize cards a partir do array principal.</p>
+
+        <section class="painel formulario">
+            <input id="input-produto" type="text" placeholder="Nome do produto">
+            <input id="input-categoria" type="text" placeholder="Categoria">
+            <input id="input-preco" type="number" step="0.01" placeholder="Preço">
+            <button id="btn-cadastrar" type="button">Cadastrar produto</button>
+            <p id="mensagem" class="mensagem"></p>
+        </section>
+
+        <section class="painel resumo">
+            <div><span class="rotulo">Quantidade</span><strong id="quantidade-produtos">0</strong></div>
+            <div><span class="rotulo">Preço médio</span><strong id="preco-medio">R$ 0,00</strong></div>
+            <div><span class="rotulo">Mais caro</span><strong id="produto-caro">Nenhum</strong></div>
+        </section>
+
+        <section id="lista-produtos" class="grade-produtos"></section>
+    </main>
+</body>
+</html>

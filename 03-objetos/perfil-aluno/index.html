@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil de Aluno</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <main class="container">
+        <h1>Perfil de Aluno</h1>
+        <p class="intro">Monte um objeto a partir do formulário e veja suas propriedades organizadas na tela.</p>
+
+        <section class="painel formulario">
+            <div class="campo"><label for="input-nome">Nome</label><input id="input-nome" type="text" placeholder="Ex.: Marina"></div>
+            <div class="campo"><label for="input-turma">Turma</label><input id="input-turma" type="text" placeholder="Ex.: 2AT"></div>
+            <div class="campo"><label for="input-cidade">Cidade</label><input id="input-cidade" type="text" placeholder="Ex.: Charqueadas"></div>
+            <div class="campo"><label for="input-idade">Idade</label><input id="input-idade" type="number" min="0" placeholder="Ex.: 16"></div>
+            <label class="checkbox"><input id="input-bolsista" type="checkbox"> Bolsista</label>
+            <button id="btn-salvar" type="button">Salvar perfil</button>
+            <p id="mensagem" class="mensagem"></p>
+        </section>
+
+        <section class="painel perfil">
+            <h2>Resumo do perfil</h2>
+            <div id="card-perfil" class="card-perfil"></div>
+        </section>
+    </main>
+</body>
+</html>
