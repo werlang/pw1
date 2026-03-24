@@ -4,7 +4,17 @@ const buttonClearPosts = document.querySelector('#btn-limpar');
 const postMessage = document.querySelector('#mensagem');
 const postsList = document.querySelector('#lista-postagens');
 
-function createPostCard(text, dateText) {
+const posts = [];
+
+function renderPosts() {
+  postsList.innerHTML = '';
+
+  posts.forEach(function(post) {
+    postsList.append(createPostCard(post));
+  });
+}
+
+function createPostCard(post) {
   const article = document.createElement('article');
   const content = document.createElement('p');
   const time = document.createElement('small');
@@ -16,13 +26,13 @@ function createPostCard(text, dateText) {
   actions.classList.add('acoes-card');
   deleteButton.classList.add('secundario');
 
-  content.textContent = text;
-  time.textContent = `Atualizado em ${dateText}`;
+  content.textContent = post.texto;
+  time.textContent = `Atualizado em ${post.data}`;
   editButton.textContent = 'Editar';
   deleteButton.textContent = 'Remover';
 
   editButton.addEventListener('click', function() {
-    const newText = window.prompt('Edite o texto da postagem:', content.textContent);
+    const newText = window.prompt('Edite o texto da postagem:', post.texto);
 
     if (newText === null) {
       return;
@@ -35,14 +45,20 @@ function createPostCard(text, dateText) {
       return;
     }
 
-    content.textContent = trimmedText;
-    time.textContent = `Atualizado em ${new Date().toLocaleString('pt-BR')}`;
+    post.texto = trimmedText;
+    post.data = new Date().toLocaleString('pt-BR');
     postMessage.textContent = 'Postagem editada com sucesso.';
+    renderPosts();
   });
 
   deleteButton.addEventListener('click', function() {
-    article.remove();
+    const position = posts.findIndex(function(item) {
+      return item.id === post.id;
+    });
+
+    posts.splice(position, 1);
     postMessage.textContent = 'Postagem removida.';
+    renderPosts();
   });
 
   actions.append(editButton, deleteButton);
@@ -59,16 +75,20 @@ buttonPublish.addEventListener('click', function() {
     return;
   }
 
-  const dateText = new Date().toLocaleString('pt-BR');
-  const postCard = createPostCard(text, dateText);
+  posts.unshift({
+    id: Date.now(),
+    texto: text,
+    data: new Date().toLocaleString('pt-BR')
+  });
 
-  postsList.prepend(postCard);
   postMessage.textContent = 'Postagem publicada com sucesso.';
   inputPost.value = '';
   inputPost.focus();
+  renderPosts();
 });
 
 buttonClearPosts.addEventListener('click', function() {
-  postsList.innerHTML = '';
+  posts.length = 0;
   postMessage.textContent = 'Todas as postagens foram removidas.';
+  renderPosts();
 });

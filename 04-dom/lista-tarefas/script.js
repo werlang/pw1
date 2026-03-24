@@ -3,8 +3,12 @@ const buttonAddTask = document.querySelector('#btn-adicionar');
 const taskList = document.querySelector('#lista-tarefas');
 const taskStatus = document.querySelector('#status');
 
+const tasks = [];
+
 function updateStatus() {
-    const pendingTasks = taskList.querySelectorAll('.item-tarefa:not(.concluida)').length;
+    const pendingTasks = tasks.filter(function(task) {
+        return !task.concluida;
+    }).length;
 
     if (pendingTasks === 0) {
         taskStatus.textContent = 'Nenhuma tarefa pendente.';
@@ -13,7 +17,17 @@ function updateStatus() {
     }
 }
 
-function createTaskItem(taskText) {
+function renderTasks() {
+    taskList.innerHTML = '';
+
+    tasks.forEach(function(task) {
+        taskList.append(createTaskItem(task));
+    });
+
+    updateStatus();
+}
+
+function createTaskItem(task) {
     const item = document.createElement('li');
     const label = document.createElement('span');
     const actions = document.createElement('div');
@@ -23,19 +37,26 @@ function createTaskItem(taskText) {
     item.classList.add('item-tarefa');
     actions.classList.add('acoes-item');
     removeButton.classList.add('remover');
+    if (task.concluida) {
+        item.classList.add('concluida');
+    }
 
-    label.textContent = taskText;
+    label.textContent = task.texto;
     doneButton.textContent = 'Concluir';
     removeButton.textContent = 'Remover';
 
     doneButton.addEventListener('click', function() {
-        item.classList.toggle('concluida');
-        updateStatus();
+        task.concluida = !task.concluida;
+        renderTasks();
     });
 
     removeButton.addEventListener('click', function() {
-        item.remove();
-        updateStatus();
+        const position = tasks.findIndex(function(itemTask) {
+            return itemTask.id === task.id;
+        });
+
+        tasks.splice(position, 1);
+        renderTasks();
     });
 
     actions.append(doneButton, removeButton);
@@ -50,10 +71,15 @@ buttonAddTask.addEventListener('click', function() {
         return;
     }
 
-    taskList.append(createTaskItem(taskText));
+    tasks.push({
+        id: Date.now(),
+        texto: taskText,
+        concluida: false
+    });
+
     inputTask.value = '';
     inputTask.focus();
-    updateStatus();
+    renderTasks();
 });
 
 updateStatus();

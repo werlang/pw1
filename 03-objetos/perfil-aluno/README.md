@@ -2,7 +2,7 @@
 
 ## Objetivo da Atividade
 
-O objetivo desta prática é trabalhar com um objeto único, representando uma entidade com várias propriedades que podem ser lidas e atualizadas pela interface.
+O objetivo desta prática é representar um aluno com um único objeto, atualizando suas propriedades a partir de um formulário.
 
 ## Conceitos trabalhados
 
@@ -14,16 +14,33 @@ O objetivo desta prática é trabalhar com um objeto único, representando uma e
 
 ## Especificações Técnicas do Sistema
 
+O sistema deve manter um objeto com os dados atuais do aluno exibido na tela.
+
 O aplicativo deve permitir:
 
-- informar nome, turma, cidade e idade do aluno;
+- informar nome, turma, cidade e idade;
 - marcar se o aluno recebe bolsa;
-- montar ou atualizar um objeto com esses dados;
-- exibir o conteúdo atual do objeto na tela;
-- mostrar um resumo visual do perfil.
+- atualizar o objeto principal com esses valores;
+- exibir o conteúdo atual do objeto de forma organizada;
+- mostrar um resumo visual do perfil preenchido.
+
+## Estrutura mínima esperada
+
+- campos de formulário para cada propriedade do aluno;
+- um botão para aplicar ou atualizar os dados;
+- uma área que mostre o resumo do perfil;
+- uma área opcional para exibir o objeto formatado.
+
+## Regras de funcionamento
+
+- o objeto deve concentrar os dados do aluno em vez de espalhar várias variáveis independentes;
+- ao clicar no botão, as propriedades devem ser atualizadas com os novos valores;
+- a idade deve ser tratada como número, se isso fizer sentido na sua solução;
+- o estado visual mostrado na tela deve ser derivado do objeto atual;
+- se algum campo estiver vazio, o sistema pode usar texto padrão, mas isso deve ficar consistente.
 
 ## O que observar durante a prática
 
-- um objeto organiza várias informações sobre a mesma entidade;
-- a interface pode funcionar como editora de propriedades;
-- ler e atualizar o objeto deve ser mais simples do que espalhar várias variáveis soltas.
+- objetos organizam dados diferentes que pertencem à mesma entidade;
+- alterar a interface passa a ser consequência de alterar o objeto;
+- esse padrão prepara o caminho para trabalhar com vários alunos depois.

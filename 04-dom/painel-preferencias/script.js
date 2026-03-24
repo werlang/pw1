@@ -6,19 +6,32 @@ const previewCard = document.querySelector('#card-preview');
 const previewName = document.querySelector('#preview-nome');
 const previewText = document.querySelector('#preview-texto');
 
-buttonApplyPreferences.addEventListener('click', function() {
-    const name = inputPreviewName.value.trim();
-    const selectedColor = selectColor.value;
+const preferences = {
+    nome: 'Visitante',
+    cor: 'azul',
+    destaque: false
+};
 
-    previewName.textContent = name !== '' ? name : 'Visitante';
-    previewText.textContent = `Destaque atual: ${selectedColor}.`;
+function renderPreferences() {
+    previewName.textContent = preferences.nome;
+    previewText.textContent = `Destaque atual: ${preferences.cor}.`;
 
     previewCard.classList.remove('azul', 'verde', 'laranja');
-    previewCard.classList.add(selectedColor);
+    previewCard.classList.add(preferences.cor);
 
-    if (inputBold.checked) {
+    if (preferences.destaque) {
         previewName.classList.add('forte');
     } else {
         previewName.classList.remove('forte');
     }
+}
+
+buttonApplyPreferences.addEventListener('click', function() {
+    preferences.nome = inputPreviewName.value.trim() !== '' ? inputPreviewName.value.trim() : 'Visitante';
+    preferences.cor = selectColor.value;
+    preferences.destaque = inputBold.checked;
+
+    renderPreferences();
 });
+
+renderPreferences();

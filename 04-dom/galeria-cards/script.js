@@ -4,8 +4,40 @@ const buttonCreateCard = document.querySelector('#btn-criar');
 const cardsCounter = document.querySelector('#contador');
 const gallery = document.querySelector('#galeria');
 
+const cards = [];
+
 function updateCounter() {
-    cardsCounter.textContent = `${gallery.children.length} card(s)`;
+    cardsCounter.textContent = `${cards.length} card(s)`;
+}
+
+function renderCards() {
+    gallery.innerHTML = '';
+
+    cards.forEach(function(card) {
+        const article = document.createElement('article');
+        const heading = document.createElement('h2');
+        const paragraph = document.createElement('p');
+        const removeButton = document.createElement('button');
+
+        article.classList.add('card');
+        heading.textContent = card.titulo;
+        paragraph.textContent = card.descricao;
+        removeButton.textContent = 'Remover';
+
+        removeButton.addEventListener('click', function() {
+            const position = cards.findIndex(function(item) {
+                return item.id === card.id;
+            });
+
+            cards.splice(position, 1);
+            renderCards();
+        });
+
+        article.append(heading, paragraph, removeButton);
+        gallery.append(article);
+    });
+
+    updateCounter();
 }
 
 buttonCreateCard.addEventListener('click', function() {
@@ -16,28 +48,16 @@ buttonCreateCard.addEventListener('click', function() {
         return;
     }
 
-    const article = document.createElement('article');
-    const heading = document.createElement('h2');
-    const paragraph = document.createElement('p');
-    const removeButton = document.createElement('button');
-
-    article.classList.add('card');
-    heading.textContent = title;
-    paragraph.textContent = description;
-    removeButton.textContent = 'Remover';
-
-    removeButton.addEventListener('click', function() {
-        article.remove();
-        updateCounter();
+    cards.push({
+        id: Date.now(),
+        titulo: title,
+        descricao: description
     });
-
-    article.append(heading, paragraph, removeButton);
-    gallery.append(article);
 
     inputCardTitle.value = '';
     inputCardDescription.value = '';
     inputCardTitle.focus();
-    updateCounter();
+    renderCards();
 });
 
 updateCounter();
