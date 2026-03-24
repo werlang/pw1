@@ -52,4 +52,5 @@ PUBLIC_DIR=./exemplos/ex13.1 docker compose up -d
 - When adding API behavior, keep JSON contract and field names consistent with existing files.
 - Prefer small, explicit functions and straightforward control flow suitable for classroom explanation.
 - For README and slide work, preserve the Portuguese-first didactic tone and prefer structure that helps the professor teach, not just material that looks complete.
+- For README, slide, and didactic text work in Portuguese, always use correct PT-BR orthography and accentuation. Do not strip accents from prose, labels, or explanatory UI text unless there is a technical reason in code identifiers, file names, or URLs.
 - In `marp/content/`, prefer utility classes such as `grid-cols-*`, `col-span-*`, `flex`, `items-*`, `justify-*`, `mx-auto`, `ml-auto`, `mr-auto`, `bleed-bottom`, `relative`, and `absolute`.
