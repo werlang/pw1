@@ -22,7 +22,7 @@ pablowerlang@ifsul.edu.br
 - linguagem viva e próxima da aula
 - evitar detalhes técnicos longos logo na abertura
 
-<div class="media align-bottom">
+<div class="media flex items-end">
     <!-- Imagem sugerida: visão geral do assunto {{ASSUNTO}}, de preferência com apelo visual ou toque bem-humorado -->
 </div>
 
@@ -52,7 +52,7 @@ pablowerlang@ifsul.edu.br
 3. passo curto 3
 4. passo curto 4
 
-<div class="media align-center">
+<div class="media mx-auto">
     <!-- Imagem sugerida: diagrama do fluxo ou metáfora visual marcante para o mecanismo principal -->
 </div>
 
@@ -61,7 +61,7 @@ pablowerlang@ifsul.edu.br
 # {{BLOCO 2}}
 ## {{COMPARACAO}}
 
-<div class="grid grid-2">
+<div class="grid grid-cols-2 gap-6">
 <div>
 
 **{{ITEM A}}**
@@ -82,7 +82,7 @@ pablowerlang@ifsul.edu.br
 </div>
 </div>
 
-<div class="media align-center">
+<div class="media mx-auto">
     <!-- Imagem sugerida: comparação visual chamativa ou engraçada entre {{ITEM A}} e {{ITEM B}} -->
 </div>
 
@@ -109,7 +109,7 @@ elemento.addEventListener('evento', () => {
 - qual conceito da aula será praticado
 - link da demo rodando, quando houver
 
-<div class="media align-center">
+<div class="media mx-auto">
     <!-- Imagem sugerida: algo divertido ou memorável ligado ao exercício -->
 </div>
 

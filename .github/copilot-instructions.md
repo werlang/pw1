@@ -40,6 +40,8 @@ PUBLIC_DIR=./exemplos/ex13.1 docker compose up -d
 - Use the `guia-readme` skill when creating, expanding, standardizing, or rewriting section READMEs into didactic reference guides in Portuguese.
 - Use the `guia-readme-para-slides` skill when converting a README-guia into a Marp slide deck for class, following the visual and structural pattern of `marp/content/00-introducao.md`.
 - Slides generated from README content should summarize aggressively, keep one main idea per slide, and keep image slots as descriptions/placeholders when the final asset does not exist yet.
+- For Marp slide work, follow the utility-only layout vocabulary documented in `marp/README.md` and `marp/themes/positioning.css`.
+- Do not introduce or restore legacy Marp helper classes such as `grid-2`, `grid-3`, `span-2`, `vcenter`, `vbottom`, `vfill`, `align-center`, `align-left`, or `align-right`.
 - Use the `skill-creator` skill when creating, reviewing, fixing, or reorganizing skills in `.github/skills/`, including frontmatter quality, trigger descriptions, and bundled resources.
 - When updating or creating skills for this repository, prefer direct creation/editing inside `.github/skills/<skill-name>/` and keep bundled resources minimal and purposeful.
 
@@ -50,3 +52,4 @@ PUBLIC_DIR=./exemplos/ex13.1 docker compose up -d
 - When adding API behavior, keep JSON contract and field names consistent with existing files.
 - Prefer small, explicit functions and straightforward control flow suitable for classroom explanation.
 - For README and slide work, preserve the Portuguese-first didactic tone and prefer structure that helps the professor teach, not just material that looks complete.
+- In `marp/content/`, prefer utility classes such as `grid-cols-*`, `col-span-*`, `flex`, `items-*`, `justify-*`, `mx-auto`, `ml-auto`, `mr-auto`, `bleed-bottom`, `relative`, and `absolute`.

@@ -70,6 +70,31 @@ Antes de gerar os slides, respeite estas convenções:
 - mantenha o conteúdo claro para estudantes iniciantes, especialmente ensino médio
 - trate o slide como apoio de aula, não como apostila completa
 - se precisar de imagens, deixe apenas a descrição do que deve ser ilustrado
+- em `marp/content/`, use apenas a nomenclatura utilitária atual de `marp/themes/positioning.css`
+- nao use classes legadas como `grid-2`, `grid-3`, `span-2`, `vcenter`, `vbottom`, `vfill`, `align-center`, `align-left` ou `align-right`
+
+## Convenções de layout Marp
+
+Para layouts e posicionamento, trate `marp/themes/positioning.css` como a API oficial do tema.
+
+Classes mais comuns:
+
+- estrutura: `grid`, `grid-cols-2`, `grid-cols-3`, `col-span-2`, `gap-4`, `gap-6`
+- flex: `flex`, `flex-row`, `flex-col`, `items-center`, `items-end`, `justify-between`, `justify-center`
+- alinhamento por margem: `mx-auto`, `ml-auto`, `mr-auto`
+- tamanho e ocupacao: `w-full`, `h-full`, `size-full`
+- posicionamento: `relative`, `absolute`, `inset-0`, `top-0`, `right-0`, `bottom-0`, `left-0`
+- midia: `object-cover`, `object-contain`, `object-center`
+- sangria: `bleed-bottom`
+
+Regra pratica:
+
+- se o slide pede comparacao lado a lado, comece com `grid grid-cols-2 gap-6`
+- se o slide pede texto com imagem lateral, comece com `grid grid-cols-3 gap-6` e use `col-span-2` para o texto
+- se o conteudo precisa centralizar verticalmente, use `flex items-center`
+- se a imagem precisa ir para a direita, use `ml-auto`
+- se a imagem ou bloco precisa centralizar, use `mx-auto`
+- se um bloco precisa sair do fluxo, combine `relative` e `absolute`
 
 ## Tom e linguagem
 
@@ -217,7 +242,7 @@ Use o padrão do exemplo fornecido:
 - frontmatter Marp no topo
 - slide inicial com `<!-- _class: lead -->`
 - separadores com `<!-- _class: divider -->` quando houver mudanca de bloco
-- uso moderado de `grid`, `media`, `align-right`, `align-center`, `align-bottom`, `size-v`
+- uso moderado de `grid`, `media`, `grid-cols-*`, `col-span-*`, `flex`, `items-*`, `justify-*`, `mx-auto`, `ml-auto`, `mr-auto`, `bleed-bottom`, `relative`, `absolute`, `size-full`
 - imagens quando realmente ajudarem o professor a explicar ou quando deixarem o conceito mais memorável
 - preferência por placeholders de imagem com intenção visual clara, não descrições genéricas demais
 
@@ -252,7 +277,7 @@ Quando uma imagem for desejável, não invente um arquivo real. Use apenas a est
 Padrao recomendado:
 
 ```html
-<div class="media align-center">
+<div class="media mx-auto">
     <!-- Imagem sugerida: fluxo do evento saindo do elemento filho e subindo pela arvore DOM -->
 </div>
 ```

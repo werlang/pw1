@@ -43,6 +43,17 @@ Antes de editar, respeite estas convencoes:
 - para frontend, use JavaScript vanilla e DOM direto
 - para backend em PHP, mantenha o padrao de JSON ja usado no repositorio
 - nao introduza frameworks ou dependencias novas
+- se o README for servir de base para slides em `marp/content/`, organize o conteudo em blocos claros que possam virar telas curtas sem depender de classes legadas de layout
+
+## Compatibilidade com slides da disciplina
+
+Quando o README tiver alta chance de virar deck Marp depois:
+
+- mantenha secoes com uma ideia central por bloco
+- prefira comparacoes curtas e exemplos pequenos
+- destaque exercicios, demos e links de apoio de forma objetiva
+- escreva subtitulos que possam ser resumidos facilmente em `#` e `##`
+- evite estruturas que dependam de nomenclatura antiga de layout; a base atual dos slides e utilitaria
 
 ## Fluxo de trabalho
 

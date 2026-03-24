@@ -35,6 +35,8 @@ Use esta lista antes de concluir um deck gerado a partir de README.
 ## Layout
 
 - grades foram usadas apenas quando ajudam a comparar informacoes
+- layouts usam a nomenclatura utilitaria atual de `marp/themes/positioning.css`
+- nao ha classes legadas como `grid-2`, `grid-3`, `span-2`, `vcenter`, `vbottom`, `vfill`, `align-center`, `align-left` ou `align-right`
 - slides divisores foram usados para separar blocos grandes
 - imagens foram substituidas por descricoes claras quando necessario
 - as descricoes de imagem tem intencao visual clara e, quando util, um toque bem-humorado ou memoravel
