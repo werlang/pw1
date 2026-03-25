@@ -133,3 +133,36 @@ h1 {
 </div>
 
 </div>
+
+---
+
+# Separação de Conceitos
+## Usando `defer`
+
+```html
+<script src="script.js" defer></script>
+```
+
+- O navegador baixa o script sem travar toda a leitura do HTML
+- A execução fica para depois que o documento terminar de ser montado
+- Isso evita o clássico erro de tentar acessar um elemento que ainda nem apareceu na página
+- É uma boa escolha para scripts tradicionais, quando você não precisa de módulos
+
+---
+
+# Separação de Conceitos
+## JavaScript moderno com `type="module"`
+
+```html
+<script type="module" src="script.js"></script>
+```
+
+- Diz ao navegador que o arquivo JS é um módulo
+- Permite usar `import` e `export`
+- Cada arquivo pode ter uma responsabilidade mais clara
+- Não permite abrir os arquivos diretamente no navegador, precisa de um servidor local (ex: [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) do VSCode)
+
+```js
+import { somar } from './calc.js';
+console.log(somar(2, 3));
+```
