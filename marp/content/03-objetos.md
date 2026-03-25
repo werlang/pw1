@@ -39,6 +39,7 @@ pablowerlang@ifsul.edu.br
 
 - O que é um objeto e quando ele faz mais sentido que um array
 - Criação, acesso, atualização e remoção de propriedades
+- Leitura de chaves e valores com `keys`, `values` e `entries`
 - Combinação com arrays para modelar dados reais
 - Percurso, filtro e transformação em arrays de objetos
 - Aplicações no DOM e exercícios da seção
@@ -201,6 +202,27 @@ delete aluno.cidade;
 - Reatribuir muda um valor existente
 - Escrever uma chave nova adiciona propriedade
 - `delete` remove uma propriedade do objeto
+
+---
+
+# Objetos em JavaScript
+## `keys`, `values` e `entries`
+
+```js
+const aluno = {
+    nome: 'Ana',
+    nota: 8.5,
+    turma: '2AT'
+};
+
+console.log(Object.keys(aluno)); // ['nome', 'nota', 'turma']
+console.log(Object.values(aluno)); // ['Ana', 8.5, '2AT']
+console.log(Object.entries(aluno)); // [['nome', 'Ana'], ['nota', 8.5], ['turma', '2AT']]
+```
+
+- `keys()` lista as chaves do objeto
+- `values()` devolve só os valores
+- `entries()` traz pares `[chave, valor]`, ótimo para percorrer tudo
 
 ---
 

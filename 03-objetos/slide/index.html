@@ -60,6 +60,7 @@
 <ul>
 <li>O que é um objeto e quando ele faz mais sentido que um array</li>
 <li>Criação, acesso, atualização e remoção de propriedades</li>
+<li>Leitura de chaves e valores com <code>keys</code>, <code>values</code> e <code>entries</code></li>
 <li>Combinação com arrays para modelar dados reais</li>
 <li>Percurso, filtro e transformação em arrays de objetos</li>
 <li>Aplicações no DOM e exercícios da seção</li>
@@ -206,15 +207,36 @@ aluno.<span class="hljs-property">bolsista</span> = <span class="hljs-literal">t
 </ul>
 <footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="10" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-class="divider" data-theme="ifsul" lang="pt-BR" class="divider" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--class:divider;--theme:ifsul;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="10" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
+<header> </header>
+<h1 id="objetos-em-javascript-8">Objetos em JavaScript</h1>
+<h2 id="keys-values-e-entries"><code>keys</code>, <code>values</code> e <code>entries</code></h2>
+<pre><code class="language-js"><span class="hljs-keyword">const</span> aluno = {
+    <span class="hljs-attr">nome</span>: <span class="hljs-string">&#x27;Ana&#x27;</span>,
+    <span class="hljs-attr">nota</span>: <span class="hljs-number">8.5</span>,
+    <span class="hljs-attr">turma</span>: <span class="hljs-string">&#x27;2AT&#x27;</span>
+};
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title class_">Object</span>.<span class="hljs-title function_">keys</span>(aluno)); <span class="hljs-comment">// [&#x27;nome&#x27;, &#x27;nota&#x27;, &#x27;turma&#x27;]</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title class_">Object</span>.<span class="hljs-title function_">values</span>(aluno)); <span class="hljs-comment">// [&#x27;Ana&#x27;, 8.5, &#x27;2AT&#x27;]</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title class_">Object</span>.<span class="hljs-title function_">entries</span>(aluno)); <span class="hljs-comment">// [[&#x27;nome&#x27;, &#x27;Ana&#x27;], [&#x27;nota&#x27;, 8.5], [&#x27;turma&#x27;, &#x27;2AT&#x27;]]</span>
+</code></pre>
+<ul>
+<li><code>keys()</code> lista as chaves do objeto</li>
+<li><code>values()</code> devolve só os valores</li>
+<li><code>entries()</code> traz pares <code>[chave, valor]</code>, ótimo para percorrer tudo</li>
+</ul>
+<footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="11" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-class="divider" data-theme="ifsul" lang="pt-BR" class="divider" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--class:divider;--theme:ifsul;">
 <header> </header>
 
 <h1 id="modelando-dados-reais">Modelando Dados Reais</h1>
 <footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="11" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="12" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
 <header> </header>
-<h1 id="objetos-em-javascript-8">Objetos em JavaScript</h1>
+<h1 id="objetos-em-javascript-9">Objetos em JavaScript</h1>
 <h2 id="objetos-com-arrays">Objetos com arrays</h2>
 <div class="grid grid-cols-3 gap-6 h-full">
 <div class="col-span-2">
@@ -235,9 +257,9 @@ aluno.<span class="hljs-property">bolsista</span> = <span class="hljs-literal">t
 </div>
 <footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="12" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="13" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
 <header> </header>
-<h1 id="objetos-em-javascript-9">Objetos em JavaScript</h1>
+<h1 id="objetos-em-javascript-10">Objetos em JavaScript</h1>
 <h2 id="arrays-de-objetos">Arrays de objetos</h2>
 <pre><code class="language-js"><span class="hljs-keyword">const</span> alunos = [
     { <span class="hljs-attr">nome</span>: <span class="hljs-string">&#x27;Ana&#x27;</span>, <span class="hljs-attr">nota</span>: <span class="hljs-number">8</span> },
@@ -252,9 +274,9 @@ aluno.<span class="hljs-property">bolsista</span> = <span class="hljs-literal">t
 </ul>
 <footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="13" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="14" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
 <header> </header>
-<h1 id="objetos-em-javascript-10">Objetos em JavaScript</h1>
+<h1 id="objetos-em-javascript-11">Objetos em JavaScript</h1>
 <h2 id="percorrendo-arrays-de-objetos">Percorrendo arrays de objetos</h2>
 <pre><code class="language-js"><span class="hljs-keyword">const</span> alunos = [
     { <span class="hljs-attr">nome</span>: <span class="hljs-string">&#x27;Ana&#x27;</span>, <span class="hljs-attr">nota</span>: <span class="hljs-number">8</span> },
@@ -273,9 +295,9 @@ alunos.<span class="hljs-title function_">forEach</span>(<span class="hljs-funct
 </ul>
 <footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="14" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="15" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
 <header> </header>
-<h1 id="objetos-em-javascript-11">Objetos em JavaScript</h1>
+<h1 id="objetos-em-javascript-12">Objetos em JavaScript</h1>
 <h2 id="filtrar-transformar-e-resumir">Filtrar, transformar e resumir</h2>
 <p><strong><code>filter()</code></strong>: filtra itens com base em condição</p>
 <pre><code class="language-js"><span class="hljs-keyword">const</span> aprovados = alunos.<span class="hljs-title function_">filter</span>( <span class="hljs-function">(<span class="hljs-params">aluno</span>) =&gt;</span> aluno.<span class="hljs-property">nota</span> &gt;= <span class="hljs-number">7</span> );
@@ -288,9 +310,9 @@ alunos.<span class="hljs-title function_">forEach</span>(<span class="hljs-funct
 </code></pre>
 <footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="15" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="16" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
 <header> </header>
-<h1 id="objetos-em-javascript-12">Objetos em JavaScript</h1>
+<h1 id="objetos-em-javascript-13">Objetos em JavaScript</h1>
 <h2 id="objetos-e-dom">Objetos e DOM</h2>
 <pre><code class="language-js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">renderAluno</span>(<span class="hljs-params">aluno</span>) {
     <span class="hljs-keyword">const</span> saida = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&#x27;#saida&#x27;</span>);
@@ -307,15 +329,15 @@ alunos.<span class="hljs-title function_">forEach</span>(<span class="hljs-funct
 </ul>
 <footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="16" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-class="divider" data-theme="ifsul" lang="pt-BR" class="divider" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--class:divider;--theme:ifsul;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="17" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-class="divider" data-theme="ifsul" lang="pt-BR" class="divider" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--class:divider;--theme:ifsul;">
 <header> </header>
 
 <h1 id="erros-comuns">Erros Comuns</h1>
 <footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="17" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="18" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
 <header> </header>
-<h1 id="objetos-em-javascript-13">Objetos em JavaScript</h1>
+<h1 id="objetos-em-javascript-14">Objetos em JavaScript</h1>
 <h2 id="erros-comuns-1">Erros comuns</h2>
 <div class="grid grid-cols-2 gap-6 h-full">
 <div>
@@ -339,9 +361,9 @@ alunos.<span class="hljs-title function_">forEach</span>(<span class="hljs-funct
 </div>
 <footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="18" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="19" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
 <header> </header>
-<h1 id="objetos-em-javascript-14">Objetos em JavaScript</h1>
+<h1 id="objetos-em-javascript-15">Objetos em JavaScript</h1>
 <h2 id="erros-comuns-2">Erros comuns</h2>
 <div class="grid grid-cols-2 gap-6 h-full">
 <div>
@@ -365,15 +387,15 @@ saida.<span class="hljs-property">textContent</span> = aluno; <span class="hljs-
 </div>
 <footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="19" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-class="divider" data-theme="ifsul" lang="pt-BR" class="divider" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--class:divider;--theme:ifsul;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="20" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-class="divider" data-theme="ifsul" lang="pt-BR" class="divider" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--class:divider;--theme:ifsul;">
 <header> </header>
 
 <h1 id="exerc%C3%ADcios">Exercícios</h1>
 <footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="20" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="21" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
 <header> </header>
-<h1 id="objetos-em-javascript-15">Objetos em JavaScript</h1>
+<h1 id="objetos-em-javascript-16">Objetos em JavaScript</h1>
 <h2 id="exerc%C3%ADcio-perfil-de-aluno">Exercício: Perfil de aluno</h2>
 <ul>
 <li>
@@ -394,9 +416,9 @@ saida.<span class="hljs-property">textContent</span> = aluno; <span class="hljs-
 </ul>
 <footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="21" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="22" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
 <header> </header>
-<h1 id="objetos-em-javascript-16">Objetos em JavaScript</h1>
+<h1 id="objetos-em-javascript-17">Objetos em JavaScript</h1>
 <h2 id="exerc%C3%ADcio-agenda-de-contatos">Exercício: Agenda de contatos</h2>
 <ul>
 <li>
@@ -417,9 +439,9 @@ saida.<span class="hljs-property">textContent</span> = aluno; <span class="hljs-
 </ul>
 <footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="22" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="23" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
 <header> </header>
-<h1 id="objetos-em-javascript-17">Objetos em JavaScript</h1>
+<h1 id="objetos-em-javascript-18">Objetos em JavaScript</h1>
 <h2 id="exerc%C3%ADcio-boletim">Exercício: Boletim</h2>
 <ul>
 <li>
@@ -440,9 +462,9 @@ saida.<span class="hljs-property">textContent</span> = aluno; <span class="hljs-
 </ul>
 <footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="23" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="24" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
 <header> </header>
-<h1 id="objetos-em-javascript-18">Objetos em JavaScript</h1>
+<h1 id="objetos-em-javascript-19">Objetos em JavaScript</h1>
 <h2 id="exerc%C3%ADcio-vitrine-de-produtos">Exercício: Vitrine de produtos</h2>
 <ul>
 <li>

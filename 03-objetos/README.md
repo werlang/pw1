@@ -139,7 +139,55 @@ const aluno = {
 delete aluno.cidade;
 ```
 
-## 8. Objetos com arrays
+## 8. Métodos úteis de objetos
+
+Quando você precisa inspecionar um objeto, três métodos aparecem bastante:
+
+- `Object.keys(objeto)`: devolve um array com as chaves;
+- `Object.values(objeto)`: devolve um array com os valores;
+- `Object.entries(objeto)`: devolve um array de pares `[chave, valor]`.
+
+Exemplo:
+
+```js
+const aluno = {
+    nome: 'Ana',
+    nota: 8.5,
+    turma: '2AT'
+};
+
+console.log(Object.keys(aluno));
+console.log(Object.values(aluno));
+console.log(Object.entries(aluno));
+```
+
+Saída esperada:
+
+```js
+['nome', 'nota', 'turma']
+['Ana', 8.5, '2AT']
+[
+    ['nome', 'Ana'],
+    ['nota', 8.5],
+    ['turma', '2AT']
+]
+```
+
+Esses métodos são úteis para:
+
+- listar propriedades de um objeto;
+- montar tabelas ou resumos na tela;
+- percorrer chave e valor juntos.
+
+Exemplo com `entries`:
+
+```js
+Object.entries(aluno).forEach(function([chave, valor]) {
+    console.log(chave, valor);
+});
+```
+
+## 9. Objetos com arrays
 
 Muitas estruturas reais usam os dois juntos.
 
@@ -158,7 +206,7 @@ Aqui:
 - `alunos` é uma propriedade desse objeto;
 - o valor de `alunos` é um array.
 
-## 9. Arrays de objetos
+## 10. Arrays de objetos
 
 Este é um dos formatos mais importantes em aplicações web.
 
@@ -180,7 +228,7 @@ Isso permite:
 - buscar usuários, produtos, tarefas ou filmes;
 - renderizar cards no DOM.
 
-## 10. Percorrendo array + objetos
+## 11. Percorrendo array + objetos
 
 ```js
 const alunos = [
@@ -196,7 +244,7 @@ alunos.forEach(function(aluno) {
 
 Esse padrão é muito comum porque combina a ideia de lista com a ideia de entidade.
 
-## 11. Filtrando e transformando arrays de objetos
+## 12. Filtrando e transformando arrays de objetos
 
 ### Filtrando aprovados
 
@@ -222,7 +270,7 @@ const somaNotas = alunos.reduce(function(acumulador, aluno) {
 }, 0);
 ```
 
-## 12. Objetos e DOM
+## 13. Objetos e DOM
 
 Em interfaces web, objetos aparecem o tempo todo para representar dados da tela.
 
@@ -240,7 +288,7 @@ saida.textContent = `${aluno.nome} tirou ${aluno.nota}`;
 
 Quando existe uma lista de objetos, o JavaScript costuma percorrer essa lista e montar a interface dinamicamente.
 
-## 13. Erros comuns de iniciantes
+## 14. Erros comuns de iniciantes
 
 ### Confundir array com objeto
 
@@ -273,15 +321,16 @@ const aluno = {
 
 Prefira padrões consistentes.
 
-## 14. Boas práticas
+## 15. Boas práticas
 
 - use nomes claros para propriedades;
 - mantenha o mesmo padrão de escrita nas chaves;
 - use objeto quando os dados pertencem a uma mesma entidade;
+- use `keys`, `values` e `entries` quando precisar inspecionar ou percorrer um objeto;
 - use array de objetos quando houver várias entidades do mesmo tipo;
 - renderize a interface com base no array principal de objetos.
 
-## 15. Relação com as práticas desta pasta
+## 16. Relação com as práticas desta pasta
 
 As práticas desta seção mostram objetos em uso real:
 
@@ -292,12 +341,13 @@ As práticas desta seção mostram objetos em uso real:
 
 Essa seção serve como ponte entre fundamentos de JavaScript e interfaces mais completas com DOM, formulários e persistência.
 
-## 16. Resumo final
+## 17. Resumo final
 
 Os pontos centrais sobre objetos são estes:
 
 - objeto representa uma entidade com propriedades;
 - propriedades podem ser lidas, alteradas, adicionadas e removidas;
+- `Object.keys()`, `Object.values()` e `Object.entries()` ajudam a inspecionar objetos;
 - objetos e arrays se combinam com muita frequência;
 - arrays de objetos são muito comuns em aplicações reais;
 - esse formato aparece em tabelas, cards, cadastros, buscas e APIs.
