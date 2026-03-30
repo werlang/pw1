@@ -1,0 +1,35 @@
+body {
+    font-family: sans-serif;
+    font-size: 16px;
+}
+
+#box {
+    background-color: #566f84;
+    color: white;
+    border-radius: 10px;
+    padding: 20px 30px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    box-shadow: 2px 2px 10px black;
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    input {
+        padding: 7px 15px;
+        border-radius: 5px;
+    }
+
+    button {
+        padding: 10px 20px;
+        border-radius: 5px;
+        background-color: #ceb244;
+        color: white;
+        border: 1px solid #918245;
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+}
