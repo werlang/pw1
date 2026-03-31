@@ -6,9 +6,9 @@ const tasks = [];
 
 function renderList() {
     taskList.innerHTML = '';
-    for (let i=0 ; i<tasks.length ; i++) {
-        taskList.innerHTML += `<li>${ tasks[i] }</li>`;
-    }
+    tasks.forEach((task, i) => {
+        taskList.innerHTML += `<li>${ i+1 }: ${ task }</li>`;
+    });
 }
 
 taskButton.addEventListener('click', () => {
