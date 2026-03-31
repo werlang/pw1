@@ -2,22 +2,20 @@ const taskInput = document.querySelector('#task-input');
 const taskButton = document.querySelector('#task-button');
 const taskList = document.querySelector('#task-list');
 
-let tasks = [];
+const tasks = [];
 
 function renderList() {
-    taskList.textContent = '';
-
-    tasks.forEach((task) => {
-        taskList.innerHTML += task;
-    });
+    taskList.innerHTML = '';
+    for (let i=0 ; i<tasks.length ; i++) {
+        taskList.innerHTML += `<li>${ tasks[i] }</li>`;
+    }
 }
 
 taskButton.addEventListener('click', () => {
-    const taskStr = `<li>${taskInput.value}</li>`;
-    tasks.push(taskStr);
-    renderList();
+    tasks.push(taskInput.value);
 
     taskInput.value = '';
     taskInput.focus();
-});
 
+    renderList();
+});
