@@ -368,7 +368,7 @@ const texto = notas.join(', '); // "5, 7, 9, 4, 8"
 1. O usuário interage com a página
 2. O JavaScript altera o array
 3. Uma função percorre os dados
-4. A interface é redesenhada com o estado atual
+4. A interface é **redesenhada** com o estado atual
 
 ```js
 function renderizarLista() {
