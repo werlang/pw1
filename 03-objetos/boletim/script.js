@@ -18,7 +18,7 @@ function renderStudents() {
     studentList.innerHTML = '';
 
     students.forEach(function(student) {
-        const status = student.grade >= 7 ? 'Aprovado' : 'Reprovado';
+        const status = student.grade >= 6 ? 'Aprovado' : 'Reprovado';
 
         studentList.innerHTML += `
             <tr>
@@ -84,11 +84,6 @@ buttonAdd.addEventListener('click', function() {
     inputGrade.value = '';
     inputName.focus();
     renderStudents();
-    analyzeClass();
-});
-
-buttonAnalyze.addEventListener('click', function() {
-    message.textContent = 'Análise atualizada com base no array da turma.';
     analyzeClass();
 });
 
