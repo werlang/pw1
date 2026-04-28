@@ -3,6 +3,7 @@
 ## Project intent
 - This repository is a **teaching codebase** for Programação Web I (IFSUL), with examples/exercises grouped by topic and class.
 - Prefer solutions that are **clear for students** over clever abstractions.
+- Treat new or edited code as instructional material that may be written, read, and maintained by high-school students.
 
 ## Big picture architecture
 - `public/`: browser-ready lesson demos (e.g., `public/02-dom/tarefas`).
@@ -37,6 +38,7 @@ PUBLIC_DIR=./exemplos/ex13.1 docker compose up -d
 
 ## Repository skills and documentation workflows
 - The workspace contains custom skills under `.github/skills/` and they should be preferred when the request matches their scope.
+- Use the `codigo-didatico-ptbr` skill when creating, revising, refactoring, or explaining source code so the result stays beginner-friendly, educational, well documented, and with comments in PT-BR.
 - Use the `guia-readme` skill when creating, expanding, standardizing, or rewriting section READMEs into didactic reference guides in Portuguese.
 - Use the `guia-readme-para-slides` skill when converting a README-guia into a Marp slide presentation for class, following the visual and structural pattern of `marp/content/00-introducao.md`.
 - Slides generated from README content should summarize aggressively, keep one main idea per slide, and keep image slots as descriptions/placeholders when the final asset does not exist yet.
@@ -48,6 +50,7 @@ PUBLIC_DIR=./exemplos/ex13.1 docker compose up -d
 ## Editing rules for agents
 - Keep changes **local to the target exercise folder**; avoid cross-folder refactors.
 - Match the simplicity level of surrounding code (beginner-friendly naming and structure).
+- For source code, prefer explicit step-by-step logic, comments in PT-BR, and documentation choices that help classroom explanation.
 - Do not introduce frameworks or new dependencies unless explicitly requested.
 - When adding API behavior, keep JSON contract and field names consistent with existing files.
 - Prefer small, explicit functions and straightforward control flow suitable for classroom explanation.
