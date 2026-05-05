@@ -1,3 +1,5 @@
+@import "toast.css";
+
 body {
     font-family: sans-serif;
     display: flex;
@@ -60,6 +62,11 @@ body {
             th {
                 background-color: #5e7947;
             }
+
+            th:first-child,
+            td:first-child {
+                width: 35px;
+            }
     
             td, th {
                 max-width: 100px;
@@ -77,6 +84,18 @@ body {
                 align-items: center;
                 justify-content: center;
                 margin: 0;
+            }
+
+            .select-item {
+                transform: scale(1.5);
+            }
+        }
+
+        tr.selected {
+            background-color: #5d843b48;
+
+            &:nth-child(odd) td {
+                background-color: #5d6956;
             }
         }
     }

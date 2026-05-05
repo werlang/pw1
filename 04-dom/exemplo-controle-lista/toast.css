@@ -1,0 +1,28 @@
+.toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 14px 30px;
+    background-color: #afd2f5;
+    color: #333333;
+    border-radius: 7px;
+    border: 1px solid #85b8da;
+    box-shadow: 2px 2px 10px #0000009e;
+    transition: 0.2s all;
+    transform: translate(100%);
+}
+
+.toast.show {
+    transform: translate(0%);
+}
+
+.toast.error {
+    background-color: #e9b3b3;
+    border-color: #c79898;
+}
+
+.toast.success {
+    background-color: #c3f1bd;
+    border-color: #a5cea0;
+
+}
