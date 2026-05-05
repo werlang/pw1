@@ -1,0 +1,28 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    width: 200px;
+    border: 1px solid #b4b4b4;
+    box-shadow: 0 0 10px #00000065;
+    margin: 10px;
+    font-family: sans-serif;
+    transition: 0.3s all;
+
+    &:hover {
+        transform: scale(1.02);
+        filter: brightness(0.95);
+    }
+
+    .title {
+        font-size: 1.5rem;
+        background-color: #f7e2b8;
+        border-radius: 10px 10px 0 0;
+        padding: 15px;
+    }
+
+    .content {
+        padding: 7px 14px;
+        margin: 5px 0px 10px;
+    }
+}

@@ -1,0 +1,46 @@
+@import "modal.css";
+@import "card.css";
+
+body {
+    background-color: #ccc;
+    margin: 0;
+    min-height: 100vh;
+    font-family: sans-serif;
+}
+
+#frame {
+    margin: auto;
+    background-color: #fff;
+    width: 100%;
+    max-width: 900px;
+    padding: 50px 30px 30px;
+    min-height: 100vh;
+    border: solid #9f9f9f;
+    border-width: 0 1px 0 1px;
+}
+
+.hero {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    border-radius: 100%;
+    width: 70px;
+    height: 70px;
+    border: 1px solid #4848ba;
+    background-color: #4c4cdf;
+    color: white;
+    font-size: 2.5rem;
+    box-shadow: 0 0 10px #0000008e;
+    cursor: pointer;
+    transition: 0.3s all;
+
+    &:hover {
+        filter: brightness(1.2);
+    }
+}
+
+#movie-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
