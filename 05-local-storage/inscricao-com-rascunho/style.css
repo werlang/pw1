@@ -1,8 +1,8 @@
 body {
     margin: 0;
-    font-family: sans-serif;
-    background: #f7f0ff;
-    color: #33204c;
+    font-family: 'Candara', 'Segoe UI', sans-serif;
+    background: radial-gradient(circle at top left, #f8f2ff, #f3f9ff 70%);
+    color: #2f2545;
 }
 
 .container {
@@ -37,12 +37,14 @@ label {
 
 input,
 select,
+textarea,
 button {
     font: inherit;
 }
 
 input,
-select {
+select,
+textarea {
     width: 100%;
     box-sizing: border-box;
     padding: 12px 14px;
@@ -50,6 +52,43 @@ select {
     border-radius: 10px;
     border: 1px solid #bca5dc;
     background: #ffffff;
+}
+
+textarea {
+    resize: vertical;
+}
+
+.grupo-oficinas {
+    border: 1px solid #d7c9ea;
+    border-radius: 12px;
+    padding: 10px 12px;
+    margin-bottom: 14px;
+}
+
+.grupo-oficinas legend {
+    font-weight: 700;
+    padding: 0 6px;
+}
+
+.check-opcao {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.check-opcao:last-child {
+    margin-bottom: 0;
+}
+
+.check-opcao input {
+    width: auto;
+    margin: 0;
+}
+
+.apoio {
+    margin-top: -6px;
+    color: #63408f;
 }
 
 .linha-botoes {
@@ -78,13 +117,30 @@ button.secundario {
     font-weight: 700;
 }
 
-ul {
-    margin: 0;
-    padding-left: 20px;
+.grade-inscricoes {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 12px;
 }
 
-li {
-    margin-bottom: 8px;
+.card-inscricao {
+    background: #f8f4ff;
+    border: 1px solid #d8caec;
+    border-radius: 12px;
+    padding: 12px;
+}
+
+.card-inscricao h3 {
+    margin: 0 0 8px;
+}
+
+.card-inscricao p {
+    margin: 6px 0;
+}
+
+.vazio {
+    margin: 0;
+    color: #5f5474;
 }
 
 @media (max-width: 640px) {

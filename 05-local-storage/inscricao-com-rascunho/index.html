@@ -10,7 +10,7 @@
 <body>
     <main class="container">
         <h1>Inscrição com Rascunho</h1>
-        <p class="intro">Use `localStorage` para a lista confirmada e `sessionStorage` para proteger o formulário em andamento.</p>
+        <p class="intro">Salve rascunho automático na sessão e confirme inscrições completas no armazenamento local.</p>
 
         <section class="painel formulario">
             <label for="input-nome">Nome</label>
@@ -27,6 +27,26 @@
                 <option value="Noite">Noite</option>
             </select>
 
+            <fieldset class="grupo-oficinas">
+                <legend>Oficinas de interesse (escolha pelo menos 1)</legend>
+                <label class="check-opcao">
+                    <input type="checkbox" name="oficina" value="Web Design">
+                    Web Design
+                </label>
+                <label class="check-opcao">
+                    <input type="checkbox" name="oficina" value="Robótica">
+                    Robótica
+                </label>
+                <label class="check-opcao">
+                    <input type="checkbox" name="oficina" value="Programação de Jogos">
+                    Programação de Jogos
+                </label>
+            </fieldset>
+
+            <label for="input-justificativa">Por que você quer participar?</label>
+            <textarea id="input-justificativa" rows="4" maxlength="160" placeholder="Escreva uma justificativa curta."></textarea>
+            <p class="apoio">Caracteres: <strong id="contador-caracteres">0/160</strong></p>
+
             <div class="linha-botoes">
                 <button id="btn-inscrever" type="button">Confirmar inscrição</button>
                 <button id="btn-limpar-rascunho" type="button" class="secundario">Limpar rascunho</button>
@@ -37,7 +57,7 @@
 
         <section class="painel lista">
             <h2>Inscrições confirmadas</h2>
-            <ul id="lista-inscricoes"></ul>
+            <div id="lista-inscricoes" class="grade-inscricoes"></div>
         </section>
     </main>
 </body>

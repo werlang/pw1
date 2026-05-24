@@ -1,5 +1,6 @@
 const inputName = document.querySelector('#input-nome');
 const inputPhone = document.querySelector('#input-telefone');
+const inputCategory = document.querySelector('#input-categoria');
 const inputSearch = document.querySelector('#input-busca');
 const buttonAdd = document.querySelector('#btn-adicionar');
 const message = document.querySelector('#mensagem');
@@ -12,7 +13,6 @@ let contactList = loadContacts();
 
 buttonAdd.addEventListener('click', addContact);
 inputSearch.addEventListener('input', renderContacts);
-listContacts.addEventListener('click', handleListClick);
 
 function loadContacts() {
     const json = localStorage.getItem(STORAGE_KEY);
@@ -31,9 +31,10 @@ function saveContacts() {
 function addContact() {
     const name = inputName.value.trim();
     const phone = inputPhone.value.trim();
+    const category = inputCategory.value;
 
-    if (name === '' || phone === '') {
-        message.textContent = 'Preencha nome e telefone antes de adicionar.';
+    if (name === '' || phone === '' || category === '') {
+        message.textContent = 'Preencha nome, telefone e categoria antes de adicionar.';
         return;
     }
 
@@ -41,6 +42,8 @@ function addContact() {
         id: Date.now(),
         name: name,
         phone: phone,
+        category: category,
+        favorite: false,
     };
 
     contactList.push(contact);
@@ -50,18 +53,11 @@ function addContact() {
     message.textContent = `Contato ${contact.name} adicionado com sucesso.`;
     inputName.value = '';
     inputPhone.value = '';
+    inputCategory.value = '';
     inputName.focus();
 }
 
-function handleListClick(event) {
-    const button = event.target.closest('button[data-id]');
-
-    if (!button) {
-        return;
-    }
-
-    const id = Number(button.dataset.id);
-
+function removeContact(id) {
     contactList = contactList.filter(function(contact) {
         return contact.id !== id;
     });
@@ -69,6 +65,71 @@ function handleListClick(event) {
     saveContacts();
     renderContacts();
     message.textContent = 'Contato removido com sucesso.';
+}
+
+function toggleFavorite(id) {
+    contactList = contactList.map(function(contact) {
+        if (contact.id === id) {
+            return {
+                id: contact.id,
+                name: contact.name,
+                phone: contact.phone,
+                category: contact.category,
+                favorite: !contact.favorite,
+            };
+        }
+
+        return contact;
+    });
+
+    saveContacts();
+    renderContacts();
+}
+
+function createContactCard(contact) {
+    const card = document.createElement('article');
+    card.className = 'contato';
+
+    if (contact.favorite) {
+        card.classList.add('favorito');
+    }
+
+    const top = document.createElement('div');
+    top.className = 'topo-contato';
+
+    const name = document.createElement('strong');
+    name.textContent = contact.name;
+
+    const category = document.createElement('span');
+    category.className = 'categoria';
+    category.textContent = contact.category;
+
+    top.append(name, category);
+
+    const phone = document.createElement('p');
+    phone.textContent = contact.phone;
+
+    const actions = document.createElement('div');
+    actions.className = 'acoes';
+
+    const favoriteButton = document.createElement('button');
+    favoriteButton.type = 'button';
+    favoriteButton.textContent = contact.favorite ? 'Desfavoritar' : 'Favoritar';
+    favoriteButton.addEventListener('click', function() {
+        toggleFavorite(contact.id);
+    });
+
+    const removeButton = document.createElement('button');
+    removeButton.type = 'button';
+    removeButton.textContent = 'Remover';
+    removeButton.addEventListener('click', function() {
+        removeContact(contact.id);
+    });
+
+    actions.append(favoriteButton, removeButton);
+    card.append(top, phone, actions);
+
+    return card;
 }
 
 function renderContacts() {
@@ -81,20 +142,21 @@ function renderContacts() {
     });
 
     if (filteredContacts.length === 0) {
-        listContacts.innerHTML = '<li>Nenhum contato encontrado.</li>';
+        const emptyMessage = document.createElement('p');
+        emptyMessage.className = 'vazio';
+        emptyMessage.textContent = 'Nenhum contato encontrado.';
+        listContacts.appendChild(emptyMessage);
         return;
     }
 
+    // Favoritos aparecem primeiro para facilitar consulta no dia a dia.
+    filteredContacts.sort(function(a, b) {
+        return Number(b.favorite) - Number(a.favorite);
+    });
+
     filteredContacts.forEach(function(contact) {
-        listContacts.innerHTML += `
-            <li>
-                <div>
-                    <strong>${contact.name}</strong>
-                    <span>${contact.phone}</span>
-                </div>
-                <button type="button" data-id="${contact.id}">Remover</button>
-            </li>
-        `;
+        const card = createContactCard(contact);
+        listContacts.appendChild(card);
     });
 }
 

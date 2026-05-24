@@ -1,11 +1,15 @@
 const inputNome = document.querySelector('#input-nome');
 const inputTurma = document.querySelector('#input-turma');
-const inputMedia = document.querySelector('#input-media');
+const inputNota1 = document.querySelector('#input-nota1');
+const inputNota2 = document.querySelector('#input-nota2');
+const inputObservacao = document.querySelector('#input-observacao');
 const buttonRegister = document.querySelector('#btn-cadastrar');
 const buttonClear = document.querySelector('#btn-limpar');
 const message = document.querySelector('#mensagem');
 const totalStudents = document.querySelector('#total-alunos');
 const averageValue = document.querySelector('#media-geral');
+const totalApproved = document.querySelector('#total-aprovados');
+const totalRecovery = document.querySelector('#total-recuperacao');
 const listStudents = document.querySelector('#lista-alunos');
 
 const STORAGE_KEY = 'cadastro-alunos';
@@ -34,28 +38,44 @@ function saveStudents() {
 function registerStudent() {
     const name = inputNome.value.trim();
     const classroom = inputTurma.value.trim();
-    const average = Number(inputMedia.value);
+    const note1 = Number(inputNota1.value);
+    const note2 = Number(inputNota2.value);
+    const observation = inputObservacao.value.trim();
 
-    if (name === '' || classroom === '' || inputMedia.value.trim() === '') {
-        message.textContent = 'Preencha nome, turma e média antes de cadastrar.';
+    if (
+        name === '' ||
+        classroom === '' ||
+        inputNota1.value.trim() === '' ||
+        inputNota2.value.trim() === ''
+    ) {
+        message.textContent = 'Preencha nome, turma e as duas notas antes de cadastrar.';
         return;
     }
+
+    const average = (note1 + note2) / 2;
+    const status = average >= 6 ? 'Aprovado' : 'Recuperação';
 
     const student = {
         id: Date.now(),
         name: name,
         classroom: classroom,
+        note1: note1,
+        note2: note2,
         average: average,
+        status: status,
+        observation: observation || '-',
     };
 
     studentList.push(student);
     saveStudents();
     renderStudents();
 
-    message.textContent = `Aluno ${student.name} cadastrado com sucesso.`;
+    message.textContent = `${student.name} foi adicionado(a) ao boletim.`;
     inputNome.value = '';
     inputTurma.value = '';
-    inputMedia.value = '';
+    inputNota1.value = '';
+    inputNota2.value = '';
+    inputObservacao.value = '';
     inputNome.focus();
 }
 
@@ -70,21 +90,42 @@ function renderStudents() {
     listStudents.innerHTML = '';
 
     if (studentList.length === 0) {
-        listStudents.innerHTML = '<li>Nenhum aluno cadastrado.</li>';
-        totalStudents.textContent = '0';
-        averageValue.textContent = '0.0';
+        listStudents.innerHTML = '<tr><td colspan="5">Nenhum estudante cadastrado.</td></tr>';
+        totalStudents.textContent = '0 estudante(s)';
+        averageValue.textContent = '0,0';
+        totalApproved.textContent = '0';
+        totalRecovery.textContent = '0';
         return;
     }
 
     let sumAverage = 0;
+    let approved = 0;
 
     studentList.forEach(function(student) {
         sumAverage += student.average;
-        listStudents.innerHTML += `<li>${student.name} - ${student.classroom} - média ${student.average.toFixed(1)}</li>`;
+
+        if (student.status === 'Aprovado') {
+            approved += 1;
+        }
+
+        listStudents.innerHTML += `
+            <tr>
+                <td>${student.name}</td>
+                <td>${student.classroom}</td>
+                <td>${student.average.toFixed(1).replace('.', ',')}</td>
+                <td>
+                    <span class="status ${student.status === 'Aprovado' ? 'ok' : 'alerta'}">${student.status}</span>
+                </td>
+                <td>${student.observation}</td>
+            </tr>
+        `;
     });
 
-    totalStudents.textContent = studentList.length;
-    averageValue.textContent = (sumAverage / studentList.length).toFixed(1);
+    const generalAverage = sumAverage / studentList.length;
+    totalStudents.textContent = `${studentList.length} estudante(s)`;
+    averageValue.textContent = generalAverage.toFixed(1).replace('.', ',');
+    totalApproved.textContent = approved;
+    totalRecovery.textContent = studentList.length - approved;
 }
 
 renderStudents();

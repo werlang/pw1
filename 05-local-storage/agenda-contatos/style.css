@@ -1,7 +1,7 @@
 body {
     margin: 0;
-    font-family: sans-serif;
-    background: #fff3ea;
+    font-family: 'Gill Sans', 'Segoe UI', sans-serif;
+    background: linear-gradient(170deg, #fff2e8, #fffaf6);
     color: #3a261d;
 }
 
@@ -36,11 +36,13 @@ label {
 }
 
 input,
+select,
 button {
     font: inherit;
 }
 
-input {
+input,
+select {
     width: 100%;
     box-sizing: border-box;
     padding: 12px 14px;
@@ -65,34 +67,62 @@ button {
     font-weight: 700;
 }
 
-ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
+.grade-contatos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 12px;
 }
 
-li {
+.contato {
+    border: 1px solid #efcfbc;
+    border-radius: 12px;
+    padding: 12px;
+    background: #fff9f5;
+}
+
+.contato.favorito {
+    border-color: #cc6c37;
+    box-shadow: 0 6px 16px rgba(204, 108, 55, 0.12);
+}
+
+.topo-contato {
     display: flex;
     justify-content: space-between;
+    gap: 10px;
     align-items: center;
-    gap: 16px;
-    padding: 14px 0;
-    border-bottom: 1px solid #efd8cb;
 }
 
-li span {
-    display: block;
-    margin-top: 4px;
-    color: #7a5748;
+.categoria {
+    font-size: 0.85rem;
+    background: #ffe8d8;
+    color: #8a4f2c;
+    padding: 2px 8px;
+    border-radius: 999px;
+}
+
+.contato p {
+    margin: 10px 0;
+    color: #754f3d;
+}
+
+.acoes {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.acoes button {
+    padding: 8px 10px;
+    font-size: 0.9rem;
+}
+
+.vazio {
+    margin: 0;
+    color: #8a624f;
 }
 
 @media (max-width: 640px) {
     .container {
         padding: 24px 16px 40px;
-    }
-
-    li {
-        flex-direction: column;
-        align-items: flex-start;
     }
 }

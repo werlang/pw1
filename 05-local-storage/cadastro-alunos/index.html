@@ -9,21 +9,38 @@
 </head>
 <body>
     <main class="container">
-        <h1>Cadastro de Alunos</h1>
-        <p class="intro">Carregue a lista uma vez no início, atualize a memória e regrave o storage sempre que o cadastro mudar.</p>
+        <h1>Conselho de Classe</h1>
+        <p class="intro">Cadastre notas por bimestre, calcule situação e mantenha o boletim salvo no navegador.</p>
 
         <section class="painel formulario">
-            <label for="input-nome">Nome</label>
+            <label for="input-nome">Nome do estudante</label>
             <input id="input-nome" type="text" placeholder="Ex.: Camila Dias">
 
             <label for="input-turma">Turma</label>
-            <input id="input-turma" type="text" placeholder="Ex.: 2AM">
+            <select id="input-turma">
+                <option value="">Selecione</option>
+                <option value="2AM-G1">2AM-G1</option>
+                <option value="2AT-G1">2AT-G1</option>
+                <option value="2AM-G2">2AM-G2</option>
+                <option value="2AT-G2">2AT-G2</option>
+            </select>
 
-            <label for="input-media">Média</label>
-            <input id="input-media" type="number" step="0.1" min="0" max="10" placeholder="Ex.: 8.5">
+            <div class="linha-notas">
+                <div>
+                    <label for="input-nota1">Nota 1º sem</label>
+                    <input id="input-nota1" type="number" step="0.1" min="0" max="10" placeholder="0 a 10">
+                </div>
+                <div>
+                    <label for="input-nota2">Nota 2º sem</label>
+                    <input id="input-nota2" type="number" step="0.1" min="0" max="10" placeholder="0 a 10">
+                </div>
+            </div>
+
+            <label for="input-observacao">Observação curta</label>
+            <input id="input-observacao" type="text" placeholder="Ex.: participação constante">
 
             <div class="linha-botoes">
-                <button id="btn-cadastrar" type="button">Cadastrar aluno</button>
+                <button id="btn-cadastrar" type="button">Adicionar ao boletim</button>
                 <button id="btn-limpar" type="button" class="secundario">Limpar cadastro</button>
             </div>
 
@@ -32,18 +49,39 @@
 
         <section class="painel resumo">
             <div>
-                <span class="rotulo">Total de alunos</span>
-                <strong id="total-alunos">0</strong>
+                <span class="rotulo">Total de estudantes</span>
+                <strong id="total-alunos">0 estudante(s)</strong>
             </div>
             <div>
-                <span class="rotulo">Média geral</span>
-                <strong id="media-geral">0.0</strong>
+                <span class="rotulo">Média da turma</span>
+                <strong id="media-geral">0,0</strong>
+            </div>
+            <div>
+                <span class="rotulo">Aprovados</span>
+                <strong id="total-aprovados">0</strong>
+            </div>
+            <div>
+                <span class="rotulo">Recuperação</span>
+                <strong id="total-recuperacao">0</strong>
             </div>
         </section>
 
         <section class="painel lista">
-            <h2>Alunos cadastrados</h2>
-            <ul id="lista-alunos"></ul>
+            <h2>Boletim da turma</h2>
+            <div class="tabela-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Turma</th>
+                            <th>Média</th>
+                            <th>Situação</th>
+                            <th>Observação</th>
+                        </tr>
+                    </thead>
+                    <tbody id="lista-alunos"></tbody>
+                </table>
+            </div>
         </section>
     </main>
 </body>

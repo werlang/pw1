@@ -298,9 +298,9 @@ function cadastrarAluno(aluno) {
 # Local Storage no JavaScript
 ## Exercício 1: Perfil do Estudante
 
-- Salva um objeto único no `localStorage`
-- Introduz o uso de JSON com um caso pequeno
-- Mostra como preencher a interface a partir do valor salvo
+- Monta um cartão escolar com prévia em tempo real
+- Usa objeto único com `select`, `range`, `color` e `checkbox`
+- Salva e recarrega o perfil completo no `localStorage`
 - Pasta: `05-local-storage/perfil-estudante/`
 
 ---
@@ -308,9 +308,9 @@ function cadastrarAluno(aluno) {
 # Local Storage no JavaScript
 ## Exercício 2: Cadastro de Alunos
 
-- Trabalha com array de objetos
-- Lê o storage no início da aplicação
-- Reescreve o storage sempre que a lista mudar
+- Simula conselho de classe com 3 notas por estudante
+- Calcula média e situação (`Aprovado` ou `Recuperação`)
+- Mostra painel de indicadores e tabela persistida
 - Pasta: `05-local-storage/cadastro-alunos/`
 
 ---
@@ -318,9 +318,9 @@ function cadastrarAluno(aluno) {
 # Local Storage no JavaScript
 ## Exercício 3: Agenda de Contatos
 
-- Persiste uma lista com remoção individual
-- Mostra filtro visual sem alterar a fonte principal
-- Reforça o padrão memória primeiro, storage depois
+- Organiza contatos em mural por categoria
+- Permite marcar favoritos e remover individualmente
+- Filtra por nome sem alterar a lista principal
 - Pasta: `05-local-storage/agenda-contatos/`
 
 ---
@@ -328,7 +328,7 @@ function cadastrarAluno(aluno) {
 # Local Storage no JavaScript
 ## Exercício 4: Inscrição com Rascunho
 
-- Guarda inscrições confirmadas no `localStorage`
-- Guarda o formulário em andamento no `sessionStorage`
-- Compara persistência duradoura e temporária na mesma prática
+- Guarda inscrições completas no `localStorage`
+- Salva rascunho com `sessionStorage` durante o preenchimento
+- Inclui oficinas em `checkbox` + justificativa com contador
 - Pasta: `05-local-storage/inscricao-com-rascunho/`

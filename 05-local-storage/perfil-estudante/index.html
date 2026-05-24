@@ -10,32 +10,54 @@
 <body>
     <main class="container">
         <h1>Perfil do Estudante</h1>
-        <p class="intro">Salve um único perfil no navegador para entender o caminho entre objeto, JSON e storage.</p>
+        <p class="intro">Monte um cartão escolar com prévia em tempo real e salve o perfil no navegador.</p>
 
-        <section class="painel formulario">
-            <label for="input-nome">Nome</label>
-            <input id="input-nome" type="text" placeholder="Ex.: Ana Souza">
+        <section class="painel painel-grid">
+            <form class="formulario" autocomplete="off">
+                <label for="input-nome">Nome completo</label>
+                <input id="input-nome" type="text" placeholder="Ex.: Ana Souza">
 
-            <label for="input-turma">Turma</label>
-            <input id="input-turma" type="text" placeholder="Ex.: 2AT">
+                <label for="input-turma">Turma</label>
+                <input id="input-turma" type="text" placeholder="Ex.: 2AT">
 
-            <label for="input-email">E-mail</label>
-            <input id="input-email" type="email" placeholder="Ex.: ana@escola.com">
+                <label for="input-curso">Curso</label>
+                <select id="input-curso">
+                    <option value="">Selecione</option>
+                    <option value="Informática">Informática</option>
+                    <option value="Mecatrônica">Mecatrônica</option>
+                </select>
 
-            <label for="input-cor">Cor favorita</label>
-            <input id="input-cor" type="text" placeholder="Ex.: verde">
+                <label for="input-ano">Ano escolar</label>
+                <input id="input-ano" type="range" min="1" max="4" value="1">
+                <p class="apoio">Ano selecionado: <strong id="texto-ano">1º ano</strong></p>
 
-            <div class="linha-botoes">
-                <button id="btn-salvar" type="button">Salvar perfil</button>
-                <button id="btn-limpar" type="button" class="secundario">Limpar perfil</button>
-            </div>
+                <label for="input-cor">Cor de destaque</label>
+                <input id="input-cor" type="color" value="#1f6feb">
 
-            <p id="mensagem" class="mensagem"></p>
-        </section>
+                <label class="checkbox">
+                    <input id="input-monitoria" type="checkbox">
+                    Quero participar da monitoria da turma.
+                </label>
 
-        <section class="painel resumo">
-            <h2>Perfil salvo</h2>
-            <ul id="lista-perfil"></ul>
+                <div class="linha-botoes">
+                    <button id="btn-salvar" type="button">Salvar perfil</button>
+                    <button id="btn-limpar" type="button" class="secundario">Limpar perfil</button>
+                </div>
+
+                <p id="mensagem" class="mensagem"></p>
+            </form>
+
+            <section class="resumo" aria-live="polite">
+                <h2>Prévia do cartão</h2>
+                <article id="cartao-perfil" class="cartao-perfil">
+                    <div id="iniciais" class="iniciais">ES</div>
+                    <p id="preview-nome" class="nome">Estudante sem nome</p>
+                    <p id="preview-turma">Turma: -</p>
+                    <p id="preview-curso">Curso: -</p>
+                    <p id="preview-ano">Ano: -</p>
+                    <p id="preview-monitoria">Monitoria: não informado</p>
+                </article>
+            </section>
         </section>
     </main>
 </body>

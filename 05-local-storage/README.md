@@ -238,7 +238,7 @@ Regra prática para decorar:
 
 Pasta: [perfil-estudante](./perfil-estudante/)
 
-Este primeiro exercício trabalha com um único objeto salvo no `localStorage`.
+Este primeiro exercício trabalha com um único objeto salvo no `localStorage`, mas agora com uma proposta visual de cartão escolar com prévia em tempo real.
 
 Ele é útil para introduzir três ideias:
 
@@ -249,6 +249,7 @@ Ele é útil para introduzir três ideias:
 Conceitos em foco:
 
 - objeto único;
+- mistura de inputs (`select`, `range`, `color` e `checkbox`);
 - `JSON.stringify()`;
 - `JSON.parse()`;
 - `removeItem()` para limpar o perfil salvo.
@@ -257,14 +258,15 @@ Conceitos em foco:
 
 Pasta: [cadastro-alunos](./cadastro-alunos/)
 
-Este exercício trabalha com o padrão central da seção: um array de objetos em memória, carregado no início da aplicação e regravado sempre que a lista mudar.
+Este exercício mantém o padrão central da seção, mas em um cenário de conselho de classe: um array de objetos com três notas, média calculada e situação final.
 
 Conceitos em foco:
 
 - array de objetos;
 - leitura inicial com `getItem()`;
 - escrita consistente com `setItem()`;
-- resumo visual da lista cadastrada.
+- cálculo de média e situação na renderização;
+- painel de indicadores + tabela do boletim.
 
 Se o aluno entender bem esse exercício, ele já entendeu o coração do uso de `localStorage` em cadastros simples.
 
@@ -272,13 +274,13 @@ Se o aluno entender bem esse exercício, ele já entendeu o coração do uso de 
 
 Pasta: [agenda-contatos](./agenda-contatos/)
 
-Aqui a lista continua sendo a fonte principal da verdade, mas agora o exercício adiciona remoção individual e filtro visual.
+Aqui a lista continua sendo a fonte principal da verdade, mas o exercício vira um mural com categorias e destaque de favoritos.
 
 Conceitos em foco:
 
 - atualização de lista em memória;
-- regravação do storage depois de adicionar ou remover;
-- renderização a partir do array filtrado;
+- regravação do storage depois de adicionar, remover ou favoritar;
+- renderização em cards a partir do array filtrado;
 - separação entre dados e interface.
 
 ## 13. Exercício 4: Inscrição com Rascunho
@@ -294,6 +296,8 @@ Conceitos em foco:
 
 - persistência duradoura para o cadastro confirmado;
 - persistência temporária para o formulário em andamento;
+- recuperação de rascunho com `checkbox` e `textarea`;
+- contador de caracteres para apoiar preenchimento;
 - limpeza do rascunho ao concluir a inscrição.
 
 ## 14. Exemplos anteriores do curso

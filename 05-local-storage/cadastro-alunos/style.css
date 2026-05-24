@@ -1,7 +1,7 @@
 body {
     margin: 0;
-    font-family: sans-serif;
-    background: #f3f8ee;
+    font-family: 'Verdana', 'Segoe UI', sans-serif;
+    background: linear-gradient(180deg, #f2f9ee, #f8fff4);
     color: #213124;
 }
 
@@ -36,17 +36,25 @@ label {
 }
 
 input,
+select,
 button {
     font: inherit;
 }
 
-input {
+input,
+select {
     width: 100%;
     box-sizing: border-box;
     padding: 12px 14px;
     margin-bottom: 14px;
     border-radius: 10px;
     border: 1px solid #9db790;
+}
+
+.linha-notas {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
 }
 
 .linha-botoes {
@@ -77,8 +85,15 @@ button.secundario {
 
 .resumo {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
     gap: 16px;
+}
+
+.resumo > div {
+    background: #f8fff3;
+    border: 1px solid #d5e5d0;
+    border-radius: 12px;
+    padding: 12px;
 }
 
 .rotulo {
@@ -88,17 +103,52 @@ button.secundario {
     margin-bottom: 6px;
 }
 
-ul {
-    margin: 0;
-    padding-left: 20px;
+.tabela-wrapper {
+    overflow-x: auto;
 }
 
-li {
-    margin-bottom: 8px;
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 620px;
+}
+
+th,
+td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #dbe9d5;
+}
+
+th {
+    background: #f4faef;
+    color: #2a4b31;
+}
+
+.status {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+.status.ok {
+    background: #d4f3da;
+    color: #1f6a32;
+}
+
+.status.alerta {
+    background: #ffe8c9;
+    color: #8a4b11;
 }
 
 @media (max-width: 640px) {
     .container {
         padding: 24px 16px 40px;
+    }
+
+    .linha-notas {
+        grid-template-columns: 1fr;
     }
 }
