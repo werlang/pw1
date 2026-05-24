@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda de Contatos</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <main class="container">
+        <h1>Agenda de Contatos</h1>
+        <p class="intro">Cadastre contatos, filtre a visualização e remova itens sem perder o foco na lista em memória.</p>
+
+        <section class="painel formulario">
+            <label for="input-nome">Nome</label>
+            <input id="input-nome" type="text" placeholder="Ex.: Júlia Alves">
+
+            <label for="input-telefone">Telefone</label>
+            <input id="input-telefone" type="text" placeholder="Ex.: (51) 99999-0000">
+
+            <button id="btn-adicionar" type="button">Adicionar contato</button>
+            <p id="mensagem" class="mensagem"></p>
+        </section>
+
+        <section class="painel filtro">
+            <label for="input-busca">Buscar por nome</label>
+            <input id="input-busca" type="text" placeholder="Digite parte do nome">
+        </section>
+
+        <section class="painel lista">
+            <h2>Contatos cadastrados</h2>
+            <ul id="lista-contatos"></ul>
+        </section>
+    </main>
+</body>
+</html>

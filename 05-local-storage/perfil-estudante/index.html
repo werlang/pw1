@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil do Estudante</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <main class="container">
+        <h1>Perfil do Estudante</h1>
+        <p class="intro">Salve um único perfil no navegador para entender o caminho entre objeto, JSON e storage.</p>
+
+        <section class="painel formulario">
+            <label for="input-nome">Nome</label>
+            <input id="input-nome" type="text" placeholder="Ex.: Ana Souza">
+
+            <label for="input-turma">Turma</label>
+            <input id="input-turma" type="text" placeholder="Ex.: 2AT">
+
+            <label for="input-email">E-mail</label>
+            <input id="input-email" type="email" placeholder="Ex.: ana@escola.com">
+
+            <label for="input-cor">Cor favorita</label>
+            <input id="input-cor" type="text" placeholder="Ex.: verde">
+
+            <div class="linha-botoes">
+                <button id="btn-salvar" type="button">Salvar perfil</button>
+                <button id="btn-limpar" type="button" class="secundario">Limpar perfil</button>
+            </div>
+
+            <p id="mensagem" class="mensagem"></p>
+        </section>
+
+        <section class="painel resumo">
+            <h2>Perfil salvo</h2>
+            <ul id="lista-perfil"></ul>
+        </section>
+    </main>
+</body>
+</html>

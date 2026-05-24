@@ -1,0 +1,94 @@
+body {
+    margin: 0;
+    font-family: sans-serif;
+    background: #f7f0ff;
+    color: #33204c;
+}
+
+.container {
+    max-width: 840px;
+    margin: 0 auto;
+    padding: 32px 20px 48px;
+}
+
+h1,
+h2 {
+    margin-top: 0;
+}
+
+.intro {
+    margin-bottom: 24px;
+}
+
+.painel {
+    background: #ffffff;
+    border: 2px solid #d7c4ef;
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 18px;
+    box-shadow: 0 10px 30px rgba(51, 32, 76, 0.08);
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 700;
+}
+
+input,
+select,
+button {
+    font: inherit;
+}
+
+input,
+select {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 14px;
+    margin-bottom: 14px;
+    border-radius: 10px;
+    border: 1px solid #bca5dc;
+    background: #ffffff;
+}
+
+.linha-botoes {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+button {
+    padding: 12px 16px;
+    border: 0;
+    border-radius: 10px;
+    background: #7c49bd;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+button.secundario {
+    background: #5e6485;
+}
+
+.mensagem {
+    min-height: 24px;
+    margin-bottom: 0;
+    color: #7c49bd;
+    font-weight: 700;
+}
+
+ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+li {
+    margin-bottom: 8px;
+}
+
+@media (max-width: 640px) {
+    .container {
+        padding: 24px 16px 40px;
+    }
+}
