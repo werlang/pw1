@@ -17,6 +17,7 @@
 - ES modules via `<script type="module" ...>` are common.
 - Keep selectors and IDs in Portuguese when already present (e.g., `#btn-finalizar`, `#status`).
 - Example DOM flow: `public/02-dom/tarefas/script.js`.
+- Avoid `data-*` attributes and `dataset` in didactic exercise code. For dynamic lists, prefer `createElement`, `append` / `appendChild`, and direct `addEventListener` bindings on the created elements.
 
 ## Backend/API patterns used here
 - PHP endpoints are colocated with the exercise and usually return JSON.
@@ -54,6 +55,7 @@ PUBLIC_DIR=./exemplos/ex13.1 docker compose up -d
 - Do not introduce frameworks or new dependencies unless explicitly requested.
 - When adding API behavior, keep JSON contract and field names consistent with existing files.
 - Prefer small, explicit functions and straightforward control flow suitable for classroom explanation.
+- In frontend JavaScript for exercises, do not use `data-*` attributes as action carriers. Build dynamic UI with DOM node creation and attach events directly to those nodes.
 - For README and slide work, preserve the Portuguese-first didactic tone and prefer structure that helps the professor teach, not just material that looks complete.
 - For README, slide, and didactic text work in Portuguese, always use correct PT-BR orthography and accentuation. Do not strip accents from prose, labels, or explanatory UI text unless there is a technical reason in code identifiers, file names, or URLs.
 - In `marp/content/`, prefer utility classes such as `grid-cols-*`, `col-span-*`, `flex`, `items-*`, `justify-*`, `mx-auto`, `ml-auto`, `mr-auto`, `bleed-bottom`, `relative`, and `absolute`.

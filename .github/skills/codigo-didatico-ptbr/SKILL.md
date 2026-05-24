@@ -29,6 +29,8 @@ Produzir código que:
 - Usar nomes claros e coerentes com o contexto da pasta. Se o material já estiver em português, manter o vocabulário em português.
 - Escrever comentários em PT-BR, com ortografia correta e acentuação normal.
 - Comentar intenção, fluxo, decisão e armadilha. Não comentar o óbvio linha por linha.
+- Em código didático de frontend, não usar atributos `data-*` nem `dataset` para acionar comportamentos.
+- Para elementos dinâmicos, preferir `createElement`, `append` / `appendChild`, seleção direta de nós criados e `addEventListener` no próprio elemento.
 
 ## Fluxo recomendado
 
@@ -47,6 +49,7 @@ Produzir código que:
 - Usar valores de exemplo concretos e legíveis em vez de placeholders abstratos.
 - Em exercícios e exemplos, deixar claro o estado principal da aplicação: variáveis, arrays, objetos, sessão, formulário ou DOM.
 - Quando houver validação, explicar com comentário curto o motivo da regra.
+- Em renderização dinâmica, construir a árvore de nós passo a passo em vez de depender de `innerHTML` com metadados de ação.
 
 ## Como comentar
 

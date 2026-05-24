@@ -24,6 +24,8 @@ Produzir exercícios que sejam:
 - Não introduza frameworks ou dependências novas sem pedido explícito.
 - Preserve nomes em português quando o contexto já estiver em português.
 - Em textos didáticos, use ortografia correta em PT-BR.
+- Em exercícios de frontend, evite atributos `data-*` e `dataset`.
+- Para ações em elementos criados dinamicamente, use criação explícita de nós (`createElement`), montagem com `append` / `appendChild` e eventos ligados diretamente com `addEventListener`.
 
 ## Fluxo recomendado
 
@@ -95,6 +97,7 @@ Exemplos:
 - Deixe claro quais elementos serão atualizados ou criados dinamicamente.
 - Se o exercício ficar melhor com estado explícito, use array ou objeto para controlar a renderização.
 - Eventos devem ter efeito observável e imediato na interface.
+- Não dependa de `data-*` para identificar ação ou item; prefira closures ou funções que recebam o objeto/ID no momento da criação do elemento.
 
 ## Implementação
 
