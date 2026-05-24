@@ -13,15 +13,31 @@ const REPO_DIR = path.resolve(ROOT_DIR, '..');
 const CONTENT_DIR = path.join(ROOT_DIR, 'content');
 const THEMES_DIR = path.join(ROOT_DIR, 'themes');
 const ASSETS_DIR = path.join(ROOT_DIR, 'assets');
+const README_FILE = path.join(ROOT_DIR, 'README.md');
 const THEME_FILE = path.join(THEMES_DIR, 'ifsul.css');
 const WATCH_INTERVAL_MS = 800;
 const REBUILD_DELAY_MS = 250;
 
 let isBuilding = false;
-let buildAgain = false;
 let snapshot = new Map();
 let debounceTimer = null;
 let scanTimer = null;
+let pendingChangedFiles = new Set();
+
+/**
+ * Interpreta os argumentos simples do watcher.
+ * Por padrao ele apenas observa; o build inicial fica opt-in com --build.
+ */
+function parseArgs(argv) {
+  const shouldBuildOnStart = argv.includes('--build');
+  const unknownArgs = argv.filter((arg) => arg !== '--build');
+
+  if (unknownArgs.length > 0) {
+    fail(`Argumentos desconhecidos: ${unknownArgs.join(', ')}`);
+  }
+
+  return { shouldBuildOnStart };
+}
 
 function log(message) {
   console.log(`[watch] ${message}`);
@@ -81,6 +97,10 @@ async function collectEntries(dirPath, entries = []) {
 function shouldWatch(filePath) {
   const relativePath = path.relative(ROOT_DIR, filePath);
 
+  if (relativePath === 'README.md') {
+    return true;
+  }
+
   if (relativePath.startsWith(`content${path.sep}`)) {
     return filePath.endsWith('.md') || filePath.endsWith('.markdown');
   }
@@ -100,6 +120,11 @@ async function createSnapshot() {
   const nextSnapshot = new Map();
   const directories = [CONTENT_DIR, THEMES_DIR, ASSETS_DIR];
 
+  if (await exists(README_FILE)) {
+    const stats = await fs.stat(README_FILE);
+    nextSnapshot.set('README.md', `${stats.size}:${stats.mtimeMs}`);
+  }
+
   for (const directory of directories) {
     const files = await collectEntries(directory);
 
@@ -116,6 +141,72 @@ async function createSnapshot() {
   }
 
   return nextSnapshot;
+}
+
+function isContentSource(relativePath) {
+  return relativePath.startsWith(`content${path.sep}`)
+    && (relativePath.endsWith('.md') || relativePath.endsWith('.markdown'));
+}
+
+function isRootReadme(relativePath) {
+  return relativePath === 'README.md';
+}
+
+function isPresentationSource(relativePath) {
+  return isContentSource(relativePath) || isRootReadme(relativePath);
+}
+
+function isSharedDependency(relativePath) {
+  return relativePath.startsWith(`themes${path.sep}`)
+    || relativePath.startsWith(`assets${path.sep}`);
+}
+
+function toCliPath(relativePath) {
+  return `./${relativePath.split(path.sep).join('/')}`;
+}
+
+function queueChangedFiles(changedFiles) {
+  for (const filePath of changedFiles) {
+    pendingChangedFiles.add(filePath);
+  }
+}
+
+function takePendingChangedFiles() {
+  const changedFiles = Array.from(pendingChangedFiles).sort();
+  pendingChangedFiles = new Set();
+  return changedFiles;
+}
+
+/**
+ * Monta a lista minima de arquivos de entrada para o Marp.
+ * Mudancas em tema ou assets exigem rebuild de todas as apresentacoes.
+ */
+async function createBuildPlan(changedFiles) {
+  if (changedFiles.some(isSharedDependency)) {
+    const allFiles = await collectEntries(CONTENT_DIR);
+    const inputFiles = allFiles
+      .map((filePath) => path.relative(ROOT_DIR, filePath))
+      .filter(isContentSource)
+      .concat((await exists(README_FILE)) ? ['README.md'] : [])
+      .sort();
+
+    return {
+      isFullBuild: true,
+      inputFiles,
+      reason: changedFiles[0],
+    };
+  }
+
+  const inputFiles = changedFiles
+    .filter(isPresentationSource)
+    .filter((filePath) => snapshot.has(filePath))
+    .sort();
+
+  return {
+    isFullBuild: false,
+    inputFiles,
+    reason: changedFiles[0],
+  };
 }
 
 function diffSnapshots(previousSnapshot, nextSnapshot) {
@@ -177,25 +268,49 @@ async function moveGeneratedFiles() {
   }
 }
 
-async function buildSlides(reason) {
+async function buildSlides(changedFiles) {
+  if (changedFiles.length === 0) {
+    return;
+  }
+
   if (isBuilding) {
-    buildAgain = true;
+    queueChangedFiles(changedFiles);
+    return;
+  }
+
+  const buildPlan = await createBuildPlan(changedFiles);
+
+  if (buildPlan.inputFiles.length === 0) {
+    log(`Nenhum slide precisa ser reconstruido (${buildPlan.reason}).`);
     return;
   }
 
   isBuilding = true;
 
   try {
-    log(`Reconstruindo slides (${reason})...`);
+    log(`Reconstruindo ${buildPlan.inputFiles.length} slide(s) (${buildPlan.reason})...`);
 
-    await runCommand('npx', [
-      '--yes',
-      '@marp-team/marp-cli',
-      '--theme-set',
-      './themes/ifsul.css',
-      '--input-dir',
-      '.',
-    ]);
+    // Rebuilds completos precisam seguir exatamente o mesmo caminho do build.sh
+    // para gerar HTML identico ao baseline do projeto.
+    const marpArgs = buildPlan.isFullBuild
+      ? [
+          '--yes',
+          '@marp-team/marp-cli',
+          '--theme-set',
+          './themes/ifsul.css',
+          '--input-dir',
+          '.',
+        ]
+      : [
+          '--yes',
+          '@marp-team/marp-cli',
+          '--',
+          '--theme-set=./themes/ifsul.css',
+          '--theme=./themes/ifsul.css',
+          ...buildPlan.inputFiles.map(toCliPath),
+        ];
+
+    await runCommand('npx', marpArgs);
 
     await moveGeneratedFiles();
     log('Build concluido.');
@@ -204,17 +319,21 @@ async function buildSlides(reason) {
   } finally {
     isBuilding = false;
 
-    if (buildAgain) {
-      buildAgain = false;
-      await buildSlides('mudancas acumuladas');
+    const nextChangedFiles = takePendingChangedFiles();
+
+    if (nextChangedFiles.length > 0) {
+      await buildSlides(nextChangedFiles);
     }
   }
 }
 
-function scheduleBuild(reason) {
+function scheduleBuild(changedFiles) {
+  queueChangedFiles(changedFiles);
   clearTimeout(debounceTimer);
   debounceTimer = setTimeout(() => {
-    buildSlides(reason).catch((error) => {
+    const nextChangedFiles = takePendingChangedFiles();
+
+    buildSlides(nextChangedFiles).catch((error) => {
       console.error(`[watch] Erro inesperado: ${error.message}`);
     });
   }, REBUILD_DELAY_MS);
@@ -231,18 +350,22 @@ async function scanForChanges() {
 
     snapshot = nextSnapshot;
     log(`Mudancas detectadas: ${changedFiles.join(', ')}`);
-    scheduleBuild(changedFiles[0]);
+    scheduleBuild(changedFiles);
   } catch (error) {
     console.error(`[watch] Erro ao verificar arquivos: ${error.message}`);
   }
 }
 
 async function main() {
+  const options = parseArgs(process.argv.slice(2));
+
   await validatePaths();
   snapshot = await createSnapshot();
 
-  await buildSlides('build inicial');
-  snapshot = await createSnapshot();
+  if (options.shouldBuildOnStart) {
+    await buildSlides(Array.from(snapshot.keys()));
+    snapshot = await createSnapshot();
+  }
 
   log('Observando arquivos em content/, themes/ e assets/.');
   scanTimer = setInterval(scanForChanges, WATCH_INTERVAL_MS);

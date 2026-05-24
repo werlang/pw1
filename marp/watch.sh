@@ -24,4 +24,4 @@ exec docker run --rm -it \
     --env "LANG=$LANG_VALUE" \
     --env "HOME=/tmp" \
     node:24-alpine \
-    node ./watch.mjs
+    node ./watch.mjs "$@"
