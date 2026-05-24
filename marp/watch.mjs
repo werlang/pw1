@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import fs from 'node:fs/promises';
+import os from 'node:os';
 import path from 'node:path';
 import { spawn } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
@@ -227,10 +228,10 @@ function diffSnapshots(previousSnapshot, nextSnapshot) {
   return changedFiles.sort();
 }
 
-function runCommand(command, args) {
+function runCommand(command, args, cwd = ROOT_DIR) {
   return new Promise((resolve, reject) => {
     const child = spawn(command, args, {
-      cwd: ROOT_DIR,
+      cwd,
       stdio: 'inherit',
       env: {
         ...process.env,
@@ -268,6 +269,66 @@ async function moveGeneratedFiles() {
   }
 }
 
+function toGeneratedHtmlPath(relativePath) {
+  return relativePath.replace(/\.(md|markdown)$/u, '.html');
+}
+
+async function copyPresentationToWorkspace(workspaceDir, relativePath) {
+  const sourcePath = path.join(ROOT_DIR, relativePath);
+  const targetPath = path.join(workspaceDir, relativePath);
+
+  await fs.mkdir(path.dirname(targetPath), { recursive: true });
+  await fs.copyFile(sourcePath, targetPath);
+}
+
+async function copySelectiveBuildOutputs(workspaceDir, inputFiles) {
+  for (const inputFile of inputFiles) {
+    const generatedHtmlPath = path.join(workspaceDir, toGeneratedHtmlPath(inputFile));
+
+    if (isRootReadme(inputFile)) {
+      await fs.copyFile(generatedHtmlPath, path.join(ROOT_DIR, 'README.html'));
+      continue;
+    }
+
+    const name = path.basename(inputFile, path.extname(inputFile));
+    const targetDir = path.join(REPO_DIR, name, 'slide');
+    const targetPath = path.join(targetDir, 'index.html');
+
+    await fs.mkdir(targetDir, { recursive: true });
+    await fs.copyFile(generatedHtmlPath, targetPath);
+  }
+}
+
+/**
+ * Rebuild seletivo usa um input-dir temporario minimo para manter o mesmo
+ * pipeline de tema/imports do build completo, sem recompilar tudo.
+ */
+async function runSelectiveBuild(inputFiles) {
+  const workspaceDir = await fs.mkdtemp(path.join(os.tmpdir(), 'marp-watch-'));
+
+  try {
+    await fs.cp(THEMES_DIR, path.join(workspaceDir, 'themes'), { recursive: true });
+    await fs.cp(ASSETS_DIR, path.join(workspaceDir, 'assets'), { recursive: true });
+
+    for (const inputFile of inputFiles) {
+      await copyPresentationToWorkspace(workspaceDir, inputFile);
+    }
+
+    await runCommand('npx', [
+      '--yes',
+      '@marp-team/marp-cli',
+      '--theme-set',
+      './themes/ifsul.css',
+      '--input-dir',
+      '.',
+    ], workspaceDir);
+
+    await copySelectiveBuildOutputs(workspaceDir, inputFiles);
+  } finally {
+    await fs.rm(workspaceDir, { recursive: true, force: true });
+  }
+}
+
 async function buildSlides(changedFiles) {
   if (changedFiles.length === 0) {
     return;
@@ -290,29 +351,21 @@ async function buildSlides(changedFiles) {
   try {
     log(`Reconstruindo ${buildPlan.inputFiles.length} slide(s) (${buildPlan.reason})...`);
 
-    // Rebuilds completos precisam seguir exatamente o mesmo caminho do build.sh
-    // para gerar HTML identico ao baseline do projeto.
-    const marpArgs = buildPlan.isFullBuild
-      ? [
-          '--yes',
-          '@marp-team/marp-cli',
-          '--theme-set',
-          './themes/ifsul.css',
-          '--input-dir',
-          '.',
-        ]
-      : [
-          '--yes',
-          '@marp-team/marp-cli',
-          '--',
-          '--theme-set=./themes/ifsul.css',
-          '--theme=./themes/ifsul.css',
-          ...buildPlan.inputFiles.map(toCliPath),
-        ];
+    if (buildPlan.isFullBuild) {
+      await runCommand('npx', [
+        '--yes',
+        '@marp-team/marp-cli',
+        '--theme-set',
+        './themes/ifsul.css',
+        '--input-dir',
+        '.',
+      ]);
 
-    await runCommand('npx', marpArgs);
+      await moveGeneratedFiles();
+    } else {
+      await runSelectiveBuild(buildPlan.inputFiles);
+    }
 
-    await moveGeneratedFiles();
     log('Build concluido.');
   } catch (error) {
     console.error(`[watch] Falha no build: ${error.message}`);
