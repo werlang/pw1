@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q2 - Alocação de tarefas</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="script.js"></script>
+</head>
+<body>
+    <main class="page">
+        <section class="panel control-panel">
+            <p class="eyebrow">Despacho de execução</p>
+            <h1>Alocar tarefa em GPU</h1>
+            <p class="description">Escolha uma tarefa pendente e uma GPU livre para iniciar o processamento.</p>
+
+            <label>
+                Tarefa
+                <select id="task-select">
+                    <option value="">Selecione</option>
+                </select>
+            </label>
+
+            <label>
+                GPU livre
+                <select id="gpu-select">
+                    <option value="">Selecione</option>
+                </select>
+            </label>
+
+            <button id="allocate-button" type="button">Alocar tarefa</button>
+        </section>
+
+        <section class="panel board-panel">
+            <div class="section-header">
+                <h2>Painel de alocação</h2>
+                <span class="badge">Q2</span>
+            </div>
+
+            <div id="allocation-list"></div>
+        </section>
+    </main>
+</body>
+</html>

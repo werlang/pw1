@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q1 - Cadastro de GPUs</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="script.js"></script>
+</head>
+<body>
+    <main class="page">
+        <section class="panel form-panel">
+            <p class="eyebrow">Data Center Atlas</p>
+            <h1>Cadastro de GPUs</h1>
+            <p class="description">Cadastre as placas que ficarão disponíveis para executar tarefas do data center.</p>
+
+            <label>
+                Modelo da GPU
+                <input type="text" id="gpu-name" placeholder="Ex.: RTX 4090">
+            </label>
+
+            <label>
+                Setor
+                <select id="gpu-sector">
+                    <option value="">Selecione</option>
+                    <option value="Treinamento">Treinamento</option>
+                    <option value="Renderizacao">Renderização</option>
+                    <option value="Pesquisa">Pesquisa</option>
+                </select>
+            </label>
+
+            <label>
+                Memória (GB)
+                <input type="number" id="gpu-memory" min="1" placeholder="Ex.: 24">
+            </label>
+
+            <label>
+                Consumo (W)
+                <input type="number" id="gpu-power" min="1" placeholder="Ex.: 450">
+            </label>
+
+            <button id="register-gpu" type="button">Cadastrar GPU</button>
+        </section>
+
+        <section class="panel list-panel">
+            <div class="section-header">
+                <h2>GPUs registradas</h2>
+                <span class="badge">Q1</span>
+            </div>
+
+            <div id="gpu-list"></div>
+        </section>
+    </main>
+</body>
+</html>

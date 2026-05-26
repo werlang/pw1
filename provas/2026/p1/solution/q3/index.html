@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q3 - Painel operacional</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="script.js"></script>
+</head>
+<body>
+    <main class="page">
+        <section class="topbar panel">
+            <div>
+                <p class="eyebrow">Monitoramento</p>
+                <h1>Painel operacional do data center</h1>
+                <p class="description">Acompanhe ocupação, consumo ativo e liberação de GPUs por setor.</p>
+            </div>
+
+            <label class="filter-box">
+                Filtrar por setor
+                <select id="sector-filter">
+                    <option value="todos">Todos</option>
+                    <option value="Treinamento">Treinamento</option>
+                    <option value="Renderizacao">Renderização</option>
+                    <option value="Pesquisa">Pesquisa</option>
+                </select>
+            </label>
+        </section>
+
+        <section class="stats-grid">
+            <article class="panel stat-card">
+                <span>Total de GPUs</span>
+                <strong id="total-gpus">0</strong>
+            </article>
+
+            <article class="panel stat-card">
+                <span>GPUs livres</span>
+                <strong id="free-gpus">0</strong>
+            </article>
+
+            <article class="panel stat-card">
+                <span>GPUs ocupadas</span>
+                <strong id="busy-gpus">0</strong>
+            </article>
+
+            <article class="panel stat-card">
+                <span>Consumo ativo</span>
+                <strong id="active-power">0 W</strong>
+            </article>
+        </section>
+
+        <section class="panel">
+            <div class="section-header">
+                <h2>Mapa das GPUs</h2>
+                <span class="badge">Q3</span>
+            </div>
+
+            <div id="gpu-grid"></div>
+        </section>
+    </main>
+</body>
+</html>
