@@ -1,0 +1,50 @@
+.fog {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: #00000024;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .modal {
+        border: 1px solid #afafaf;
+        font-size: 1.2rem;
+        border-radius: 10px;
+        box-shadow: 0 0 10px #00000082;
+        padding: 20px 30px;
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+
+        .button-container {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+            padding-top: 10px;
+            border-top: 1px solid #e4e4e4;
+            
+            button {
+                background-color: #f9cdb4;
+                border: 1px solid #c9a895;
+                border-radius: 5px;
+                padding: 7px 20px;
+                cursor: pointer;
+                transition: 0.3s all;
+
+                &:hover {
+                    filter: brightness(1.1);
+                }
+
+                &:disabled {
+                    background-color: #e0e0e0;
+                    border-color: #bdbdbd;
+                    filter: none;
+                    cursor: not-allowed;
+                }
+            }
+        }
+    }
+}
