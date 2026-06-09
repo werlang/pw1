@@ -1,0 +1,153 @@
+:root {
+    --bg: #f7f7fb;
+    --panel: #ffffff;
+    --line: #d1d5db;
+    --primary: #4338ca;
+    --text: #111827;
+    --muted: #6b7280;
+    --accent: #f59e0b;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: var(--text);
+    background: var(--bg);
+}
+
+.page {
+    width: min(1100px, calc(100% - 32px));
+    margin: 32px auto;
+    display: grid;
+    grid-template-columns: 420px 1fr;
+    gap: 20px;
+}
+
+.panel,
+.proposal,
+.ranking-item {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+}
+
+.panel {
+    padding: 22px;
+}
+
+.eyebrow {
+    margin: 0 0 8px;
+    color: var(--primary);
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+h1,
+h2,
+h3,
+p {
+    margin-top: 0;
+}
+
+label {
+    display: block;
+    margin: 14px 0 6px;
+    font-weight: 700;
+}
+
+input,
+button {
+    width: 100%;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 11px 12px;
+    font: inherit;
+}
+
+button {
+    border: 0;
+    background: var(--primary);
+    color: #fff;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.remaining {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 16px 0;
+    padding: 14px;
+    border-radius: 8px;
+    background: #eef2ff;
+}
+
+.remaining span {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.ballot-list,
+.ranking-list {
+    display: grid;
+    gap: 12px;
+}
+
+.proposal,
+.ranking-item {
+    padding: 14px;
+}
+
+.proposal-controls {
+    display: grid;
+    grid-template-columns: 44px 1fr 44px;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.proposal-controls button {
+    padding: 8px;
+}
+
+.points {
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--accent);
+}
+
+.actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 16px;
+}
+
+.actions button:last-child {
+    background: var(--muted);
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.message,
+.ranking-item small {
+    color: var(--muted);
+}
+
+@media (max-width: 860px) {
+    .page {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trilha de Leitura</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <main class="page">
+        <section class="panel library">
+            <p class="eyebrow">Exercício localStorage</p>
+            <h1>Trilha de Leitura</h1>
+
+            <label for="book-select">Livro</label>
+            <select id="book-select"></select>
+
+            <button id="start-button" type="button">Iniciar leitura</button>
+            <button id="finish-button" type="button">Concluir e limpar progresso</button>
+            <p id="message" class="message"></p>
+        </section>
+
+        <section class="panel reader">
+            <div class="progress-track">
+                <div id="progress-bar" class="progress-bar"></div>
+            </div>
+
+            <p id="book-title" class="book-title">Nenhum livro iniciado</p>
+            <h2 id="chapter-title">Escolha um livro</h2>
+            <p id="chapter-position" class="chapter-position">0 de 0</p>
+
+            <label for="note-input">Anotação deste capítulo</label>
+            <textarea id="note-input" rows="6" placeholder="Escreva uma observação para este capítulo"></textarea>
+
+            <div class="reader-actions">
+                <button id="previous-button" type="button">Anterior</button>
+                <button id="save-note-button" type="button">Salvar nota</button>
+                <button id="next-button" type="button">Próximo</button>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

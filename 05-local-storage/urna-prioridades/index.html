@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Urna de Prioridades</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <main class="page">
+        <section class="panel">
+            <p class="eyebrow">Exercício localStorage</p>
+            <h1>Urna de Prioridades</h1>
+
+            <label for="voter-code-input">Código do votante</label>
+            <input id="voter-code-input" type="text" placeholder="Ex.: 2AT-14">
+
+            <div class="remaining">
+                <strong>Pontos restantes</strong>
+                <span id="remaining-points">10</span>
+            </div>
+
+            <div id="ballot-list" class="ballot-list"></div>
+
+            <div class="actions">
+                <button id="submit-button" type="button">Enviar voto</button>
+                <button id="clear-draft-button" type="button">Limpar cédula</button>
+            </div>
+
+            <p id="message" class="message"></p>
+        </section>
+
+        <section class="panel">
+            <div class="section-header">
+                <h2>Ranking das propostas</h2>
+                <span id="vote-count">0 votos</span>
+            </div>
+            <div id="ranking-list" class="ranking-list"></div>
+        </section>
+    </main>
+</body>
+</html>

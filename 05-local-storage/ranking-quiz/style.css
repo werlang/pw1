@@ -1,0 +1,137 @@
+:root {
+    --bg: #f8fafc;
+    --panel: #ffffff;
+    --line: #cbd5e1;
+    --primary: #1d4ed8;
+    --text: #111827;
+    --muted: #64748b;
+    --gold: #b45309;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: var(--text);
+    background: var(--bg);
+}
+
+.page {
+    width: min(1120px, calc(100% - 32px));
+    margin: 32px auto;
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 20px;
+}
+
+.panel,
+.result-card,
+.empty-state {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+}
+
+.panel {
+    padding: 24px;
+}
+
+.eyebrow {
+    margin: 0 0 8px;
+    color: var(--primary);
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+h1,
+h2,
+p {
+    margin-top: 0;
+}
+
+label {
+    display: block;
+    margin: 14px 0 6px;
+    font-weight: 700;
+}
+
+input,
+button {
+    width: 100%;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 11px 12px;
+    font: inherit;
+}
+
+button {
+    margin-top: 12px;
+    border: 0;
+    background: var(--primary);
+    color: #fff;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.question-box {
+    min-height: 280px;
+    margin-top: 22px;
+    padding: 18px;
+    border-radius: 8px;
+    background: #eff6ff;
+}
+
+.progress-label,
+.message,
+.empty-state,
+.section-header span {
+    color: var(--muted);
+}
+
+.options-list {
+    display: grid;
+    gap: 10px;
+}
+
+.options-list button {
+    margin-top: 0;
+    text-align: left;
+    background: #ffffff;
+    color: var(--text);
+    border: 1px solid var(--line);
+}
+
+#abandon-button {
+    background: var(--muted);
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.ranking-list {
+    display: grid;
+    gap: 12px;
+}
+
+.result-card,
+.empty-state {
+    padding: 14px;
+}
+
+.result-card strong {
+    color: var(--gold);
+}
+
+@media (max-width: 860px) {
+    .page {
+        grid-template-columns: 1fr;
+    }
+}

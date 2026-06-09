@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sessão de Foco</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <main class="page">
+        <section class="panel setup">
+            <p class="eyebrow">Exercício localStorage</p>
+            <h1>Sessão de Foco</h1>
+
+            <label for="subject-input">Disciplina</label>
+            <input id="subject-input" type="text" placeholder="Ex.: Programação Web">
+
+            <label for="minutes-input">Duração em minutos</label>
+            <input id="minutes-input" type="number" min="1" max="120" value="25">
+
+            <button id="start-button" type="button">Iniciar nova sessão</button>
+            <p id="message" class="message"></p>
+        </section>
+
+        <section class="panel timer-panel">
+            <p id="session-subject" class="session-subject">Nenhuma sessão ativa</p>
+            <strong id="timer-display" class="timer">00:00</strong>
+            <span id="session-status" class="status">parada</span>
+
+            <div class="timer-actions">
+                <button id="pause-button" type="button">Pausar</button>
+                <button id="resume-button" type="button">Retomar</button>
+                <button id="reset-button" type="button">Reiniciar</button>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

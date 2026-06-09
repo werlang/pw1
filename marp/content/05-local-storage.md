@@ -43,7 +43,7 @@ pablowerlang@ifsul.edu.brr
 - Diferença entre `localStorage` e `sessionStorage`
 - O que é JSON e por que ele aparece aqui
 - Padrão certo para cadastro com memória + storage
-- Quatro exercícios da seção
+- Exercícios introdutórios e desafios com fluxos distintos
 - Erros comuns e boas práticas
 
 ---
@@ -332,3 +332,71 @@ function cadastrarAluno(aluno) {
 - Salva rascunho com `sessionStorage` durante o preenchimento
 - Inclui oficinas em `checkbox` + justificativa com contador
 - Pasta: `05-local-storage/inscricao-com-rascunho/`
+
+---
+
+# Local Storage no JavaScript
+## Desafios extras: agora o estado muda de forma
+
+Os próximos exercícios não são só “formulário → lista”.
+
+Eles treinam escolhas diferentes de modelagem:
+
+- objeto como mapa de posições
+- voto composto com soma e ranking
+- timer que sobrevive ao recarregamento
+- progresso de leitura por índice
+- tentativa de quiz com ranking persistido
+
+---
+
+# Local Storage no JavaScript
+## Extra 1: Mapa de Sala
+
+- Usa um objeto como mapa de assentos
+- Cada chave representa uma posição, como `A-1`
+- Ocupa e libera lugares sem transformar tudo em lista
+- Pasta: `05-local-storage/mapa-sala/`
+
+---
+
+# Local Storage no JavaScript
+## Extra 2: Urna de Prioridades
+
+- Distribui exatamente 10 pontos entre propostas
+- Impede voto duplicado por código
+- Salva votos compostos
+- Calcula ranking agregado a partir dos votos salvos
+- Pasta: `05-local-storage/urna-prioridades/`
+
+---
+
+# Local Storage no JavaScript
+## Extra 3: Sessão de Foco
+
+- Salva uma sessão de timer em andamento
+- Recalcula o tempo restante depois de recarregar
+- Trabalha com `Date.now()`, pausa e retomada
+- Pasta: `05-local-storage/sessao-foco/`
+
+---
+
+# Local Storage no JavaScript
+## Extra 4: Trilha de Leitura
+
+- Persiste livro escolhido e capítulo atual
+- Navega por índice
+- Salva anotações diferentes por capítulo
+- Mostra progresso visual da leitura
+- Pasta: `05-local-storage/trilha-leitura/`
+
+---
+
+# Local Storage no JavaScript
+## Extra 5: Ranking de Quiz
+
+- Controla uma tentativa em memória
+- Salva apenas o resultado consolidado no ranking
+- Calcula percentual de acertos
+- Ordena resultados persistidos
+- Pasta: `05-local-storage/ranking-quiz/`

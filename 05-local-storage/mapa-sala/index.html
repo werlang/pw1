@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa de Sala</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <main class="page">
+        <section class="panel controls">
+            <p class="eyebrow">Exercício localStorage</p>
+            <h1>Mapa de Sala</h1>
+
+            <label for="student-input">Estudante</label>
+            <input id="student-input" type="text" placeholder="Ex.: Ana Souza">
+
+            <div class="split">
+                <label for="row-select">Fileira
+                    <select id="row-select">
+                        <option value="">-</option>
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
+                        <option value="D">D</option>
+                    </select>
+                </label>
+
+                <label for="seat-select">Cadeira
+                    <select id="seat-select">
+                        <option value="">-</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </label>
+            </div>
+
+            <button id="assign-button" type="button">Ocupar assento</button>
+            <p id="message" class="message"></p>
+        </section>
+
+        <section class="panel map-panel">
+            <div class="stats">
+                <article><span id="free-count">20</span><strong>Livres</strong></article>
+                <article><span id="occupied-count">0</span><strong>Ocupados</strong></article>
+            </div>
+
+            <div id="seat-map" class="seat-map"></div>
+        </section>
+    </main>
+</body>
+</html>

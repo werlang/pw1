@@ -300,7 +300,68 @@ Conceitos em foco:
 - contador de caracteres para apoiar preenchimento;
 - limpeza do rascunho ao concluir a inscrição.
 
-## 14. Exemplos anteriores do curso
+## 14. Exercícios extras no formato de prova
+
+Os exercícios abaixo foram pensados para ter dificuldade próxima das provas de P1: o HTML e o CSS já estão prontos, o `script.js` possui funções com comentários de orientação, e o estudante precisa implementar validação, arrays, renderização, eventos e persistência.
+
+Eles evitam repetir apenas o padrão simples de cadastro. Cada um trabalha um fluxo diferente e força uma decisão específica sobre o formato do estado que será salvo.
+
+### 14.1 Mapa de Sala
+
+Pasta: [mapa-sala](./mapa-sala/)
+
+Foco principal:
+
+- usar objeto como mapa de assentos;
+- gerar uma grade de lugares com loops;
+- montar chaves compostas como `A-1`;
+- ocupar e liberar posições persistidas.
+
+### 14.2 Urna de Prioridades
+
+Pasta: [urna-prioridades](./urna-prioridades/)
+
+Foco principal:
+
+- distribuir exatamente 10 pontos entre propostas;
+- impedir voto duplicado por código;
+- salvar votos compostos;
+- calcular ranking agregado a partir dos votos persistidos.
+
+### 14.3 Sessão de Foco
+
+Pasta: [sessao-foco](./sessao-foco/)
+
+Foco principal:
+
+- salvar uma sessão de timer em andamento;
+- recalcular tempo restante depois de recarregar a página;
+- trabalhar com `Date.now()`;
+- pausar, retomar, concluir e reiniciar o estado salvo.
+
+### 14.4 Trilha de Leitura
+
+Pasta: [trilha-leitura](./trilha-leitura/)
+
+Foco principal:
+
+- persistir livro escolhido e capítulo atual;
+- navegar por índice;
+- salvar anotações diferentes por capítulo;
+- renderizar barra de progresso a partir do estado salvo.
+
+### 14.5 Ranking de Quiz
+
+Pasta: [ranking-quiz](./ranking-quiz/)
+
+Foco principal:
+
+- controlar uma tentativa de quiz em memória;
+- salvar apenas o resultado consolidado no ranking;
+- calcular percentual de acertos;
+- ordenar resultados persistidos.
+
+## 15. Exemplos anteriores do curso
 
 Os materiais antigos do curso ainda podem ajudar como referência de raciocínio, mas não fazem parte desta nova série de exercícios.
 
@@ -310,9 +371,9 @@ Entre os exemplos anteriores, vale observar estes padrões:
 - ex05.2 usava `localStorage` para um login didático e uma tela de perfil;
 - ex05.3 combinava `localStorage` com `sessionStorage` para trabalhar cadastro e rascunho.
 
-Eles são úteis como comparação histórica, mas a prática principal desta seção deve ficar concentrada nos quatro exercícios de `05-local-storage`.
+Eles são úteis como comparação histórica, mas a prática principal desta seção deve ficar concentrada nos exercícios de `05-local-storage`.
 
-## 15. Erros comuns de iniciantes
+## 16. Erros comuns de iniciantes
 
 - esquecer que `getItem()` pode retornar `null`;
 - tentar salvar objeto ou array sem `JSON.stringify()`;
@@ -322,7 +383,7 @@ Eles são úteis como comparação histórica, mas a prática principal desta se
 - alterar a lista em memória e esquecer de regravar o storage;
 - tratar `localStorage` como solução segura para credenciais ou dados sensíveis.
 
-## 16. Boas práticas para não virar bagunça
+## 17. Boas práticas para não virar bagunça
 
 - use nomes de chave claros, como `perfil-estudante`, `cadastro-alunos` e `rascunho-inscricao`;
 - mantenha uma responsabilidade por chave;
@@ -332,7 +393,7 @@ Eles são úteis como comparação histórica, mas a prática principal desta se
 - renderize a interface a partir da memória atual;
 - use `sessionStorage` quando o dado for temporário.
 
-## 17. Resumo final
+## 18. Resumo final
 
 As ideias centrais desta seção são estas:
 
