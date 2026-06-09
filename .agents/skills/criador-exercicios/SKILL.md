@@ -15,6 +15,7 @@ Produzir exercícios que sejam:
 - práticos e verificáveis;
 - coerentes com o conteúdo já estudado;
 - locais à pasta da seção ou do exercício;
+- criativos entre si, com fluxos de interação realmente diferentes quando o pedido envolver mais de um exercício;
 - escritos em PT-BR correto, com acentuação adequada no texto didático e nos rótulos visíveis.
 
 ## Regras do repositório
@@ -24,6 +25,7 @@ Produzir exercícios que sejam:
 - Não introduza frameworks ou dependências novas sem pedido explícito.
 - Preserve nomes em português quando o contexto já estiver em português.
 - Em textos didáticos, use ortografia correta em PT-BR.
+- Quando criar uma sequência de exercícios, não produza variações superficiais do mesmo fluxo com outro tema. Cada exercício deve mudar de forma observável o tipo de estado, a interação central ou a regra de negócio.
 - Em exercícios de frontend, evite atributos `data-*` e `dataset`.
 - Para ações em elementos criados dinamicamente, use criação explícita de nós (`createElement`), montagem com `append` / `appendChild` e eventos ligados diretamente com `addEventListener`.
 
@@ -33,14 +35,24 @@ Produzir exercícios que sejam:
 2. Leia o README da seção para manter continuidade pedagógica.
 3. Verifique exemplos vizinhos para copiar o nível de dificuldade e o formato esperado.
 4. Defina um problema concreto do mundo real ou escolar.
-5. Escolha o estado da aplicação de forma didática:
+5. Quando houver múltiplos exercícios, planeje primeiro como eles serão diferentes entre si. Varie a interação principal antes de trocar tema:
+	- grade ou mapa visual;
+	- votação, ranking ou agregação;
+	- fluxo por etapas, wizard ou navegação por índice;
+	- estado temporal com pausa, retomada ou expiração;
+	- simulação, jogo, tentativa ou desafio;
+	- rascunho, preferências, progresso ou histórico.
+6. Escolha o estado da aplicação de forma didática:
 	- arrays simples para listas lineares;
 	- objetos para representar uma entidade;
 	- arrays de objetos para coleções estruturadas;
+	- objetos indexados por chave para mapas, grades e estados de lookup;
+	- objetos de sessão para fluxos em andamento;
 	- DOM como camada de exibição e interação.
-6. Crie ou revise o README do exercício com requisitos observáveis.
-7. Implemente HTML, CSS e JavaScript de forma consistente com o enunciado.
-8. Valide se o exercício realmente exige os conceitos da seção e, quando fizer sentido, reutiliza conteúdos anteriores.
+7. Crie ou revise o README do exercício com requisitos observáveis.
+8. Implemente HTML, CSS e JavaScript de forma consistente com o enunciado.
+9. Valide se o exercício realmente exige os conceitos da seção e, quando fizer sentido, reutiliza conteúdos anteriores.
+10. Revise o conjunto completo e remova exercícios que pareçam cópia com tema trocado.
 
 ## Como escrever o README do exercício
 
@@ -77,6 +89,19 @@ Exemplos:
 - em objetos, use formulários simples para atualizar propriedades;
 - em arrays, transforme listas em resumos, filas, rankings ou coleções visuais;
 - em exercícios posteriores, trate o DOM como exibição dos dados e não como única fonte de verdade.
+
+## Variedade entre exercícios
+
+Quando o usuário pedir vários exercícios novos, trate variedade como requisito, não como acabamento.
+
+Evite entregar uma sequência em que todos seguem o mesmo esqueleto "formulário -> array -> lista", mudando apenas o assunto. Esse padrão pode aparecer em um exercício, mas os demais devem explorar fluxos distintos.
+
+Bons sinais de variedade:
+
+- o formato do estado muda entre exercícios, por exemplo array, objeto único, objeto indexado, sessão em andamento ou ranking consolidado;
+- a ação principal muda, por exemplo ocupar posição, distribuir pontos, avançar etapa, pausar tempo, responder tentativa ou recuperar progresso;
+- a validação muda de natureza, por exemplo conflito, soma exata, limite temporal, bloqueio de duplicidade, índice válido ou cálculo final;
+- a renderização muda de estrutura, por exemplo grade, painel, ranking, tela por etapa, barra de progresso ou controle de timer.
 
 ## Padrões por tipo de exercício
 

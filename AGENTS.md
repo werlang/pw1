@@ -53,6 +53,7 @@ PUBLIC_DIR=./exemplos/ex13.1 docker compose up -d
 - Match the simplicity level of surrounding code (beginner-friendly naming and structure).
 - For source code, prefer explicit step-by-step logic, comments in PT-BR, and documentation choices that help classroom explanation.
 - Do not introduce frameworks or new dependencies unless explicitly requested.
+- When creating multiple exercises, avoid superficial theme swaps over the same flow. Plan genuinely different interactions and state shapes, such as grids, rankings, staged flows, timers, progress trackers, simulations, or quizzes.
 - When adding API behavior, keep JSON contract and field names consistent with existing files.
 - Prefer small, explicit functions and straightforward control flow suitable for classroom explanation.
 - In frontend JavaScript for exercises, do not use `data-*` attributes as action carriers. Build dynamic UI with DOM node creation and attach events directly to those nodes.
