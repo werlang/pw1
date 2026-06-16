@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Agendamento de Tarefas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Agendamento de Tarefas</h1>
+            <p>Organize suas tarefas com eficiência</p>
+        </header>
+
+        <main>
+            <!-- Lista de tarefas -->
+            <section class="tasks-section">
+                <h2>Tarefas Agendadas</h2>
+                <div id="tasksContainer" class="tasks-container">
+                    <div class="task-item">
+                        <div class="task-header">
+                            <label class="task-checkbox">
+                                <input type="checkbox">
+                                <span class="task-name">Estudar para a prova de PW1</span>
+                            </label>
+                            <button class="task-delete" title="Excluir tarefa">Excluir</button>
+                        </div>
+                        <div class="task-details">
+                            <div class="task-detail"><strong>Data:</strong> 2025-07-22</div>
+                            <div class="task-detail"><strong>Horário:</strong> 08:00</div>
+                            <div class="task-detail"><strong>Duração:</strong> 90 minutos</div>
+                        </div>
+                    </div>
+                    <div class="task-item">
+                        <div class="task-header">
+                            <label class="task-checkbox">
+                                <input type="checkbox">
+                                <span class="task-name">Preparar apresentação de Banco de Dados</span>
+                            </label>
+                            <button class="task-delete" title="Excluir tarefa">Excluir</button>
+                        </div>
+                        <div class="task-details">
+                            <div class="task-detail"><strong>Data:</strong> 2025-07-24</div>
+                            <div class="task-detail"><strong>Horário:</strong> 14:00</div>
+                            <div class="task-detail"><strong>Duração:</strong> 120 minutos</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Lista de tarefas concluídas -->
+            <section class="tasks-section">
+                <h2>Tarefas Concluídas</h2>
+                <div id="completedTasksContainer" class="tasks-container">
+                    <div class="task-item completed">
+                        <div class="task-header">
+                            <label class="task-checkbox">
+                                <input type="checkbox" checked>
+                                <span class="task-name">Revisar exercícios de PW2</span>
+                            </label>
+                            <button class="task-delete" title="Excluir tarefa">Excluir</button>
+                        </div>
+                        <div class="task-details">
+                            <div class="task-detail"><strong>Data:</strong> 2025-07-23</div>
+                            <div class="task-detail"><strong>Horário:</strong> 10:00</div>
+                            <div class="task-detail"><strong>Duração:</strong> 60 minutos</div>
+                        </div>
+                    </div>
+                    <div class="task-item completed">
+                        <div class="task-header">
+                            <label class="task-checkbox">
+                                <input type="checkbox" checked>
+                                <span class="task-name">Estudar para a prova de POO</span>
+                            </label>
+                            <button class="task-delete" title="Excluir tarefa">Excluir</button>
+                        </div>
+                        <div class="task-details">
+                            <div class="task-detail"><strong>Data:</strong> 2025-07-25</div>
+                            <div class="task-detail"><strong>Horário:</strong> 09:00</div>
+                            <div class="task-detail"><strong>Duração:</strong> 45 minutos</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Toast para notificações -->
+        <div id="toast" class="toast">
+            <span id="toastMessage"></span>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
