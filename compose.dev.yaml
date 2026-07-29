@@ -16,6 +16,8 @@ services:
         container_name: apache
         image: pswerlang/php-apache
         restart: unless-stopped
+        ports:
+            - '${APACHE_PORT}:80'
         volumes:
             - ${PUBLIC_DIR}:/var/www/html
         networks:
