@@ -1,30 +1,37 @@
 # Checklist de README-guia
 
-Use esta lista antes de concluir a revisao do README.
-
 ## Estrutura
 
-- o titulo deixa claro o assunto
-- a introducao explica o que o material ensina
-- os conceitos principais aparecem antes dos exemplos
-- existe fechamento com resumo ou retomada dos pontos centrais
+- o título deixa claro o assunto
+- a introdução explica o que o material ensina
+- os conceitos aparecem antes dos exemplos
+- a progressão vai do básico ao importante
+- o fechamento retoma apenas os pontos essenciais
 
-## Qualidade didatica
+## Qualidade didática
 
-- o texto esta claro para estudantes iniciantes
-- os exemplos sao pequenos e coerentes com a secao
-- as comparacoes importantes foram explicadas
-- erros comuns ou armadilhas foram mencionados quando relevante
+- o texto está claro para estudantes iniciantes
+- os exemplos são pequenos e coerentes com a seção
+- diferenças importantes e erros comuns foram explicados
+- o teto pedagógico da seção foi respeitado
 
-## Qualidade tecnica
+## Qualidade técnica
 
-- nao ha afirmacoes imprecisas ou desatualizadas
-- os exemplos estao alinhados com o codigo real da pasta
-- nao foram introduzidas dependencias ou padroes estranhos ao repositorio
+- não há afirmações imprecisas ou desatualizadas
+- exemplos e caminhos correspondem aos arquivos reais
+- não foram introduzidas dependências ou padrões estranhos ao repositório
+- exemplos inseguros possuem crítica explícita
 
-## Consistencia editorial
+## Materiais relacionados
 
-- o README virou guia de consulta, nao apenas texto maior
-- o tom esta em portugues e didatico
-- as secoes ficaram curtas e previsiveis
-- nao ha repeticao desnecessaria entre secoes
+- exemplos válidos foram preservados
+- referências antigas de exercícios foram removidas quando a lista foi substituída
+- nomes e caminhos dos exercícios atuais existem
+- o bloco de práticas descreve o desafio distintivo de cada proposta
+
+## Consistência editorial
+
+- o README virou guia de consulta, não apenas texto maior
+- o texto usa PT-BR correto
+- as seções são previsíveis e não repetem a mesma explicação
+- a estrutura pode ser resumida em slides sem copiar parágrafos inteiros

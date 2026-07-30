@@ -1,224 +1,118 @@
 ---
 name: guia-readme
-description: "Transform section, lesson, topic, or mini-project README files into clear didactic reference guides in Portuguese, with consistent structure, small examples, and student-friendly explanations. Use when Agent needs to create, expand, rewrite, or standardize a README for aula, material de apoio, referencia conceitual, guia pratico, enunciado de exercicio, documentacao de API, or when requests mention: melhorar README, transformar slide em guia, criar guia de JS/DOM/eventos/PHP/fetch, padronizar documentacao didatica."
+description: Transforme READMEs de seções, aulas, tópicos e mini-projetos em guias didáticos de referência em PT-BR. Use ao criar, ampliar, revisar ou padronizar material de aula, guia prático, enunciado, documentação de API ou base textual para slides, mantendo exemplos reais, progressão pedagógica e referências de exercícios sincronizadas.
 ---
 
-# Guia READMEs
+# Guia de READMEs
 
-Esta skill serve para transformar READMEs de secoes do repositorio em guias de referencia: materiais mais completos, corretos, didaticos e reutilizaveis em aula.
+Produza um material que possa ser consultado depois da aula: mais completo que um slide, menor que um capítulo de livro e alinhado ao código real da seção.
 
-## Quando usar
+## Contexto obrigatório
 
-Use esta skill quando o pedido envolver:
+Antes de editar:
 
-- melhorar um README para virar guia
-- expandir conteudo de uma secao didatica
-- padronizar material de apoio de uma pasta em `public/`, `exemplos/` ou `exercicios/`
-- converter texto curto de slide em material de referencia
-- revisar explicacoes tecnicas para ficarem mais precisas e mais uteis para estudantes
+1. leia o README atual por inteiro;
+2. inspecione os arquivos e exemplos reais da seção;
+3. leia um ou dois guias vizinhos para calibrar profundidade;
+4. identifique o conteúdo já estudado, o foco da seção e o conteúdo futuro que não pode ser exigido;
+5. localize todas as menções a exemplos e exercícios.
 
-## Objetivo
+Não trate exemplo e exercício como sinônimos. Preserve exemplos válidos quando eles continuarem como referência. Quando a lista de exercícios for substituída, remova as referências antigas e inclua somente os caminhos finais.
 
-Produzir um README que funcione como material de consulta. O texto deve equilibrar:
+## Tipos de guia
 
-- clareza para estudantes iniciantes
-- precisao tecnica suficiente para servir de referencia
-- exemplos pequenos e concretos
-- organizacao que facilite leitura posterior
+Escolha a estrutura conforme o material.
 
-## Recursos desta skill
+### Referência conceitual
 
-Use estes arquivos quando precisar acelerar a execucao:
+Use para linguagem, arrays, DOM, eventos, formulários, sessões e arquivos:
 
-- `README-TEMPLATE.md` para partir de uma estrutura base
-- `CHECKLIST.md` para revisar clareza, profundidade e consistencia final
+1. visão geral e objetivos;
+2. conceitos fundamentais;
+3. mecanismo ou sintaxe;
+4. exemplos pequenos;
+5. comparações importantes;
+6. erros comuns e boas práticas;
+7. exemplos reais e exercícios propostos;
+8. resumo.
 
-## Regras do repositorio
+### Guia prático
 
-Antes de editar, respeite estas convencoes:
+Use para uma implementação orientada:
 
-- priorize explicacoes claras para estudantes, sem abstrair demais
-- mantenha as mudancas locais a pasta alvo
-- preserve termos em portugues quando esse ja for o padrao do material
-- para frontend, use JavaScript vanilla e DOM direto
-- para backend em PHP, mantenha o padrao de JSON ja usado no repositorio
-- nao introduza frameworks ou dependencias novas
-- se o README for servir de base para slides em `marp/content/`, organize o conteudo em blocos claros que possam virar telas curtas sem depender de classes legadas de layout
+1. objetivo;
+2. ponto de partida;
+3. sequência de implementação;
+4. trechos mínimos de apoio;
+5. comportamento verificável;
+6. erros comuns.
 
-## Compatibilidade com slides da disciplina
+### Enunciado
 
-Quando o README tiver alta chance de virar slides para aula, organize o texto em blocos claros que possam virar telas curtas. Siga as regras de estrutura e escrita de `CHECKLIST.md` para garantir que o material seja facilmente resumido em bullets e exemplos pequenos, e que os conceitos mais importantes possam ser destacados em telas separadas.
+Use para exercício:
 
-- mantenha secoes com uma ideia central por bloco
-- prefira comparacoes curtas e exemplos pequenos
-- destaque exercicios, demos e links de apoio de forma objetiva
-- escreva subtitulos que possam ser resumidos facilmente em `#` e `##`
-- evite estruturas que dependam de nomenclatura antiga de layout; a base atual dos slides e utilitaria
+1. contexto e objetivo;
+2. dados e estado;
+3. ações ou operações;
+4. regras e validações;
+5. saída esperada;
+6. conceitos trabalhados;
+7. critérios de verificação.
 
-## Fluxo de trabalho
+### API ou back-end
 
-### 1. Levantar contexto minimo
+Documente:
 
-Antes de reescrever o README:
+1. arquivos e responsabilidades;
+2. entrada e validação;
+3. sequência da operação;
+4. resposta e códigos HTTP;
+5. erros esperados;
+6. segurança, sessão ou persistência relevante.
 
-- leia o arquivo atual por inteiro
-- examine a pasta da secao para entender exemplos, arquivos e foco da aula
-- procure um ou dois READMEs proximos para calibrar tom e profundidade
+## Escrita didática
 
-### 2. Identificar o tipo de material
+- Escreva em PT-BR correto, com acentuação.
+- Apresente o conceito antes do exemplo.
+- Use frases diretas e nomes coerentes com o projeto.
+- Mostre exemplos curtos, executáveis e compatíveis com a seção.
+- Explique diferenças que costumam causar erros.
+- Não aumente o arquivo apenas repetindo a mesma ideia.
+- Não antecipe conteúdo futuro para “melhorar” artificialmente a solução.
 
-Classifique o README em uma destas categorias:
+## Código e precisão
 
-1. referencia conceitual
-2. guia pratico de implementacao
-3. enunciado de exercicio
-4. documentacao de API ou backend
+Confira:
 
-Essa classificacao define a estrutura final.
+- se o exemplo corresponde ao comportamento real da linguagem ou API;
+- se os caminhos citados existem;
+- se nenhuma afirmação contradiz o repositório;
+- se entrada, validação, transformação e saída estão diferenciadas;
+- se padrões inseguros aparecem apenas para crítica explícita;
+- se o JSON, SQL, formulário ou sessão segue o contrato usado no projeto.
 
-### 3. Escolher a profundidade correta
+## Sincronização com exercícios e slides
 
-O README deve ser mais forte que um slide, mas sem virar livro.
+Quando a seção possuir práticas:
 
-Priorize:
+- descreva em uma linha o desafio central de cada exercício;
+- use links relativos para o caminho real;
+- não mantenha uma lista antiga “para referência” quando o pedido for substituí-la;
+- evite títulos genéricos que escondam exercícios repetidos;
+- ordene as propostas por progressão ou contraste didático;
+- deixe blocos curtos o bastante para serem resumidos nos slides.
 
-- definicoes objetivas
-- explicacao de sintaxe e fluxo mental
-- exemplos pequenos e corretos
-- observacoes sobre erros comuns
-- resumo dos pontos essenciais
+Depois de editar o guia, procure no guia e no slide correspondente por caminhos antigos, títulos removidos e termos como `exercicios/ex`.
 
-Evite:
+## Revisão final
 
-- texto inflado so para parecer completo
-- jargao sem explicacao
-- exemplos excessivamente longos
-- repetir a mesma ideia em secoes diferentes
+Leia [CHECKLIST.md](./CHECKLIST.md) e confirme:
 
-## Estrutura recomendada
+- progressão do básico ao importante;
+- teto pedagógico respeitado;
+- exemplos reais preservados;
+- exercícios atuais e caminhos corretos;
+- Markdown consistente;
+- resumo que acrescenta fechamento em vez de repetir parágrafos.
 
-Adapte conforme o assunto, mas em geral use esta ordem:
-
-1. titulo claro da secao
-2. introducao curta explicando o que o conteudo ensina
-3. conceitos fundamentais
-4. sintaxe ou mecanismo principal
-5. exemplos comentados e pequenos
-6. variacoes comuns ou comparacoes importantes
-7. erros frequentes, armadilhas ou observacoes tecnicas
-8. boas praticas
-9. resumo final
-
-## Estrutura por tipo
-
-### A. Referencia conceitual
-
-Boa para temas como eventos, DOM, arrays, fetch, sessoes, formularios.
-
-Use preferencialmente:
-
-- o que e
-- para que serve
-- estrutura basica
-- propriedades, metodos ou partes importantes
-- exemplos diretos
-- observacoes tecnicas
-- boas praticas
-- resumo
-
-### B. Guia pratico de implementacao
-
-Boa para uma pratica passo a passo.
-
-Use preferencialmente:
-
-- objetivo da pratica
-- o que ja existe pronto
-- o que precisa ser implementado
-- passos de implementacao
-- trechos de codigo de apoio
-- criterios de funcionamento esperado
-- erros comuns
-
-### C. Enunciado de exercicio
-
-Boa para pastas de exercicios.
-
-Use preferencialmente:
-
-- contexto
-- objetivo
-- requisitos obrigatorios
-- regras e restricoes
-- entradas e saidas esperadas
-- criterios de avaliacao ou checklist
-- dicas sem entregar a solucao inteira
-
-### D. Documentacao de API ou backend
-
-Boa para PHP, endpoints e autenticacao.
-
-Use preferencialmente:
-
-- objetivo do endpoint ou modulo
-- arquivos envolvidos
-- dados recebidos
-- validacoes necessarias
-- formato da resposta JSON
-- codigos e cenarios de erro
-- sequencia logica da implementacao
-- observacoes de seguranca e sessao
-
-## Padrao de escrita
-
-Ao escrever:
-
-- use frases diretas e didaticas
-- apresente primeiro o conceito e depois o exemplo
-- prefira listas quando estiver enumerando comportamentos, eventos, regras ou requisitos
-- use nomes de variaveis legiveis e coerentes com o assunto
-- explique diferencas importantes, como `input` vs `change`, `target` vs `currentTarget`, `include` vs `require`, quando isso fizer sentido
-
-## Padrao para exemplos
-
-Exemplos devem seguir estas regras:
-
-- curtos o suficiente para caber em uma leitura rapida
-- corretos tecnicamente
-- alinhados com os arquivos reais da secao
-- sem depender de bibliotecas externas
-- preferencialmente em portugues quando os identificadores da pasta ja estiverem em portugues
-
-Sempre que possivel, mostre:
-
-- um exemplo minimo
-- uma explicacao linha a linha ou por blocos
-- uma observacao sobre quando usar aquele padrao
-
-## O que revisar tecnicamente
-
-Antes de concluir, confira:
-
-- se nao ha afirmacoes desatualizadas ou imprecisas
-- se APIs obsoletas foram evitadas ou marcadas como legado
-- se o texto diferencia comportamento padrao do navegador e comportamento controlado por JavaScript
-- se os exemplos nao contradizem o restante do repositorio
-- se a progressao vai do simples para o importante
-
-## Template
-
-Use o arquivo `README-TEMPLATE.md` desta skill como ponto de partida. Adapte a estrutura ao tipo de secao, sem seguir o template de forma rigida.
-
-## Revisao final
-
-Antes de concluir, releia `CHECKLIST.md` e confirme que o README ficou realmente melhor como guia, e nao apenas maior.
-
-## Saida esperada
-
-Ao aplicar esta skill, o agente deve:
-
-1. ler o README atual e a pasta alvo
-2. identificar o tipo de material
-3. reescrever ou expandir o README com estrutura de guia
-4. manter o texto claro, correto e reutilizavel
-5. validar se o Markdown final ficou consistente
+Use [README-TEMPLATE.md](./README-TEMPLATE.md) somente como ponto de partida. Adapte a estrutura ao tipo de material.
