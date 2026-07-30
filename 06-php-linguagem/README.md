@@ -1,8 +1,8 @@
-# Programação Web I - Linguagem PHP
+# Programação Web I - Linguagem PHP e Funções
 
 ## 1. O que este guia ensina
 
-Esta seção apresenta o PHP como linguagem de programação executada no servidor. O objetivo é compreender o caminho de uma requisição web e escrever os primeiros scripts com valores, decisões, repetições e geração de HTML.
+Esta seção apresenta o PHP como linguagem de programação executada no servidor. O objetivo é compreender o caminho de uma requisição web, escrever os primeiros scripts e organizar regras em funções reutilizáveis.
 
 Ao final deste guia, você deve conseguir:
 
@@ -11,6 +11,10 @@ Ao final deste guia, você deve conseguir:
 - usar variáveis, tipos, operadores, decisões e repetições;
 - misturar PHP e HTML sem perder a legibilidade;
 - dividir o programa em arquivos com `include` e `require`;
+- criar funções com parâmetros, argumentos e retorno;
+- distinguir `return` de `echo`;
+- usar escopo local, parâmetros e variáveis `static` de forma consciente;
+- reconhecer funções anônimas, arrow functions e callbacks simples;
 - evitar erros comuns de sintaxe, saída e organização.
 
 ## 2. Onde o PHP participa de uma aplicação web
@@ -333,17 +337,120 @@ O caminho relativo é resolvido a partir do contexto de execução. Em projetos 
 require_once __DIR__ . "/connection.php";
 ```
 
-## 15. Exercícios propostos
+## 15. Funções: uma regra com nome
 
-- [Painel de Consumo de Água](./painel-consumo-agua/README.md): transforma medidas em médias, classificação e recomendação.
-- [Bilheteria da Gincana](./bilheteria-gincana/README.md): combina regras lógicas para explicar um preço final.
-- [Calendário de Treinos](./calendario-treinos/README.md): produz uma grade mensal com índices e laços.
-- [Lote de Crachás Numerados](./crachas-numerados/README.md): gera códigos, marcas periódicas e contagens.
-- [Simulação do Reservatório](./reservatorio-escola/README.md): acompanha um estado até uma condição de parada.
+Uma função reúne uma tarefa que tem nome, entradas e uma saída esperada. Ela ajuda quando uma regra se repete, quando um cálculo precisa ser testado em cenários diferentes ou quando o bloco principal está ficando difícil de ler.
 
-Os cinco exercícios usam somente recursos apresentados até esta seção. Arrays, funções próprias e formulários ficam para as aulas seguintes.
+```php
+function somar(int $numeroA, int $numeroB): int {
+    return $numeroA + $numeroB;
+}
 
-## 16. Erros comuns
+$resultado = somar(10, 20);
+```
+
+Na definição, `$numeroA` e `$numeroB` são **parâmetros**. Na chamada, `10` e `20` são **argumentos**. O `return` entrega um resultado para a parte que chamou a função.
+
+Uma função pequena deve ter uma responsabilidade clara. Por exemplo, `calcularMedia()` calcula; a parte que monta o HTML decide como apresentar o resultado.
+
+## 16. `return` e `echo` têm papéis diferentes
+
+`return` devolve um valor e encerra a função. `echo` escreve imediatamente na resposta HTTP.
+
+```php
+function calcularDobro(int $numero): int {
+    return $numero * 2;
+}
+
+$dobro = calcularDobro(6);
+echo "O dobro é $dobro.";
+```
+
+Esse formato permite usar o mesmo cálculo em uma página HTML, uma resposta JSON ou um teste. Uma função que usa `echo` para entregar um cálculo fica mais difícil de reaproveitar.
+
+## 17. Tipos e valores padrão
+
+Tipos nos parâmetros e no retorno deixam o contrato da função mais fácil de entender.
+
+```php
+function calcularMedia(
+    float $notaA,
+    float $notaB,
+    float $bonus = 0
+): float {
+    return ($notaA + $notaB) / 2 + $bonus;
+}
+```
+
+O valor padrão torna `$bonus` opcional. A assinatura documenta o tipo esperado, mas não substitui a validação de dados vindos de formulário, URL ou arquivo. Esses dados continuam precisando ser conferidos antes de entrar no cálculo.
+
+## 18. Retorno antecipado
+
+Quando existe um caso inválido simples, encerre a função cedo. Isso evita vários níveis de `if` e deixa o caminho principal mais legível.
+
+```php
+function calcularDesconto(float $preco): float {
+    if ($preco <= 0) {
+        return 0;
+    }
+
+    return $preco * 0.1;
+}
+```
+
+O retorno antecipado não é uma forma de esconder erros. Ele deve produzir um resultado que faça sentido para a regra. Quando for necessário informar o problema em detalhes, use uma validação mais explícita ou uma estrutura de resultado estudada depois com arrays.
+
+## 19. Escopo, parâmetros e `static`
+
+Uma variável criada dentro de uma função existe apenas naquele bloco. Esse é o **escopo local**.
+
+```php
+function calcularTotal(float $preco, float $taxa): float {
+    return $preco * (1 + $taxa);
+}
+```
+
+Passar `$taxa` como parâmetro é melhor do que usar `global $taxa`: quem lê a chamada já sabe quais valores a regra precisa.
+
+Uma variável `static` mantém seu valor entre chamadas da mesma função durante a requisição atual:
+
+```php
+function proximoNumero(): int {
+    static $contador = 0;
+    $contador++;
+    return $contador;
+}
+```
+
+Ela não cria armazenamento permanente e volta ao valor inicial em uma nova requisição.
+
+## 20. Funções anônimas, arrow functions e callbacks
+
+Uma função também pode ser guardada em uma variável. A arrow function é uma forma curta para uma expressão simples.
+
+```php
+$dobro = fn(int $numero): int => $numero * 2;
+
+function aplicarOperacao(int $numero, callable $operacao): int {
+    return $operacao($numero);
+}
+
+echo aplicarOperacao(6, $dobro); // 12
+```
+
+Nesse exemplo, `$dobro` é um **callback**: uma função entregue como argumento para outra função usar depois. Primeiro, domine funções nomeadas e parâmetros comuns; callbacks serão especialmente úteis ao trabalhar com arrays.
+
+## 21. Exercícios propostos
+
+- [Painel de Consumo de Água](./painel-consumo-agua/README.md): separa cálculos, classificação e recomendação em funções pequenas.
+- [Bilheteria da Gincana](./bilheteria-gincana/README.md): organiza as regras que explicam o preço final de um ingresso.
+- [Calendário de Treinos](./calendario-treinos/README.md): isola regras de fim de semana e treino especial durante a geração da grade.
+- [Lote de Crachás Numerados](./crachas-numerados/README.md): separa a formatação de um código da repetição que gera o lote.
+- [Simulação do Reservatório](./reservatorio-escola/README.md): usa funções para descrever cada rodada sem esconder a evolução do estado.
+
+Os cinco exercícios permanecem sem arrays ou formulários. Primeiro monte uma versão direta e, depois, extraia um cálculo, uma classificação ou uma formatação para uma função com nome claro.
+
+## 22. Erros comuns
 
 - abrir o arquivo PHP diretamente, sem servidor;
 - esquecer `$` no nome de uma variável;
@@ -353,9 +460,12 @@ Os cinco exercícios usam somente recursos apresentados até esta seção. Array
 - produzir HTML com aspas mal fechadas;
 - enviar saída antes de usar `header()`;
 - criar laço sem condição de parada;
+- usar `global` quando o valor poderia ser um parâmetro;
+- usar `echo` dentro de uma função que deveria devolver um cálculo;
+- criar uma função longa que calcula, valida e monta HTML ao mesmo tempo;
 - acreditar que uma validação no front-end protege o back-end.
 
-## 17. Resumo final
+## 23. Resumo final
 
 As ideias centrais desta seção são:
 
@@ -365,4 +475,7 @@ As ideias centrais desta seção são:
 - PHP pode gerar HTML ou texto nesta etapa inicial;
 - `require` e `include` ajudam a dividir responsabilidades;
 - laços evitam repetir manualmente estruturas previsíveis;
-- manter cálculo e marcação organizados facilita a evolução para arrays e funções.
+- funções recebem argumentos, executam uma regra e podem devolver resultados;
+- `return` separa cálculo de apresentação;
+- parâmetros e escopo local deixam as dependências visíveis;
+- funções anônimas e callbacks permitem escolher uma operação quando isso realmente ajuda.

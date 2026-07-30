@@ -478,7 +478,7 @@ O exemplo divide os dados em `produtos.php`, inclui o arquivo e procura um produ
 - verifique se uma chave existe antes de acessá-la;
 - use comparação estrita quando o tipo fizer parte da regra;
 - mantenha os dados no array e use o HTML apenas como apresentação;
-- mantenha cada etapa de transformação visível; funções próprias serão aprofundadas na seção seguinte.
+- mantenha cada etapa de transformação visível; use funções próprias quando elas tornarem a regra mais clara, sem esconder o percurso do array.
 
 ## 24. Resumo final
 
