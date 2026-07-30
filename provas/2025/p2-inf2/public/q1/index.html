@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Agendamento de Tarefas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Agendamento de Tarefas</h1>
+            <p>Organize suas tarefas com eficiência</p>
+        </header>
+
+        <main>
+            <!-- Formulário para adicionar nova tarefa -->
+            <section class="task-form-section">
+                <h2>Adicionar Nova Tarefa</h2>
+                <form id="taskForm" class="task-form">
+                    <div class="form-group">
+                        <label for="taskName">Nome da Tarefa:</label>
+                        <input type="text" id="taskName" name="taskName" required 
+                               placeholder="Digite o nome da tarefa">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="taskDate">Data:</label>
+                            <input type="date" id="taskDate" name="taskDate" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="taskTime">Horário:</label>
+                            <input type="time" id="taskTime" name="taskTime" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="taskDuration">Duração (em minutos):</label>
+                        <input type="number" id="taskDuration" name="taskDuration" required placeholder="Ex: 60">
+                    </div>
+
+                    <button type="submit" class="btn-primary">Adicionar Tarefa</button>
+                </form>
+            </section>
+        </main>
+
+        <!-- Toast para notificações -->
+        <div id="toast" class="toast">
+            <span id="toastMessage"></span>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

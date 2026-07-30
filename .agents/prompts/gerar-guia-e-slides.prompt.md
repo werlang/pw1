@@ -21,16 +21,19 @@ Antes de editar, leia e siga estes arquivos como fonte de verdade:
 
 - [guia-readme](../skills/guia-readme/SKILL.md)
 - [guia-readme-para-slides](../skills/guia-readme-para-slides/SKILL.md)
-- [copilot-instructions](../copilot-instructions.md)
 - [guia Marp](../../marp/README.md)
 - [slide 00-introducao](../../marp/content/00-introducao.md)
 - [slide 01-eventos](../../marp/content/01-eventos.md)
 - [slide 02-arrays](../../marp/content/02-arrays.md)
 - [slide 03-objetos](../../marp/content/03-objetos.md)
 - [slide 04-dom](../../marp/content/04-dom.md)
+- [slide 05-local-storage](../../marp/content/05-local-storage.md)
 - [guia 00-introducao](../../00-introducao/README.md)
 - [guia 01-eventos](../../01-eventos/README.md)
 - [guia 02-arrays](../../02-arrays/README.md)
+- [guia 03-objetos](../../03-objetos/README.md)
+- [guia 04-dom](../../04-dom/README.md)
+- [guia 05-local-storage](../../05-local-storage/README.md)
 
 Se houver um README e um slide ja existentes para a secao alvo, eles tem prioridade sobre qualquer suposicao. Use o restante como calibracao de estilo, profundidade e organizacao.
 

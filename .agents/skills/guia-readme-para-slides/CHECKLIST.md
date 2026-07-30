@@ -57,3 +57,9 @@ Use esta lista antes de concluir uma apresentacao gerada a partir de README.
 - os exercicios explicam rapidamente o que fazer e trazem link da demonstracao quando houver
 - os links publicados seguem o padrao atual do repositorio quando ele puder ser inferido com seguranca
 - quando a secao tiver varios exercicios relevantes, eles podem aparecer em slides separados para preservar legibilidade
+- uma lista de cinco exercícios foi dividida em pelo menos dois slides
+- cada exercício é descrito pelo raciocínio que o distingue, não apenas pelo tema
+- referências antigas de exercícios foram removidas
+- exemplos válidos continuam mencionados
+- nomes e caminhos citados existem no repositório
+- o teto pedagógico da seção foi respeitado

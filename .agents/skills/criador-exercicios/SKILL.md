@@ -26,33 +26,38 @@ Produzir exercícios que sejam:
 - Preserve nomes em português quando o contexto já estiver em português.
 - Em textos didáticos, use ortografia correta em PT-BR.
 - Quando criar uma sequência de exercícios, não produza variações superficiais do mesmo fluxo com outro tema. Cada exercício deve mudar de forma observável o tipo de estado, a interação central ou a regra de negócio.
+- Respeite o teto pedagógico da seção. Conteúdos anteriores podem ser reutilizados; conteúdos apresentados apenas em seções posteriores não podem ser exigidos.
+- Trate exemplos e exercícios como categorias diferentes: exemplos podem continuar citados como referência; uma nova lista de exercícios deve substituir referências a listas antigas quando esse for o pedido.
 - Em exercícios de frontend, evite atributos `data-*` e `dataset`.
 - Para ações em elementos criados dinamicamente, use criação explícita de nós (`createElement`), montagem com `append` / `appendChild` e eventos ligados diretamente com `addEventListener`.
 
 ## Fluxo recomendado
 
-1. Identifique a seção e o que já foi estudado antes dela.
+1. Identifique a seção, o que já foi estudado e o primeiro conteúdo que ainda não pode ser exigido.
 2. Leia o README da seção para manter continuidade pedagógica.
 3. Verifique exemplos vizinhos para copiar o nível de dificuldade e o formato esperado.
-4. Defina um problema concreto do mundo real ou escolar.
-5. Quando houver múltiplos exercícios, planeje primeiro como eles serão diferentes entre si. Varie a interação principal antes de trocar tema:
+4. Quando houver múltiplos exercícios, monte antes uma matriz com: estado, ação principal, validação, saída e conceito novo de cada proposta.
+5. Defina um problema concreto do mundo real ou escolar.
+6. Planeje como os exercícios serão diferentes entre si. Varie a interação principal antes de trocar tema:
 	- grade ou mapa visual;
 	- votação, ranking ou agregação;
 	- fluxo por etapas, wizard ou navegação por índice;
 	- estado temporal com pausa, retomada ou expiração;
 	- simulação, jogo, tentativa ou desafio;
 	- rascunho, preferências, progresso ou histórico.
-6. Escolha o estado da aplicação de forma didática:
+7. Escolha o estado da aplicação de forma didática:
 	- arrays simples para listas lineares;
 	- objetos para representar uma entidade;
 	- arrays de objetos para coleções estruturadas;
 	- objetos indexados por chave para mapas, grades e estados de lookup;
 	- objetos de sessão para fluxos em andamento;
 	- DOM como camada de exibição e interação.
-7. Crie ou revise o README do exercício com requisitos observáveis.
-8. Implemente HTML, CSS e JavaScript de forma consistente com o enunciado.
-9. Valide se o exercício realmente exige os conceitos da seção e, quando fizer sentido, reutiliza conteúdos anteriores.
-10. Revise o conjunto completo e remova exercícios que pareçam cópia com tema trocado.
+8. Crie ou revise o README do exercício com requisitos observáveis.
+9. Implemente o material solicitado. Se o pedido for apenas elaborar enunciados, não invente uma solução completa; deixe claros os arquivos esperados e os critérios de verificação.
+10. Valide se o exercício realmente exige os conceitos da seção e, quando fizer sentido, reutiliza conteúdos anteriores.
+11. Faça uma crítica professoral individual: identifique o que ainda soa genérico, previsível ou copiável de um tutorial e adapte a regra, o estado ou o fluxo.
+12. Revise o conjunto completo e substitua exercícios que compartilhem o mesmo esqueleto, mesmo que os temas sejam diferentes.
+13. Se guias ou slides citarem a prática, atualize os dois com os nomes e caminhos finais e procure referências antigas restantes.
 
 ## Como escrever o README do exercício
 
@@ -102,6 +107,31 @@ Bons sinais de variedade:
 - a ação principal muda, por exemplo ocupar posição, distribuir pontos, avançar etapa, pausar tempo, responder tentativa ou recuperar progresso;
 - a validação muda de natureza, por exemplo conflito, soma exata, limite temporal, bloqueio de duplicidade, índice válido ou cálculo final;
 - a renderização muda de estrutura, por exemplo grade, painel, ranking, tela por etapa, barra de progresso ou controle de timer.
+
+Antes de aceitar o conjunto, compare cada par de exercícios. Trocar apenas nomes, cores, entidades ou contexto não conta como diferença. Duas propostas só podem permanecer quando o caminho mental necessário para resolvê-las for observavelmente diferente.
+
+## Teto pedagógico
+
+Para cada seção, registre mentalmente:
+
+- conteúdos permitidos porque já foram apresentados;
+- conteúdo central que deve ser praticado agora;
+- conteúdos futuros que não podem virar requisito.
+
+Não antecipe uma abstração apenas porque ela deixaria a solução mais elegante. Em uma sequência de PHP, por exemplo, uma aula de linguagem pode usar variáveis, decisões e laços sem exigir funções próprias; sessões não devem resolver um fluxo de formulários antes da seção de sessões.
+
+## Crítica com olhar de professor
+
+Critique cada exercício com perguntas concretas:
+
+- ele aparece facilmente em uma busca como tutorial pronto?
+- o aluno precisa tomar decisões ou apenas copiar uma receita?
+- o enunciado torna visível o motivo de usar o conceito da seção?
+- a validação revela um problema real do domínio?
+- a saída permite conferir se a regra foi implementada?
+- ele repete o mesmo estado e a mesma sequência de ações de outra proposta?
+
+Se a resposta revelar genericidade, não tente corrigir apenas com outro tema. Mude uma regra estrutural: conflito, empate, retomada, expiração, transação, auditoria, compensação de falha, índice, agregação ou contrato.
 
 ## Padrões por tipo de exercício
 
