@@ -28,7 +28,7 @@ pablowerlang@ifsul.edu.br
 
 </div>
 <div class="media mx-auto">
-    <img class="placeholder" alt="Prompt de IA: navegador e servidor trocando uma requisição HTTP e uma resposta, com PHP processando dados no servidor, infográfico didático horizontal">
+    <img alt="navegador e servidor trocando uma requisição HTTP e uma resposta, com PHP processando dados no servidor, infográfico didático horizontal" src="../../marp/assets/06-http.png">
 </div>
 </div>
 
@@ -87,11 +87,6 @@ pablowerlang@ifsul.edu.br
 - Um `.php` precisa passar pelo interpretador
 - Apache recebe a requisição
 - PHP executa o script
-- Docker Compose padroniza o ambiente
-
-```bash
-PUBLIC_DIR=./06-php-linguagem/painel-consumo-agua docker compose up -d
-```
 
 ---
 
@@ -350,17 +345,14 @@ $resultado = somar(10, 20);
 ## Valores padrão e tipos
 
 ```php
-function calcularMedia(
-    float $notaA,
-    float $notaB,
-    float $bonus = 0
-): float {
+function calcularMedia( float $notaA, float $notaB, float $bonus = 0 ): float {
     return ($notaA + $notaB) / 2 + $bonus;
 }
 ```
 
 - O valor padrão torna um argumento opcional
-- Os tipos documentam o contrato
+- O tipo pode ser indicado antes do parâmetro
+- O tipo de retorno pode ser indicado depois dos parênteses
 - Dados recebidos de formulários ainda precisam ser validados
 
 ---
@@ -369,7 +361,7 @@ function calcularMedia(
 ## Retorno antecipado deixa a regra clara
 
 ```php
-function calcularDesconto(float $preco): float {
+function calcularDesconto($preco) {
     if ($preco <= 0) {
         return 0;
     }
@@ -431,7 +423,7 @@ echo proximoNumero(); // 1
 echo proximoNumero(); // 2
 ```
 
-`static` preserva o valor entre chamadas da função durante a requisição atual.
+`static` preserva o valor entre chamadas da função durante a requisição atual. Ele não é global: não pode ser acessado fora da função.
 
 ---
 
@@ -468,10 +460,7 @@ $triplo = fn($numero) =>
 ## Callback: uma função recebe outra
 
 ```php
-function aplicarOperacao(
-    int $numero,
-    callable $operacao
-): int {
+function aplicarOperacao( $numero, $operacao ) {
     return $operacao($numero);
 }
 
@@ -479,7 +468,6 @@ $dobro = fn($numero) => $numero * 2;
 echo aplicarOperacao(6, $dobro); // 12
 ```
 
-- `callable` indica que esperamos uma função
 - O callback define qual operação será aplicada
 - Primeiro, domine funções nomeadas e parâmetros comuns
 

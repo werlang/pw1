@@ -48,7 +48,7 @@
 </ul>
 </div>
 <div class="media mx-auto">
-    <img class="placeholder" alt="Prompt de IA: navegador e servidor trocando uma requisição HTTP e uma resposta, com PHP processando dados no servidor, infográfico didático horizontal" />
+    <img alt="navegador e servidor trocando uma requisição HTTP e uma resposta, com PHP processando dados no servidor, infográfico didático horizontal" src="../../marp/assets/06-http.png" />
 </div>
 </div>
 <footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
@@ -107,10 +107,7 @@
 <li>Um <code>.php</code> precisa passar pelo interpretador</li>
 <li>Apache recebe a requisição</li>
 <li>PHP executa o script</li>
-<li>Docker Compose padroniza o ambiente</li>
 </ul>
-<pre><code class="language-bash">PUBLIC_DIR=./06-php-linguagem/painel-consumo-agua docker compose up -d
-</code></pre>
 <footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="7" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
@@ -370,17 +367,14 @@
 <header> </header>
 <h1 id="fun%C3%A7%C3%B5es-no-php-2">Funções no PHP</h1>
 <h2 id="valores-padr%C3%A3o-e-tipos">Valores padrão e tipos</h2>
-<pre><code class="language-php"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">calcularMedia</span>(<span class="hljs-params">
-    <span class="hljs-keyword">float</span> <span class="hljs-variable">$notaA</span>,
-    <span class="hljs-keyword">float</span> <span class="hljs-variable">$notaB</span>,
-    <span class="hljs-keyword">float</span> <span class="hljs-variable">$bonus</span> = <span class="hljs-number">0</span>
-</span>): <span class="hljs-title">float</span> </span>{
+<pre><code class="language-php"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">calcularMedia</span>(<span class="hljs-params"> <span class="hljs-keyword">float</span> <span class="hljs-variable">$notaA</span>, <span class="hljs-keyword">float</span> <span class="hljs-variable">$notaB</span>, <span class="hljs-keyword">float</span> <span class="hljs-variable">$bonus</span> = <span class="hljs-number">0</span> </span>): <span class="hljs-title">float</span> </span>{
     <span class="hljs-keyword">return</span> (<span class="hljs-variable">$notaA</span> + <span class="hljs-variable">$notaB</span>) / <span class="hljs-number">2</span> + <span class="hljs-variable">$bonus</span>;
 }
 </code></pre>
 <ul>
 <li>O valor padrão torna um argumento opcional</li>
-<li>Os tipos documentam o contrato</li>
+<li>O tipo pode ser indicado antes do parâmetro</li>
+<li>O tipo de retorno pode ser indicado depois dos parênteses</li>
 <li>Dados recebidos de formulários ainda precisam ser validados</li>
 </ul>
 <footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
@@ -389,7 +383,7 @@
 <header> </header>
 <h1 id="fun%C3%A7%C3%B5es-no-php-3">Funções no PHP</h1>
 <h2 id="retorno-antecipado-deixa-a-regra-clara">Retorno antecipado deixa a regra clara</h2>
-<pre><code class="language-php"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">calcularDesconto</span>(<span class="hljs-params"><span class="hljs-keyword">float</span> <span class="hljs-variable">$preco</span></span>): <span class="hljs-title">float</span> </span>{
+<pre><code class="language-php"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">calcularDesconto</span>(<span class="hljs-params"><span class="hljs-variable">$preco</span></span>) </span>{
     <span class="hljs-keyword">if</span> (<span class="hljs-variable">$preco</span> &lt;= <span class="hljs-number">0</span>) {
         <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
     }
@@ -441,7 +435,7 @@
 <span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">proximoNumero</span>(); <span class="hljs-comment">// 1</span>
 <span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">proximoNumero</span>(); <span class="hljs-comment">// 2</span>
 </code></pre>
-<p><code>static</code> preserva o valor entre chamadas da função durante a requisição atual.</p>
+<p><code>static</code> preserva o valor entre chamadas da função durante a requisição atual. Ele não é global: não pode ser acessado fora da função.</p>
 <footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="25" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
@@ -472,10 +466,7 @@
 <header> </header>
 <h1 id="fun%C3%A7%C3%B5es-no-php-7">Funções no PHP</h1>
 <h2 id="callback-uma-fun%C3%A7%C3%A3o-recebe-outra">Callback: uma função recebe outra</h2>
-<pre><code class="language-php"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">aplicarOperacao</span>(<span class="hljs-params">
-    <span class="hljs-keyword">int</span> <span class="hljs-variable">$numero</span>,
-    <span class="hljs-keyword">callable</span> <span class="hljs-variable">$operacao</span>
-</span>): <span class="hljs-title">int</span> </span>{
+<pre><code class="language-php"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">aplicarOperacao</span>(<span class="hljs-params"> <span class="hljs-variable">$numero</span>, <span class="hljs-variable">$operacao</span> </span>) </span>{
     <span class="hljs-keyword">return</span> <span class="hljs-variable">$operacao</span>(<span class="hljs-variable">$numero</span>);
 }
 
@@ -483,7 +474,6 @@
 <span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">aplicarOperacao</span>(<span class="hljs-number">6</span>, <span class="hljs-variable">$dobro</span>); <span class="hljs-comment">// 12</span>
 </code></pre>
 <ul>
-<li><code>callable</code> indica que esperamos uma função</li>
 <li>O callback define qual operação será aplicada</li>
 <li>Primeiro, domine funções nomeadas e parâmetros comuns</li>
 </ul>
