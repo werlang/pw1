@@ -264,9 +264,11 @@ for ($numero = 1; $numero <= 10; $numero++) {
 
 ```php
 <ul>
-    <?php for ($numero = 1; $numero <= 6; $numero++) { ?>
-        <li>Crachá <?= $numero ?></li>
-    <?php } ?>
+    <?php
+        for ($numero = 1; $numero <= 6; $numero++) {
+            echo "<li>Crachá $numero</li>";
+        }
+    ?>
 </ul>
 ```
 
@@ -493,12 +495,11 @@ echo aplicarOperacao(6, $dobro); // 12
 # Linguagem PHP e Funções
 ## Prática: cálculo e regras
 
-- **Painel de Consumo de Água:** extraia cálculos e classificação para funções<br>
-  `06-php-linguagem/painel-consumo-agua/`
-- **Bilheteria da Gincana:** faça uma função receber as regras do ingresso<br>
-  `06-php-linguagem/bilheteria-gincana/`
-- **Calendário de Treinos:** isole as regras de dia especial e fim de semana<br>
-  `06-php-linguagem/calendario-treinos/`
+- [**Painel de Consumo de Água:**](../../06-php-linguagem/painel-consumo-agua) extraia cálculos e classificação para funções
+  
+- [**Bilheteria da Gincana:**](../../06-php-linguagem/bilheteria-gincana/) faça uma função receber as regras do ingresso
+
+- [**Calendário de Treinos:**](../../06-php-linguagem/calendario-treinos/) isole as regras de dia especial e fim de semana
 
 Cada exercício começa com uma regra clara e a transforma em funções pequenas.
 
@@ -507,10 +508,8 @@ Cada exercício começa com uma regra clara e a transforma em funções pequenas
 # Linguagem PHP e Funções
 ## Prática: repetição e estado
 
-- **Lote de Crachás Numerados:** separe a formatação do código da geração do lote<br>
-  `06-php-linguagem/crachas-numerados/`
-- **Simulação do Reservatório:** faça uma função descrever cada rodada<br>
-  `06-php-linguagem/reservatorio-escola/`
+- [**Lote de Crachás Numerados:**](../../06-php-linguagem/crachas-numerados/) separe a formatação do código da geração do lote
+- [**Simulação do Reservatório:**](../../06-php-linguagem/reservatorio-escola/) faça uma função descrever cada rodada
 
 Sem arrays ou formulários: as funções próprias já fazem parte desta aula.
 
