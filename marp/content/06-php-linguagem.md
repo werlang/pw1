@@ -198,10 +198,10 @@ Prefira comparação estrita quando o tipo fizer parte da regra.
 ## Decisões com `if`
 
 ```php
-if ($media >= 7) {
+if ($media >= 6) {
     $situacao = "Aprovado";
-} elseif ($media >= 5) {
-    $situacao = "Recuperação";
+} elseif ($recuperacao >= 6) {
+    $situacao = "Aprovado em recuperação";
 } else {
     $situacao = "Reprovado";
 }
