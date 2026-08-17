@@ -29,7 +29,7 @@ Souza, Informática, Manhã e Laboratório 2.
 
 ## Estrutura mínima
 
-- o arquivo `index.php` com uma implementação de referência;
+- o arquivo `index.php` com a implementação;
 - um título para o cartão;
 - uma linha HTML para cada dado.
 

@@ -25,7 +25,7 @@ versão.
 
 ## Estrutura mínima
 
-- o arquivo `index.php` com uma implementação de referência;
+- o arquivo `index.php` a implementação;
 - uma identificação do produto;
 - uma linha com o preço unitário;
 - uma linha com a quantidade;

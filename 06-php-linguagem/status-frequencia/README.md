@@ -28,7 +28,7 @@ Comece com frequência atual `82`, mínimo `75`, atividades entregues como `fals
 
 ## Estrutura mínima
 
-- o arquivo `index.php` com uma implementação de referência;
+- o arquivo `index.php` a implementação;
 - uma linha mostrando a frequência atual;
 - uma mensagem de situação.
 
