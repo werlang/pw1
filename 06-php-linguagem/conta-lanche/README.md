@@ -2,70 +2,67 @@
 
 ## Objetivo da atividade
 
-Calcular o total de uma compra simples usando valores definidos no arquivo PHP. O exercício treina uma função pequena: ela recebe os dados, calcula o total e devolve o resultado para a página.
+Uma cantina precisa mostrar quanto uma pessoa vai pagar por vários lanches
+iguais. Você vai montar essa pequena conta com PHP e separar o cálculo da
+apresentação da página.
+
+O cálculo ficará em uma função: ela recebe o preço de uma unidade e a
+quantidade comprada, calcula o total e devolve esse valor para o restante do
+programa.
 
 ## Conceito central
 
-- função nomeada;
-- parâmetros e argumentos;
-- `return`;
-- variáveis numéricas e multiplicação;
-- saída de valores no HTML.
+Pratique uma função nomeada com parâmetros e argumentos, o comando `return`,
+variáveis numéricas, multiplicação e a exibição do resultado no HTML.
 
 ## Dados iniciais
 
-Defina:
+Crie variáveis para o nome do produto, o preço de uma unidade e a quantidade
+comprada. Na primeira versão, use:
 
-- o nome do produto;
-- o preço de uma unidade de lanche;
-- a quantidade comprada.
+- produto: Sanduíche;
+- preço unitário: `7.50`;
+- quantidade: `3`.
 
-Use, por exemplo, produto Sanduíche, preço 7.50 e quantidade 3 na primeira
-versão.
+## O que você deve construir
 
-## Estrutura esperada
-
-- um arquivo `index.php`;
-- uma identificação do produto;
-- uma linha com o preço unitário;
-- uma linha com a quantidade;
-- uma linha com o total.
-
-Não use formulário, array, decisão ou repetição. A única função própria deve ser a função do cálculo.
+Crie um arquivo `index.php` que mostre o produto, o preço unitário, a
+quantidade e o total da compra. A única função própria do arquivo deve ser a
+função responsável pelo cálculo. Não use formulário, array, decisão nem
+repetição.
 
 ## Solução completa
 
 A resposta completa está em [index.php](./index.php). Tente resolver o
-enunciado antes de consultá-la; depois, compare sua solução com esse arquivo.
+enunciado antes de consultá-la. Depois, compare sua solução com esse arquivo.
 
 ## Regras de funcionamento
 
-- crie uma função `calcularTotal($precoUnitario, $quantidade)`;
-- faça a função devolver o total com `return`;
-- chame a função e guarde o resultado em uma variável própria;
-- mostre o preço, a quantidade e o total;
-- não use `echo` dentro da função;
-- não escreva o resultado final diretamente como um número fixo no HTML.
+- crie `calcularTotal($precoUnitario, $quantidade)`;
+- passe o preço e a quantidade por parâmetros;
+- devolva o total usando `return` e guarde o resultado em uma variável;
+- mostre o preço, a quantidade e o total na página;
+- deixe a função cuidar apenas do cálculo: não use `echo` dentro dela;
+- não escreva o total final como um número fixo no HTML.
 
 ## Casos para testar
 
-- use quantidade `1` e confira que o total é o preço unitário;
-- use quantidade `4` e confira que o total quadruplica;
-- altere o preço e confirme que o total também muda.
+- use quantidade `1` e confira se o total é igual ao preço unitário;
+- use quantidade `4` e confira se o total corresponde a quatro unidades;
+- altere o preço e observe se o total também é atualizado.
 
 ## O que observar durante a prática
 
-- o cálculo deve acontecer no PHP;
-- `return` entrega um valor para a parte que chamou a função;
-- a função calcula, enquanto o HTML apresenta;
-- o HTML apenas apresenta os valores calculados;
-- separar os dados e o resultado facilita testar a regra.
+O PHP calcula o valor antes de montar a página. O `return` entrega o resultado
+para o trecho que chamou a função; depois, o HTML apenas apresenta os valores.
+Manter essas duas responsabilidades separadas facilita testar a regra e
+encontrar erros.
 
 ## Critérios de verificação
 
 - o total está correto para pelo menos três quantidades;
-- a função recebe os dois dados por parâmetros;
+- a função recebe preço e quantidade por parâmetros;
 - a função devolve o resultado com `return`;
 - o preço e a quantidade aparecem na página;
 - mudar os dados iniciais atualiza o resultado;
-- não há cálculo repetido ou número final escrito manualmente.
+- não há cálculo repetido nem número final escrito manualmente.

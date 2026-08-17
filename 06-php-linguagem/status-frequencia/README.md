@@ -2,70 +2,69 @@
 
 ## Objetivo da atividade
 
-Mostrar uma situação conforme a frequência e a entrega de atividades de um estudante. O exercício treina uma decisão em cadeia sem transformar o problema em um cadastro.
+Imagine que um professor precise consultar rapidamente a situação de um
+estudante. A página deve comparar a frequência com o mínimo exigido e também
+considerar a entrega das atividades ou a existência de uma justificativa
+aceita.
+
+Você vai resolver esse caso com uma sequência de decisões. Não é necessário
+criar cadastro nem formulário: todos os dados ficarão no próprio arquivo PHP.
 
 ## Conceito central
 
-- comparações numéricas;
-- valores booleanos;
-- operadores lógicos;
-- `if`, `elseif` e `else`;
-- saída condicional.
+Pratique comparações numéricas, valores booleanos, operadores lógicos e as
+estruturas `if`, `elseif` e `else` para escolher uma única mensagem.
 
 ## Dados iniciais
 
-Defina quatro variáveis:
+Crie as variáveis `$frequenciaAtual`, `$frequenciaMinima`,
+`$atividadesEntregues` e `$justificativaAceita`. Elas representam,
+respectivamente, a frequência atual, o mínimo exigido, a entrega das
+atividades e a aceitação da justificativa.
 
-- frequência atual, em porcentagem;
-- frequência mínima exigida;
-- indicador booleano informando se as atividades foram entregues;
-- indicador booleano informando se existe uma justificativa aceita.
+Comece com frequência atual `82`, mínimo `75`, atividades não entregues
+(`false`) e justificativa aceita (`true`).
 
-Use os nomes $frequenciaAtual, $frequenciaMinima, $atividadesEntregues e
-$justificativaAceita para essas variáveis.
+## O que você deve construir
 
-Comece com frequência atual `82`, mínimo `75`, atividades entregues como `false` e justificativa aceita como `true`.
-
-## Estrutura esperada
-
-- um arquivo `index.php`;
-- uma linha mostrando a frequência atual;
-- uma mensagem de situação.
-
-Não use formulário, array, repetição ou função própria.
+Crie um arquivo `index.php` que mostre a frequência atual e uma mensagem de
+situação. Não use formulário, array, repetição nem função própria.
 
 ## Solução completa
 
 A resposta completa está em [index.php](./index.php). Tente resolver o
-enunciado antes de consultá-la; depois, compare sua solução com esse arquivo.
+enunciado antes de consultá-la. Depois, compare sua solução com esse arquivo.
 
 ## Regras de funcionamento
 
-- quando a frequência estiver abaixo do mínimo, mostre `Recuperação por frequência`;
-- quando a frequência atingir o mínimo e as atividades tiverem sido entregues ou houver justificativa aceita, mostre `Estudante apto`;
-- nos demais casos, mostre `Atividades pendentes`;
-- mostre somente uma das três mensagens.
+A decisão deve seguir esta ordem:
+
+- se a frequência estiver abaixo do mínimo, mostre `Recuperação por frequência`;
+- se a frequência for igual ou maior que o mínimo e as atividades tiverem sido
+  entregues ou houver justificativa aceita, mostre `Estudante apto`;
+- em qualquer outro caso, mostre `Atividades pendentes`.
+
+A página deve mostrar somente uma dessas três mensagens. Observe que o valor
+exatamente igual ao mínimo atende à segunda regra, pois o limite é inclusivo.
 
 ## Casos para testar
 
-- teste `82`, mínimo `75`, atividades não entregues e justificativa aceita;
-- teste `70`, mínimo `75`, atividades entregues e justificativa aceita;
-- teste `82`, mínimo `75`, atividades não entregues e sem justificativa;
-- teste `75`, mínimo `75`, atividades não entregues e justificativa aceita;
+- use `82`, mínimo `75`, atividades não entregues e justificativa aceita;
+- use `70`, mínimo `75`, atividades entregues e justificativa aceita;
+- use `82`, mínimo `75`, atividades não entregues e sem justificativa;
+- use `75`, mínimo `75`, atividades não entregues e justificativa aceita.
 
 ## O que observar durante a prática
 
-- `if` testa o primeiro caso;
-- `elseif` permite testar uma nova regra sem repetir a página inteira;
-- `else` representa os casos restantes;
-- `&&` exige que duas condições sejam verdadeiras;
-- `||` aceita uma de duas alternativas;
-- o operador `>=` inclui o valor do limite.
+O `if` verifica o primeiro caso, o `elseif` permite testar a próxima regra e
+o `else` reúne o que restou. Use `&&` quando as duas condições forem
+necessárias, `||` quando qualquer uma de duas alternativas for suficiente e
+`>=` para incluir o valor do limite.
 
 ## Critérios de verificação
 
 - os três resultados possíveis podem ser testados;
 - o caso exatamente igual ao mínimo é tratado corretamente;
-- a condição combinada usa o booleano das atividades;
-- a mensagem exibida corresponde à comparação;
-- não há decisão baseada em texto fixo.
+- a condição combinada considera a entrega das atividades;
+- a mensagem exibida corresponde aos valores comparados;
+- a decisão não depende de um texto fixo no lugar dos dados.

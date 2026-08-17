@@ -2,64 +2,62 @@
 
 ## Objetivo da atividade
 
-Gerar uma pequena tabuada sem repetir manualmente as linhas HTML e marcar os multiplicadores pares. O exercício treina uma repetição com contador, uma regra periódica e um resumo simples.
+Uma turma quer consultar uma tabuada curta, e o professor também quer saber
+quantas linhas foram geradas. Você vai criar essa página sem copiar uma linha
+HTML para cada conta.
+
+Durante a repetição, os multiplicadores pares devem receber uma marca curta.
+Assim, a atividade reúne um `for`, uma regra baseada em `%` e um pequeno
+resumo ao final.
 
 ## Conceito central
 
-- laço `for`;
-- operador `%`;
-- contador de linhas;
-- multiplicação dentro da repetição;
-- geração repetitiva de HTML.
+Pratique o laço `for`, o operador `%`, um contador de linhas, a multiplicação
+dentro da repetição e a geração repetitiva de HTML.
 
 ## Dados iniciais
 
-Defina:
+Crie as variáveis `$numeroTabuada` e `$ultimoMultiplicador`. Comece com o
+número `7` e o último multiplicador `5`.
 
-- o número da tabuada;
-- o último multiplicador.
+## O que você deve construir
 
-Use os nomes $numeroTabuada e $ultimoMultiplicador para essas variáveis.
-
-Comece com número `7` e último multiplicador `5`.
-
-## Estrutura esperada
-
-- um arquivo `index.php`;
-- um título indicando o número escolhido;
-- uma lista ou tabela com os resultados de `1` até o limite.
+Crie um arquivo `index.php` com um título que indique o número escolhido e
+uma lista ou tabela com os resultados de `1` até o limite. Cada multiplicador
+deve aparecer uma única vez, com a conta e o resultado correspondentes.
 
 ## Solução completa
 
 A resposta completa está em [index.php](./index.php). Tente resolver o
-enunciado antes de consultá-la; depois, compare sua solução com esse arquivo.
+enunciado antes de consultá-la. Depois, compare sua solução com esse arquivo.
 
 ## Regras de funcionamento
 
-- use `for` para percorrer os multiplicadores;
-- mostre uma linha para cada multiplicador;
-- cada linha deve mostrar a conta e o resultado;
-- use `%` para identificar os multiplicadores pares e acrescente uma marca curta nessa linha;
-- incremente um contador de linhas durante a repetição e mostre seu total ao final;
-- o limite deve vir de uma variável, não de uma quantidade de linhas escrita manualmente.
+- use um `for` para percorrer os multiplicadores;
+- use `%` para identificar os multiplicadores pares e acrescente uma marca
+  curta nessas linhas;
+- incremente um contador a cada linha gerada e mostre o total ao final;
+- faça o limite vir de `$ultimoMultiplicador`, sem escrever manualmente uma
+  quantidade fixa de contas.
 
 ## Casos para testar
 
 - gere a tabuada do `7` até `5`;
-- altere o limite para `10` e confirme que cinco novas linhas aparecem;
-- altere o número para `4` e confira os resultados.
+- mude o limite para `10` e confira se cinco novas linhas aparecem;
+- mude o número para `4` e confira os resultados e as marcas dos pares.
 
 ## Extensão guiada: trocar `for` por `while`
 
-Depois de concluir a versão básica, reescreva somente a repetição usando `while`. A saída deve continuar igual. Esta extensão prepara a simulação do reservatório sem fazer parte da primeira entrega.
+Depois de concluir a versão básica, reescreva somente a repetição usando
+`while`. A saída deve continuar igual. Essa extensão prepara a simulação do
+reservatório, mas não faz parte da primeira entrega.
 
 ## O que observar durante a prática
 
-- o contador controla a repetição;
-- `%` identifica um padrão sem precisar comparar vários números manualmente;
-- o contador de linhas guarda um resumo enquanto o laço avança;
-- uma mesma estrutura HTML pode ser gerada várias vezes;
-- mudar os dados iniciais não deve exigir copiar novas linhas.
+O contador controla quantas vezes a repetição avança, enquanto `%` permite
+identificar um padrão sem comparar vários números manualmente. A mesma
+estrutura HTML pode ser gerada várias vezes; por isso, mudar os dados iniciais
+não deve exigir novas linhas copiadas.
 
 ## Critérios de verificação
 
