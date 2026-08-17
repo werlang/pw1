@@ -569,11 +569,20 @@ Demonstra a separação de responsabilidades com o catálogo de dados em `produt
 
 ## 21. Exercícios propostos
 
-- [Mapa de Assentos da Mostra](./mapa-assentos/README.md): transforma uma matriz bidimensional de fileiras e assentos em uma grade visual com estatísticas e alerta de lotação.
-- [Apuração da Gincana](./ranking-gincana/README.md): consolida pontuações e penalidades, ordena com `arsort()` e trata empates reais na classificação.
-- [Editor de Roteiro do Ônibus](./roteiro-onibus/README.md): manipula a sequência cronológica de paradas de um ônibus escolar com inserções, remoções e inspeção de vizinhos.
-- [Auditoria de Matrículas](./auditoria-matriculas/README.md): analisa uma coleção de estudantes identificando inconsistências e duplicidades sem modificar a coleção original.
-- [Catálogo de Merenda](./catalogo-merenda/README.md): filtra e agrupa itens do refeitório por estoque e restrição de lactose, compõe combos e exporta em HTML e JSON.
+Há nove exercícios nesta seção. Comece pelos quatro introdutórios: cada um isola uma ideia principal, usa dados definidos no próprio arquivo e produz uma saída pequena.
+
+- [Lista de Materiais do Laboratório](./lista-materiais/README.md) ([solução completa](./lista-materiais/index.php)): pratica arrays indexados, adição ao final com `[]`, contagem com `count()` e laço `foreach`.
+- [Perfil do Estudante](./perfil-estudante/README.md) ([solução completa](./perfil-estudante/index.php)): pratica arrays associativos, chaves textuais, o operador `??` e formatação de saída.
+- [Verificador de Presença](./verificador-presenca/README.md) ([solução completa](./verificador-presenca/index.php)): pratica busca em coleções com `in_array()` e `array_search()` com verificação estrita `!== false`.
+- [Tabela de Preços da Cantina](./tabela-precos/README.md) ([solução completa](./tabela-precos/index.php)): pratica arrays multidimensionais básicos, cálculo de média e montagem de tabelas HTML.
+
+Depois, avance para os cinco desafios de integração. Eles combinam mais de uma regra e foram pensados para consolidar o domínio de matrizes, classificações, diagnósticos e exportações:
+
+- [Mapa de Assentos da Mostra](./mapa-assentos/README.md) ([solução completa](./mapa-assentos/index.php)): transforma uma matriz bidimensional de fileiras e assentos em uma grade visual com estatísticas e alerta de lotação.
+- [Apuração da Gincana](./ranking-gincana/README.md) ([solução completa](./ranking-gincana/index.php)): consolida pontuações e penalidades, ordena com `arsort()` e trata empates reais na classificação.
+- [Editor de Roteiro do Ônibus](./roteiro-onibus/README.md) ([solução completa](./roteiro-onibus/index.php)): manipula a sequência cronológica de paradas com `array_unshift()`, `array_splice()`, `array_unique()` e inspeção de vizinhos.
+- [Auditoria de Matrículas](./auditoria-matriculas/README.md) ([solução completa](./auditoria-matriculas/index.php)): analisa uma coleção de estudantes identificando inconsistências e duplicidades com `array_column()` e `array_count_values()`.
+- [Catálogo de Merenda](./catalogo-merenda/README.md) ([solução completa](./catalogo-merenda/index.php)): filtra e agrupa itens por categoria nutricional, compõe combos econômicos e exporta em HTML e JSON com `array_values()`.
 
 ## 22. Erros comuns
 
