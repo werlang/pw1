@@ -1,0 +1,213 @@
+body {
+    background: #f8fafc;
+    color: #1e293b;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 2rem 1rem;
+}
+
+main {
+    margin: 0 auto;
+    max-width: 1040px;
+}
+
+header {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+header h1 {
+    color: #0f172a;
+    margin-bottom: 0.25rem;
+}
+
+.painel-estatisticas {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    margin-bottom: 2rem;
+}
+
+.cartao {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    padding: 1.25rem;
+    text-align: center;
+}
+
+.cartao h2 {
+    color: #64748b;
+    font-size: 0.85rem;
+    font-weight: normal;
+    margin: 0 0 0.5rem;
+    text-transform: uppercase;
+}
+
+.cartao strong {
+    color: #0f172a;
+    font-size: 1.6rem;
+}
+
+.cartao span {
+    color: #64748b;
+    font-size: 0.85rem;
+    margin-top: 0.25rem;
+}
+
+.cartao.regulares strong {
+    color: #16a34a;
+}
+
+.cartao.pendentes strong {
+    color: #dc2626;
+}
+
+.cartao.alertas strong {
+    color: #ea580c;
+}
+
+.frequencia-problemas {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.75rem;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+}
+
+.frequencia-problemas h2 {
+    color: #0f172a;
+    font-size: 1.1rem;
+    margin: 0 0 1rem;
+}
+
+.grade-problemas {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.item-problema {
+    align-items: center;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    padding: 0.75rem 1rem;
+}
+
+.item-problema.tem-ocorrencia {
+    background: #fef2f2;
+    border-color: #fecaca;
+}
+
+.nome-tipo {
+    color: #475569;
+    font-size: 0.9rem;
+}
+
+.contagem-tipo {
+    background: #e2e8f0;
+    border-radius: 9999px;
+    color: #334155;
+    display: inline-block;
+    font-size: 0.85rem;
+    min-width: 24px;
+    padding: 0.2rem 0.5rem;
+    text-align: center;
+}
+
+.tem-ocorrencia .contagem-tipo {
+    background: #ef4444;
+    color: #fff;
+}
+
+.tabela-inconsistencias {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+}
+
+.tabela-inconsistencias h2 {
+    color: #0f172a;
+    font-size: 1.1rem;
+    margin: 0 0 1rem;
+}
+
+.tabela-container {
+    overflow-x: auto;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    border-bottom: 1px solid #e2e8f0;
+    padding: 0.85rem 1rem;
+    text-align: left;
+}
+
+th {
+    background: #f1f5f9;
+    color: #475569;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+tbody tr:hover {
+    background: #f8fafc;
+}
+
+code {
+    background: #f1f5f9;
+    border-radius: 0.25rem;
+    color: #0f172a;
+    font-weight: bold;
+    padding: 0.2rem 0.4rem;
+}
+
+.vazio {
+    color: #94a3b8;
+    font-style: italic;
+}
+
+.badge-status {
+    border-radius: 0.25rem;
+    font-size: 0.75rem;
+    font-weight: bold;
+    padding: 0.25rem 0.5rem;
+    text-transform: uppercase;
+}
+
+.badge-status.ativo {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.badge-status.inativo {
+    background: #f1f5f9;
+    color: #64748b;
+}
+
+.lista-motivos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+}
+
+.badge-erro {
+    background: #fee2e2;
+    border: 1px solid #fca5a5;
+    border-radius: 0.25rem;
+    color: #991b1b;
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 0.25rem 0.5rem;
+}
