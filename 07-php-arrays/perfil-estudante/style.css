@@ -1,0 +1,131 @@
+body {
+    background: #f1f5f9;
+    color: #1e293b;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 2rem 1rem;
+}
+
+main {
+    margin: 0 auto;
+    max-width: 680px;
+}
+
+header {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+header h1 {
+    color: #0f172a;
+    margin-bottom: 0.25rem;
+}
+
+.cartao-perfil {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    padding: 2rem;
+}
+
+.cabecalho-perfil {
+    align-items: center;
+    border-bottom: 1px solid #e2e8f0;
+    display: flex;
+    gap: 1.25rem;
+    padding-bottom: 1.5rem;
+}
+
+.avatar {
+    align-items: center;
+    background: #0284c7;
+    border-radius: 50%;
+    color: #fff;
+    display: flex;
+    font-size: 1.5rem;
+    font-weight: bold;
+    height: 56px;
+    justify-content: center;
+    width: 56px;
+}
+
+.titulos {
+    flex: 1;
+}
+
+.titulos h2 {
+    color: #0f172a;
+    font-size: 1.35rem;
+    margin: 0;
+}
+
+.subtitulo {
+    color: #64748b;
+    font-size: 0.9rem;
+}
+
+.badge-status {
+    border-radius: 9999px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    padding: 0.35rem 0.75rem;
+}
+
+.badge-status.ativo {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.badge-status.inativo {
+    background: #f1f5f9;
+    color: #64748b;
+}
+
+.grade-campos {
+    display: grid;
+    gap: 1.25rem;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    padding: 1.5rem 0;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.rotulo {
+    color: #64748b;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.campo strong {
+    color: #0f172a;
+    font-size: 1.05rem;
+}
+
+.destaque-nota {
+    color: #0284c7 !important;
+    font-size: 1.35rem !important;
+}
+
+.valor-opcional.vazio {
+    color: #94a3b8;
+    font-style: italic;
+}
+
+.bloco-observacao {
+    background: #f8fafc;
+    border-left: 0.35rem solid #0284c7;
+    border-radius: 0.5rem;
+    padding: 1rem;
+}
+
+.bloco-observacao p {
+    color: #334155;
+    margin: 0.35rem 0 0;
+}
