@@ -79,6 +79,14 @@ Para cinco exercícios, prefira dois slides: três propostas no primeiro e duas 
 - Preserve termos técnicos indispensáveis.
 - Não transforme humor em distração.
 - Não antecipe conteúdos de seções futuras nos exercícios ou exemplos.
+- Quando um slide apresentar um enunciado de exercício, prova ou questão,
+  escreva uma situação curta e humana antes das exigências técnicas.
+- Use frases naturais, verbos de ação e conectivos claros. Reserve bullets
+  para dados, regras e critérios; não comprima uma explicação inteira em
+  fragmentos nominais.
+- Revise o texto para leitura fluida em voz alta: remova burocratês,
+  repetições e referências vagas, mas preserve números, limites e condições
+  que permitam verificar a resposta.
 
 ## Código
 

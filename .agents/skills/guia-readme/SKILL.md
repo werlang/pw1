@@ -79,6 +79,17 @@ Documente:
 - Explique diferenças que costumam causar erros.
 - Não aumente o arquivo apenas repetindo a mesma ideia.
 - Não antecipe conteúdo futuro para “melhorar” artificialmente a solução.
+- Em enunciados de exercícios e questões de prova, use linguagem humana,
+  fluida e próxima da aula, sem perder precisão técnica.
+- Apresente primeiro a situação e o objetivo; depois, organize dados, regras
+  e critérios em listas curtas. Não transforme todo o enunciado em uma lista
+  telegráfica de comandos.
+- Prefira verbos de ação, conectivos naturais e frases que possam ser lidas
+  em voz alta sem esforço. Evite burocratês, repetições e palavras formais
+  que não acrescentem significado.
+- Faça uma revisão de clareza procurando referências vagas como “isso”,
+  “conforme descrito acima” e “faça o necessário”. Acolha o leitor sem
+  infantilizar o texto nem trocar requisitos verificáveis por frases vagas.
 
 ## Código e precisão
 

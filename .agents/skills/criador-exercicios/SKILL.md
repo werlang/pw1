@@ -25,6 +25,16 @@ Produzir exercícios que sejam:
 - Não introduza frameworks ou dependências novas sem pedido explícito.
 - Preserve nomes em português quando o contexto já estiver em português.
 - Em textos didáticos, use ortografia correta em PT-BR.
+- Em enunciados de exercícios e questões de prova, escreva com voz humana,
+  frases naturais e transições claras. A precisão deve aparecer em dados,
+  regras e critérios verificáveis, não em um texto burocrático ou truncado.
+- Prefira verbos de ação e explique o contexto antes de listar exigências.
+  Use listas para dados, limites e critérios; use frases completas para
+  explicar a situação e o que o estudante precisa compreender.
+- Faça uma leitura final como se fosse um estudante: elimine repetições,
+  referências vagas, palavras desnecessariamente formais e frases que
+  precisem ser relidas para fazer sentido. Não infantilize nem transforme o
+  enunciado em conversa informal demais.
 - Quando criar uma sequência de exercícios, não produza variações superficiais do mesmo fluxo com outro tema. Cada exercício deve mudar de forma observável o tipo de estado, a interação central ou a regra de negócio.
 - Respeite o teto pedagógico da seção. Conteúdos anteriores podem ser reutilizados; conteúdos apresentados apenas em seções posteriores não podem ser exigidos.
 - Trate exemplos e exercícios como categorias diferentes: exemplos podem continuar citados como referência; uma nova lista de exercícios deve substituir referências a listas antigas quando esse for o pedido.
@@ -170,6 +180,7 @@ Antes de concluir, confirme:
 - o README diz com precisão o que o aluno deve construir;
 - a interface implementada corresponde ao enunciado;
 - o texto está em PT-BR correto;
+- o enunciado é fluido quando lido em voz alta e continua preciso;
 - a solução está simples o bastante para uso em aula.
 
 Se precisar de um modelo enxuto de estrutura para README, leia [./references/readme-modelo.md](./references/readme-modelo.md).
