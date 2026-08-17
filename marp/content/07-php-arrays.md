@@ -64,14 +64,14 @@ $nomes = ["Ana", "Bruno", "Carla"];
 ```php
 $materiais = ["Lápis", "Caderno", "Régua"];
 
-echo $materiais[0];
+echo $materiais[0]; // Lápis
 $materiais[1] = "Caderno quadriculado";
-$materiais[] = "Borracha";
+$materiais[] = "Borracha"; // Adiciona no final
 ```
 
 - `[]` cria o array
 - `[0]` acessa uma posição
-- `[]` sem índice adiciona ao final
+- `[]` sem índice adiciona ao próximo número
 
 ---
 
@@ -125,15 +125,15 @@ Essas funções ajudam na depuração, não na resposta final de uma API.
 
 ```php
 $produto = [
-    "nome" => "Teclado",
-    "preco" => 129.90,
-    "estoque" => 8
+    "nome" => "Teclado Mecânico",
+    "preco" => 249.90,
+    "estoque" => 12
 ];
 
 echo $produto["nome"];
 ```
 
-O operador `=>` liga cada chave ao seu valor.
+O operador `=>` liga cada chave textual ao seu respectivo valor.
 
 ---
 
@@ -149,7 +149,7 @@ $desconto = $produto["desconto"] ?? 0;
 
 **`isset()`**
 
-- Verifica se existe
+- Verifica se a chave existe
 - Retorna `false` para valor `null`
 
 </div>
@@ -157,7 +157,7 @@ $desconto = $produto["desconto"] ?? 0;
 
 **`array_key_exists()`**
 
-- Verifica a chave
+- Verifica apenas a chave
 - Aceita valor `null`
 
 </div>
@@ -227,11 +227,11 @@ foreach ($produto as $campo => $valor) {
 
 ```php
 $alunos = [
-    ["nome" => "Ana", "media" => 8.4],
-    ["nome" => "Bruno", "media" => 6.8]
+    ["nome" => "Ana", "turma" => "2AT", "media" => 8.4],
+    ["nome" => "Bruno", "turma" => "2AM", "media" => 6.8]
 ];
 
-echo $alunos[0]["nome"];
+echo $alunos[0]["nome"]; // Ana
 ```
 
 Uma lista de registros é um array contendo outros arrays.
@@ -245,14 +245,15 @@ Uma lista de registros é um array contendo outros arrays.
 <?php foreach ($alunos as $aluno) { ?>
     <tr>
         <td><?= htmlspecialchars($aluno["nome"]) ?></td>
-        <td><?= $aluno["media"] ?></td>
+        <td><?= htmlspecialchars($aluno["turma"]) ?></td>
+        <td><?= number_format($aluno["media"], 1, ",", ".") ?></td>
     </tr>
 <?php } ?>
 ```
 
-- O array guarda o cadastro
-- O `foreach` percorre
-- O HTML apresenta
+- O array guarda os dados estruturados
+- O `foreach` percorre a coleção
+- O HTML apresenta na interface
 
 ---
 
@@ -273,8 +274,8 @@ array_unshift($nomes, "Aline");
 ```
 
 - `[]`: adiciona ao final
-- `array_pop()`: retira o último
-- `array_shift()`: retira o primeiro
+- `array_pop()`: retira do final
+- `array_shift()`: retira do início
 - `array_unshift()`: adiciona no início
 
 ---
@@ -306,7 +307,7 @@ if ($indice !== false) {
 }
 ```
 
-Compare com `false` de forma estrita: o índice `0` é válido.
+Compare com `false` de forma estrita: o índice `0` é uma posição válida.
 
 ---
 
@@ -316,7 +317,7 @@ Compare com `false` de forma estrita: o índice `0` é válido.
 <div class="grid grid-cols-2 gap-6">
 <div>
 
-**Separar**
+**Separar com `explode()`**
 
 ```php
 $linha = "Ana;2AT;8.4";
@@ -326,7 +327,7 @@ $campos = explode(";", $linha);
 </div>
 <div>
 
-**Juntar**
+**Juntar com `implode()`**
 
 ```php
 $nomes = ["Ana", "Bruno"];
@@ -349,21 +350,22 @@ $unicos = array_values($unicos);
 
 - `array_unique()` remove repetições
 - As chaves originais são preservadas
-- `array_values()` reorganiza os índices
+- `array_values()` reorganiza os índices de 0 a N
 
 ---
 
 # Arrays no PHP
 ## Ordenação muda o array
 
-| Função | Ordena por | Preserva chaves? |
-| :--- | :--- | :--- |
-| `sort()` | valor crescente | não |
-| `rsort()` | valor decrescente | não |
-| `asort()` | valor crescente | sim |
-| `ksort()` | chave crescente | sim |
+| Função | Critério | Sentido | Preserva Chaves? |
+| :--- | :--- | :--- | :--- |
+| `sort()` | Valor | Crescente | Não |
+| `rsort()` | Valor | Decrescente | Não |
+| `asort()` | Valor | Crescente | **Sim** |
+| `arsort()` | Valor | Decrescente | **Sim** |
+| `ksort()` | Chave | Crescente | **Sim** |
 
-Escolha conforme a informação que precisa continuar associada.
+Escolha conforme a associação de dados que precisa ser preservada.
 
 ---
 
@@ -372,6 +374,8 @@ Escolha conforme a informação que precisa continuar associada.
 
 <div class="grid grid-cols-2 gap-6">
 <div>
+
+**`array_map()`**
 
 ```php
 $dobros = array_map(
@@ -382,6 +386,8 @@ $dobros = array_map(
 
 </div>
 <div>
+
+**`array_filter()`**
 
 ```php
 $aprovados = array_filter(
@@ -406,7 +412,7 @@ header("Content-Type: application/json; charset=utf-8");
 echo json_encode([
     "status" => "OK",
     "result" => $alunos
-]);
+], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
 ```
 
 Arrays são a ponte entre PHP, banco de dados e respostas de API.
@@ -434,7 +440,7 @@ Pasta: `exemplos/ex07.1/`
 # Arrays no PHP
 ## Exemplo: busca de produtos
 
-- Separar o cadastro em `produtos.php`
+- Separar o catálogo em `produtos.php`
 - Receber o identificador por formulário
 - Percorrer os produtos
 - Exibir apenas o registro correspondente
@@ -448,7 +454,7 @@ Pasta: `exemplos/ex07.2/`
 
 - **Mapa de Assentos:** matriz, estados e primeira posição livre  
   `07-php-arrays/mapa-assentos/`
-- **Apuração da Gincana:** totais, ordenação e empates  
+- **Apuração da Gincana:** pontuações, penalidades e empates  
   `07-php-arrays/ranking-gincana/`
 - **Editor de Roteiro:** inserir, remover e descobrir vizinhos  
   `07-php-arrays/roteiro-onibus/`
@@ -474,7 +480,7 @@ Não são cinco cadastros com temas diferentes: cada proposta exige uma transfor
 - Acessar uma chave sem verificar
 - Usar `for` depois de deixar espaços nos índices
 - Testar `array_search()` sem `!== false`
-- Ordenar e perder chaves importantes
+- Ordenar com `sort()` e perder chaves associativas
 - Atualizar a interface, mas não o array
 
 ---

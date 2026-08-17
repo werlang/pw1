@@ -81,14 +81,14 @@
 <h2 id="criar-acessar-e-alterar">Criar, acessar e alterar</h2>
 <pre><code class="language-php"><span class="hljs-variable">$materiais</span> = [<span class="hljs-string">&quot;Lápis&quot;</span>, <span class="hljs-string">&quot;Caderno&quot;</span>, <span class="hljs-string">&quot;Régua&quot;</span>];
 
-<span class="hljs-keyword">echo</span> <span class="hljs-variable">$materiais</span>[<span class="hljs-number">0</span>];
+<span class="hljs-keyword">echo</span> <span class="hljs-variable">$materiais</span>[<span class="hljs-number">0</span>]; <span class="hljs-comment">// Lápis</span>
 <span class="hljs-variable">$materiais</span>[<span class="hljs-number">1</span>] = <span class="hljs-string">&quot;Caderno quadriculado&quot;</span>;
-<span class="hljs-variable">$materiais</span>[] = <span class="hljs-string">&quot;Borracha&quot;</span>;
+<span class="hljs-variable">$materiais</span>[] = <span class="hljs-string">&quot;Borracha&quot;</span>; <span class="hljs-comment">// Adiciona no final</span>
 </code></pre>
 <ul>
 <li><code>[]</code> cria o array</li>
 <li><code>[0]</code> acessa uma posição</li>
-<li><code>[]</code> sem índice adiciona ao final</li>
+<li><code>[]</code> sem índice adiciona ao próximo número</li>
 </ul>
 <footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
 </section>
@@ -136,14 +136,14 @@
 <h1 id="arrays-no-php-6">Arrays no PHP</h1>
 <h2 id="um-registro-com-campos-nomeados">Um registro com campos nomeados</h2>
 <pre><code class="language-php"><span class="hljs-variable">$produto</span> = [
-    <span class="hljs-string">&quot;nome&quot;</span> =&gt; <span class="hljs-string">&quot;Teclado&quot;</span>,
-    <span class="hljs-string">&quot;preco&quot;</span> =&gt; <span class="hljs-number">129.90</span>,
-    <span class="hljs-string">&quot;estoque&quot;</span> =&gt; <span class="hljs-number">8</span>
+    <span class="hljs-string">&quot;nome&quot;</span> =&gt; <span class="hljs-string">&quot;Teclado Mecânico&quot;</span>,
+    <span class="hljs-string">&quot;preco&quot;</span> =&gt; <span class="hljs-number">249.90</span>,
+    <span class="hljs-string">&quot;estoque&quot;</span> =&gt; <span class="hljs-number">12</span>
 ];
 
 <span class="hljs-keyword">echo</span> <span class="hljs-variable">$produto</span>[<span class="hljs-string">&quot;nome&quot;</span>];
 </code></pre>
-<p>O operador <code>=&gt;</code> liga cada chave ao seu valor.</p>
+<p>O operador <code>=&gt;</code> liga cada chave textual ao seu respectivo valor.</p>
 <footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="10" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
@@ -156,14 +156,14 @@
 <div>
 <p><strong><code>isset()</code></strong></p>
 <ul>
-<li>Verifica se existe</li>
+<li>Verifica se a chave existe</li>
 <li>Retorna <code>false</code> para valor <code>null</code></li>
 </ul>
 </div>
 <div>
 <p><strong><code>array_key_exists()</code></strong></p>
 <ul>
-<li>Verifica a chave</li>
+<li>Verifica apenas a chave</li>
 <li>Aceita valor <code>null</code></li>
 </ul>
 </div>
@@ -226,11 +226,11 @@
 <h1 id="arrays-no-php-10">Arrays no PHP</h1>
 <h2 id="arrays-multidimensionais">Arrays multidimensionais</h2>
 <pre><code class="language-php"><span class="hljs-variable">$alunos</span> = [
-    [<span class="hljs-string">&quot;nome&quot;</span> =&gt; <span class="hljs-string">&quot;Ana&quot;</span>, <span class="hljs-string">&quot;media&quot;</span> =&gt; <span class="hljs-number">8.4</span>],
-    [<span class="hljs-string">&quot;nome&quot;</span> =&gt; <span class="hljs-string">&quot;Bruno&quot;</span>, <span class="hljs-string">&quot;media&quot;</span> =&gt; <span class="hljs-number">6.8</span>]
+    [<span class="hljs-string">&quot;nome&quot;</span> =&gt; <span class="hljs-string">&quot;Ana&quot;</span>, <span class="hljs-string">&quot;turma&quot;</span> =&gt; <span class="hljs-string">&quot;2AT&quot;</span>, <span class="hljs-string">&quot;media&quot;</span> =&gt; <span class="hljs-number">8.4</span>],
+    [<span class="hljs-string">&quot;nome&quot;</span> =&gt; <span class="hljs-string">&quot;Bruno&quot;</span>, <span class="hljs-string">&quot;turma&quot;</span> =&gt; <span class="hljs-string">&quot;2AM&quot;</span>, <span class="hljs-string">&quot;media&quot;</span> =&gt; <span class="hljs-number">6.8</span>]
 ];
 
-<span class="hljs-keyword">echo</span> <span class="hljs-variable">$alunos</span>[<span class="hljs-number">0</span>][<span class="hljs-string">&quot;nome&quot;</span>];
+<span class="hljs-keyword">echo</span> <span class="hljs-variable">$alunos</span>[<span class="hljs-number">0</span>][<span class="hljs-string">&quot;nome&quot;</span>]; <span class="hljs-comment">// Ana</span>
 </code></pre>
 <p>Uma lista de registros é um array contendo outros arrays.</p>
 <footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
@@ -242,14 +242,15 @@
 <pre><code class="language-php"><span class="hljs-meta">&lt;?php</span> <span class="hljs-keyword">foreach</span> (<span class="hljs-variable">$alunos</span> <span class="hljs-keyword">as</span> <span class="hljs-variable">$aluno</span>) { <span class="hljs-meta">?&gt;</span>
     &lt;tr&gt;
         &lt;td&gt;<span class="hljs-meta">&lt;?=</span> <span class="hljs-title function_ invoke__">htmlspecialchars</span>(<span class="hljs-variable">$aluno</span>[<span class="hljs-string">&quot;nome&quot;</span>]) <span class="hljs-meta">?&gt;</span>&lt;/td&gt;
-        &lt;td&gt;<span class="hljs-meta">&lt;?=</span> <span class="hljs-variable">$aluno</span>[<span class="hljs-string">&quot;media&quot;</span>] <span class="hljs-meta">?&gt;</span>&lt;/td&gt;
+        &lt;td&gt;<span class="hljs-meta">&lt;?=</span> <span class="hljs-title function_ invoke__">htmlspecialchars</span>(<span class="hljs-variable">$aluno</span>[<span class="hljs-string">&quot;turma&quot;</span>]) <span class="hljs-meta">?&gt;</span>&lt;/td&gt;
+        &lt;td&gt;<span class="hljs-meta">&lt;?=</span> <span class="hljs-title function_ invoke__">number_format</span>(<span class="hljs-variable">$aluno</span>[<span class="hljs-string">&quot;media&quot;</span>], <span class="hljs-number">1</span>, <span class="hljs-string">&quot;,&quot;</span>, <span class="hljs-string">&quot;.&quot;</span>) <span class="hljs-meta">?&gt;</span>&lt;/td&gt;
     &lt;/tr&gt;
 <span class="hljs-meta">&lt;?php</span> } <span class="hljs-meta">?&gt;</span>
 </code></pre>
 <ul>
-<li>O array guarda o cadastro</li>
-<li>O <code>foreach</code> percorre</li>
-<li>O HTML apresenta</li>
+<li>O array guarda os dados estruturados</li>
+<li>O <code>foreach</code> percorre a coleção</li>
+<li>O HTML apresenta na interface</li>
 </ul>
 <footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
 </section>
@@ -270,8 +271,8 @@
 </code></pre>
 <ul>
 <li><code>[]</code>: adiciona ao final</li>
-<li><code>array_pop()</code>: retira o último</li>
-<li><code>array_shift()</code>: retira o primeiro</li>
+<li><code>array_pop()</code>: retira do final</li>
+<li><code>array_shift()</code>: retira do início</li>
 <li><code>array_unshift()</code>: adiciona no início</li>
 </ul>
 <footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
@@ -302,7 +303,7 @@
     <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;Encontrado na posição <span class="hljs-subst">$indice</span>&quot;</span>;
 }
 </code></pre>
-<p>Compare com <code>false</code> de forma estrita: o índice <code>0</code> é válido.</p>
+<p>Compare com <code>false</code> de forma estrita: o índice <code>0</code> é uma posição válida.</p>
 <footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="20" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
@@ -311,13 +312,13 @@
 <h2 id="string-%E2%86%94-array">String ↔ array</h2>
 <div class="grid grid-cols-2 gap-6">
 <div>
-<p><strong>Separar</strong></p>
+<p><strong>Separar com <code>explode()</code></strong></p>
 <pre><code class="language-php"><span class="hljs-variable">$linha</span> = <span class="hljs-string">&quot;Ana;2AT;8.4&quot;</span>;
 <span class="hljs-variable">$campos</span> = <span class="hljs-title function_ invoke__">explode</span>(<span class="hljs-string">&quot;;&quot;</span>, <span class="hljs-variable">$linha</span>);
 </code></pre>
 </div>
 <div>
-<p><strong>Juntar</strong></p>
+<p><strong>Juntar com <code>implode()</code></strong></p>
 <pre><code class="language-php"><span class="hljs-variable">$nomes</span> = [<span class="hljs-string">&quot;Ana&quot;</span>, <span class="hljs-string">&quot;Bruno&quot;</span>];
 <span class="hljs-variable">$texto</span> = <span class="hljs-title function_ invoke__">implode</span>(<span class="hljs-string">&quot;, &quot;</span>, <span class="hljs-variable">$nomes</span>);
 </code></pre>
@@ -336,7 +337,7 @@
 <ul>
 <li><code>array_unique()</code> remove repetições</li>
 <li>As chaves originais são preservadas</li>
-<li><code>array_values()</code> reorganiza os índices</li>
+<li><code>array_values()</code> reorganiza os índices de 0 a N</li>
 </ul>
 <footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
 </section>
@@ -348,34 +349,45 @@
 <thead>
 <tr>
 <th style="text-align:left">Função</th>
-<th style="text-align:left">Ordena por</th>
-<th style="text-align:left">Preserva chaves?</th>
+<th style="text-align:left">Critério</th>
+<th style="text-align:left">Sentido</th>
+<th style="text-align:left">Preserva Chaves?</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align:left"><code>sort()</code></td>
-<td style="text-align:left">valor crescente</td>
-<td style="text-align:left">não</td>
+<td style="text-align:left">Valor</td>
+<td style="text-align:left">Crescente</td>
+<td style="text-align:left">Não</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>rsort()</code></td>
-<td style="text-align:left">valor decrescente</td>
-<td style="text-align:left">não</td>
+<td style="text-align:left">Valor</td>
+<td style="text-align:left">Decrescente</td>
+<td style="text-align:left">Não</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>asort()</code></td>
-<td style="text-align:left">valor crescente</td>
-<td style="text-align:left">sim</td>
+<td style="text-align:left">Valor</td>
+<td style="text-align:left">Crescente</td>
+<td style="text-align:left"><strong>Sim</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>arsort()</code></td>
+<td style="text-align:left">Valor</td>
+<td style="text-align:left">Decrescente</td>
+<td style="text-align:left"><strong>Sim</strong></td>
 </tr>
 <tr>
 <td style="text-align:left"><code>ksort()</code></td>
-<td style="text-align:left">chave crescente</td>
-<td style="text-align:left">sim</td>
+<td style="text-align:left">Chave</td>
+<td style="text-align:left">Crescente</td>
+<td style="text-align:left"><strong>Sim</strong></td>
 </tr>
 </tbody>
 </table>
-<p>Escolha conforme a informação que precisa continuar associada.</p>
+<p>Escolha conforme a associação de dados que precisa ser preservada.</p>
 <footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="23" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
@@ -384,6 +396,7 @@
 <h2 id="transformar-e-filtrar">Transformar e filtrar</h2>
 <div class="grid grid-cols-2 gap-6">
 <div>
+<p><strong><code>array_map()</code></strong></p>
 <pre><code class="language-php"><span class="hljs-variable">$dobros</span> = <span class="hljs-title function_ invoke__">array_map</span>(
     fn(<span class="hljs-variable">$n</span>) =&gt; <span class="hljs-variable">$n</span> * <span class="hljs-number">2</span>,
     <span class="hljs-variable">$numeros</span>
@@ -391,6 +404,7 @@
 </code></pre>
 </div>
 <div>
+<p><strong><code>array_filter()</code></strong></p>
 <pre><code class="language-php"><span class="hljs-variable">$aprovados</span> = <span class="hljs-title function_ invoke__">array_filter</span>(
     <span class="hljs-variable">$alunos</span>,
     fn(<span class="hljs-variable">$a</span>) =&gt; <span class="hljs-variable">$a</span>[<span class="hljs-string">&quot;media&quot;</span>] &gt;= <span class="hljs-number">7</span>
@@ -410,7 +424,7 @@
 <span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">json_encode</span>([
     <span class="hljs-string">&quot;status&quot;</span> =&gt; <span class="hljs-string">&quot;OK&quot;</span>,
     <span class="hljs-string">&quot;result&quot;</span> =&gt; <span class="hljs-variable">$alunos</span>
-]);
+], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
 </code></pre>
 <p>Arrays são a ponte entre PHP, banco de dados e respostas de API.</p>
 <footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
@@ -439,7 +453,7 @@
 <h1 id="arrays-no-php-21">Arrays no PHP</h1>
 <h2 id="exemplo-busca-de-produtos">Exemplo: busca de produtos</h2>
 <ul>
-<li>Separar o cadastro em <code>produtos.php</code></li>
+<li>Separar o catálogo em <code>produtos.php</code></li>
 <li>Receber o identificador por formulário</li>
 <li>Percorrer os produtos</li>
 <li>Exibir apenas o registro correspondente</li>
@@ -454,7 +468,7 @@
 <ul>
 <li><strong>Mapa de Assentos:</strong> matriz, estados e primeira posição livre<br />
 <code>07-php-arrays/mapa-assentos/</code></li>
-<li><strong>Apuração da Gincana:</strong> totais, ordenação e empates<br />
+<li><strong>Apuração da Gincana:</strong> pontuações, penalidades e empates<br />
 <code>07-php-arrays/ranking-gincana/</code></li>
 <li><strong>Editor de Roteiro:</strong> inserir, remover e descobrir vizinhos<br />
 <code>07-php-arrays/roteiro-onibus/</code></li>
@@ -483,7 +497,7 @@
 <li>Acessar uma chave sem verificar</li>
 <li>Usar <code>for</code> depois de deixar espaços nos índices</li>
 <li>Testar <code>array_search()</code> sem <code>!== false</code></li>
-<li>Ordenar e perder chaves importantes</li>
+<li>Ordenar com <code>sort()</code> e perder chaves associativas</li>
 <li>Atualizar a interface, mas não o array</li>
 </ul>
 <footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
