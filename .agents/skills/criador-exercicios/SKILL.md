@@ -170,6 +170,10 @@ Se a resposta revelar genericidade, não tente corrigir apenas com outro tema. M
 - HTML: estrutura enxuta, nomes claros, rótulos em português.
 - CSS: suficiente para distinguir áreas, estados e ações.
 - JavaScript: funções pequenas, nomes autoexplicativos, fluxo direto.
+- PHP: mantenha dados, cálculos, decisões e laços em blocos contínuos; quando
+  um fluxo gerar HTML, use `echo` dentro do bloco e reserve `<?= $variavel ?>`
+  para impressões inline curtas. Evite alternar várias vezes entre PHP e HTML
+  dentro da mesma decisão ou repetição.
 - Comentários: apenas quando ajudarem a explicar algo menos óbvio.
 
 ## Checklist final

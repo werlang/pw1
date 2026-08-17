@@ -51,6 +51,32 @@ Produzir código que:
 - Quando houver validação, explicar com comentário curto o motivo da regra.
 - Em renderização dinâmica, construir a árvore de nós passo a passo em vez de depender de `innerHTML` com metadados de ação.
 
+### PHP misturado com HTML
+
+- Mantenha dados, cálculos, decisões e laços em um bloco contínuo de PHP sempre que o fluxo for mais longo que uma impressão inline.
+- Quando uma decisão ou repetição gerar HTML, faça a impressão necessária dentro desse bloco com `echo`; depois, feche o PHP e continue com o HTML estático.
+- Reserve `<?= $variavel ?>` para valores simples e curtos dentro de um trecho inline, como o nome de uma pessoa ou um número já calculado.
+- Calcule e formate valores antes de entrar no HTML. Evite chamadas como `<?= number_format(...) ?>` quando elas puderem ser preparadas em uma variável com nome claro.
+- Evite fragmentar uma mesma decisão ou repetição com várias aberturas e fechamentos de PHP, especialmente na sintaxe alternativa `if (...) : ?> ... <?php endif;`.
+
+Exemplo preferível para uma repetição que gera itens:
+
+```php
+<ul>
+<?php
+foreach ($nomes as $nome) {
+    echo "<li>$nome</li>";
+}
+?>
+</ul>
+```
+
+Para uma impressão curta, a forma inline continua adequada:
+
+```php
+<p>Estudante: <?= $nomeEstudante ?></p>
+```
+
 ## Como comentar
 
 Usar comentários curtos e úteis, por exemplo:
