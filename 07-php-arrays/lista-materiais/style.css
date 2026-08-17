@@ -1,0 +1,106 @@
+body {
+    background: #f8fafc;
+    color: #1e293b;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 2rem 1rem;
+}
+
+main {
+    margin: 0 auto;
+    max-width: 760px;
+}
+
+header {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+header h1 {
+    color: #0f172a;
+    margin-bottom: 0.25rem;
+}
+
+.painel-resumo {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    margin-bottom: 2rem;
+}
+
+.cartao {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 0.75rem;
+    padding: 1.25rem;
+    text-align: center;
+}
+
+.cartao h2 {
+    color: #64748b;
+    font-size: 0.8rem;
+    font-weight: normal;
+    margin: 0 0 0.5rem;
+    text-transform: uppercase;
+}
+
+.cartao strong {
+    color: #0f172a;
+    display: block;
+    font-size: 1.25rem;
+}
+
+.cartao.primeiro strong {
+    color: #0284c7;
+}
+
+.cartao.ultimo strong {
+    color: #16a34a;
+}
+
+.lista-container {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+}
+
+.lista-container h2 {
+    color: #0f172a;
+    font-size: 1.15rem;
+    margin-top: 0;
+}
+
+.lista-itens {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.lista-itens li {
+    align-items: center;
+    border-bottom: 1px solid #f1f5f9;
+    display: flex;
+    gap: 1rem;
+    padding: 0.85rem 0.5rem;
+}
+
+.lista-itens li:last-child {
+    border-bottom: none;
+}
+
+.badge-indice {
+    background: #e2e8f0;
+    border-radius: 0.25rem;
+    color: #475569;
+    font-family: monospace;
+    font-size: 0.8rem;
+    font-weight: bold;
+    padding: 0.25rem 0.5rem;
+}
+
+.nome-item {
+    color: #1e293b;
+    font-size: 1rem;
+    font-weight: 500;
+}
