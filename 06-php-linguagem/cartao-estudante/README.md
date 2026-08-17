@@ -27,13 +27,18 @@ Defina no início do arquivo:
 Use as variáveis $nomeEstudante, $curso, $turno e $sala. Comece com Ana
 Souza, Informática, Manhã e Laboratório 2.
 
-## Estrutura mínima
+## Estrutura esperada
 
-- o arquivo `index.php` com a implementação;
+- um arquivo `index.php`;
 - um título para o cartão;
 - uma linha HTML para cada dado.
 
 Não use formulário, array, decisão, repetição ou função própria.
+
+## Solução completa
+
+A resposta completa está em [index.php](./index.php). Tente resolver o
+enunciado antes de consultá-la; depois, compare sua solução com esse arquivo.
 
 ## Regras de funcionamento
 

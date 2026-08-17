@@ -442,13 +442,31 @@ Nesse exemplo, `$dobro` é um **callback**: uma função entregue como argumento
 
 ## 21. Exercícios propostos
 
-- [Painel de Consumo de Água](./painel-consumo-agua/README.md): separa cálculos, classificação e recomendação em funções pequenas.
-- [Bilheteria da Gincana](./bilheteria-gincana/README.md): organiza as regras que explicam o preço final de um ingresso.
-- [Calendário de Treinos](./calendario-treinos/README.md): isola regras de fim de semana e treino especial durante a geração da grade.
-- [Lote de Crachás Numerados](./crachas-numerados/README.md): separa a formatação de um código da repetição que gera o lote.
-- [Simulação do Reservatório](./reservatorio-escola/README.md): usa funções para descrever cada rodada sem esconder a evolução do estado.
+Comece pelos quatro exercícios introdutórios. Cada um pratica uma ideia principal com dados definidos no próprio arquivo e uma saída pequena:
 
-Os cinco exercícios permanecem sem arrays ou formulários. Primeiro monte uma versão direta e, depois, extraia um cálculo, uma classificação ou uma formatação para uma função com nome claro.
+- [Cartão de Estudante](./cartao-estudante/README.md) ([implementação](./cartao-estudante/index.php)): usa variáveis para preencher uma página HTML.
+- [Conta do Lanche](./conta-lanche/README.md) ([implementação](./conta-lanche/index.php)): usa uma função com parâmetros e `return` para calcular um total.
+- [Status de Frequência](./status-frequencia/README.md) ([implementação](./status-frequencia/index.php)): combina comparações, booleanos e uma decisão em cadeia.
+- [Tabuada de Uma Turma](./tabuada-uma-turma/README.md) ([implementação](./tabuada-uma-turma/index.php)): usa `for`, `%`, contadores e HTML repetitivo.
+
+Depois, use os cinco desafios de integração. Eles combinam mais de uma regra e não precisam ser o primeiro contato do estudante com o conteúdo:
+
+- [Painel de Consumo de Água](./painel-consumo-agua/README.md) ([implementação](./painel-consumo-agua/index.php)): reúne cálculos, classificação e recomendação.
+- [Bilheteria da Gincana](./bilheteria-gincana/README.md) ([implementação](./bilheteria-gincana/index.php)): combina condições para explicar o preço final de um ingresso.
+- [Calendário de Treinos](./calendario-treinos/README.md) ([implementação](./calendario-treinos/index.php)): gera uma grade com dias vazios, fins de semana e treinos especiais.
+- [Lote de Crachás Numerados](./crachas-numerados/README.md) ([implementação](./crachas-numerados/index.php)): combina formatação, repetição, marcações e contagem.
+- [Simulação do Reservatório](./reservatorio-escola/README.md) ([implementação](./reservatorio-escola/index.php)): acompanha a evolução de um estado e seus motivos de parada.
+
+### Mapa de preparação
+
+| Exercício introdutório | Habilidades praticadas | Desafios que reutilizam a base |
+| --- | --- | --- |
+| Cartão de Estudante | variáveis e PHP misturado ao HTML | todos os cinco |
+| Conta do Lanche | parâmetros, `return`, cálculo e separação entre regra e apresentação | Painel e funções extraídas nos demais |
+| Status de Frequência | comparações, booleanos, `&&`, `||`, `if`/`elseif`/`else` | Painel, Bilheteria e Reservatório |
+| Tabuada de Uma Turma | `for`, `%`, contadores, HTML repetitivo e ponte para `while` | Calendário, Crachás e Reservatório |
+
+Os nove exercícios permanecem sem arrays ou formulários. Os quatro primeiros cobrem as bases reutilizadas pelos desafios. Os desafios ainda combinam essas bases com uma regra de domínio nova: classificação com limites, grade com laços aninhados, formatação com `str_pad()` ou estado controlado por `while`. A extensão `do...while` do Reservatório é posterior e opcional.
 
 ## 22. Erros comuns
 

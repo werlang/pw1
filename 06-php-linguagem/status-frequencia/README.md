@@ -26,16 +26,18 @@ $justificativaAceita para essas variáveis.
 
 Comece com frequência atual `82`, mínimo `75`, atividades entregues como `false` e justificativa aceita como `true`.
 
-## Estrutura mínima
+## Estrutura esperada
 
-- o arquivo `index.php` a implementação;
+- um arquivo `index.php`;
 - uma linha mostrando a frequência atual;
 - uma mensagem de situação.
 
 Não use formulário, array, repetição ou função própria.
 
-Leia a implementação, altere os dados no início do arquivo e teste cada
-resultado descrito nas regras.
+## Solução completa
+
+A resposta completa está em [index.php](./index.php). Tente resolver o
+enunciado antes de consultá-la; depois, compare sua solução com esse arquivo.
 
 ## Regras de funcionamento
 

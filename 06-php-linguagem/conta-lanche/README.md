@@ -23,9 +23,9 @@ Defina:
 Use, por exemplo, produto Sanduíche, preço 7.50 e quantidade 3 na primeira
 versão.
 
-## Estrutura mínima
+## Estrutura esperada
 
-- o arquivo `index.php` a implementação;
+- um arquivo `index.php`;
 - uma identificação do produto;
 - uma linha com o preço unitário;
 - uma linha com a quantidade;
@@ -33,8 +33,10 @@ versão.
 
 Não use formulário, array, decisão ou repetição. A única função própria deve ser a função do cálculo.
 
-Leia a implementação, altere o preço ou a quantidade no início do arquivo e
-confira como o retorno da função muda o total exibido.
+## Solução completa
+
+A resposta completa está em [index.php](./index.php). Tente resolver o
+enunciado antes de consultá-la; depois, compare sua solução com esse arquivo.
 
 ## Regras de funcionamento
 

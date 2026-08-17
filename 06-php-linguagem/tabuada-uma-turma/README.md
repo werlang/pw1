@@ -23,14 +23,16 @@ Use os nomes $numeroTabuada e $ultimoMultiplicador para essas variáveis.
 
 Comece com número `7` e último multiplicador `5`.
 
-## Estrutura mínima
+## Estrutura esperada
 
-- o arquivo `index.php` com a implementação;
+- um arquivo `index.php`;
 - um título indicando o número escolhido;
 - uma lista ou tabela com os resultados de `1` até o limite.
 
-Realize a implementação, altere o número ou o limite no início do arquivo e
-observe como a repetição gera as novas linhas.
+## Solução completa
+
+A resposta completa está em [index.php](./index.php). Tente resolver o
+enunciado antes de consultá-la; depois, compare sua solução com esse arquivo.
 
 ## Regras de funcionamento
 
