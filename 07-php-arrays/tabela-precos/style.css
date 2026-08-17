@@ -1,0 +1,130 @@
+body {
+    background: #f8fafc;
+    color: #1e293b;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 2rem 1rem;
+}
+
+main {
+    margin: 0 auto;
+    max-width: 860px;
+}
+
+header {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+header h1 {
+    color: #0f172a;
+    margin-bottom: 0.25rem;
+}
+
+.painel-estatisticas {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    margin-bottom: 2rem;
+}
+
+.cartao {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    padding: 1.25rem;
+    text-align: center;
+}
+
+.cartao h2 {
+    color: #64748b;
+    font-size: 0.85rem;
+    font-weight: normal;
+    margin: 0 0 0.5rem;
+    text-transform: uppercase;
+}
+
+.cartao strong {
+    color: #0f172a;
+    font-size: 1.4rem;
+}
+
+.cartao span {
+    color: #64748b;
+    font-size: 0.85rem;
+    margin-top: 0.25rem;
+}
+
+.cartao.medio strong {
+    color: #0284c7;
+}
+
+.cartao.acessivel strong {
+    color: #16a34a;
+    font-size: 1.15rem;
+}
+
+.tabela-container {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 0.75rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    overflow-x: auto;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    border-bottom: 1px solid #e2e8f0;
+    padding: 0.9rem 1.25rem;
+    text-align: left;
+}
+
+th {
+    background: #f1f5f9;
+    color: #475569;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+tbody tr:hover {
+    background: #f8fafc;
+}
+
+tfoot tr {
+    background: #f8fafc;
+    border-top: 2px solid #cbd5e1;
+}
+
+tfoot td {
+    border-bottom: none;
+    font-size: 1rem;
+}
+
+code {
+    background: #f1f5f9;
+    border-radius: 0.25rem;
+    color: #0f172a;
+    font-weight: bold;
+    padding: 0.2rem 0.4rem;
+}
+
+.badge-cat {
+    background: #e0f2fe;
+    border-radius: 0.25rem;
+    color: #0369a1;
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 0.2rem 0.5rem;
+}
+
+.col-preco {
+    font-weight: 600;
+    text-align: right;
+}
