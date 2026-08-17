@@ -450,26 +450,33 @@ Pasta: `exemplos/ex07.2/`
 ---
 
 # Arrays no PHP
+## Prática: primeiros passos
+
+- [**Lista de Materiais:**](../../07-php-arrays/lista-materiais/) array indexado, `count()` e lista HTML
+- [**Perfil do Estudante:**](../../07-php-arrays/perfil-estudante/) array associativo, campos com `??` e formatação
+- [**Verificador de Presença:**](../../07-php-arrays/verificador-presenca/) busca estrita com `in_array()` e `array_search()`
+- [**Tabela de Preços:**](../../07-php-arrays/tabela-precos/) array multidimensional, somatório e tabela HTML
+
+Faça nesta ordem: cada atividade isola uma habilidade central com saída rápida e direta.
+
+---
+
+# Arrays no PHP
 ## Exercícios: posição e ordem
 
-- **Mapa de Assentos:** matriz, estados e primeira posição livre  
-  `07-php-arrays/mapa-assentos/`
-- **Apuração da Gincana:** pontuações, penalidades e empates  
-  `07-php-arrays/ranking-gincana/`
-- **Editor de Roteiro:** inserir, remover e descobrir vizinhos  
-  `07-php-arrays/roteiro-onibus/`
+- [**Mapa de Assentos:**](../../07-php-arrays/mapa-assentos/) matriz, estados e primeira posição livre
+- [**Apuração da Gincana:**](../../07-php-arrays/ranking-gincana/) pontuações, penalidades e empates
+- [**Editor de Roteiro:**](../../07-php-arrays/roteiro-onibus/) inserir, remover e descobrir vizinhos
 
 ---
 
 # Arrays no PHP
 ## Exercícios: análise e combinação
 
-- **Auditoria de Matrículas:** um registro pode ter vários problemas  
-  `07-php-arrays/auditoria-matriculas/`
-- **Catálogo de Merenda:** grupo, estoque, restrição e custo  
-  `07-php-arrays/catalogo-merenda/`
+- [**Auditoria de Matrículas:**](../../07-php-arrays/auditoria-matriculas/) um registro pode ter vários problemas
+- [**Catálogo de Merenda:**](../../07-php-arrays/catalogo-merenda/) grupo, estoque, restrição e custo
 
-Não são cinco cadastros com temas diferentes: cada proposta exige uma transformação própria.
+Estes desafios combinam regras reais e exigem transformações de dados mais profundas.
 
 ---
 
