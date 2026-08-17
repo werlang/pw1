@@ -442,20 +442,23 @@ Nesse exemplo, `$dobro` é um **callback**: uma função entregue como argumento
 
 ## 21. Exercícios propostos
 
-Comece pelos quatro exercícios introdutórios. Cada um pratica uma ideia principal com dados definidos no próprio arquivo e uma saída pequena:
+Há nove exercícios nesta seção. Comece pelos quatro introdutórios: cada um
+isola uma ideia principal, usa dados definidos no próprio arquivo e produz uma
+saída pequena.
 
-- [Cartão de Estudante](./cartao-estudante/README.md) ([implementação](./cartao-estudante/index.php)): usa variáveis para preencher uma página HTML.
-- [Conta do Lanche](./conta-lanche/README.md) ([implementação](./conta-lanche/index.php)): usa uma função com parâmetros e `return` para calcular um total.
-- [Status de Frequência](./status-frequencia/README.md) ([implementação](./status-frequencia/index.php)): combina comparações, booleanos e uma decisão em cadeia.
-- [Tabuada de Uma Turma](./tabuada-uma-turma/README.md) ([implementação](./tabuada-uma-turma/index.php)): usa `for`, `%`, contadores e HTML repetitivo.
+- [Cartão de Estudante](./cartao-estudante/README.md) ([solução completa](./cartao-estudante/index.php)) pratica variáveis e PHP misturado ao HTML.
+- [Conta do Lanche](./conta-lanche/README.md) ([solução completa](./conta-lanche/index.php)) pratica parâmetros, `return` e um cálculo separado da apresentação.
+- [Status de Frequência](./status-frequencia/README.md) ([solução completa](./status-frequencia/index.php)) pratica comparações, booleanos e uma decisão em cadeia.
+- [Tabuada de Uma Turma](./tabuada-uma-turma/README.md) ([solução completa](./tabuada-uma-turma/index.php)) pratica `for`, `%`, contadores e HTML repetitivo.
 
-Depois, use os cinco desafios de integração. Eles combinam mais de uma regra e não precisam ser o primeiro contato do estudante com o conteúdo:
+Depois, avance para os cinco desafios de integração. Eles combinam mais de
+uma regra e foram pensados para depois que as bases estiverem mais firmes:
 
-- [Painel de Consumo de Água](./painel-consumo-agua/README.md) ([implementação](./painel-consumo-agua/index.php)): reúne cálculos, classificação e recomendação.
-- [Bilheteria da Gincana](./bilheteria-gincana/README.md) ([implementação](./bilheteria-gincana/index.php)): combina condições para explicar o preço final de um ingresso.
-- [Calendário de Treinos](./calendario-treinos/README.md) ([implementação](./calendario-treinos/index.php)): gera uma grade com dias vazios, fins de semana e treinos especiais.
-- [Lote de Crachás Numerados](./crachas-numerados/README.md) ([implementação](./crachas-numerados/index.php)): combina formatação, repetição, marcações e contagem.
-- [Simulação do Reservatório](./reservatorio-escola/README.md) ([implementação](./reservatorio-escola/index.php)): acompanha a evolução de um estado e seus motivos de parada.
+- [Painel de Consumo de Água](./painel-consumo-agua/README.md) ([solução completa](./painel-consumo-agua/index.php)) reúne cálculos, classificação e recomendação.
+- [Bilheteria da Gincana](./bilheteria-gincana/README.md) ([solução completa](./bilheteria-gincana/index.php)) combina condições para explicar o preço final de um ingresso.
+- [Calendário de Treinos](./calendario-treinos/README.md) ([solução completa](./calendario-treinos/index.php)) gera uma grade com dias vazios, fins de semana e treinos especiais.
+- [Lote de Crachás Numerados](./crachas-numerados/README.md) ([solução completa](./crachas-numerados/index.php)) combina formatação, repetição, marcações e contagem.
+- [Simulação do Reservatório](./reservatorio-escola/README.md) ([solução completa](./reservatorio-escola/index.php)) acompanha a evolução de um estado e seus motivos de parada.
 
 ### Mapa de preparação
 

@@ -493,25 +493,37 @@ echo aplicarOperacao(6, $dobro); // 12
 ---
 
 # Linguagem PHP e Funções
-## Prática: cálculo e regras
+## Prática: primeiros passos
 
-- [**Painel de Consumo de Água:**](../../06-php-linguagem/painel-consumo-agua) extraia cálculos e classificação para funções
-  
-- [**Bilheteria da Gincana:**](../../06-php-linguagem/bilheteria-gincana/) faça uma função receber as regras do ingresso
+- [**Cartão de Estudante:**](../../06-php-linguagem/cartao-estudante/) use variáveis para preencher uma página
+- [**Conta do Lanche:**](../../06-php-linguagem/conta-lanche/) use uma função com parâmetros e `return`
+- [**Status de Frequência:**](../../06-php-linguagem/status-frequencia/) combine comparações, booleanos e decisões
+- [**Tabuada de Uma Turma:**](../../06-php-linguagem/tabuada-uma-turma/) use `for`, `%` e contadores
 
-- [**Calendário de Treinos:**](../../06-php-linguagem/calendario-treinos/) isole as regras de dia especial e fim de semana
-
-Cada exercício começa com uma regra clara e a transforma em funções pequenas.
+Faça nesta ordem: uma habilidade principal, dados fixos e uma saída pequena. A Tabuada tem uma extensão guiada com `while`.
 
 ---
 
 # Linguagem PHP e Funções
-## Prática: repetição e estado
+## Prática: desafio de integração — cálculo e regras
 
-- [**Lote de Crachás Numerados:**](../../06-php-linguagem/crachas-numerados/) separe a formatação do código da geração do lote
-- [**Simulação do Reservatório:**](../../06-php-linguagem/reservatorio-escola/) faça uma função descrever cada rodada
+- [**Painel de Consumo de Água:**](../../06-php-linguagem/painel-consumo-agua/) reúna cálculos, classificação e recomendação
+  
+- [**Bilheteria da Gincana:**](../../06-php-linguagem/bilheteria-gincana/) combine condições para explicar o preço final
 
-Sem arrays ou formulários: as funções próprias já fazem parte desta aula.
+- [**Calendário de Treinos:**](../../06-php-linguagem/calendario-treinos/) gere uma grade com dias vazios, fins de semana e treinos especiais
+
+Estes desafios vêm depois dos exercícios introdutórios e combinam mais de uma regra.
+
+---
+
+# Linguagem PHP e Funções
+## Prática: desafio de integração — repetição e estado
+
+- [**Lote de Crachás Numerados:**](../../06-php-linguagem/crachas-numerados/) combine formatação, repetição, marcações e contagem
+- [**Simulação do Reservatório:**](../../06-php-linguagem/reservatorio-escola/) acompanhe a evolução do estado com `while`
+
+Sem arrays ou formulários: primeiro resolva a versão direta; depois extraia uma função quando isso deixar a regra mais clara. O `do...while` do Reservatório é uma extensão posterior.
 
 ---
 
