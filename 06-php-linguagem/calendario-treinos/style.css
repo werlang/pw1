@@ -1,0 +1,56 @@
+body {
+    background: #f2f5f7;
+    color: #26343b;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 2rem;
+}
+
+main {
+    margin: 0 auto;
+    max-width: 840px;
+}
+
+.calendario {
+    background: #fff;
+    border-collapse: collapse;
+    table-layout: fixed;
+    width: 100%;
+}
+
+.calendario th,
+.calendario td {
+    border: 1px solid #b9c7cc;
+    min-height: 4rem;
+    padding: 0.6rem;
+    text-align: center;
+}
+
+.calendario th {
+    background: #245b73;
+    color: #fff;
+}
+
+.calendario td {
+    height: 4rem;
+    vertical-align: top;
+}
+
+.calendario .vazia {
+    background: #e8edef;
+}
+
+.calendario .fim-de-semana {
+    background: #fff1d6;
+}
+
+.calendario .treino-especial {
+    background: #d9f1dc;
+    font-weight: bold;
+}
+
+.calendario span {
+    display: block;
+    font-size: 0.75rem;
+    margin-top: 0.5rem;
+}
