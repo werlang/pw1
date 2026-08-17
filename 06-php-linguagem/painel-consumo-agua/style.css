@@ -1,0 +1,60 @@
+body {
+    background: #f4f7f8;
+    color: #18323a;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 2rem;
+}
+
+main {
+    margin: 0 auto;
+    max-width: 900px;
+}
+
+.cartoes {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.cartao {
+    background: #fff;
+    border: 3px solid #c8dadd;
+    border-radius: 0.75rem;
+    padding: 1rem;
+}
+
+.cartao h2 {
+    font-size: 1rem;
+    margin-top: 0;
+}
+
+.cartao strong {
+    font-size: 1.5rem;
+}
+
+.classificacao {
+    color: #fff;
+}
+
+.economico {
+    background: #287d4d;
+    border-color: #287d4d;
+}
+
+.adequado {
+    background: #a36d16;
+    border-color: #a36d16;
+}
+
+.alto {
+    background: #a83b3b;
+    border-color: #a83b3b;
+}
+
+.recomendacao {
+    background: #e0eef1;
+    border-left: 0.4rem solid #287d4d;
+    margin-top: 1rem;
+    padding: 1rem;
+}
