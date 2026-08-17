@@ -2,23 +2,25 @@
 
 ## 1. O que este guia ensina
 
-Arrays permitem guardar vários valores em uma única variável. No PHP, a mesma estrutura pode representar uma lista numerada, um registro com campos nomeados ou uma coleção de registros.
+Arrays permitem guardar múltiplos valores em uma única variável. No PHP, a mesma estrutura de array é extremamente versátil e pode representar uma lista indexada por números, um registro com campos nomeados ou uma coleção complexa de registros (tabelas e matrizes).
 
 Ao final deste guia, você deve conseguir:
 
-- criar arrays indexados e associativos;
-- acessar, alterar, adicionar e remover elementos;
-- percorrer arrays com `for` e `foreach`;
-- representar tabelas com arrays multidimensionais;
-- buscar, contar, ordenar e transformar dados;
-- verificar chaves e valores sem gerar avisos;
-- escolher a operação adequada sem perder informações importantes.
+- criar arrays indexados e associativos com a sintaxe moderna;
+- acessar, alterar, adicionar e remover elementos com segurança;
+- percorrer arrays usando `for` e `foreach` (valores isolados e pares chave-valor);
+- estruturar tabelas e matrizes com arrays multidimensionais;
+- gerar marcação HTML formatada e segura a partir de dados em arrays;
+- buscar, contar, ordenar e transformar dados em coleções;
+- verificar a existência de chaves sem gerar avisos de chave indefinida (*undefined array key*);
+- compreender o impacto da reorganização de índices na conversão para JSON;
+- escolher a operação adequada sem perder dados nem corromper associações.
 
 ## 2. Como pensar em um array
 
-Um array associa uma **chave** a um **valor**.
+No PHP, todo array é internamente um mapa ordenado que associa uma **chave** (*key*) a um **valor** (*value*).
 
-Em uma lista simples, as chaves costumam ser números:
+Em uma lista simples (array indexado), as chaves são números inteiros gerados automaticamente a partir de zero:
 
 ```php
 $nomes = ["Ana", "Bruno", "Carla"];
@@ -32,7 +34,7 @@ Essa estrutura equivale a:
 2 → Carla
 ```
 
-Em um registro, as chaves podem ser textos:
+Em um registro (array associativo), as chaves são textos descritivos escolhidos pelo desenvolvedor:
 
 ```php
 $aluno = [
@@ -42,21 +44,29 @@ $aluno = [
 ];
 ```
 
+Aqui temos:
+
+```text
+"nome"  → Ana
+"turma" → 2AT
+"media" → 8.4
+```
+
 ## 3. Declaração
 
-A sintaxe curta `[]` é a mais usada atualmente.
+A sintaxe curta com colchetes `[]` é a forma padrão e recomendada no PHP moderno:
 
 ```php
 $frutas = ["Maçã", "Banana", "Laranja"];
 ```
 
-A sintaxe `array()` aparece em códigos mais antigos e continua válida:
+A sintaxe clássica com a função `array()` também é suportada e comum em códigos legados:
 
 ```php
 $frutas = array("Maçã", "Banana", "Laranja");
 ```
 
-Um array vazio pode ser criado assim:
+Para inicializar um array vazio que receberá itens posteriormente:
 
 ```php
 $tarefas = [];
@@ -64,89 +74,112 @@ $tarefas = [];
 
 ## 4. Arrays indexados
 
-Por padrão, o primeiro índice é `0`.
+Em um array indexado, o acesso aos elementos é feito informando o índice numérico entre colchetes. Por padrão, a contagem sempre começa no índice `0`.
 
 ```php
 $materiais = ["Lápis", "Caderno", "Régua"];
 
-echo $materiais[0]; // Lápis
-echo $materiais[2]; // Régua
+echo $materiais[0]; // Imprime: Lápis
+echo $materiais[2]; // Imprime: Régua
 ```
 
-É possível alterar uma posição:
+### Alterando um elemento
+
+Basta atribuir um novo valor ao índice desejado:
 
 ```php
 $materiais[1] = "Caderno quadriculado";
 ```
 
-E adicionar no próximo índice disponível:
+### Adicionando um elemento ao final
+
+Deixar os colchetes vazios `[]` faz o PHP adicionar o novo item no próximo índice numérico disponível:
 
 ```php
-$materiais[] = "Borracha";
+$materiais[] = "Borracha"; // Adicionado no índice 3
 ```
 
-Para remover:
+### Removendo elementos com `unset()`
+
+A função `unset()` remove o elemento e a sua respectiva chave:
 
 ```php
-unset($materiais[1]);
+unset($materiais[1]); // Remove o item do índice 1 ("Caderno quadriculado")
 ```
 
-`unset()` remove o elemento, mas não reorganiza automaticamente os índices restantes. Se isso for necessário:
-
-```php
-$materiais = array_values($materiais);
-```
+> [!IMPORTANT]
+> A função `unset()` remove o elemento, mas **não renumera** os índices restantes. O array passará a ter os índices `0`, `2` e `3`, ficando com uma lacuna (índice esparso).
+>
+> Se você precisar reconstruir uma sequência contínua de índices começando em zero, use a função `array_values()`:
+>
+> ```php
+> $materiais = array_values($materiais); // Agora os índices voltam a ser 0, 1 e 2
+> ```
 
 ## 5. Arrays associativos
 
-Arrays associativos usam chaves descritivas.
+Arrays associativos utilizam chaves textuais (strings) para identificar cada valor armazenado, funcionando como um registro estruturado.
 
 ```php
 $produto = [
-    "nome" => "Teclado",
-    "preco" => 129.90,
-    "estoque" => 8
+    "nome" => "Teclado Mecânico",
+    "preco" => 249.90,
+    "estoque" => 12
 ];
 
-echo $produto["nome"];
-$produto["estoque"] = 7;
+// Acessando pelo nome do campo
+echo $produto["nome"]; // Imprime: Teclado Mecânico
+
+// Atualizando um campo existente
+$produto["estoque"] = 11;
+
+// Adicionando um novo campo
 $produto["categoria"] = "Periféricos";
 ```
 
-O operador `=>` liga cada chave ao seu valor.
+O operador `=>` (conhecido como *double arrow*) associa a chave da esquerda ao valor da direita.
 
-As chaves devem ser escolhidas de forma consistente. `"preco"` e `"preço"` seriam duas chaves diferentes.
+As chaves diferenciam maiúsculas de minúsculas e acentuação. Portanto, `"preco"`, `"Preco"` e `"preço"` seriam tratadas como três chaves completamente diferentes. Mantenha um padrão consistente em todo o projeto.
 
 ## 6. Verificando se um dado existe
 
-Acessar uma chave inexistente pode gerar um aviso.
+Tentar acessar uma chave inexistente em um array gera um aviso do interpretador PHP (*Warning: Undefined array key*).
+
+Para evitar erros e avisos, utilize uma das seguintes abordagens:
+
+### Operador de coalescência nula (`??`)
+
+É a maneira mais concisa de ler um valor fornecendo um substituto padrão caso a chave não exista ou contenha `null`:
 
 ```php
-if (isset($produto["desconto"])) {
-    echo $produto["desconto"];
-}
-```
-
-O operador `??` fornece um valor padrão:
-
-```php
+// Se "desconto" não existir no array, a variável $desconto recebe 0
 $desconto = $produto["desconto"] ?? 0;
 ```
 
-Diferença importante:
+### Função `isset()`
 
-- `isset($array["chave"])` retorna `false` se a chave não existe ou se o valor é `null`;
-- `array_key_exists("chave", $array)` verifica a existência da chave mesmo quando o valor é `null`.
+Verifica se a chave existe **e** se o seu valor é diferente de `null`:
+
+```php
+if (isset($produto["desconto"])) {
+    echo "Desconto disponível: " . $produto["desconto"];
+}
+```
 
 ## 7. Quantidade e inspeção
 
-`count()` informa a quantidade de elementos.
+### Contando elementos com `count()`
+
+A função `count()` retorna a quantidade total de elementos presentes no array:
 
 ```php
-echo count($materiais);
+$totalMateriais = count($materiais);
+echo "Temos $totalMateriais materiais cadastrados.";
 ```
 
-Durante o desenvolvimento, `print_r()` ajuda a observar a estrutura:
+### Inspecionando dados durante o desenvolvimento
+
+Para examinar visualmente o conteúdo e a estrutura de um array durante o desenvolvimento e depuração:
 
 ```php
 echo "<pre>";
@@ -154,340 +187,418 @@ print_r($produto);
 echo "</pre>";
 ```
 
-`var_dump()` também mostra os tipos dos valores.
+A função `var_dump()` fornece informações ainda mais detalhadas, incluindo o tipo de dado e o comprimento de cada valor:
 
-Essas funções são úteis para estudo e depuração, mas não devem compor a resposta final de uma API.
+```php
+echo "<pre>";
+var_dump($produto);
+echo "</pre>";
+```
 
-## 8. Percorrendo com `for`
+> [!NOTE]
+> Funções como `print_r()` e `var_dump()` são recursos de depuração do programador. Elas nunca devem ser utilizadas na interface final entregue ao usuário ou no corpo de respostas de APIs em produção.
 
-`for` funciona bem quando o array possui índices numéricos contínuos.
+## 8. Percorrendo com o laço `for`
+
+O laço `for` é adequado quando você trabalha com arrays indexados cujos índices numéricos sejam perfeitamente sequenciais e contínuos:
 
 ```php
 $materiais = ["Lápis", "Caderno", "Régua"];
 
-for ($indice = 0; $indice < count($materiais); $indice++) {
-    echo "<p>{$materiais[$indice]}</p>";
+for ($i = 0; $i < count($materiais); $i++) {
+    echo "<p>Item $i: {$materiais[$i]}</p>";
 }
 ```
 
-Se os índices tiverem espaços causados por `unset()`, esse laço pode tentar acessar posições inexistentes.
+> [!WARNING]
+> Se o array tiver passado por `unset()` ou remoção que tenha deixado lacunas entre os números (por exemplo, índices `0`, `2` e `3`), o `for` tentará ler `$materiais[1]` e disparará um erro de índice indefinido. Nesses casos, use `foreach` ou reindexe com `array_values()`.
 
-## 9. Percorrendo com `foreach`
+## 9. Percorrendo com o laço `foreach`
 
-`foreach` é a forma mais comum de percorrer arrays no PHP.
+O `foreach` é a estrutura de repetição mais prática, robusta e comum para percorrer arrays no PHP, pois ele funciona tanto com listas indexadas quanto com arrays associativos, independentemente de haver lacunas nos índices.
 
-Somente os valores:
+### Percorrendo apenas os valores
 
 ```php
-foreach ($materiais as $material) {
-    echo "<p>$material</p>";
+$frutas = ["Maçã", "Banana", "Laranja"];
+
+foreach ($frutas as $fruta) {
+    echo "<li>$fruta</li>";
 }
 ```
 
-Chaves e valores:
+### Percorrendo chaves e valores
+
+Utilizando a sintaxe `$chave => $valor`, o PHP disponibiliza o identificador da posição a cada volta do laço:
 
 ```php
+$produto = [
+    "nome" => "Teclado Mecânico",
+    "preco" => 249.90,
+    "estoque" => 12
+];
+
 foreach ($produto as $campo => $valor) {
     echo "<p><strong>$campo:</strong> $valor</p>";
 }
 ```
 
-Use:
+### Quando escolher cada um?
 
-- `for` quando o índice e a contagem fizerem parte do problema;
-- `foreach` quando o objetivo for visitar cada elemento.
+- Escolha **`for`** quando o índice numérico exato, a contagem posicional ou o acesso relativo a posições vizinhas (`$i - 1`, `$i + 1`) fizerem parte da regra do problema.
+- Escolha **`foreach`** quando o objetivo principal for visitar todos os itens da coleção ou percorrer registros com campos associativos.
 
 ## 10. Arrays multidimensionais
 
-Um array multidimensional contém outros arrays.
+Um array multidimensional é um array que armazena outros arrays em suas posições. É a estrutura ideal para representar cadastros, tabelas, matrizes de coordenadas e listas de entidades.
 
 ```php
 $alunos = [
     [
-        "nome" => "Ana",
+        "nome" => "Ana Souza",
         "turma" => "2AT",
         "media" => 8.4
     ],
     [
-        "nome" => "Bruno",
+        "nome" => "Bruno Lima",
         "turma" => "2AM",
         "media" => 6.8
+    ],
+    [
+        "nome" => "Carla Dias",
+        "turma" => "2AT",
+        "media" => 9.1
     ]
 ];
 ```
 
-Acesso direto:
+### Acessando posições específicas
+
+Para acessar uma informação pontual, encadeie os colchetes com os índices ou chaves correspondentes:
 
 ```php
-echo $alunos[0]["nome"];
+// Acessa o primeiro aluno (índice 0) e lê o campo "nome"
+echo $alunos[0]["nome"]; // Imprime: Ana Souza
 ```
 
-Percorrendo:
+### Percorrendo o cadastro
 
 ```php
 foreach ($alunos as $aluno) {
-    echo "<p>{$aluno['nome']}: {$aluno['media']}</p>";
+    echo "<p>{$aluno['nome']} (Turma: {$aluno['turma']}) - Média: {$aluno['media']}</p>";
 }
 ```
-
-Essa é uma estrutura comum para cadastros, resultados de banco de dados e respostas JSON.
 
 ## 11. Gerando uma tabela HTML
 
-Os dados ficam no array; o HTML apresenta esses dados.
+Em aplicações web dinâmicas, os dados permanecem estruturados no array PHP, enquanto o HTML é montado iterativamente para apresentar os registros na tela.
 
 ```php
-<table>
-    <thead>
-        <tr>
-            <th>Nome</th>
-            <th>Turma</th>
-            <th>Média</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php foreach ($alunos as $aluno) { ?>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Alunos</title>
+</head>
+<body>
+    <h1>Estudantes Cadastrados</h1>
+
+    <table border="1">
+        <thead>
             <tr>
-                <td><?= htmlspecialchars($aluno["nome"]) ?></td>
-                <td><?= htmlspecialchars($aluno["turma"]) ?></td>
-                <td><?= number_format($aluno["media"], 1, ",", ".") ?></td>
+                <th>Nome</th>
+                <th>Turma</th>
+                <th>Média</th>
+                <th>Situação</th>
             </tr>
-        <?php } ?>
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            <?php foreach ($alunos as $aluno) { ?>
+                <tr>
+                    <td><?= htmlspecialchars($aluno["nome"]) ?></td>
+                    <td><?= htmlspecialchars($aluno["turma"]) ?></td>
+                    <td><?= number_format($aluno["media"], 1, ",", ".") ?></td>
+                    <td><?= $aluno["media"] >= 7.0 ? "Aprovado" : "Em exame" ?></td>
+                </tr>
+            <?php } ?>
+        </tbody>
+    </table>
+</body>
+</html>
 ```
 
-Esse padrão separa a estrutura de dados da marcação usada para exibi-la.
+> [!TIP]
+> Sempre proteja a exibição de strings oriundas de variáveis ou entradas com `htmlspecialchars()` para prevenir ataques de Cross-Site Scripting (XSS), e formate valores numéricos com `number_format()`.
 
-## 12. Adicionando e removendo valores
+## 12. Adicionando e removendo elementos (Pilhas e Filas)
 
-Para adicionar ao final:
+O PHP oferece funções nativas para manipular extremidades de arrays:
 
 ```php
+$nomes = ["Bruno", "Carla"];
+
+// Adiciona no final (push)
 $nomes[] = "Daniel";
-```
-
-`array_push()` também adiciona valores:
-
-```php
 array_push($nomes, "Eduarda", "Felipe");
-```
 
-Para um único elemento, `[]` costuma ser mais direto.
-
-Para retirar o último ou o primeiro:
-
-```php
-$ultimo = array_pop($nomes);
-$primeiro = array_shift($nomes);
-```
-
-`array_unshift()` adiciona ao início:
-
-```php
+// Adiciona no início (unshift)
 array_unshift($nomes, "Aline");
+
+// Remove do final (pop)
+$ultimo = array_pop($nomes); // Remove "Felipe" e armazena na variável
+
+// Remove do início (shift)
+$primeiro = array_shift($nomes); // Remove "Aline" e armazena na variável
 ```
+
+Para adicionar um único elemento ao final, a sintaxe `$nomes[] = "Valor";` é mais direta e tem execução ligeiramente mais rápida que `array_push()`.
 
 ## 13. Busca e validação
 
-### Verificar o tipo
+### Verificando se a variável é um array
 
 ```php
 if (is_array($nomes)) {
-    echo "A variável contém um array.";
+    echo "A variável é uma coleção válida.";
 }
 ```
 
-### Procurar um valor
+### Verificando se um valor existe com `in_array()`
+
+Retorna `true` se o valor estiver presente na lista:
 
 ```php
-$permitidas = ["jpg", "png", "webp"];
+$extensoesPermitidas = ["jpg", "png", "webp"];
 
-if (in_array("png", $permitidas, true)) {
-    echo "Valor encontrado.";
+if (in_array("png", $extensoesPermitidas, true)) {
+    echo "Formato de arquivo aceito.";
 }
 ```
 
-O terceiro argumento `true` solicita comparação estrita, incluindo o tipo.
+O terceiro parâmetro `true` ativa a comparação estrita (verificando tipo e valor), evitando coerções inesperadas.
 
-### Localizar a chave
+### Localizando a chave ou posição com `array_search()`
+
+Retorna o índice ou chave onde o valor foi encontrado, ou `false` se o item não existir:
 
 ```php
-$indice = array_search("Bruno", $nomes, true);
+$materiais = ["Lápis", "Caderno", "Régua"];
+$indice = array_search("Lápis", $materiais, true);
 
 if ($indice !== false) {
-    echo "Encontrado na posição $indice.";
+    echo "Material encontrado na posição $indice.";
+} else {
+    echo "Material não encontrado.";
 }
 ```
 
-A comparação com `false` deve ser estrita porque o índice `0` é uma posição válida.
+> [!CAUTION]
+> Ao testar o retorno de `array_search()`, utilize **sempre** a comparação estrita `!== false`. Se o elemento estiver na primeira posição (índice `0`), uma verificação frouxa como `if ($indice)` avalia `0` como falso, provocando um bug silencioso.
 
-## 14. Strings e arrays
+## 14. Conversão entre texto e array
 
-`explode()` divide uma string:
+### Dividindo texto em array com `explode()`
 
-```php
-$linha = "Ana;2AT;8.4";
-$campos = explode(";", $linha);
-```
-
-`implode()` junta os valores:
+Transforma uma string em um array a partir de um caractere delimitador:
 
 ```php
-$texto = implode(", ", $nomes);
+$linhaCsv = "Ana Souza;2AT;8.4";
+$dadosAluno = explode(";", $linhaCsv);
+
+// $dadosAluno[0] => "Ana Souza"
+// $dadosAluno[1] => "2AT"
+// $dadosAluno[2] => "8.4"
 ```
 
-Essas operações aparecem ao trabalhar com campos múltiplos, textos delimitados e arquivos simples.
+### Juntando array em texto com `implode()`
+
+Concatena os elementos de um array em uma única string, separados por um delimitador:
+
+```php
+$cidades = ["Porto Alegre", "Charqueadas", "São Jerônimo"];
+$texto = implode(" → ", $cidades);
+
+echo $texto; // Imprime: Porto Alegre → Charqueadas → São Jerônimo
+```
 
 ## 15. Remoção de duplicados
 
-`array_unique()` devolve um novo array sem valores repetidos:
+A função `array_unique()` remove valores duplicados de um array:
 
 ```php
-$numeros = [4, 2, 4, 7, 2];
-$numerosUnicos = array_unique($numeros);
+$numeros = [4, 2, 4, 7, 2, 9];
+$unicos = array_unique($numeros);
+// $unicos contém: [0 => 4, 1 => 2, 3 => 7, 5 => 9]
 ```
 
-As chaves originais são preservadas. Para reorganizar os índices:
+Como `array_unique()` preserva as chaves originais, se você precisar de índices numéricos contínuos de `0` a `N-1`, combine com `array_values()`:
 
 ```php
-$numerosUnicos = array_values($numerosUnicos);
+$unicosReindexados = array_values(array_unique($numeros));
+// $unicosReindexados contém: [0 => 4, 1 => 2, 2 => 7, 3 => 9]
 ```
 
-## 16. Ordenação
+## 16. Ordenação de arrays
 
-As funções de ordenação modificam o próprio array.
+As funções de ordenação do PHP **modificam o array original** diretamente (passagem por referência):
 
 ```php
-$notas = [8.5, 6.0, 9.2];
-sort($notas);
+$notas = [8.5, 6.0, 9.2, 7.5];
+sort($notas); // $notas agora está ordenada: [6.0, 7.5, 8.5, 9.2]
 ```
 
-Funções comuns:
+### Guia rápido de funções de ordenação
 
-- `sort()`: ordena valores e reorganiza índices;
-- `rsort()`: ordem decrescente e novos índices;
-- `asort()`: ordena valores preservando as chaves;
-- `arsort()`: ordem decrescente preservando as chaves;
-- `ksort()`: ordena pelas chaves;
-- `krsort()`: ordena pelas chaves em ordem decrescente.
+| Função | Critério de Ordenação | Sentido | Preserva Chaves Originais? |
+| :--- | :--- | :--- | :--- |
+| `sort()` | Por Valor | Crescente (A-Z, 0-9) | **Não** (renumera de 0 a N) |
+| `rsort()` | Por Valor | Decrescente (Z-A, 9-0) | **Não** (renumera de 0 a N) |
+| `asort()` | Por Valor | Crescente (A-Z, 0-9) | **Sim** |
+| `arsort()` | Por Valor | Decrescente (Z-A, 9-0) | **Sim** |
+| `ksort()` | Por Chave | Crescente (A-Z, 0-9) | **Sim** |
+| `krsort()` | Por Chave | Decrescente (Z-A, 9-0) | **Sim** |
 
-Escolha de acordo com o que precisa ser preservado.
+Ao ordenar arrays associativos onde a chave representa o nome de uma pessoa ou código de produto, use **`asort()`** ou **`arsort()`** para não destruir a relação entre a chave e o valor.
 
 ## 17. Extraindo chaves, valores e colunas
 
 ```php
-$campos = array_keys($produto);
-$valores = array_values($produto);
+$produto = [
+    "nome" => "Teclado",
+    "preco" => 249.90,
+    "estoque" => 12
+];
+
+$todasAsChaves = array_keys($produto);   // ["nome", "preco", "estoque"]
+$todosOsValores = array_values($produto); // ["Teclado", 249.90, 12]
 ```
 
-Em um cadastro, `array_column()` pode extrair uma propriedade:
+Ao trabalhar com coleções multidimensionais de registros, a função `array_column()` extrai todos os valores de uma coluna específica:
 
 ```php
 $nomesDosAlunos = array_column($alunos, "nome");
+// Retorna: ["Ana Souza", "Bruno Lima", "Carla Dias"]
 ```
 
 ## 18. Transformação e filtro
 
-`array_map()` cria um array transformado:
+### Transformando dados com `array_map()`
+
+Aplica uma função de retorno (*callback*) a cada elemento e devolve um novo array com os resultados calculados:
 
 ```php
-$notas = [6, 8, 9];
-$notasComBonus = array_map(
-    fn($nota) => min($nota + 0.5, 10),
-    $notas
+$precos = [100.0, 200.0, 50.0];
+
+// Concede 10% de desconto em todos os itens
+$precosComDesconto = array_map(
+    fn($preco) => $preco * 0.90,
+    $precos
 );
 ```
 
-`array_filter()` mantém apenas os valores que atendem a uma condição:
+### Filtrando dados com `array_filter()`
+
+Mantém apenas os elementos cujo retorno da função de teste for verdadeiro (`true`):
 
 ```php
-$aprovados = array_filter(
+$alunosAprovados = array_filter(
     $alunos,
-    fn($aluno) => $aluno["media"] >= 7
+    fn($aluno) => $aluno["media"] >= 7.0
 );
 ```
 
-Para o primeiro contato, um `foreach` explícito pode ser mais fácil de acompanhar. Essas funções se tornam úteis quando a transformação já está bem compreendida.
+> [!IMPORTANT]
+> Assim como `array_unique()`, a função `array_filter()` **preserva as chaves originais**. Se o segundo aluno (índice `1`) for descartado pelo filtro, o array resultante manterá os índices `0` e `2`. Se você for iterar com `for` ou serializar para JSON, aplique `array_values()` no resultado.
 
-## 19. Arrays e JSON
+## 19. Arrays e JSON no desenvolvimento de APIs
 
-Arrays PHP podem ser convertidos para JSON:
+No desenvolvimento web, o PHP frequentemente recebe e envia dados em formato JSON para interagir com o JavaScript no navegador.
+
+### Gerando JSON com `json_encode()`
 
 ```php
 header("Content-Type: application/json; charset=utf-8");
 
-echo json_encode([
+$resposta = [
     "status" => "OK",
+    "total" => count($alunos),
     "result" => $alunos
-]);
+];
+
+echo json_encode($resposta, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
 ```
 
-Ao receber JSON como texto:
+### Cuidados com arrays ao gerar JSON
+
+O JavaScript diferencia listas `[...]` de objetos `{...}`:
+
+- Um array PHP indexado com índices contínuos de `0` a `N-1` é serializado como um **array JSON** (`["Ana", "Bruno"]`).
+- Um array PHP associativo ou indexado com lacunas (após `unset` ou `array_filter`) é serializado como um **objeto JSON** (`{"0": "Ana", "2": "Carla"}`).
+
+Para garantir que uma lista filtrada seja exportada como array JSON puro, sempre envolva o dado com `array_values()`:
 
 ```php
-$dados = json_decode($textoJson, true);
+$itensLimpos = array_values($alunosAprovados);
+echo json_encode($itensLimpos); // Produz [...] em vez de {...}
 ```
 
-O segundo argumento `true` pede arrays associativos em vez de objetos.
+### Lendo JSON com `json_decode()`
+
+Para converter um texto JSON recebido em um array do PHP, passe `true` como segundo parâmetro:
+
+```php
+$jsonRecebido = '{"nome":"Ana","turma":"2AT"}';
+$dados = json_decode($jsonRecebido, true); // true converte para array associativo
+
+echo $dados["nome"]; // Ana
+```
 
 ## 20. Relação com as práticas do repositório
 
 ### Cadastro de pessoas
 
-Pasta: [`exemplos/ex07.1`](../exemplos/ex07.1/)
+Pasta de referência: [`exemplos/ex07.1`](../exemplos/ex07.1/)
 
-O exemplo usa:
-
-- array de registros;
-- arrays associativos;
-- `foreach` aninhado;
-- geração de HTML a partir dos campos.
+Demonstra a montagem de um cadastro com array de registros, iteração com laços `foreach` aninhados e geração de estrutura visual HTML a partir dos campos do array.
 
 ### Lista e busca de produtos
 
-Pasta: [`exemplos/ex07.2`](../exemplos/ex07.2/)
+Pasta de referência: [`exemplos/ex07.2`](../exemplos/ex07.2/)
 
-O exemplo divide os dados em `produtos.php`, inclui o arquivo e procura um produto recebido por formulário.
+Demonstra a separação de responsabilidades com o catálogo de dados em `produtos.php`, inclusão com `include` e busca do registro solicitado via parâmetro de formulário GET.
 
 ## 21. Exercícios propostos
 
-- [Mapa de Assentos da Mostra](./mapa-assentos/README.md): transforma uma matriz de estados em uma grade e um resumo.
-- [Apuração da Gincana](./ranking-gincana/README.md): consolida provas, penalidades, ordenação e empates.
-- [Editor de Roteiro do Ônibus](./roteiro-onibus/README.md): altera uma sequência em que os índices representam o percurso.
-- [Auditoria de Matrículas](./auditoria-matriculas/README.md): encontra problemas sem modificar a coleção original.
-- [Catálogo de Merenda](./catalogo-merenda/README.md): cruza grupo, estoque, restrição e custo para produzir HTML e JSON.
+- [Mapa de Assentos da Mostra](./mapa-assentos/README.md): transforma uma matriz bidimensional de fileiras e assentos em uma grade visual com estatísticas e alerta de lotação.
+- [Apuração da Gincana](./ranking-gincana/README.md): consolida pontuações e penalidades, ordena com `arsort()` e trata empates reais na classificação.
+- [Editor de Roteiro do Ônibus](./roteiro-onibus/README.md): manipula a sequência cronológica de paradas de um ônibus escolar com inserções, remoções e inspeção de vizinhos.
+- [Auditoria de Matrículas](./auditoria-matriculas/README.md): analisa uma coleção de estudantes identificando inconsistências e duplicidades sem modificar a coleção original.
+- [Catálogo de Merenda](./catalogo-merenda/README.md): filtra e agrupa itens do refeitório por estoque e restrição de lactose, compõe combos e exporta em HTML e JSON.
 
 ## 22. Erros comuns
 
-- esquecer que o primeiro índice normalmente é `0`;
-- acessar uma chave inexistente sem `isset()` ou `??`;
-- misturar índices numéricos e chaves textuais sem necessidade;
-- usar `for` em um array cujos índices não são contínuos;
-- confundir busca por chave com busca por valor;
-- testar o resultado de `array_search()` apenas com `if ($indice)`;
-- esperar que `array_unique()` reorganize os índices;
-- usar `sort()` e perder chaves que deveriam ser preservadas;
-- alterar o HTML, mas não atualizar o array que representa os dados.
+- **Esquecer que o índice inicial é `0`:** tentar acessar `$lista[count($lista)]` gera um erro, pois o último elemento está na posição `count($lista) - 1`.
+- **Acessar chaves sem verificar:** ler `$array["campo"]` diretamente sem usar `isset()` ou o operador `??` gera avisos quando o campo estiver ausente.
+- **Usar `for` em arrays com índices esparsos:** laços `for` assumem contiguidade numérica e quebram se posições intermediárias tiverem sido removidas com `unset()`.
+- **Testar `array_search()` com operador frouxo:** usar `if ($indice)` em vez de `if ($indice !== false)` faz a posição `0` ser avaliada como falso.
+- **Perder chaves ao usar `sort()` em arrays associativos:** utilizar `sort()` em mapas de chave-valor substitui todas as chaves por números inteiros. Use `asort()` ou `arsort()`.
+- **Esperar que `array_unique()` ou `array_filter()` reordenem índices:** essas funções preservam as chaves originais; para reindexar, chame explicitamente `array_values()`.
+- **JSON inesperado:** exportar um array com chaves esparsas para JSON e esperar receber uma lista `[]` no JavaScript (resultando em um objeto `{}`).
 
 ## 23. Boas práticas
 
-- escolha uma estrutura previsível para todos os registros;
-- use chaves que expliquem o dado armazenado;
-- prefira `foreach` para percorrer coleções;
-- verifique se uma chave existe antes de acessá-la;
-- use comparação estrita quando o tipo fizer parte da regra;
-- mantenha os dados no array e use o HTML apenas como apresentação;
-- mantenha cada etapa de transformação visível; use funções próprias quando elas tornarem a regra mais clara, sem esconder o percurso do array.
+- Escolha uma estrutura previsível e consistente para todos os registros da mesma coleção.
+- Utilize chaves descritivas e em padrão uniforme (ex.: sempre minúsculas sem acentos no código).
+- Prefira laços `foreach` para navegar em coleções e registros associativos.
+- Aplique `htmlspecialchars()` ao imprimir valores textuais de arrays no HTML.
+- Mantenha os dados no array e encare o HTML apenas como a camada de apresentação visual.
+- Use `array_values()` após operações de remoção e filtragem quando precisar de índices numéricos sequenciais.
 
 ## 24. Resumo final
 
-Os pontos centrais desta seção são:
-
-- arrays associam chaves a valores;
-- listas usam normalmente índices numéricos;
-- registros usam chaves textuais;
-- arrays multidimensionais representam coleções de registros;
-- `foreach` percorre valores e também pode fornecer as chaves;
-- funções de busca, ordenação e transformação possuem efeitos diferentes sobre índices;
-- arrays são uma ponte importante entre formulários, banco de dados, arquivos e JSON.
+- Arrays são coleções flexíveis que associam chaves (números ou textos) a valores de qualquer tipo.
+- Arrays indexados são ideais para listas ordenadas; arrays associativos são ideais para registros nomeados.
+- Arrays multidimensionais representam tabelas, cadastros e matrizes estruturadas.
+- O laço `foreach` é a forma padrão e mais segura de iterar sobre arrays no PHP.
+- Funções como `in_array()`, `array_search()`, `asort()` e `array_values()` fornecem os blocos fundamentais para busca, ordenação e saneamento de dados.
+- Arrays PHP são o elo central de comunicação entre requisições de formulários, bancos de dados, sessões e APIs em formato JSON.

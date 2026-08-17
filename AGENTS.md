@@ -38,7 +38,7 @@ PUBLIC_DIR=./exemplos/ex13.1 docker compose up -d
 ```
 
 ## Repository skills and documentation workflows
-- The workspace contains custom skills under `.github/skills/` and they should be preferred when the request matches their scope.
+- The workspace contains custom skills under `.agents/skills/` and they should be preferred when the request matches their scope.
 - Use the `codigo-didatico-ptbr` skill when creating, revising, refactoring, or explaining source code so the result stays beginner-friendly, educational, well documented, and with comments in PT-BR.
 - Use the `guia-readme` skill when creating, expanding, standardizing, or rewriting section READMEs into didactic reference guides in Portuguese.
 - Use the `guia-readme-para-slides` skill when converting a README-guia into a Marp slide presentation for class, following the visual and structural pattern of `marp/content/00-introducao.md`.
