@@ -2,27 +2,45 @@
 
 ## Objetivo
 
-Produzir um lote de crachás para um evento e aplicar marcas visuais calculadas pelo número de cada participante.
+Um evento da escola precisa de um lote de crachás numerados. Além do código,
+cada crachá deve receber marcas visuais calculadas a partir do número do
+participante.
+
+## Solução completa
+
+A resposta completa está em [index.php](./index.php) e [style.css](./style.css).
+Tente resolver o enunciado antes de consultá-la. Depois, compare sua solução
+com esses arquivos.
 
 ## Dados iniciais
 
-Defina o primeiro número, o último número e um prefixo textual para os códigos.
+Crie variáveis para o primeiro número, o último número e o prefixo textual do
+código. Comece com primeiro número `1`, último número `12` e prefixo `PW1`.
 
-## Requisitos
+## O que você deve construir
 
-- gerar todos os crachás com um laço;
-- formatar códigos como `PW1-001`, `PW1-002` e assim por diante;
-- marcar a cada quinto participante como responsável de grupo;
-- alternar uma classe de cor entre números pares e ímpares;
-- contar quantos crachás comuns e quantos de responsável foram produzidos;
-- mostrar um resumo depois do lote.
+Gere todos os crachás com um laço. Os códigos devem ter três algarismos, como
+`PW1-001`, `PW1-002` e assim por diante.
+
+Durante a geração:
+
+- marque os múltiplos de `5` como responsáveis de grupo; na configuração
+  inicial, são os números 5 e 10;
+- aplique uma classe de cor aos números pares e outra aos números ímpares;
+- conte quantos crachás comuns e quantos de responsável foram produzidos;
+- mostre um resumo depois do lote.
 
 ## Conceitos trabalhados
 
-Interpolação, `str_pad()`, `for`, operador `%`, contadores e HTML repetitivo.
+Concatenação de strings ou interpolação, `str_pad()`, `for`, operador `%`,
+contadores e HTML repetitivo.
 
 ## Critérios de verificação
 
-- os códigos devem permanecer corretos quando o intervalo mudar;
-- a contagem final deve ser calculada durante a geração;
-- a classe visual deve vir da regra, não de posições escritas manualmente.
+- os códigos continuam corretos quando o intervalo muda;
+- a contagem final é calculada durante a geração;
+- a classe visual vem da regra do número, não de posições escritas
+  manualmente.
+
+Com os dados de referência, devem ser gerados 10 crachás comuns e 2 de
+responsável.

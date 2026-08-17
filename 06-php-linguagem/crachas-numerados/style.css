@@ -1,0 +1,53 @@
+body {
+    background: #f4f4f6;
+    color: #20242a;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 2rem;
+}
+
+main {
+    margin: 0 auto;
+    max-width: 900px;
+}
+
+.lote {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+}
+
+.cracha {
+    border: 3px solid;
+    border-radius: 0.75rem;
+    padding: 1rem;
+}
+
+.cracha h2 {
+    margin: 0 0 0.75rem;
+}
+
+.cracha p {
+    margin-bottom: 0;
+}
+
+.par {
+    background: #dcecff;
+    border-color: #4e85b8;
+}
+
+.impar {
+    background: #ffe8d2;
+    border-color: #c77a38;
+}
+
+.responsavel {
+    box-shadow: 0 0 0 4px #f2c94c inset;
+}
+
+.resumo {
+    background: #fff;
+    border: 1px solid #c7cbd1;
+    margin-top: 1.5rem;
+    padding: 1rem;
+}

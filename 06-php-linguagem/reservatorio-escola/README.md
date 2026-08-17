@@ -2,27 +2,58 @@
 
 ## Objetivo
 
-Simular o esvaziamento de um reservatório em rodadas sucessivas e registrar como o estado muda até ocorrer uma condição de parada.
+Durante uma atividade de manutenção, a escola precisa acompanhar o volume de
+água de um reservatório a cada rodada de consumo. Você vai simular esse
+esvaziamento e registrar a evolução até que uma condição de parada seja
+atingida.
+
+## Solução completa
+
+A resposta completa da versão com `while` está em [index.php](./index.php) e
+[style.css](./style.css). Tente resolver o enunciado antes de consultá-la;
+depois, compare sua solução com esses arquivos. A extensão com `do...while` é
+uma etapa posterior.
 
 ## Dados iniciais
 
-Defina capacidade atual, consumo por rodada, limite de segurança e número máximo de rodadas.
+Crie variáveis para o volume inicial, o consumo por rodada, o limite de
+segurança e o número máximo de rodadas. Use como referência volume inicial
+`1000`, consumo de `180` por rodada, limite de segurança `200` e no máximo `5`
+rodadas.
 
-## Requisitos
+## O que você deve construir
 
-- usar `while` para executar as rodadas enquanto houver água segura e rodadas disponíveis;
-- descontar o consumo e incrementar o número da rodada;
-- gerar uma linha de relatório para cada estado alcançado;
-- impedir que o volume mostrado fique negativo;
-- informar se a simulação terminou por limite de segurança ou por limite de rodadas;
-- usar `do...while` em uma segunda simulação curta que execute ao menos uma inspeção.
+Use `while` enquanto o volume estiver acima do limite de segurança e ainda
+houver rodadas disponíveis. Em cada rodada, desconte o consumo, avance o
+contador e gere uma linha de relatório para o estado alcançado.
+
+O volume mostrado nunca pode ficar negativo. Quando a repetição terminar,
+informe se isso aconteceu porque o reservatório chegou ao limite de segurança
+ou porque o número máximo de rodadas foi atingido.
+
+## Extensão posterior: `do...while`
+
+Depois de concluir a primeira versão, crie uma segunda inspeção curta usando
+`do...while`. Ela deve acontecer pelo menos uma vez, mesmo que o volume inicial
+já esteja no limite.
+
+Não substitua o `while` da primeira versão. Para testar a extensão, use volume
+inicial `200` ou menor e confirme que a inspeção aparece uma vez.
 
 ## Conceitos trabalhados
 
-Estado escalar, `while`, `do...while`, condições compostas, acumuladores e condição de parada.
+`while`, condições compostas, contador de rodadas e condição de parada.
+`do...while` é uma extensão posterior, não um requisito da primeira versão.
 
 ## Critérios de verificação
 
-- nenhuma repetição pode depender de valores copiados manualmente;
-- a saída deve revelar a evolução do volume, não apenas o resultado final;
-- os dois motivos de encerramento precisam ser testáveis ao mudar os valores iniciais.
+- nenhuma repetição depende de valores copiados manualmente;
+- a saída revela a evolução do volume, não apenas o resultado final;
+- os dois motivos de encerramento podem ser testados ao mudar os valores
+  iniciais;
+- a extensão com `do...while` executa pelo menos uma inspeção quando for
+  adicionada.
+
+Com os dados de referência, a simulação termina pelo limite de segurança. Para
+testar o outro motivo, mantenha os demais valores e reduza o máximo para `3`
+rodadas.

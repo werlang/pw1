@@ -1,0 +1,52 @@
+body {
+    background: #eef5f7;
+    color: #1d343c;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 2rem;
+}
+
+main {
+    margin: 0 auto;
+    max-width: 720px;
+}
+
+.dados,
+.historico {
+    background: #fff;
+    border: 1px solid #b8cbd0;
+    border-radius: 0.5rem;
+    padding: 1rem;
+}
+
+.dados {
+    display: grid;
+    gap: 0.5rem;
+    grid-template-columns: 1fr 1fr;
+}
+
+.historico {
+    border-collapse: collapse;
+    margin-top: 1rem;
+    padding: 0;
+    width: 100%;
+}
+
+.historico th,
+.historico td {
+    border-bottom: 1px solid #d7e1e4;
+    padding: 0.7rem;
+    text-align: left;
+}
+
+.historico th {
+    background: #2c6c80;
+    color: #fff;
+}
+
+.motivo {
+    background: #dceef2;
+    border-left: 0.4rem solid #2c6c80;
+    margin-top: 1rem;
+    padding: 1rem;
+}
