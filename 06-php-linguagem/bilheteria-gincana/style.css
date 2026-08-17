@@ -1,0 +1,51 @@
+body {
+    background: #f5f1e8;
+    color: #2e2720;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 2rem;
+}
+
+main {
+    background: #fffdf8;
+    border: 1px solid #d8cdbb;
+    border-radius: 0.75rem;
+    margin: 0 auto;
+    max-width: 620px;
+    padding: 1.5rem;
+}
+
+.informacoes {
+    display: grid;
+    gap: 0.5rem;
+    grid-template-columns: 1fr 1fr;
+}
+
+.informacoes p,
+.precos p {
+    margin: 0;
+    padding: 0.6rem;
+}
+
+.informacoes p:nth-child(odd),
+.precos p:nth-child(odd) {
+    background: #f0e9dc;
+}
+
+.precos {
+    border-top: 2px solid #d8cdbb;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+}
+
+.total {
+    background: #2f6f56;
+    color: #fff;
+    font-size: 1.3rem;
+}
+
+.bloqueada {
+    background: #9d3b3b;
+    color: #fff;
+    padding: 1rem;
+}
