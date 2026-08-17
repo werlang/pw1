@@ -28,6 +28,7 @@ Produzir exercícios que sejam:
 - Quando criar uma sequência de exercícios, não produza variações superficiais do mesmo fluxo com outro tema. Cada exercício deve mudar de forma observável o tipo de estado, a interação central ou a regra de negócio.
 - Respeite o teto pedagógico da seção. Conteúdos anteriores podem ser reutilizados; conteúdos apresentados apenas em seções posteriores não podem ser exigidos.
 - Trate exemplos e exercícios como categorias diferentes: exemplos podem continuar citados como referência; uma nova lista de exercícios deve substituir referências a listas antigas quando esse for o pedido.
+- Para estudantes iniciantes, separe exercícios introdutórios de desafios de integração. Um exercício introdutório deve ter um conceito central, dados simples, uma saída principal e no máximo uma extensão opcional; marque os desafios que combinam várias regras para que eles não sejam o primeiro contato.
 - Em exercícios de frontend, evite atributos `data-*` e `dataset`.
 - Para ações em elementos criados dinamicamente, use criação explícita de nós (`createElement`), montagem com `append` / `appendChild` e eventos ligados diretamente com `addEventListener`.
 

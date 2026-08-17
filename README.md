@@ -1,9 +1,9 @@
 # Programação Web I
 Materiais para as aulas de Programação Web I ministradas no IFSUL.
 
-Os códigos contidos em cada pasta são referentes aos exercícios presentes nos slides apresentados em aula.
+O repositório reúne exemplos executáveis e enunciados de exercícios usados nos slides apresentados em aula.
 [Link para os Slides](https://drive.google.com/drive/folders/1xZ-yD7OgFNOkO7rQiv6lyQapJvmTSNLW?usp=sharing).
 
-Em cada seção, há um `README.md` com a uma apresentação do conteúdo e pastas com os códigos dos exercícios.
+Em cada seção, há um `README.md` com uma apresentação do conteúdo. Algumas pastas também contêm o enunciado de um exercício, e outras possuem sua implementação executável.
 
-Você pode ver cada exercício executando no navegador pelo link `https://werlang.github.io/pw1/exercicios/<nome_da_pasta>`
+Quando houver uma implementação publicada, você pode ver o exercício no navegador pelo link `https://werlang.github.io/pw1/exercicios/<nome_da_pasta>`.
