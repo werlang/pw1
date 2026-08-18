@@ -517,7 +517,7 @@ No desenvolvimento web, o PHP frequentemente recebe e envia dados em formato JSO
 ### Gerando JSON com `json_encode()`
 
 ```php
-header("Content-Type: application/json; charset=utf-8");
+header("Content-Type: application/json");
 
 $resposta = [
     "status" => "OK",
@@ -525,7 +525,7 @@ $resposta = [
     "result" => $alunos
 ];
 
-echo json_encode($resposta, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+echo json_encode($resposta);
 ```
 
 ### Cuidados com arrays ao gerar JSON

@@ -407,12 +407,12 @@ Para o primeiro contato, um `foreach` explícito também é uma ótima escolha.
 ## Arrays conversam com JSON
 
 ```php
-header("Content-Type: application/json; charset=utf-8");
+header("Content-Type: application/json");
 
 echo json_encode([
     "status" => "OK",
     "result" => $alunos
-], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+]);
 ```
 
 Arrays são a ponte entre PHP, banco de dados e respostas de API.
