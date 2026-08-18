@@ -2,9 +2,9 @@
 
 ## 1. O que este guia ensina
 
-Até este ponto do curso, você aprendeu como o JavaScript manipula a interface no navegador e como o PHP executa instruções no servidor. Agora, vamos unir esses dois lados por meio do conceito mais importante da web moderna: as **APIs (Application Programming Interfaces)**.
+Até este ponto do curso, você aprendeu como o JavaScript manipula a interface no navegador e como o PHP executa instruções, funções e manipula arrays no servidor. Agora, vamos unir esses dois lados por meio do conceito mais importante da web moderna: as **APIs (Application Programming Interfaces)**.
 
-Nesta seção, o PHP deixará de misturar código de programação com marcação HTML e assumirá seu verdadeiro papel de **backend**: um serviço que recebe requisições, processa regras de negócio e entrega dados estruturados em formato **JSON**.
+Nesta seção, você utilizará o conhecimento de **arrays no PHP** para estruturar respostas em formato **JSON** e transformar seus scripts em serviços de **backend**: aplicações que recebem requisições, processam dados e devolvem respostas padronizadas.
 
 Ao final deste guia, você deve conseguir:
 
