@@ -201,7 +201,7 @@ seq: 1
 
 request:
   method: GET
-  url: http://localhost:8080/alunos.php?turma=2AT
+  url: http://localhost/alunos.php?turma=2AT
 ```
 
 </div>
@@ -216,7 +216,7 @@ seq: 2
 
 request:
   method: POST
-  url: http://localhost:8080/alunos.php
+  url: http://localhost/alunos.php
   headers:
     Content-Type: application/json
   body:
@@ -511,13 +511,28 @@ if (!empty($erros)) {
 ---
 
 # APIs e Serviços Web
-## Prática: Criando e testando endpoints
+## Exercícios: Criando requisições no Bruno
 
-- Configurar a extensão do Bruno no VS Code
-- Criar requisições em arquivos `.yaml`
-- Testar endpoints com parâmetros `$_GET`
-- Testar endpoints que recebem `POST` e payloads JSON
-- Inspecionar códigos de status e respostas JSON
+A API em PHP já está pronta. Você cria os arquivos YAML no Bruno:
+
+- [**01. Status do Servidor:**](../../08-php-apis/01-status-servidor/) teste `GET` e verificação de cabeçalhos
+- [**02. Calculadora de Média:**](../../08-php-apis/02-calculadora-media/) teste com parâmetros `$_GET` e erro 400
+- [**03. Inscrição em Evento:**](../../08-php-apis/03-inscricao-evento/) teste `POST` com form-urlencoded
+- [**04. Cadastro de Livro:**](../../08-php-apis/04-cadastro-livro/) teste `POST` com objeto JSON no corpo
+- [**05. Roteamento de Verbos:**](../../08-php-apis/05-gerenciador-tarefas/) teste de `GET`, `POST`, `DELETE` e 405
+
+---
+
+# APIs e Serviços Web
+## Exercícios: Construindo APIs a partir do Bruno
+
+A coleção YAML já está pronta. Você programa o script `api.php`:
+
+- [**06. Conversor de Temperatura:**](../../08-php-apis/06-conversor-temperatura/) API `GET` com conversão térmica
+- [**07. Simulador de Mensalidade:**](../../08-php-apis/07-simulador-mensalidade/) API `POST` com descontos e turnos
+- [**08. Catálogo de Filmes:**](../../08-php-apis/08-catalogo-filmes/) API `POST` recebendo e validando JSON
+- [**09. Verificador de Senha:**](../../08-php-apis/09-verificador-seguranca/) API defensiva de complexidade
+- [**10. Controle de Estoque:**](../../08-php-apis/10-controle-estoque/) CRUD REST completo com múltiplos métodos
 
 ---
 

@@ -1,0 +1,9 @@
+name: Calcular Média com Sucesso
+type: http
+seq: 1
+
+request:
+  method: GET
+  url: http://localhost/api.php?nota1=5.5&nota2=8.0&optativa=7.5
+  headers:
+    Accept: application/json

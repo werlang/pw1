@@ -1,0 +1,16 @@
+name: Cadastrar Filme com Sucesso
+type: http
+seq: 1
+
+request:
+  method: POST
+  url: http://localhost/api.php
+  headers:
+    Content-Type: application/json
+  body:
+    type: json
+    data:
+      titulo: Interestelar
+      genero: Ficção Científica
+      duracao_minutos: 169
+      classificacao_etaria: 10

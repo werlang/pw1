@@ -239,7 +239,7 @@ O cliente faz o pedido no cardápio <mjx-container class="MathJax" jax="SVG"><sv
 
 <span class="hljs-attr">request:</span>
   <span class="hljs-attr">method:</span> <span class="hljs-string">GET</span>
-  <span class="hljs-attr">url:</span> <span class="hljs-string">http://localhost:8080/alunos.php?turma=2AT</span>
+  <span class="hljs-attr">url:</span> <span class="hljs-string">http://localhost/alunos.php?turma=2AT</span>
 </code></pre>
 </div>
 <div>
@@ -250,7 +250,7 @@ O cliente faz o pedido no cardápio <mjx-container class="MathJax" jax="SVG"><sv
 
 <span class="hljs-attr">request:</span>
   <span class="hljs-attr">method:</span> <span class="hljs-string">POST</span>
-  <span class="hljs-attr">url:</span> <span class="hljs-string">http://localhost:8080/alunos.php</span>
+  <span class="hljs-attr">url:</span> <span class="hljs-string">http://localhost/alunos.php</span>
   <span class="hljs-attr">headers:</span>
     <span class="hljs-attr">Content-Type:</span> <span class="hljs-string">application/json</span>
   <span class="hljs-attr">body:</span>
@@ -548,19 +548,34 @@ O cliente faz o pedido no cardápio <mjx-container class="MathJax" jax="SVG"><sv
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="23" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
 <header> </header>
 <h1 id="apis-e-servi%C3%A7os-web-20">APIs e Serviços Web</h1>
-<h2 id="pr%C3%A1tica-criando-e-testando-endpoints">Prática: Criando e testando endpoints</h2>
+<h2 id="exerc%C3%ADcios-criando-requisi%C3%A7%C3%B5es-no-bruno">Exercícios: Criando requisições no Bruno</h2>
+<p>A API em PHP já está pronta. Você cria os arquivos YAML no Bruno:</p>
 <ul>
-<li>Configurar a extensão do Bruno no VS Code</li>
-<li>Criar requisições em arquivos <code>.yaml</code></li>
-<li>Testar endpoints com parâmetros <code>$_GET</code></li>
-<li>Testar endpoints que recebem <code>POST</code> e payloads JSON</li>
-<li>Inspecionar códigos de status e respostas JSON</li>
+<li><a href="../../08-php-apis/01-status-servidor/"><strong>01. Status do Servidor:</strong></a> teste <code>GET</code> e verificação de cabeçalhos</li>
+<li><a href="../../08-php-apis/02-calculadora-media/"><strong>02. Calculadora de Média:</strong></a> teste com parâmetros <code>$_GET</code> e erro 400</li>
+<li><a href="../../08-php-apis/03-inscricao-evento/"><strong>03. Inscrição em Evento:</strong></a> teste <code>POST</code> com form-urlencoded</li>
+<li><a href="../../08-php-apis/04-cadastro-livro/"><strong>04. Cadastro de Livro:</strong></a> teste <code>POST</code> com objeto JSON no corpo</li>
+<li><a href="../../08-php-apis/05-gerenciador-tarefas/"><strong>05. Roteamento de Verbos:</strong></a> teste de <code>GET</code>, <code>POST</code>, <code>DELETE</code> e 405</li>
 </ul>
 <footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="24" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
 <header> </header>
 <h1 id="apis-e-servi%C3%A7os-web-21">APIs e Serviços Web</h1>
+<h2 id="exerc%C3%ADcios-construindo-apis-a-partir-do-bruno">Exercícios: Construindo APIs a partir do Bruno</h2>
+<p>A coleção YAML já está pronta. Você programa o script <code>api.php</code>:</p>
+<ul>
+<li><a href="../../08-php-apis/06-conversor-temperatura/"><strong>06. Conversor de Temperatura:</strong></a> API <code>GET</code> com conversão térmica</li>
+<li><a href="../../08-php-apis/07-simulador-mensalidade/"><strong>07. Simulador de Mensalidade:</strong></a> API <code>POST</code> com descontos e turnos</li>
+<li><a href="../../08-php-apis/08-catalogo-filmes/"><strong>08. Catálogo de Filmes:</strong></a> API <code>POST</code> recebendo e validando JSON</li>
+<li><a href="../../08-php-apis/09-verificador-seguranca/"><strong>09. Verificador de Senha:</strong></a> API defensiva de complexidade</li>
+<li><a href="../../08-php-apis/10-controle-estoque/"><strong>10. Controle de Estoque:</strong></a> CRUD REST completo com múltiplos métodos</li>
+</ul>
+<footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="25" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
+<header> </header>
+<h1 id="apis-e-servi%C3%A7os-web-22">APIs e Serviços Web</h1>
 <h2 id="o-que-precisa-ficar">O que precisa ficar</h2>
 <ol>
 <li><strong>O backend entrega dados (JSON) para qualquer cliente de forma agnóstica</strong></li>

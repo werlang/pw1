@@ -1,0 +1,9 @@
+name: Testar Método PATCH Não Permitido
+type: http
+seq: 4
+
+request:
+  method: PATCH
+  url: http://localhost/api.php
+  headers:
+    Accept: application/json

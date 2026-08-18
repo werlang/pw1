@@ -1,0 +1,16 @@
+name: Adicionar Produto ao Estoque (POST JSON)
+type: http
+seq: 2
+
+request:
+  method: POST
+  url: http://localhost/api.php
+  headers:
+    Content-Type: application/json
+  body:
+    type: json
+    data:
+      codigo: HD-02
+      nome: SSD NVMe 1TB
+      quantidade: 8
+      preco_unitario: 320.00

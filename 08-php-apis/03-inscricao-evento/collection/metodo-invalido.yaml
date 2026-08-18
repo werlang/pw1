@@ -1,0 +1,9 @@
+name: Testar Método Não Permitido (GET)
+type: http
+seq: 2
+
+request:
+  method: GET
+  url: http://localhost/api.php
+  headers:
+    Accept: application/json

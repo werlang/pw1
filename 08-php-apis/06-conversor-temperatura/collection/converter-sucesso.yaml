@@ -1,0 +1,9 @@
+name: Converter Celsius para Fahrenheit (Sucesso)
+type: http
+seq: 1
+
+request:
+  method: GET
+  url: http://localhost/api.php?valor=100&origem=C&destino=F
+  headers:
+    Accept: application/json

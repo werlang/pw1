@@ -1,0 +1,9 @@
+name: Remover Produto do Estoque (DELETE)
+type: http
+seq: 3
+
+request:
+  method: DELETE
+  url: http://localhost/api.php?codigo=PEN-01
+  headers:
+    Accept: application/json

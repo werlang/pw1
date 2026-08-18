@@ -1,0 +1,16 @@
+name: Cadastrar Livro com Sucesso
+type: http
+seq: 1
+
+request:
+  method: POST
+  url: http://localhost/api.php
+  headers:
+    Content-Type: application/json
+  body:
+    type: json
+    data:
+      titulo: O Guia do Mochileiro das Galáxias
+      autor: Douglas Adams
+      ano: 1979
+      paginas: 224

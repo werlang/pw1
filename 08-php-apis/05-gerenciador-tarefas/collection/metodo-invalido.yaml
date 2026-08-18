@@ -1,0 +1,9 @@
+name: Testar Método PUT Inválido
+type: http
+seq: 4
+
+request:
+  method: PUT
+  url: http://localhost/api.php
+  headers:
+    Accept: application/json

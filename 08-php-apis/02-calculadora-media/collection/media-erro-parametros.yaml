@@ -1,0 +1,9 @@
+name: Testar Erro de Parâmetros Ausentes
+type: http
+seq: 2
+
+request:
+  method: GET
+  url: http://localhost/api.php?nota1=7.0
+  headers:
+    Accept: application/json

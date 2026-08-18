@@ -1,0 +1,14 @@
+name: Validar Senha Forte com Sucesso
+type: http
+seq: 1
+
+request:
+  method: POST
+  url: http://localhost/api.php
+  headers:
+    Content-Type: application/json
+  body:
+    type: json
+    data:
+      usuario: aluno_ifsul
+      senha: Pass@2026

@@ -1,0 +1,9 @@
+name: Listar Tarefas (GET)
+type: http
+seq: 1
+
+request:
+  method: GET
+  url: http://localhost/api.php
+  headers:
+    Accept: application/json

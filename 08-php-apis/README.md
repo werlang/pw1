@@ -156,7 +156,7 @@ seq: 1
 
 request:
   method: GET
-  url: http://localhost:8080/alunos.php?turma=2AT
+  url: http://localhost/alunos.php?turma=2AT
   headers:
     Accept: application/json
 ```
@@ -169,7 +169,7 @@ seq: 2
 
 request:
   method: POST
-  url: http://localhost:8080/alunos.php
+  url: http://localhost/alunos.php
   headers:
     Content-Type: application/json
   body:
@@ -317,7 +317,7 @@ Vamos analisar cada um deles em detalhes.
 Usado em requisições do tipo **`GET`** para filtros, buscas, ordenações e identificadores. Os dados trafegam anexados na própria URL após o caractere `?` no formato chave=valor:
 
 ```text
-GET http://localhost:8080/calculadora.php?operacao=somar&a=10&b=5
+GET http://localhost/calculadora.php?operacao=somar&a=10&b=5
 ```
 
 ### Lendo no PHP:
@@ -543,7 +543,31 @@ echo json_encode([
 
 ---
 
-## 19. Resumo final
+## 19. Exercícios propostos
+
+Esta seção contém 10 exercícios organizados em duas etapas complementares de aprendizagem:
+
+### Grupo 1: Exercícios Introdutórios — Criando Requisições no Bruno (01 a 05)
+Neste primeiro grupo, os scripts PHP de backend já estão prontos. Sua tarefa é **compreender o contrato da API e construir as requisições no Bruno em formato YAML (`.yaml`)**:
+
+- [01. Verificação de Status do Servidor](./01-status-servidor/README.md): prática com requisição `GET` simples, verificação de cabeçalhos e status `200 OK`.
+- [02. Calculadora de Média via URL](./02-calculadora-media/README.md): prática com parâmetros de query string via `$_GET` e tratamento de erros com status `400 Bad Request`.
+- [03. Inscrição em Evento via Formulário](./03-inscricao-evento/README.md): prática com envio de dados de formulário `application/x-www-form-urlencoded` via `$_POST` e teste de status `405 Method Not Allowed`.
+- [04. Cadastro de Livro via Payload JSON](./04-cadastro-livro/README.md): prática com envio de objetos JSON no corpo da requisição via `php://input` com status `201 Created`.
+- [05. Roteamento de Verbos REST](./05-gerenciador-tarefas/README.md): prática completa com múltiplos verbos HTTP (`GET`, `POST`, `DELETE`) em um mesmo endpoint.
+
+### Grupo 2: Desafios — Construindo APIs PHP a partir de Coleções Bruno (06 a 10)
+Neste segundo grupo, a **coleção de testes em YAML já está fornecida**. Sua tarefa é **escrever o código do script PHP (`api.php`)** para atender aos requisitos e fazer todas as requisições responderem com sucesso:
+
+- [06. Conversor de Temperatura](./06-conversor-temperatura/README.md): construa uma API `GET` que recebe valor e escalas térmicas (C, F, K) e valida parâmetros.
+- [07. Simulador de Mensalidade](./07-simulador-mensalidade/README.md): construa uma API `POST` que processa dados de formulário com regras de descontos e turnos.
+- [08. Catálogo de Filmes](./08-catalogo-filmes/README.md): construa uma API `POST` que recebe e valida objetos JSON no corpo da requisição com `php://input`.
+- [09. Verificador de Segurança de Senha](./09-verificador-seguranca/README.md): construa uma API `POST` defensiva que analisa requisitos de complexidade de credenciais.
+- [10. Controle de Estoque (CRUD Completo)](./10-controle-estoque/README.md): construa um serviço REST completo com múltiplos métodos (`GET`, `POST`, `DELETE`), validação de duplicidade e cálculos patrimoniais.
+
+---
+
+## 20. Resumo final
 
 - Uma API web é um serviço de backend que recebe requisições HTTP e entrega dados puros (normalmente em JSON), atendendo a **qualquer cliente** de forma agnóstica.
 - Em toda mensagem HTTP, os **cabeçalhos (*headers*)** contêm metadados técnicos (como o `Content-Type` e o código de status), enquanto o **corpo (*body*)** carrega os dados reais.

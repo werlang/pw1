@@ -1,0 +1,15 @@
+name: Testar Falha de Validação no JSON
+type: http
+seq: 2
+
+request:
+  method: POST
+  url: http://localhost/api.php
+  headers:
+    Content-Type: application/json
+  body:
+    type: json
+    data:
+      titulo: ""
+      autor: Autor Desconhecido
+      ano: 2024
