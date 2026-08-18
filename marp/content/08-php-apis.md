@@ -27,20 +27,11 @@ pablowerlang@ifsul.edu.br
 - Devolve dados puros em formato **JSON**
 
 </div>
-<div class="media mx-auto">
+<div class="media flex h-full items-center justify-end">
 
-```text
-┌────────────────┐
-│    Cliente     │
-│ (Navegador/App/│
-│  JS / Testes)  │
-└───────┬────────┘
-        │ HTTP (GET/POST...)
-        ▼
-┌────────────────┐
-│   API em PHP   │ ──► JSON
-└────────────────┘
-```
+<img class="h-full" src="../../marp/assets/08-api.png" alt="Comunicação CLiente-servidor com API">
+
+</div>
 
 </div>
 </div>
