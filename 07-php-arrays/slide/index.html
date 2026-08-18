@@ -47,8 +47,8 @@
 <li>Base para formulários, JSON e banco de dados</li>
 </ul>
 </div>
-<div class="media mx-auto">
-    <img class="placeholder" alt="Prompt de IA: armário escolar organizado com gavetas numeradas e etiquetadas, representando arrays indexados e associativos, ilustração didática leve para slide" />
+<div class="media flex h-full items-center justify-end">
+    <img class="h-full" alt="armário escolar organizado com gavetas numeradas e etiquetadas, representando arrays indexados e associativos." src="../../marp/assets/07-drawer.png" />
 </div>
 </div>
 <footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
@@ -57,7 +57,8 @@
 <header> </header>
 <h1 id="arrays-no-php-2">Arrays no PHP</h1>
 <h2 id="chave-%E2%86%92-valor">Chave → valor</h2>
-<pre><code class="language-php"><span class="hljs-variable">$nomes</span> = [<span class="hljs-string">&quot;Ana&quot;</span>, <span class="hljs-string">&quot;Bruno&quot;</span>, <span class="hljs-string">&quot;Carla&quot;</span>];
+<pre><code class="language-php"><span class="hljs-comment">// $nomes = array(&quot;Ana&quot;, &quot;Bruno&quot;, &quot;Carla&quot;); // array() é a forma antiga</span>
+<span class="hljs-variable">$nomes</span> = [<span class="hljs-string">&quot;Ana&quot;</span>, <span class="hljs-string">&quot;Bruno&quot;</span>, <span class="hljs-string">&quot;Carla&quot;</span>];
 </code></pre>
 <pre><code class="language-text">0 → Ana
 1 → Bruno
@@ -83,6 +84,7 @@
 
 <span class="hljs-keyword">echo</span> <span class="hljs-variable">$materiais</span>[<span class="hljs-number">0</span>]; <span class="hljs-comment">// Lápis</span>
 <span class="hljs-variable">$materiais</span>[<span class="hljs-number">1</span>] = <span class="hljs-string">&quot;Caderno quadriculado&quot;</span>;
+<span class="hljs-comment">// array_push($materiais, &quot;Apontador&quot;); // Adiciona no final</span>
 <span class="hljs-variable">$materiais</span>[] = <span class="hljs-string">&quot;Borracha&quot;</span>; <span class="hljs-comment">// Adiciona no final</span>
 </code></pre>
 <ul>
@@ -111,11 +113,11 @@
 <header> </header>
 <h1 id="arrays-no-php-5">Arrays no PHP</h1>
 <h2 id="quantidade-e-inspe%C3%A7%C3%A3o">Quantidade e inspeção</h2>
-<pre><code class="language-php"><span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">count</span>(<span class="hljs-variable">$materiais</span>);
+<pre><code class="language-php"><span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">count</span>(<span class="hljs-variable">$materiais</span>); <span class="hljs-comment">// 2</span>
 
-<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;pre&gt;&quot;</span>;
-<span class="hljs-title function_ invoke__">print_r</span>(<span class="hljs-variable">$materiais</span>);
-<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;/pre&gt;&quot;</span>;
+<span class="hljs-title function_ invoke__">print_r</span>(<span class="hljs-variable">$materiais</span>); <span class="hljs-comment">// Array ( [0] =&gt; Lápis [2] =&gt; Régua )</span>
+
+<span class="hljs-title function_ invoke__">var_dump</span>(<span class="hljs-variable">$materiais</span>); <span class="hljs-comment">// array(2) { [0]=&gt; string(5) &quot;Lápis&quot; [2]=&gt; string(5) &quot;Régua&quot; }</span>
 </code></pre>
 <ul>
 <li><code>count()</code> informa a quantidade</li>
@@ -150,7 +152,7 @@
 <header> </header>
 <h1 id="arrays-no-php-7">Arrays no PHP</h1>
 <h2 id="chave-ausente-sem-susto">Chave ausente sem susto</h2>
-<pre><code class="language-php"><span class="hljs-variable">$desconto</span> = <span class="hljs-variable">$produto</span>[<span class="hljs-string">&quot;desconto&quot;</span>] ?? <span class="hljs-number">0</span>;
+<pre><code class="language-php"><span class="hljs-variable">$desconto</span> = <span class="hljs-variable">$produto</span>[<span class="hljs-string">&quot;desconto&quot;</span>];
 </code></pre>
 <div class="grid grid-cols-2 gap-6">
 <div>
@@ -161,11 +163,12 @@
 </ul>
 </div>
 <div>
-<p><strong><code>array_key_exists()</code></strong></p>
-<ul>
-<li>Verifica apenas a chave</li>
-<li>Aceita valor <code>null</code></li>
-</ul>
+<pre><code class="language-php"><span class="hljs-keyword">if</span> (<span class="hljs-keyword">isset</span>(<span class="hljs-variable">$produto</span>[<span class="hljs-string">&quot;desconto&quot;</span>])) {
+    <span class="hljs-keyword">echo</span> <span class="hljs-variable">$produto</span>[<span class="hljs-string">&quot;desconto&quot;</span>];
+} <span class="hljs-keyword">else</span> {
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;Sem desconto&quot;</span>;
+}
+</code></pre>
 </div>
 </div>
 <footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
@@ -227,7 +230,8 @@
 <h2 id="arrays-multidimensionais">Arrays multidimensionais</h2>
 <pre><code class="language-php"><span class="hljs-variable">$alunos</span> = [
     [<span class="hljs-string">&quot;nome&quot;</span> =&gt; <span class="hljs-string">&quot;Ana&quot;</span>, <span class="hljs-string">&quot;turma&quot;</span> =&gt; <span class="hljs-string">&quot;2AT&quot;</span>, <span class="hljs-string">&quot;media&quot;</span> =&gt; <span class="hljs-number">8.4</span>],
-    [<span class="hljs-string">&quot;nome&quot;</span> =&gt; <span class="hljs-string">&quot;Bruno&quot;</span>, <span class="hljs-string">&quot;turma&quot;</span> =&gt; <span class="hljs-string">&quot;2AM&quot;</span>, <span class="hljs-string">&quot;media&quot;</span> =&gt; <span class="hljs-number">6.8</span>]
+    [<span class="hljs-string">&quot;nome&quot;</span> =&gt; <span class="hljs-string">&quot;Bruno&quot;</span>, <span class="hljs-string">&quot;turma&quot;</span> =&gt; <span class="hljs-string">&quot;2AM&quot;</span>, <span class="hljs-string">&quot;media&quot;</span> =&gt; <span class="hljs-number">6.8</span>],
+    [<span class="hljs-string">&quot;nome&quot;</span> =&gt; <span class="hljs-string">&quot;Camila&quot;</span>, <span class="hljs-string">&quot;turma&quot;</span> =&gt; <span class="hljs-string">&quot;2AM&quot;</span>, <span class="hljs-string">&quot;media&quot;</span> =&gt; <span class="hljs-number">9.1</span>],
 ];
 
 <span class="hljs-keyword">echo</span> <span class="hljs-variable">$alunos</span>[<span class="hljs-number">0</span>][<span class="hljs-string">&quot;nome&quot;</span>]; <span class="hljs-comment">// Ana</span>
@@ -239,13 +243,16 @@
 <header> </header>
 <h1 id="arrays-no-php-11">Arrays no PHP</h1>
 <h2 id="dados-viram-tabela">Dados viram tabela</h2>
-<pre><code class="language-php"><span class="hljs-meta">&lt;?php</span> <span class="hljs-keyword">foreach</span> (<span class="hljs-variable">$alunos</span> <span class="hljs-keyword">as</span> <span class="hljs-variable">$aluno</span>) { <span class="hljs-meta">?&gt;</span>
-    &lt;tr&gt;
-        &lt;td&gt;<span class="hljs-meta">&lt;?=</span> <span class="hljs-title function_ invoke__">htmlspecialchars</span>(<span class="hljs-variable">$aluno</span>[<span class="hljs-string">&quot;nome&quot;</span>]) <span class="hljs-meta">?&gt;</span>&lt;/td&gt;
-        &lt;td&gt;<span class="hljs-meta">&lt;?=</span> <span class="hljs-title function_ invoke__">htmlspecialchars</span>(<span class="hljs-variable">$aluno</span>[<span class="hljs-string">&quot;turma&quot;</span>]) <span class="hljs-meta">?&gt;</span>&lt;/td&gt;
-        &lt;td&gt;<span class="hljs-meta">&lt;?=</span> <span class="hljs-title function_ invoke__">number_format</span>(<span class="hljs-variable">$aluno</span>[<span class="hljs-string">&quot;media&quot;</span>], <span class="hljs-number">1</span>, <span class="hljs-string">&quot;,&quot;</span>, <span class="hljs-string">&quot;.&quot;</span>) <span class="hljs-meta">?&gt;</span>&lt;/td&gt;
-    &lt;/tr&gt;
-<span class="hljs-meta">&lt;?php</span> } <span class="hljs-meta">?&gt;</span>
+<pre><code class="language-php"><span class="hljs-variable">$nome</span> = <span class="hljs-title function_ invoke__">htmlspecialchars</span>(<span class="hljs-variable">$aluno</span>[<span class="hljs-string">&quot;nome&quot;</span>]);
+<span class="hljs-variable">$turma</span> = <span class="hljs-title function_ invoke__">htmlspecialchars</span>(<span class="hljs-variable">$aluno</span>[<span class="hljs-string">&quot;turma&quot;</span>]);
+<span class="hljs-variable">$media</span> = <span class="hljs-title function_ invoke__">number_format</span>(<span class="hljs-variable">$aluno</span>[<span class="hljs-string">&quot;media&quot;</span>], <span class="hljs-number">1</span>, <span class="hljs-string">&quot;,&quot;</span>, <span class="hljs-string">&quot;.&quot;</span>);
+<span class="hljs-keyword">foreach</span> (<span class="hljs-variable">$alunos</span> <span class="hljs-keyword">as</span> <span class="hljs-variable">$aluno</span>) {
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;tr&gt;
+        &lt;td&gt;<span class="hljs-subst">$nome</span>&lt;/td&gt;
+        &lt;td&gt;<span class="hljs-subst">$turma</span>&lt;/td&gt;
+        &lt;td&gt;<span class="hljs-subst">$media</span>&lt;/td&gt;
+    &lt;/tr&gt;&quot;</span>;
+}
 </code></pre>
 <ul>
 <li>O array guarda os dados estruturados</li>

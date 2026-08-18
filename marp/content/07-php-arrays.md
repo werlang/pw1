@@ -27,8 +27,8 @@ pablowerlang@ifsul.edu.br
 - Base para formulários, JSON e banco de dados
 
 </div>
-<div class="media mx-auto">
-    <img class="placeholder" alt="Prompt de IA: armário escolar organizado com gavetas numeradas e etiquetadas, representando arrays indexados e associativos, ilustração didática leve para slide">
+<div class="media flex h-full items-center justify-end">
+    <img class="h-full" alt="armário escolar organizado com gavetas numeradas e etiquetadas, representando arrays indexados e associativos." src="../../marp/assets/07-drawer.png">
 </div>
 </div>
 
@@ -38,6 +38,7 @@ pablowerlang@ifsul.edu.br
 ## Chave → valor
 
 ```php
+// $nomes = array("Ana", "Bruno", "Carla"); // array() é a forma antiga
 $nomes = ["Ana", "Bruno", "Carla"];
 ```
 
@@ -66,6 +67,7 @@ $materiais = ["Lápis", "Caderno", "Régua"];
 
 echo $materiais[0]; // Lápis
 $materiais[1] = "Caderno quadriculado";
+// array_push($materiais, "Apontador"); // Adiciona no final
 $materiais[] = "Borracha"; // Adiciona no final
 ```
 
@@ -99,11 +101,11 @@ Use `array_values()` quando precisar recriar índices contínuos.
 ## Quantidade e inspeção
 
 ```php
-echo count($materiais);
+echo count($materiais); // 2
 
-echo "<pre>";
-print_r($materiais);
-echo "</pre>";
+print_r($materiais); // Array ( [0] => Lápis [2] => Régua )
+
+var_dump($materiais); // array(2) { [0]=> string(5) "Lápis" [2]=> string(5) "Régua" }
 ```
 
 - `count()` informa a quantidade
@@ -141,7 +143,7 @@ O operador `=>` liga cada chave textual ao seu respectivo valor.
 ## Chave ausente sem susto
 
 ```php
-$desconto = $produto["desconto"] ?? 0;
+$desconto = $produto["desconto"];
 ```
 
 <div class="grid grid-cols-2 gap-6">
@@ -155,10 +157,13 @@ $desconto = $produto["desconto"] ?? 0;
 </div>
 <div>
 
-**`array_key_exists()`**
-
-- Verifica apenas a chave
-- Aceita valor `null`
+```php
+if (isset($produto["desconto"])) {
+    echo $produto["desconto"];
+} else {
+    echo "Sem desconto";
+}
+```
 
 </div>
 </div>
@@ -228,7 +233,8 @@ foreach ($produto as $campo => $valor) {
 ```php
 $alunos = [
     ["nome" => "Ana", "turma" => "2AT", "media" => 8.4],
-    ["nome" => "Bruno", "turma" => "2AM", "media" => 6.8]
+    ["nome" => "Bruno", "turma" => "2AM", "media" => 6.8],
+    ["nome" => "Camila", "turma" => "2AM", "media" => 9.1],
 ];
 
 echo $alunos[0]["nome"]; // Ana
@@ -242,13 +248,16 @@ Uma lista de registros é um array contendo outros arrays.
 ## Dados viram tabela
 
 ```php
-<?php foreach ($alunos as $aluno) { ?>
-    <tr>
-        <td><?= htmlspecialchars($aluno["nome"]) ?></td>
-        <td><?= htmlspecialchars($aluno["turma"]) ?></td>
-        <td><?= number_format($aluno["media"], 1, ",", ".") ?></td>
-    </tr>
-<?php } ?>
+$nome = htmlspecialchars($aluno["nome"]);
+$turma = htmlspecialchars($aluno["turma"]);
+$media = number_format($aluno["media"], 1, ",", ".");
+foreach ($alunos as $aluno) {
+    echo "<tr>
+        <td>$nome</td>
+        <td>$turma</td>
+        <td>$media</td>
+    </tr>";
+}
 ```
 
 - O array guarda os dados estruturados
