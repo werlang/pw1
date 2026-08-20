@@ -273,7 +273,7 @@ O cliente faz o pedido no cardápio <mjx-container class="MathJax" jax="SVG"><sv
 
 <span class="hljs-comment">// 2. Monta os dados em array/variável</span>
 <span class="hljs-variable">$resposta</span> = [
-    <span class="hljs-string">&quot;status&quot;</span> =&gt; <span class="hljs-string">&quot;OK&quot;</span>,
+    <span class="hljs-string">&quot;servidor&quot;</span> =&gt; <span class="hljs-string">&quot;operacional&quot;</span>,
     <span class="hljs-string">&quot;mensagem&quot;</span> =&gt; <span class="hljs-string">&quot;API funcionando com sucesso!&quot;</span>
 ];
 
@@ -287,25 +287,21 @@ O cliente faz o pedido no cardápio <mjx-container class="MathJax" jax="SVG"><sv
 <header> </header>
 <h1 id="apis-e-servi%C3%A7os-web-10">APIs e Serviços Web</h1>
 <h2 id="o-contrato-padr%C3%A3o-da-disciplina">O contrato padrão da disciplina</h2>
-<p>Adotamos um envelope consistente em todas as respostas:</p>
+<p>Adotamos um padrão consistente em todas as respostas:</p>
 <div class="grid grid-cols-2 gap-6">
 <div>
-<p><strong>Sucesso (<code>status: &quot;OK&quot;</code>)</strong></p>
+<p><strong>Sucesso (sem a chave <code>error</code>)</strong></p>
 <pre><code class="language-json"><span class="hljs-punctuation">{</span>
-  <span class="hljs-attr">&quot;status&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;OK&quot;</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">&quot;result&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
-    <span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">42</span><span class="hljs-punctuation">,</span>
-    <span class="hljs-attr">&quot;nome&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Ana Souza&quot;</span>
-  <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">42</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;nome&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Ana Souza&quot;</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">&quot;message&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Encontrado com sucesso&quot;</span>
 <span class="hljs-punctuation">}</span>
 </code></pre>
 </div>
 <div>
-<p><strong>Erro (<code>status: &quot;error&quot;</code>)</strong></p>
+<p><strong>Erro (<code>error: true</code>)</strong></p>
 <pre><code class="language-json"><span class="hljs-punctuation">{</span>
-  <span class="hljs-attr">&quot;status&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;error&quot;</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">&quot;result&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;error&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">&quot;message&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Matrícula não informada&quot;</span>
 <span class="hljs-punctuation">}</span>
 </code></pre>
@@ -321,7 +317,7 @@ O cliente faz o pedido no cardápio <mjx-container class="MathJax" jax="SVG"><sv
 <pre><code class="language-php"><span class="hljs-title function_ invoke__">http_response_code</span>(<span class="hljs-number">400</span>); <span class="hljs-comment">// 400 Bad Request</span>
 
 <span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">json_encode</span>([
-    <span class="hljs-string">&quot;status&quot;</span> =&gt; <span class="hljs-string">&quot;error&quot;</span>,
+    <span class="hljs-string">&quot;error&quot;</span> =&gt; <span class="hljs-literal">true</span>,
     <span class="hljs-string">&quot;message&quot;</span> =&gt; <span class="hljs-string">&quot;Parâmetros ausentes.&quot;</span>
 ]);
 </code></pre>
@@ -348,13 +344,19 @@ O cliente faz o pedido no cardápio <mjx-container class="MathJax" jax="SVG"><sv
 
 <span class="hljs-keyword">if</span> (<span class="hljs-variable">$metodo</span> === <span class="hljs-string">&quot;GET&quot;</span>) {
     <span class="hljs-title function_ invoke__">http_response_code</span>(<span class="hljs-number">200</span>);
-    <span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">json_encode</span>([<span class="hljs-string">&quot;status&quot;</span> =&gt; <span class="hljs-string">&quot;OK&quot;</span>, <span class="hljs-string">&quot;mensagem&quot;</span> =&gt; <span class="hljs-string">&quot;Leitura realizada&quot;</span>]);
+    <span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">json_encode</span>([
+        <span class="hljs-string">&quot;dados&quot;</span> =&gt; <span class="hljs-variable">$dados</span>,
+        <span class="hljs-string">&quot;message&quot;</span> =&gt; <span class="hljs-string">&quot;Leitura realizada com sucesso&quot;</span>
+    ]);
     <span class="hljs-keyword">exit</span>;
 }
 
 <span class="hljs-keyword">if</span> (<span class="hljs-variable">$metodo</span> === <span class="hljs-string">&quot;POST&quot;</span>) {
     <span class="hljs-title function_ invoke__">http_response_code</span>(<span class="hljs-number">201</span>);
-    <span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">json_encode</span>([<span class="hljs-string">&quot;status&quot;</span> =&gt; <span class="hljs-string">&quot;OK&quot;</span>, <span class="hljs-string">&quot;mensagem&quot;</span> =&gt; <span class="hljs-string">&quot;Cadastro realizado&quot;</span>]);
+    <span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">json_encode</span>([
+        <span class="hljs-string">&quot;novoRegistro&quot;</span> =&gt; <span class="hljs-variable">$novoRegistro</span>,
+        <span class="hljs-string">&quot;message&quot;</span> =&gt; <span class="hljs-string">&quot;Cadastro realizado com sucesso&quot;</span>
+    ]);
     <span class="hljs-keyword">exit</span>;
 }
 </code></pre>
@@ -407,13 +409,20 @@ O cliente faz o pedido no cardápio <mjx-container class="MathJax" jax="SVG"><sv
 
 <span class="hljs-keyword">if</span> (<span class="hljs-variable">$operacao</span> === <span class="hljs-literal">null</span> || <span class="hljs-variable">$a</span> === <span class="hljs-literal">null</span> || <span class="hljs-variable">$b</span> === <span class="hljs-literal">null</span>) {
     <span class="hljs-title function_ invoke__">http_response_code</span>(<span class="hljs-number">400</span>);
-    <span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">json_encode</span>([<span class="hljs-string">&quot;status&quot;</span> =&gt; <span class="hljs-string">&quot;error&quot;</span>, <span class="hljs-string">&quot;message&quot;</span> =&gt; <span class="hljs-string">&quot;Informe operacao, a e b&quot;</span>]);
+    <span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">json_encode</span>([
+        <span class="hljs-string">&quot;error&quot;</span> =&gt; <span class="hljs-literal">true</span>,
+        <span class="hljs-string">&quot;message&quot;</span> =&gt; <span class="hljs-string">&quot;Informe operacao, a e b&quot;</span>
+    ]);
     <span class="hljs-keyword">exit</span>;
 }
 
 <span class="hljs-variable">$resultado</span> = (<span class="hljs-variable">$operacao</span> === <span class="hljs-string">&quot;somar&quot;</span>) ? (<span class="hljs-keyword">float</span>)<span class="hljs-variable">$a</span> + (<span class="hljs-keyword">float</span>)<span class="hljs-variable">$b</span> : <span class="hljs-literal">null</span>;
 
-<span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">json_encode</span>([<span class="hljs-string">&quot;status&quot;</span> =&gt; <span class="hljs-string">&quot;OK&quot;</span>, <span class="hljs-string">&quot;resultado&quot;</span> =&gt; <span class="hljs-variable">$resultado</span>]);
+<span class="hljs-title function_ invoke__">http_response_code</span>(<span class="hljs-number">200</span>);
+<span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">json_encode</span>([
+    <span class="hljs-string">&quot;resultado&quot;</span> =&gt; <span class="hljs-variable">$resultado</span>,
+    <span class="hljs-string">&quot;message&quot;</span> =&gt; <span class="hljs-string">&quot;Cálculo realizado com sucesso&quot;</span>
+]);
 </code></pre>
 <footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
 </section>
@@ -427,7 +436,10 @@ O cliente faz o pedido no cardápio <mjx-container class="MathJax" jax="SVG"><sv
 
 <span class="hljs-keyword">if</span> (<span class="hljs-variable">$_SERVER</span>[<span class="hljs-string">&quot;REQUEST_METHOD&quot;</span>] !== <span class="hljs-string">&quot;POST&quot;</span>) {
     <span class="hljs-title function_ invoke__">http_response_code</span>(<span class="hljs-number">405</span>);
-    <span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">json_encode</span>([<span class="hljs-string">&quot;status&quot;</span> =&gt; <span class="hljs-string">&quot;error&quot;</span>, <span class="hljs-string">&quot;message&quot;</span> =&gt; <span class="hljs-string">&quot;Use POST&quot;</span>]);
+    <span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">json_encode</span>([
+        <span class="hljs-string">&quot;error&quot;</span> =&gt; <span class="hljs-literal">true</span>,
+        <span class="hljs-string">&quot;message&quot;</span> =&gt; <span class="hljs-string">&quot;Use POST&quot;</span>
+    ]);
     <span class="hljs-keyword">exit</span>;
 }
 
@@ -436,12 +448,19 @@ O cliente faz o pedido no cardápio <mjx-container class="MathJax" jax="SVG"><sv
 
 <span class="hljs-keyword">if</span> (<span class="hljs-variable">$nome</span> === <span class="hljs-string">&quot;&quot;</span> || <span class="hljs-variable">$email</span> === <span class="hljs-string">&quot;&quot;</span>) {
     <span class="hljs-title function_ invoke__">http_response_code</span>(<span class="hljs-number">400</span>);
-    <span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">json_encode</span>([<span class="hljs-string">&quot;status&quot;</span> =&gt; <span class="hljs-string">&quot;error&quot;</span>, <span class="hljs-string">&quot;message&quot;</span> =&gt; <span class="hljs-string">&quot;Campos obrigatórios&quot;</span>]);
+    <span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">json_encode</span>([
+        <span class="hljs-string">&quot;error&quot;</span> =&gt; <span class="hljs-literal">true</span>,
+        <span class="hljs-string">&quot;message&quot;</span> =&gt; <span class="hljs-string">&quot;Campos obrigatórios&quot;</span>
+    ]);
     <span class="hljs-keyword">exit</span>;
 }
 
 <span class="hljs-title function_ invoke__">http_response_code</span>(<span class="hljs-number">201</span>);
-<span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">json_encode</span>([<span class="hljs-string">&quot;status&quot;</span> =&gt; <span class="hljs-string">&quot;OK&quot;</span>, <span class="hljs-string">&quot;result&quot;</span> =&gt; [<span class="hljs-string">&quot;nome&quot;</span> =&gt; <span class="hljs-variable">$nome</span>, <span class="hljs-string">&quot;email&quot;</span> =&gt; <span class="hljs-variable">$email</span>]]);
+<span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">json_encode</span>([
+    <span class="hljs-string">&quot;nome&quot;</span> =&gt; <span class="hljs-variable">$nome</span>,
+    <span class="hljs-string">&quot;email&quot;</span> =&gt; <span class="hljs-variable">$email</span>,
+    <span class="hljs-string">&quot;message&quot;</span> =&gt; <span class="hljs-string">&quot;Cadastro realizado com sucesso&quot;</span>
+]);
 </code></pre>
 <footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
 </section>
@@ -461,12 +480,18 @@ O cliente faz o pedido no cardápio <mjx-container class="MathJax" jax="SVG"><sv
 
 <span class="hljs-keyword">if</span> (!<span class="hljs-title function_ invoke__">is_array</span>(<span class="hljs-variable">$dados</span>) || <span class="hljs-keyword">empty</span>(<span class="hljs-variable">$dados</span>[<span class="hljs-string">&quot;titulo&quot;</span>])) {
     <span class="hljs-title function_ invoke__">http_response_code</span>(<span class="hljs-number">400</span>);
-    <span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">json_encode</span>([<span class="hljs-string">&quot;status&quot;</span> =&gt; <span class="hljs-string">&quot;error&quot;</span>, <span class="hljs-string">&quot;message&quot;</span> =&gt; <span class="hljs-string">&quot;JSON inválido ou sem título&quot;</span>]);
+    <span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">json_encode</span>([
+        <span class="hljs-string">&quot;error&quot;</span> =&gt; <span class="hljs-literal">true</span>,
+        <span class="hljs-string">&quot;message&quot;</span> =&gt; <span class="hljs-string">&quot;JSON inválido ou sem título&quot;</span>
+    ]);
     <span class="hljs-keyword">exit</span>;
 }
 
 <span class="hljs-title function_ invoke__">http_response_code</span>(<span class="hljs-number">201</span>);
-<span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">json_encode</span>([<span class="hljs-string">&quot;status&quot;</span> =&gt; <span class="hljs-string">&quot;OK&quot;</span>, <span class="hljs-string">&quot;titulo&quot;</span> =&gt; <span class="hljs-variable">$dados</span>[<span class="hljs-string">&quot;titulo&quot;</span>]]);
+<span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">json_encode</span>([
+    <span class="hljs-string">&quot;titulo&quot;</span> =&gt; <span class="hljs-variable">$dados</span>[<span class="hljs-string">&quot;titulo&quot;</span>],
+    <span class="hljs-string">&quot;message&quot;</span> =&gt; <span class="hljs-string">&quot;Livro cadastrado com sucesso&quot;</span>
+]);
 </code></pre>
 <footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
 </section>
@@ -520,7 +545,11 @@ O cliente faz o pedido no cardápio <mjx-container class="MathJax" jax="SVG"><sv
 
 <span class="hljs-keyword">if</span> (!<span class="hljs-keyword">empty</span>(<span class="hljs-variable">$erros</span>)) {
     <span class="hljs-title function_ invoke__">http_response_code</span>(<span class="hljs-number">400</span>);
-    <span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">json_encode</span>([<span class="hljs-string">&quot;status&quot;</span> =&gt; <span class="hljs-string">&quot;error&quot;</span>, <span class="hljs-string">&quot;erros&quot;</span> =&gt; <span class="hljs-variable">$erros</span>]);
+    <span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">json_encode</span>([
+        <span class="hljs-string">&quot;error&quot;</span> =&gt; <span class="hljs-literal">true</span>,
+        <span class="hljs-string">&quot;erros&quot;</span> =&gt; <span class="hljs-variable">$erros</span>,
+        <span class="hljs-string">&quot;message&quot;</span> =&gt; <span class="hljs-string">&quot;Dados inválidos&quot;</span>
+    ]);
     <span class="hljs-keyword">exit</span>; <span class="hljs-comment">// Importante: interrompe a execução!</span>
 }
 </code></pre>

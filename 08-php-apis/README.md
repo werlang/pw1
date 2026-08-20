@@ -193,9 +193,9 @@ header("Content-Type: application/json");
 
 // 2. Monta os dados que serão devolvidos
 $resposta = [
-    "status" => "OK",
-    "mensagem" => "API funcionando!",
-    "horario" => date("d-m-Y H:i:s")
+    "servidor" => "operacional",
+    "horario" => date("d-m-Y H:i:s"),
+    "message" => "API funcionando com sucesso!"
 ];
 
 // 3. Serializa o array em formato de texto JSON e imprime na saída
@@ -209,26 +209,22 @@ Sem o comando `header("Content-Type: application/json")`, o servidor PHP envia o
 
 ## 8. O contrato padrão de resposta da disciplina
 
-Para que qualquer cliente (seja o JavaScript no frontend ou uma ferramenta de teste) consiga conversar de maneira previsível com as nossas APIs, adotamos uma estrutura de envelope consistente em todas as respostas:
+Para que qualquer cliente (seja o JavaScript no frontend ou uma ferramenta de teste) consiga conversar de maneira previsível com as nossas APIs, adotamos um padrão consistente em todas as respostas:
 
-### Resposta de Sucesso:
+### Resposta de Sucesso (sem a chave `error`):
 ```json
 {
-  "status": "OK",
-  "result": {
-    "id": 42,
-    "nome": "Ana Souza",
-    "curso": "Técnico em Informática"
-  },
+  "id": 42,
+  "nome": "Ana Souza",
+  "curso": "Técnico em Informática",
   "message": "Registro localizado com sucesso"
 }
 ```
 
-### Resposta de Erro:
+### Resposta de Erro (`error: true`):
 ```json
 {
-  "status": "error",
-  "result": null,
+  "error": true,
   "message": "Parâmetro obrigatório 'matricula' não foi informado."
 }
 ```
@@ -246,7 +242,7 @@ No PHP, definimos o código com a função `http_response_code($codigo)`:
 http_response_code(400);
 
 echo json_encode([
-    "status" => "error",
+    "error" => true,
     "message" => "Dados incompletos"
 ]);
 ```
@@ -278,20 +274,26 @@ $metodo = $_SERVER["REQUEST_METHOD"];
 
 if ($metodo === "GET") {
     http_response_code(200);
-    echo json_encode(["status" => "OK", "mensagem" => "Você realizou uma leitura (GET)"]);
+    echo json_encode([
+        "dados" => $dados,
+        "message" => "Você realizou uma leitura (GET)"
+    ]);
     exit;
 }
 
 if ($metodo === "POST") {
     http_response_code(201);
-    echo json_encode(["status" => "OK", "mensagem" => "Você enviou novos dados (POST)"]);
+    echo json_encode([
+        "novoRegistro" => $novoRegistro,
+        "message" => "Você enviou novos dados (POST)"
+    ]);
     exit;
 }
 
 // Se não for nenhum dos métodos aceitos pelo endpoint:
 http_response_code(405);
 echo json_encode([
-    "status" => "error",
+    "error" => true,
     "message" => "Método $metodo não permitido neste endpoint."
 ]);
 ```
@@ -335,7 +337,7 @@ $valorB = $_GET["b"] ?? null;
 if ($operacao === null || $valorA === null || $valorB === null) {
     http_response_code(400);
     echo json_encode([
-        "status" => "error",
+        "error" => true,
         "message" => "Informe os parâmetros 'operacao', 'a' e 'b' na URL."
     ]);
     exit;
@@ -348,13 +350,11 @@ if ($operacao === "somar") {
 
 http_response_code(200);
 echo json_encode([
-    "status" => "OK",
-    "result" => [
-        "operacao" => $operacao,
-        "a" => (float)$valorA,
-        "b" => (float)$valorB,
-        "resultado" => $resultado
-    ]
+    "operacao" => $operacao,
+    "a" => (float)$valorA,
+    "b" => (float)$valorB,
+    "resultado" => $resultado,
+    "message" => "Cálculo realizado com sucesso."
 ]);
 ```
 
@@ -373,7 +373,10 @@ header("Content-Type: application/json");
 
 if ($_SERVER["REQUEST_METHOD"] !== "POST") {
     http_response_code(405);
-    echo json_encode(["status" => "error", "message" => "Método não permitido. Use POST."]);
+    echo json_encode([
+        "error" => true,
+        "message" => "Método não permitido. Use POST."
+    ]);
     exit;
 }
 
@@ -383,7 +386,7 @@ $email = trim($_POST["email"] ?? "");
 if ($nome === "" || $email === "") {
     http_response_code(400);
     echo json_encode([
-        "status" => "error",
+        "error" => true,
         "message" => "Os campos 'nome' e 'email' são obrigatórios via formulário."
     ]);
     exit;
@@ -391,12 +394,9 @@ if ($nome === "" || $email === "") {
 
 http_response_code(201);
 echo json_encode([
-    "status" => "OK",
-    "result" => [
-        "nome" => $nome,
-        "email" => $email,
-        "cadastrado_em" => date("d/m/Y H:i:s")
-    ],
+    "nome" => $nome,
+    "email" => $email,
+    "cadastrado_em" => date("d/m/Y H:i:s"),
     "message" => "Estudante cadastrado com sucesso!"
 ]);
 ```
@@ -417,7 +417,10 @@ header("Content-Type: application/json");
 
 if ($_SERVER["REQUEST_METHOD"] !== "POST") {
     http_response_code(405);
-    echo json_encode(["status" => "error", "message" => "Método não permitido."]);
+    echo json_encode([
+        "error" => true,
+        "message" => "Método não permitido. Use POST."
+    ]);
     exit;
 }
 
@@ -431,7 +434,7 @@ $dados = json_decode($corpoRequisicao, true);
 if (!is_array($dados)) {
     http_response_code(400);
     echo json_encode([
-        "status" => "error",
+        "error" => true,
         "message" => "O corpo da requisição não contém um JSON válido."
     ]);
     exit;
@@ -444,7 +447,7 @@ $prioridade = $dados["prioridade"] ?? "normal";
 if ($titulo === "") {
     http_response_code(400);
     echo json_encode([
-        "status" => "error",
+        "error" => true,
         "message" => "O campo 'titulo' é obrigatório no JSON."
     ]);
     exit;
@@ -452,12 +455,9 @@ if ($titulo === "") {
 
 http_response_code(201);
 echo json_encode([
-    "status" => "OK",
-    "result" => [
-        "titulo" => $titulo,
-        "prioridade" => $prioridade,
-        "status" => "pendente"
-    ],
+    "titulo" => $titulo,
+    "prioridade" => $prioridade,
+    "status_tarefa" => "pendente",
     "message" => "Tarefa criada a partir de payload JSON!"
 ]);
 ```
@@ -502,7 +502,7 @@ if ($idade === null || !is_numeric($idade) || (int)$idade <= 0) {
 if (!empty($erros)) {
     http_response_code(400);
     echo json_encode([
-        "status" => "error",
+        "error" => true,
         "erros" => $erros,
         "message" => "Falha de validação nos dados recebidos."
     ]);
@@ -512,12 +512,10 @@ if (!empty($erros)) {
 // Se passou por todas as validações, prossegue com sucesso
 http_response_code(200);
 echo json_encode([
-    "status" => "OK",
-    "result" => [
-        "nome" => $nome,
-        "idade" => (int)$idade,
-        "maior_de_idade" => (int)$idade >= 18
-    ]
+    "nome" => $nome,
+    "idade" => (int)$idade,
+    "maior_de_idade" => (int)$idade >= 18,
+    "message" => "Validação concluída com sucesso."
 ]);
 ```
 
@@ -528,7 +526,7 @@ echo json_encode([
 - **Esquecer o cabeçalho `Content-Type: application/json`:** o cliente interpretará a resposta como texto simples (`text/html`), dificultando a leitura automática.
 - **Deixar comandos `echo` ou espaços antes do `json_encode()`:** imprimir mensagens soltas, avisos de erro ou tags HTML antes do JSON corrompe a sintaxe e faz o cliente rejeitar a resposta com erro de *JSON parse*.
 - **Tentar ler JSON do corpo usando `$_POST`:** a superglobal `$_POST` só funciona para dados de formulário tradicional (`urlencoded` ou `multipart`). Para JSON, use sempre `php://input`.
-- **Esquecer `http_response_code()` nos erros:** responder com `{ "status": "error" }`, mas manter o código HTTP como `200 OK`, confunde ferramentas de teste e clientes automáticos.
+- **Esquecer `http_response_code()` nos erros:** responder com `{ "error": true }`, mas manter o código HTTP como `200 OK`, confunde ferramentas de teste e clientes automáticos.
 - **Esquecer `exit` após emitir uma resposta de erro:** o script continuará executando as linhas seguintes e poderá imprimir um segundo bloco de dados acidentalmente.
 
 ---
@@ -536,7 +534,7 @@ echo json_encode([
 ## 18. Boas práticas para APIs em PHP
 
 1. **Mantenha os arquivos de backend limpos:** não abra e feche blocos `<?php ?>` misturados com HTML. Se o arquivo é uma API, ele deve conter exclusivamente código PHP.
-2. **Adote um contrato uniforme:** use sempre os mesmos nomes de chaves (`status`, `result`, `message`) em todos os endpoints do projeto.
+2. **Adote um contrato uniforme:** use sempre um padrão consistente (como `"error" => true` para erros e chaves de dados diretas no sucesso com `"message"`) em todos os endpoints do projeto.
 3. **Valide os dados antes de processar:** trate campos vazios, tipos errados e dados ausentes logo no início do script com retorno antecipado (`exit`).
 4. **Organize seus testes:** salve as requisições em arquivos `.yaml` dentro da pasta do exercício para que qualquer pessoa consiga testar sua API rapidamente.
 5. **Use os verbos HTTP corretos:** use `GET` apenas para leituras e `POST` para operações que criam ou processam dados no servidor.

@@ -242,7 +242,7 @@ header("Content-Type: application/json");
 
 // 2. Monta os dados em array/variável
 $resposta = [
-    "status" => "OK",
+    "servidor" => "operacional",
     "mensagem" => "API funcionando com sucesso!"
 ];
 
@@ -257,20 +257,17 @@ echo json_encode($resposta);
 # APIs e Serviços Web
 ## O contrato padrão da disciplina
 
-Adotamos um envelope consistente em todas as respostas:
+Adotamos um padrão consistente em todas as respostas:
 
 <div class="grid grid-cols-2 gap-6">
 <div>
 
-**Sucesso (`status: "OK"`)**
+**Sucesso (sem a chave `error`)**
 
 ```json
 {
-  "status": "OK",
-  "result": {
-    "id": 42,
-    "nome": "Ana Souza"
-  },
+  "id": 42,
+  "nome": "Ana Souza",
   "message": "Encontrado com sucesso"
 }
 ```
@@ -278,12 +275,11 @@ Adotamos um envelope consistente em todas as respostas:
 </div>
 <div>
 
-**Erro (`status: "error"`)**
+**Erro (`error: true`)**
 
 ```json
 {
-  "status": "error",
-  "result": null,
+  "error": true,
   "message": "Matrícula não informada"
 }
 ```
@@ -302,7 +298,7 @@ O código numérico formaliza o resultado no cabeçalho HTTP:
 http_response_code(400); // 400 Bad Request
 
 echo json_encode([
-    "status" => "error",
+    "error" => true,
     "message" => "Parâmetros ausentes."
 ]);
 ```
@@ -330,13 +326,19 @@ $metodo = $_SERVER["REQUEST_METHOD"];
 
 if ($metodo === "GET") {
     http_response_code(200);
-    echo json_encode(["status" => "OK", "mensagem" => "Leitura realizada"]);
+    echo json_encode([
+        "dados" => $dados,
+        "message" => "Leitura realizada com sucesso"
+    ]);
     exit;
 }
 
 if ($metodo === "POST") {
     http_response_code(201);
-    echo json_encode(["status" => "OK", "mensagem" => "Cadastro realizado"]);
+    echo json_encode([
+        "novoRegistro" => $novoRegistro,
+        "message" => "Cadastro realizado com sucesso"
+    ]);
     exit;
 }
 ```
@@ -392,13 +394,20 @@ $b = $_GET["b"] ?? null;
 
 if ($operacao === null || $a === null || $b === null) {
     http_response_code(400);
-    echo json_encode(["status" => "error", "message" => "Informe operacao, a e b"]);
+    echo json_encode([
+        "error" => true,
+        "message" => "Informe operacao, a e b"
+    ]);
     exit;
 }
 
 $resultado = ($operacao === "somar") ? (float)$a + (float)$b : null;
 
-echo json_encode(["status" => "OK", "resultado" => $resultado]);
+http_response_code(200);
+echo json_encode([
+    "resultado" => $resultado,
+    "message" => "Cálculo realizado com sucesso"
+]);
 ```
 
 ---
@@ -414,7 +423,10 @@ header("Content-Type: application/json");
 
 if ($_SERVER["REQUEST_METHOD"] !== "POST") {
     http_response_code(405);
-    echo json_encode(["status" => "error", "message" => "Use POST"]);
+    echo json_encode([
+        "error" => true,
+        "message" => "Use POST"
+    ]);
     exit;
 }
 
@@ -423,12 +435,19 @@ $email = trim($_POST["email"] ?? "");
 
 if ($nome === "" || $email === "") {
     http_response_code(400);
-    echo json_encode(["status" => "error", "message" => "Campos obrigatórios"]);
+    echo json_encode([
+        "error" => true,
+        "message" => "Campos obrigatórios"
+    ]);
     exit;
 }
 
 http_response_code(201);
-echo json_encode(["status" => "OK", "result" => ["nome" => $nome, "email" => $email]]);
+echo json_encode([
+    "nome" => $nome,
+    "email" => $email,
+    "message" => "Cadastro realizado com sucesso"
+]);
 ```
 
 ---
@@ -450,12 +469,18 @@ $dados = json_decode($corpo, true);
 
 if (!is_array($dados) || empty($dados["titulo"])) {
     http_response_code(400);
-    echo json_encode(["status" => "error", "message" => "JSON inválido ou sem título"]);
+    echo json_encode([
+        "error" => true,
+        "message" => "JSON inválido ou sem título"
+    ]);
     exit;
 }
 
 http_response_code(201);
-echo json_encode(["status" => "OK", "titulo" => $dados["titulo"]]);
+echo json_encode([
+    "titulo" => $dados["titulo"],
+    "message" => "Livro cadastrado com sucesso"
+]);
 ```
 
 ---
@@ -486,7 +511,11 @@ if ($idade === null || !is_numeric($idade)) $erros[] = "Idade inválida";
 
 if (!empty($erros)) {
     http_response_code(400);
-    echo json_encode(["status" => "error", "erros" => $erros]);
+    echo json_encode([
+        "error" => true,
+        "erros" => $erros,
+        "message" => "Dados inválidos"
+    ]);
     exit; // Importante: interrompe a execução!
 }
 ```
