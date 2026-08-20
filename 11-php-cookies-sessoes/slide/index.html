@@ -179,7 +179,7 @@ GET  /perfil.php  → outra execução
 <span class="hljs-keyword">if</span> (!<span class="hljs-keyword">isset</span>(<span class="hljs-variable">$_SESSION</span>[<span class="hljs-string">&quot;user&quot;</span>])) {
     <span class="hljs-title function_ invoke__">http_response_code</span>(<span class="hljs-number">401</span>);
     <span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">json_encode</span>([
-        <span class="hljs-string">&quot;status&quot;</span> =&gt; <span class="hljs-string">&quot;error&quot;</span>,
+        <span class="hljs-string">&quot;error&quot;</span> =&gt; <span class="hljs-literal">true</span>,
         <span class="hljs-string">&quot;message&quot;</span> =&gt; <span class="hljs-string">&quot;Autenticação necessária&quot;</span>
     ]);
     <span class="hljs-keyword">exit</span>;
@@ -359,6 +359,10 @@ GET  /perfil.php  → outra execução
     <span class="hljs-variable">$_SESSION</span> = [];
     <span class="hljs-title function_ invoke__">session_destroy</span>();
     <span class="hljs-title function_ invoke__">http_response_code</span>(<span class="hljs-number">401</span>);
+    <span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">json_encode</span>([
+        <span class="hljs-string">&quot;error&quot;</span> =&gt; <span class="hljs-literal">true</span>,
+        <span class="hljs-string">&quot;message&quot;</span> =&gt; <span class="hljs-string">&quot;Sessão expirada por inatividade&quot;</span>
+    ]);
     <span class="hljs-keyword">exit</span>;
 }
 </code></pre>

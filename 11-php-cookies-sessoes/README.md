@@ -109,7 +109,7 @@ if (!$user || !password_verify($senha, $user["password"])) {
     http_response_code(401);
 
     echo json_encode([
-        "status" => "error",
+        "error" => true,
         "message" => "Credenciais inválidas."
     ]);
 
@@ -141,7 +141,7 @@ if (!isset($_SESSION["user"])) {
     http_response_code(401);
 
     echo json_encode([
-        "status" => "error",
+        "error" => true,
         "message" => "Autenticação necessária."
     ]);
 
@@ -162,7 +162,7 @@ if ($_SESSION["user"]["id"] !== $ownerId) {
     http_response_code(403);
 
     echo json_encode([
-        "status" => "error",
+        "error" => true,
         "message" => "Você não pode alterar este registro."
     ]);
 
@@ -310,6 +310,12 @@ if (time() - $ultimoAcesso > $limite) {
     $_SESSION = [];
     session_destroy();
     http_response_code(401);
+
+    echo json_encode([
+        "error" => true,
+        "message" => "Sessão expirada por inatividade."
+    ]);
+
     exit;
 }
 
@@ -336,10 +342,8 @@ Sessão válida não prova que o usuário desejou aquela requisição.
 
 ```php
 echo json_encode([
-    "status" => "OK",
-    "result" => [
-        "user" => $_SESSION["user"]
-    ]
+    "user" => $_SESSION["user"],
+    "message" => "Perfil recuperado com sucesso."
 ]);
 ```
 

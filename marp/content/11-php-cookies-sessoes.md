@@ -163,7 +163,7 @@ session_start();
 if (!isset($_SESSION["user"])) {
     http_response_code(401);
     echo json_encode([
-        "status" => "error",
+        "error" => true,
         "message" => "Autenticação necessária"
     ]);
     exit;
@@ -312,6 +312,10 @@ if (time() - $ultimoAcesso > $limite) {
     $_SESSION = [];
     session_destroy();
     http_response_code(401);
+    echo json_encode([
+        "error" => true,
+        "message" => "Sessão expirada por inatividade"
+    ]);
     exit;
 }
 ```
