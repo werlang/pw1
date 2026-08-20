@@ -426,8 +426,7 @@ Para o primeiro contato, um `foreach` explícito também é uma ótima escolha.
 header("Content-Type: application/json");
 
 echo json_encode([
-    "status" => "OK",
-    "result" => $alunos
+    "alunos" => $alunos
 ]);
 ```
 

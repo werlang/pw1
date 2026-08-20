@@ -541,9 +541,8 @@ No desenvolvimento web, o PHP frequentemente recebe e envia dados em formato JSO
 header("Content-Type: application/json");
 
 $resposta = [
-    "status" => "OK",
     "total" => count($alunos),
-    "result" => $alunos
+    "alunos" => $alunos
 ];
 
 echo json_encode($resposta);
