@@ -287,6 +287,11 @@
 
 <span class="hljs-keyword">if</span> (!<span class="hljs-variable">$user</span>) {
     <span class="hljs-title function_ invoke__">http_response_code</span>(<span class="hljs-number">404</span>);
+    <span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">json_encode</span>([
+        <span class="hljs-string">&quot;error&quot;</span> =&gt; <span class="hljs-literal">true</span>,
+        <span class="hljs-string">&quot;message&quot;</span> =&gt; <span class="hljs-string">&quot;Usuário não encontrado&quot;</span>
+    ]);
+    <span class="hljs-keyword">exit</span>;
 }
 </code></pre>
 <footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
@@ -315,11 +320,10 @@
 
 <span class="hljs-title function_ invoke__">http_response_code</span>(<span class="hljs-number">201</span>);
 <span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">json_encode</span>([
-    <span class="hljs-string">&quot;status&quot;</span> =&gt; <span class="hljs-string">&quot;OK&quot;</span>,
-    <span class="hljs-string">&quot;result&quot;</span> =&gt; [<span class="hljs-string">&quot;id&quot;</span> =&gt; <span class="hljs-variable">$novoId</span>]
+    <span class="hljs-string">&quot;id&quot;</span> =&gt; (<span class="hljs-keyword">int</span>)<span class="hljs-variable">$novoId</span>,
+    <span class="hljs-string">&quot;message&quot;</span> =&gt; <span class="hljs-string">&quot;Usuário cadastrado com sucesso&quot;</span>
 ]);
 </code></pre>
-<p>Não devolva senha nem hash na resposta.</p>
 <footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="20" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
@@ -348,6 +352,10 @@
 <span class="hljs-keyword">if</span> (!<span class="hljs-variable">$user</span> ||
     !<span class="hljs-title function_ invoke__">password_verify</span>(<span class="hljs-variable">$senhaInformada</span>, <span class="hljs-variable">$user</span>[<span class="hljs-string">&quot;password&quot;</span>])) {
     <span class="hljs-title function_ invoke__">http_response_code</span>(<span class="hljs-number">401</span>);
+    <span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">json_encode</span>([
+        <span class="hljs-string">&quot;error&quot;</span> =&gt; <span class="hljs-literal">true</span>,
+        <span class="hljs-string">&quot;message&quot;</span> =&gt; <span class="hljs-string">&quot;Credenciais inválidas&quot;</span>
+    ]);
     <span class="hljs-keyword">exit</span>;
 }
 </code></pre>
@@ -366,11 +374,14 @@
 <h2 id="exce%C3%A7%C3%A3o-t%C3%A9cnica-n%C3%A3o-vai-para-o-cliente">Exceção técnica não vai para o cliente</h2>
 <pre><code class="language-php"><span class="hljs-keyword">try</span> {
     <span class="hljs-variable">$stmt</span>-&gt;<span class="hljs-title function_ invoke__">execute</span>([<span class="hljs-variable">$id</span>]);
-    <span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">json_encode</span>([<span class="hljs-string">&quot;status&quot;</span> =&gt; <span class="hljs-string">&quot;OK&quot;</span>]);
+    <span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">json_encode</span>([
+        <span class="hljs-string">&quot;id&quot;</span> =&gt; <span class="hljs-variable">$id</span>,
+        <span class="hljs-string">&quot;message&quot;</span> =&gt; <span class="hljs-string">&quot;Operação realizada com sucesso&quot;</span>
+    ]);
 } <span class="hljs-keyword">catch</span> (PDOException <span class="hljs-variable">$error</span>) {
     <span class="hljs-title function_ invoke__">http_response_code</span>(<span class="hljs-number">500</span>);
     <span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">json_encode</span>([
-        <span class="hljs-string">&quot;status&quot;</span> =&gt; <span class="hljs-string">&quot;error&quot;</span>,
+        <span class="hljs-string">&quot;error&quot;</span> =&gt; <span class="hljs-literal">true</span>,
         <span class="hljs-string">&quot;message&quot;</span> =&gt; <span class="hljs-string">&quot;Falha na operação&quot;</span>
     ]);
 }

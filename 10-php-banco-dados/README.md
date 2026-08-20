@@ -192,7 +192,7 @@ if (!$user) {
     http_response_code(404);
 
     echo json_encode([
-        "status" => "error",
+        "error" => true,
         "message" => "Usuário não encontrado."
     ]);
 
@@ -238,12 +238,10 @@ Uma resposta de criação pode usar HTTP 201:
 http_response_code(201);
 
 echo json_encode([
-    "status" => "OK",
-    "result" => [
-        "id" => $novoId,
-        "name" => $nome,
-        "email" => $email
-    ]
+    "id" => (int)$novoId,
+    "name" => $nome,
+    "email" => $email,
+    "message" => "Usuário cadastrado com sucesso."
 ]);
 ```
 
@@ -316,7 +314,7 @@ if (!$user || !password_verify($senhaInformada, $user["password"])) {
     http_response_code(401);
 
     echo json_encode([
-        "status" => "error",
+        "error" => true,
         "message" => "Credenciais inválidas."
     ]);
 
@@ -338,14 +336,14 @@ try {
     $stmt->execute([$id]);
 
     echo json_encode([
-        "status" => "OK",
-        "message" => "Usuário removido."
+        "id" => (int)$id,
+        "message" => "Usuário removido com sucesso."
     ]);
 } catch (PDOException $error) {
     http_response_code(500);
 
     echo json_encode([
-        "status" => "error",
+        "error" => true,
         "message" => "Não foi possível concluir a operação."
     ]);
 }

@@ -256,6 +256,11 @@ $user = $stmt->fetch();
 
 if (!$user) {
     http_response_code(404);
+    echo json_encode([
+        "error" => true,
+        "message" => "Usuário não encontrado"
+    ]);
+    exit;
 }
 ```
 
@@ -286,12 +291,10 @@ $novoId = $conn->lastInsertId();
 
 http_response_code(201);
 echo json_encode([
-    "status" => "OK",
-    "result" => ["id" => $novoId]
+    "id" => (int)$novoId,
+    "message" => "Usuário cadastrado com sucesso"
 ]);
 ```
-
-Não devolva senha nem hash na resposta.
 
 ---
 
@@ -322,6 +325,10 @@ $hash = password_hash($senha, PASSWORD_DEFAULT);
 if (!$user ||
     !password_verify($senhaInformada, $user["password"])) {
     http_response_code(401);
+    echo json_encode([
+        "error" => true,
+        "message" => "Credenciais inválidas"
+    ]);
     exit;
 }
 ```
@@ -342,11 +349,14 @@ Mensagens de login não precisam revelar se o e-mail existe.
 ```php
 try {
     $stmt->execute([$id]);
-    echo json_encode(["status" => "OK"]);
+    echo json_encode([
+        "id" => $id,
+        "message" => "Operação realizada com sucesso"
+    ]);
 } catch (PDOException $error) {
     http_response_code(500);
     echo json_encode([
-        "status" => "error",
+        "error" => true,
         "message" => "Falha na operação"
     ]);
 }
