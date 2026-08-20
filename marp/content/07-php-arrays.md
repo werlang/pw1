@@ -142,20 +142,23 @@ O operador `=>` liga cada chave textual ao seu respectivo valor.
 # Arrays no PHP
 ## Chave ausente sem susto
 
-```php
-$desconto = $produto["desconto"];
-```
-
 <div class="grid grid-cols-2 gap-6">
 <div>
 
-**`isset()`**
+**Operador `??` (coalescência nula)**
 
-- Verifica se a chave existe
-- Retorna `false` para valor `null`
+```php
+// Retorna 0 se "desconto" não existir
+$desconto = $produto["desconto"] ?? 0;
+```
+
+- Define um valor padrão
+- Mais conciso para atribuições
 
 </div>
 <div>
+
+**Função `isset()`**
 
 ```php
 if (isset($produto["desconto"])) {
@@ -164,6 +167,9 @@ if (isset($produto["desconto"])) {
     echo "Sem desconto";
 }
 ```
+
+- Verifica se existe e não é `null`
+- Ideal para blocos condicionais
 
 </div>
 </div>
@@ -248,10 +254,11 @@ Uma lista de registros é um array contendo outros arrays.
 ## Dados viram tabela
 
 ```php
-$nome = htmlspecialchars($aluno["nome"]);
-$turma = htmlspecialchars($aluno["turma"]);
-$media = number_format($aluno["media"], 1, ",", ".");
 foreach ($alunos as $aluno) {
+    $nome = htmlspecialchars($aluno["nome"]);
+    $turma = htmlspecialchars($aluno["turma"]);
+    $media = number_format($aluno["media"], 1, ",", ".");
+
     echo "<tr>
         <td>$nome</td>
         <td>$turma</td>

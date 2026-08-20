@@ -162,7 +162,9 @@ Verifica se a chave existe **e** se o seu valor é diferente de `null`:
 
 ```php
 if (isset($produto["desconto"])) {
-    echo "Desconto disponível: " . $produto["desconto"];
+    echo "Desconto: " . $produto["desconto"];
+} else {
+    echo "Sem desconto";
 }
 ```
 
@@ -173,25 +175,26 @@ if (isset($produto["desconto"])) {
 A função `count()` retorna a quantidade total de elementos presentes no array:
 
 ```php
-$totalMateriais = count($materiais);
-echo "Temos $totalMateriais materiais cadastrados.";
+echo count($materiais); // 2
 ```
 
 ### Inspecionando dados durante o desenvolvimento
 
-Para examinar visualmente o conteúdo e a estrutura de um array durante o desenvolvimento e depuração:
+Para examinar a estrutura e os valores de um array durante a depuração:
 
 ```php
-echo "<pre>";
-print_r($produto);
-echo "</pre>";
+// print_r exibe chaves e valores estruturados
+print_r($materiais); // Array ( [0] => Lápis [2] => Régua )
+
+// var_dump exibe chaves, valores, tipos de dados e tamanhos
+var_dump($materiais); // array(2) { [0]=> string(5) "Lápis" [2]=> string(5) "Régua" }
 ```
 
-A função `var_dump()` fornece informações ainda mais detalhadas, incluindo o tipo de dado e o comprimento de cada valor:
+No navegador, envolva a saída com tags `<pre>` para manter a quebra de linha e a indentação legíveis:
 
 ```php
 echo "<pre>";
-var_dump($produto);
+print_r($materiais);
 echo "</pre>";
 ```
 
@@ -329,6 +332,24 @@ Em aplicações web dinâmicas, os dados permanecem estruturados no array PHP, e
 
 > [!TIP]
 > Sempre proteja a exibição de strings oriundas de variáveis ou entradas com `htmlspecialchars()` para prevenir ataques de Cross-Site Scripting (XSS), e formate valores numéricos com `number_format()`.
+
+### Alternativa: Construção iterativa com `echo`
+
+Outra abordagem didática muito comum ao gerar blocos HTML diretamente dentro de laços é preparar variáveis sanitizadas e emitir a marcação via `echo`:
+
+```php
+foreach ($alunos as $aluno) {
+    $nome = htmlspecialchars($aluno["nome"]);
+    $turma = htmlspecialchars($aluno["turma"]);
+    $media = number_format($aluno["media"], 1, ",", ".");
+
+    echo "<tr>
+        <td>$nome</td>
+        <td>$turma</td>
+        <td>$media</td>
+    </tr>";
+}
+```
 
 ## 12. Adicionando e removendo elementos (Pilhas e Filas)
 
