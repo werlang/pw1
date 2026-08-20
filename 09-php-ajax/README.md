@@ -364,26 +364,24 @@ if ($nome === "") {
     http_response_code(422);
 
     echo json_encode([
-        "status" => "error",
+        "error" => true,
         "message" => "O nome é obrigatório."
     ]);
 
     exit;
 }
 
+http_response_code(201);
 echo json_encode([
-    "status" => "OK",
-    "result" => [
-        "nome" => $nome
-    ],
-    "message" => "Cadastro recebido."
+    "nome" => $nome,
+    "message" => "Cadastro recebido com sucesso."
 ]);
 ```
 
 Campos usados no padrão do repositório:
 
-- `status`: `"OK"` ou `"error"`;
-- `result`: dados retornados;
+- `error`: ausente no sucesso, ou `true` quando houver erro;
+- Chaves específicas para os dados (ex.: `nome`, `alunos`, `id`);
 - `message`: explicação para o usuário ou cliente.
 
 ## 17. Códigos HTTP úteis

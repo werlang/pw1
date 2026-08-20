@@ -329,9 +329,8 @@ No PHP, JSON é lido por `php://input`, não por `$_POST`.
 header("Content-Type: application/json; charset=utf-8");
 
 echo json_encode([
-    "status" => "OK",
-    "result" => $alunos,
-    "message" => "Lista carregada"
+    "alunos" => $alunos,
+    "message" => "Lista carregada com sucesso"
 ]);
 ```
 

@@ -320,9 +320,8 @@
 <pre><code class="language-php"><span class="hljs-title function_ invoke__">header</span>(<span class="hljs-string">&quot;Content-Type: application/json; charset=utf-8&quot;</span>);
 
 <span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">json_encode</span>([
-    <span class="hljs-string">&quot;status&quot;</span> =&gt; <span class="hljs-string">&quot;OK&quot;</span>,
-    <span class="hljs-string">&quot;result&quot;</span> =&gt; <span class="hljs-variable">$alunos</span>,
-    <span class="hljs-string">&quot;message&quot;</span> =&gt; <span class="hljs-string">&quot;Lista carregada&quot;</span>
+    <span class="hljs-string">&quot;alunos&quot;</span> =&gt; <span class="hljs-variable">$alunos</span>,
+    <span class="hljs-string">&quot;message&quot;</span> =&gt; <span class="hljs-string">&quot;Lista carregada com sucesso&quot;</span>
 ]);
 </code></pre>
 <p>Mantenha o contrato previsível em todos os endpoints.</p>
