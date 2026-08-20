@@ -21,7 +21,9 @@
 
 ## Backend/API patterns used here
 - PHP endpoints are colocated with the exercise and usually return JSON.
-- Typical shape is `{"status":"OK"|"error", "result":..., "message":...}`.
+- Typical response shape:
+  - Error: `{"error": true, "message": "..."}`
+  - Success: `{"error": not present, "chave_relevante": ..., "message": "..."}`
 - Use `require "connection.php"`, prepared statements, and `header('Content-Type: application/json')`.
 - Example endpoints: `exemplos/ex10.2/getusers.php`, `exemplos/ex10.2/insertuser.php`.
 - Session guard pattern: `exemplos/ex13.1/api/session.php`.
