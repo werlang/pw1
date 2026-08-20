@@ -398,19 +398,17 @@ if (!move_uploaded_file($foto["tmp_name"], $destino)) {
     http_response_code(500);
 
     echo json_encode([
-        "status" => "error",
+        "error" => true,
         "message" => "Não foi possível salvar a imagem."
     ]);
 
     exit;
 }
 
+http_response_code(201);
 echo json_encode([
-    "status" => "OK",
-    "result" => [
-        "filename" => $nomeSeguro
-    ],
-    "message" => "Imagem enviada."
+    "filename" => $nomeSeguro,
+    "message" => "Imagem enviada com sucesso."
 ]);
 ```
 
