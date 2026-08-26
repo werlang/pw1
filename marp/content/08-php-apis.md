@@ -49,7 +49,7 @@ pablowerlang@ifsul.edu.br
 - Cuida da interface ou do consumo
 - Dispara eventos e requisições
 - Exemplos:
-  - Navegador Web
+  - Navegador Web (barra de endereços)
   - Frontend JS com `fetch()`
   - Aplicativo Mobile
   - Ferramenta de Testes
@@ -169,6 +169,65 @@ O verbo HTTP indica a **intenção** da ação:
 ---
 
 # APIs e Serviços Web
+## Retornando JSON com PHP
+
+Três passos para transformar o PHP em uma API:
+
+```php
+<?php
+// 1. Avisa o cliente que a resposta é JSON
+header("Content-Type: application/json");
+
+// 2. Monta os dados em array/variável
+$resposta = [
+    "servidor" => "operacional",
+    "mensagem" => "API funcionando com sucesso!"
+];
+
+// 3. Serializa e imprime na saída
+echo json_encode($resposta);
+```
+
+**Sem `header()`, o cliente pode tratar o retorno como página HTML comum.**
+
+---
+
+# APIs e Serviços Web
+## O contrato padrão da disciplina
+
+Adotamos um padrão consistente em todas as respostas:
+
+<div class="grid grid-cols-2 gap-6">
+<div>
+
+**Sucesso (sem a chave `error`)**
+
+```json
+{
+  "id": 42,
+  "nome": "Ana Souza",
+  "message": "Encontrado com sucesso"
+}
+```
+
+</div>
+<div>
+
+**Erro (`error: true`)**
+
+```json
+{
+  "error": true,
+  "message": "Matrícula não informada"
+}
+```
+
+</div>
+</div>
+
+---
+
+# APIs e Serviços Web
 ## Testando APIs no desenvolvimento
 
 - Como testar o backend antes de criar o frontend?
@@ -223,65 +282,6 @@ request:
     type: json
     data:
       nome: Ana Souza
-```
-
-</div>
-</div>
-
----
-
-# APIs e Serviços Web
-## Retornando JSON com PHP
-
-Três passos para transformar o PHP em uma API:
-
-```php
-<?php
-// 1. Avisa o cliente que a resposta é JSON
-header("Content-Type: application/json");
-
-// 2. Monta os dados em array/variável
-$resposta = [
-    "servidor" => "operacional",
-    "mensagem" => "API funcionando com sucesso!"
-];
-
-// 3. Serializa e imprime na saída
-echo json_encode($resposta);
-```
-
-**Sem `header()`, o cliente pode tratar o retorno como página HTML comum.**
-
----
-
-# APIs e Serviços Web
-## O contrato padrão da disciplina
-
-Adotamos um padrão consistente em todas as respostas:
-
-<div class="grid grid-cols-2 gap-6">
-<div>
-
-**Sucesso (sem a chave `error`)**
-
-```json
-{
-  "id": 42,
-  "nome": "Ana Souza",
-  "message": "Encontrado com sucesso"
-}
-```
-
-</div>
-<div>
-
-**Erro (`error: true`)**
-
-```json
-{
-  "error": true,
-  "message": "Matrícula não informada"
-}
 ```
 
 </div>

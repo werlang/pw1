@@ -66,7 +66,7 @@
 <li>Dispara eventos e requisições</li>
 <li>Exemplos:
 <ul>
-<li>Navegador Web</li>
+<li>Navegador Web (barra de endereços)</li>
 <li>Frontend JS com <code>fetch()</code></li>
 <li>Aplicativo Mobile</li>
 <li>Ferramenta de Testes</li>
@@ -211,6 +211,53 @@ O cliente faz o pedido no cardápio <mjx-container class="MathJax" jax="SVG"><sv
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="9" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
 <header> </header>
 <h1 id="apis-e-servi%C3%A7os-web-7">APIs e Serviços Web</h1>
+<h2 id="retornando-json-com-php">Retornando JSON com PHP</h2>
+<p>Três passos para transformar o PHP em uma API:</p>
+<pre><code class="language-php"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-comment">// 1. Avisa o cliente que a resposta é JSON</span>
+<span class="hljs-title function_ invoke__">header</span>(<span class="hljs-string">&quot;Content-Type: application/json&quot;</span>);
+
+<span class="hljs-comment">// 2. Monta os dados em array/variável</span>
+<span class="hljs-variable">$resposta</span> = [
+    <span class="hljs-string">&quot;servidor&quot;</span> =&gt; <span class="hljs-string">&quot;operacional&quot;</span>,
+    <span class="hljs-string">&quot;mensagem&quot;</span> =&gt; <span class="hljs-string">&quot;API funcionando com sucesso!&quot;</span>
+];
+
+<span class="hljs-comment">// 3. Serializa e imprime na saída</span>
+<span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">json_encode</span>(<span class="hljs-variable">$resposta</span>);
+</code></pre>
+<p><strong>Sem <code>header()</code>, o cliente pode tratar o retorno como página HTML comum.</strong></p>
+<footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="10" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
+<header> </header>
+<h1 id="apis-e-servi%C3%A7os-web-8">APIs e Serviços Web</h1>
+<h2 id="o-contrato-padr%C3%A3o-da-disciplina">O contrato padrão da disciplina</h2>
+<p>Adotamos um padrão consistente em todas as respostas:</p>
+<div class="grid grid-cols-2 gap-6">
+<div>
+<p><strong>Sucesso (sem a chave <code>error</code>)</strong></p>
+<pre><code class="language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">42</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;nome&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Ana Souza&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;message&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Encontrado com sucesso&quot;</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+</div>
+<div>
+<p><strong>Erro (<code>error: true</code>)</strong></p>
+<pre><code class="language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">&quot;error&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;message&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Matrícula não informada&quot;</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+</div>
+</div>
+<footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="11" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
+<header> </header>
+<h1 id="apis-e-servi%C3%A7os-web-9">APIs e Serviços Web</h1>
 <h2 id="testando-apis-no-desenvolvimento">Testando APIs no desenvolvimento</h2>
 <ul>
 <li>Como testar o backend antes de criar o frontend?</li>
@@ -226,9 +273,9 @@ O cliente faz o pedido no cardápio <mjx-container class="MathJax" jax="SVG"><sv
 </code></pre>
 <footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="10" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="12" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
 <header> </header>
-<h1 id="apis-e-servi%C3%A7os-web-8">APIs e Serviços Web</h1>
+<h1 id="apis-e-servi%C3%A7os-web-10">APIs e Serviços Web</h1>
 <h2 id="requisi%C3%A7%C3%B5es-de-teste-em-yaml">Requisições de teste em YAML</h2>
 <div class="grid grid-cols-2 gap-6">
 <div>
@@ -257,53 +304,6 @@ O cliente faz o pedido no cardápio <mjx-container class="MathJax" jax="SVG"><sv
     <span class="hljs-attr">type:</span> <span class="hljs-string">json</span>
     <span class="hljs-attr">data:</span>
       <span class="hljs-attr">nome:</span> <span class="hljs-string">Ana</span> <span class="hljs-string">Souza</span>
-</code></pre>
-</div>
-</div>
-<footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
-</section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="11" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
-<header> </header>
-<h1 id="apis-e-servi%C3%A7os-web-9">APIs e Serviços Web</h1>
-<h2 id="retornando-json-com-php">Retornando JSON com PHP</h2>
-<p>Três passos para transformar o PHP em uma API:</p>
-<pre><code class="language-php"><span class="hljs-meta">&lt;?php</span>
-<span class="hljs-comment">// 1. Avisa o cliente que a resposta é JSON</span>
-<span class="hljs-title function_ invoke__">header</span>(<span class="hljs-string">&quot;Content-Type: application/json&quot;</span>);
-
-<span class="hljs-comment">// 2. Monta os dados em array/variável</span>
-<span class="hljs-variable">$resposta</span> = [
-    <span class="hljs-string">&quot;servidor&quot;</span> =&gt; <span class="hljs-string">&quot;operacional&quot;</span>,
-    <span class="hljs-string">&quot;mensagem&quot;</span> =&gt; <span class="hljs-string">&quot;API funcionando com sucesso!&quot;</span>
-];
-
-<span class="hljs-comment">// 3. Serializa e imprime na saída</span>
-<span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">json_encode</span>(<span class="hljs-variable">$resposta</span>);
-</code></pre>
-<p><strong>Sem <code>header()</code>, o cliente pode tratar o retorno como página HTML comum.</strong></p>
-<footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
-</section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="12" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
-<header> </header>
-<h1 id="apis-e-servi%C3%A7os-web-10">APIs e Serviços Web</h1>
-<h2 id="o-contrato-padr%C3%A3o-da-disciplina">O contrato padrão da disciplina</h2>
-<p>Adotamos um padrão consistente em todas as respostas:</p>
-<div class="grid grid-cols-2 gap-6">
-<div>
-<p><strong>Sucesso (sem a chave <code>error</code>)</strong></p>
-<pre><code class="language-json"><span class="hljs-punctuation">{</span>
-  <span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">42</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">&quot;nome&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Ana Souza&quot;</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">&quot;message&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Encontrado com sucesso&quot;</span>
-<span class="hljs-punctuation">}</span>
-</code></pre>
-</div>
-<div>
-<p><strong>Erro (<code>error: true</code>)</strong></p>
-<pre><code class="language-json"><span class="hljs-punctuation">{</span>
-  <span class="hljs-attr">&quot;error&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">&quot;message&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Matrícula não informada&quot;</span>
-<span class="hljs-punctuation">}</span>
 </code></pre>
 </div>
 </div>
