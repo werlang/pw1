@@ -523,6 +523,13 @@ if (!empty($erros)) {
 ---
 
 # APIs e Serviços Web
+## Exemplos de aula
+
+- [**01. CRUD de produtos:**](../../08-php-apis/crud-produtos/) Coleção de requisições `GET`, `POST`, `PUT` e `DELETE`
+
+---
+
+# APIs e Serviços Web
 ## Erros mais comuns
 
 - **Esquecer `header("Content-Type: application/json")`**

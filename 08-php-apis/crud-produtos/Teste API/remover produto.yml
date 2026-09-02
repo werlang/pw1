@@ -1,0 +1,20 @@
+info:
+  name: remover produto
+  type: http
+  seq: 5
+
+http:
+  method: DELETE
+  url: http://localhost/produto/?id=5
+  params:
+    - name: id
+      value: "5"
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+​

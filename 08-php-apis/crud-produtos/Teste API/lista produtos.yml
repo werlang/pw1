@@ -1,0 +1,31 @@
+info:
+  name: lista produtos
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: http://localhost/produto/?id=5
+  params:
+    - name: categoria
+      value: Papelaria
+      type: query
+      disabled: true
+    - name: precomin
+      value: "5"
+      type: query
+      disabled: true
+    - name: precomax
+      value: "10"
+      type: query
+      disabled: true
+    - name: id
+      value: "5"
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
