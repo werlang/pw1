@@ -1,7 +1,7 @@
 info:
   name: altera produto
   type: http
-  seq: 4
+  seq: 5
 
 http:
   method: PUT
@@ -14,8 +14,8 @@ http:
     type: json
     data: |-
       {
-        "descricao": "Nova descrição deste produto",
-        "preco": 100
+        "descricao": "Nova descrição do produto",
+        "preco": 450
       }
   auth: inherit
 

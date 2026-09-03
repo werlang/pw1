@@ -3,16 +3,16 @@ header("Content-Type: application/json");
 
 $metodo = $_SERVER["REQUEST_METHOD"];
 
-function sendResponse($response, $code = 200) {
-    http_response_code($code);
+include "produtos.php";
+$produtos = getProdutos();
+
+function sendResponse($response, $status = 200) {
+    http_response_code($status);
     echo json_encode($response);
     exit;
 }
 
-include "produtos.php";
-$produtos = getProdutos();
-
-function productSearch($id) {
+function searchProduct($id) {
     global $produtos;
     foreach($produtos as $item) {
         if ($item["id"] == $id) {
@@ -23,33 +23,49 @@ function productSearch($id) {
 }
 
 if ($metodo === "GET") {
+
     $categoria = $_GET["categoria"] ?? null;
-    $precomin = $_GET["precomin"] ?? 0;
-    $precomax = $_GET["precomax"] ?? 999999;
+    $precomax = (float)($_GET["precomax"] ?? 99999999);
+    $precomin = (float)($_GET["precomin"] ?? 0);
     $id = $_GET["id"] ?? null;
+
+    if ($id) {
+        $produto = searchProduct($id);
+        if (!$produto) {
+            sendResponse([
+                "erro" => true,
+                "mensagem" => "Produto não encontrado",
+            ], 404);
+        }
+        sendResponse([
+            "mensagem" => "Produto encontrado",
+            "produto" => $produto,
+        ]);
+    }
 
     $filtrados = [];
     foreach($produtos as $item) {
         if (
-            $item["id"] == $id ||
-            ($item["categoria"] === $categoria &&
-            $item["preco"] >= $precomin && $item["preco"] <= $precomax)
+            ($item["categoria"] === $categoria || !$categoria) &&
+            ($item["preco"] >= $precomin && $item["preco"] <= $precomax)
         ) {
             $filtrados[] = $item;
         }
-    }    
+    }
 
     sendResponse([
-        "mensagem" => "Listagem de produtos",
+        "mensagem" => "Lista de produtos",
         "produtos" => $filtrados,
     ]);
 }
 
 else if ($metodo === "POST") {
+    // insere produto
+
     $nome = $_POST["nome"] ?? null;
     $descricao = $_POST["descricao"] ?? "";
-    $categoria = $_POST["categoria"] ?? "Outros";
     $preco = (float)($_POST["preco"] ?? 0);
+    $categoria = $_POST["categoria"] ?? "Outros";
 
     if (!$nome) {
         sendResponse([
@@ -70,23 +86,30 @@ else if ($metodo === "POST") {
 }
 
 else if ($metodo === "PUT") {
-    $input = file_get_contents("php://input");
-    $dados = json_decode($input, true);
+    $id = $_GET["id"] ?? null;
 
-    $pid = $_GET["id"];
-    $produto = productSearch($pid);
+    if (!$id) {
+        sendResponse([
+            "erro" => true,
+            "mensagem" => "Informe um produto",
+        ], 400);
+    }
 
+    $produto = searchProduct($id);
     if (!$produto) {
         sendResponse([
             "erro" => true,
-            "mensagem" => "Produto não encontrado"
+            "mensagem" => "Produto não encontrado",
         ], 404);
     }
 
-    $atributosPermitidos = [ "nome", "descricao", "preco", "categoria" ];
-    foreach($dados as $atributo => $valor) {
-        if (in_array($atributo, $atributosPermitidos)) {
-            $produto[$atributo] = $valor;
+    $json = file_get_contents("php://input");
+    $dados = json_decode($json, true);
+
+    $camposPermitidos = [ "nome", "descricao", "preco", "categoria" ];
+    foreach($dados as $campo => $valor) {
+        if (in_array($campo, $camposPermitidos)) {
+            $produto[$campo] = $valor;
         }
     }
 
@@ -99,20 +122,28 @@ else if ($metodo === "PUT") {
 else if ($metodo === "DELETE") {
     $id = $_GET["id"] ?? null;
 
-    $produto = productSearch($id);
+    if (!$id) {
+        sendResponse([
+            "erro" => true,
+            "mensagem" => "Informe um produto",
+        ], 400);
+    }
+
+    $produto = searchProduct($id);
     if (!$produto) {
         sendResponse([
             "erro" => true,
-            "mensagem" => "Produto não encontrado"
+            "mensagem" => "Produto não encontrado",
         ], 404);
     }
 
     sendResponse([
-        "mensagem" => "Produto removido"
+        "mensagem" => "Produto removido",
     ]);
+
 }
 
 sendResponse([
     "erro" => true,
     "mensagem" => "Ação não identificada",
-], 405);
+], 404);
