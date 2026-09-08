@@ -65,12 +65,12 @@ O sistema é composto por um formulário de chamado e um endpoint PHP:
 ## Estrutura de Arquivos
 
 ```text
-09-php-ajax/envio-ocorrencia/
-├── README.md      # Este enunciado detalhado
-├── index.html     # Formulário de abertura de chamado
-├── style.css      # Estilos visuais dos campos e estados de feedback
-├── script.js      # Interceptação do submit, fetch() e ciclo de estados
-└── api.php        # Endpoint de validação e emissão de protocolo em PHP
+09-php-ajax/07-envio-ocorrencia/
+├── README.md      # Este guia didático com os requisitos
+├── index.html     # Formulário de ocorrência e área de feedback
+├── style.css      # Estilização do formulário, alertas e estados dos botões
+├── script.js      # Interceptação do submit, FormData, fetch() e estados de UI
+└── api.php        # Endpoint de recebimento, validação e emissão de JSON
 ```
 
 ---

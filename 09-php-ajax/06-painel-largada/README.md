@@ -53,11 +53,11 @@ O painel deve representar com clareza o ciclo de vida de uma largada de atletism
 ## Estrutura de Arquivos
 
 ```text
-09-php-ajax/painel-largada/
-├── README.md      # Este enunciado detalhado
-├── index.html     # Estrutura semântica do painel e controles
-├── style.css      # Estilização das luzes/indicadores e histórico
-└── script.js      # Lógica de Promises, async/await e controle de estado
+09-php-ajax/06-painel-largada/
+├── README.md      # Este guia didático com os requisitos
+├── index.html     # Painel de largada e semáforo textual
+├── style.css      # Estilos visuais e transições de cor das fases
+└── script.js      # Lógica da Promise de espera, async/await e controle de estado
 ```
 
 ---

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aviso Escolar com Promise - IFSul</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="container">
+    <header class="cabecalho">
+      <span class="badge-modulo">Exercício 01 • Fundamentos de Promises</span>
+      <h1>Temporizador de Aviso Escolar</h1>
+      <p>Entenda como pausar e sincronizar fluxos no navegador sem travar a interface do usuário.</p>
+    </header>
+
+    <section class="card-painel">
+      <div class="grupo-campo">
+        <label for="seletor-tempo">Tempo de espera antes do sinal:</label>
+        <select id="seletor-tempo">
+          <option value="1000">1 segundo</option>
+          <option value="2000" selected>2 segundos</option>
+          <option value="3000">3 segundos</option>
+          <option value="5000">5 segundos</option>
+        </select>
+      </div>
+
+      <button type="button" id="btn-emitir" class="btn-primario">
+        Emitir Aviso Escolar
+      </button>
+
+      <div id="status-aviso" class="status status-inicial" role="status" aria-live="polite">
+        Selecione o tempo e clique no botão para agendar o aviso.
+      </div>
+    </section>
+
+    <footer class="painel-didatico">
+      <h3>Dica Didática: Não bloqueie a Thread Principal</h3>
+      <p>
+        No JavaScript, nunca usamos loops de espera vazios (como <code>while</code>). 
+        Usamos uma <code>Promise</code> combinada com <code>await</code> para que o navegador 
+        continue livre para redesenhar a tela enquanto o tempo transcorre.
+      </p>
+    </footer>
+  </main>
+</body>
+</html>

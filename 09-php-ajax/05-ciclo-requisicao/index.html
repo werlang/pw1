@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Consulta de Saldo - Ciclo da Requisição</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="container">
+    <header class="cabecalho">
+      <span class="badge-modulo">Exercício 05 • Ciclo de Vida e Tratamento de Erros</span>
+      <h1>Saldo da Carteirinha Estudantil</h1>
+      <p>Aprenda a gerenciar os 4 estados da interface (Carregando, Sucesso, Erro e Finally) com response.ok.</p>
+    </header>
+
+    <section class="card-painel">
+      <div class="linha-busca">
+        <div class="grupo-campo">
+          <label for="campo-carteirinha">Número da Carteirinha:</label>
+          <input 
+            type="text" 
+            id="campo-carteirinha" 
+            placeholder="Ex.: 1001, 1002 ou 9999 (erro)" 
+            autocomplete="off"
+            value="1001"
+          >
+        </div>
+
+        <button type="button" id="btn-consultar" class="btn-primario">
+          Consultar Saldo
+        </button>
+      </div>
+
+      <div id="status-painel" class="status status-inicial" role="status" aria-live="polite">
+        Digite o número da carteirinha e clique em Consultar Saldo.
+      </div>
+
+      <!-- Card com os dados do estudante -->
+      <article id="card-saldo" class="card-saldo" style="display: none;">
+        <div class="saldo-topo">
+          <div>
+            <h2 id="saldo-nome">Nome do Aluno</h2>
+            <p class="matricula">Matrícula: <span id="saldo-matricula">--</span></p>
+          </div>
+          <span class="badge-situacao" id="saldo-situacao">Ativa</span>
+        </div>
+
+        <div class="saldo-destaque">
+          <span class="rotulo-saldo">Saldo Disponível no RU</span>
+          <p class="valor-saldo" id="saldo-valor">R$ 0,00</p>
+        </div>
+      </article>
+    </section>
+
+    <footer class="painel-didatico">
+      <h3>Dica Didática: fetch() não rejeita em erros 404 e 500</h3>
+      <p>
+        Muitos iniciantes pensam que o <code>catch</code> captura automaticamente páginas não encontradas. 
+        Na verdade, o <code>fetch()</code> só falha fisicamente se a rede cair. Para capturar erros HTTP, 
+        você deve sempre checar <code>if (!resposta.ok) throw new Error(...)</code>.
+      </p>
+    </footer>
+  </main>
+</body>
+</html>

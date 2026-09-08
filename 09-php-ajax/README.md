@@ -819,27 +819,53 @@ O repositório disponibiliza dois exemplos reais de referência que demonstram e
 
 ## 24. Exercícios propostos
 
-Os exercícios desta seção foram desenhados para exercitar desafios reais de controle temporal, concorrência e integração com backend:
+Esta seção contém 10 exercícios organizados em duas etapas complementares de aprendizagem, acompanhando a evolução dos conceitos desde os primeiros fundamentos até sistemas integrados:
 
-1. [**Painel de Largada**](./painel-largada/README.md):  
-   *Situação:* Controle de uma largada de prova de atletismo escolar com contagem regressiva e comandos de voz ("Atenção", "Contagem", "Largada").  
-   *Desafio:* Criar uma função `esperar(ms)` que retorne uma Promise, controlar o ciclo com `async`/`await` e permitir pausar e cancelar a contagem sem disparar ciclos concorrentes.
+### Grupo 1: Exercícios Introdutórios — Fundamentos do AJAX e Assincronismo (01 a 05)
+Neste primeiro grupo, os exercícios são focados e objetivos, permitindo consolidar a mecânica de Promises, o disparo de requisições `fetch()` com `GET` e `POST`, e o tratamento rigoroso de status HTTP:
 
-2. [**Busca Cancelável no Acervo**](./busca-acervo/README.md):  
-   *Situação:* Campo de pesquisa rápida no acervo de livros da biblioteca com retorno instantâneo durante a digitação.  
-   *Desafio:* Implementar *debounce* de digitação, emitir requisições `GET` com `URLSearchParams` e cancelar requisições anteriores via `AbortController`, impedindo que respostas atrasadas exibam livros incorretos.
+1. [**01. Temporizador de Aviso Escolar**](./01-temporizador-aviso/README.md):  
+   *Situação:* Emissão de sinal sonoro/visual com tempo configurável em seletor.  
+   *Conceito:* Criação de uma `Promise` nativa com `setTimeout()`, consumo com `async`/`await` e desabilitação preventiva de botão para impedir múltiplos disparos.
 
-3. [**Envio de Ocorrência**](./envio-ocorrencia/README.md):  
-   *Situação:* Registro de chamados e ocorrências escolares com envio assíncrono de formulário.  
-   *Desafio:* Interceptar `submit`, enviar `FormData` via `POST`, gerenciar os botões e feedback na interface, e diferenciar falha de rede física de erros de validação (`422`) e sucesso (`201`).
+2. [**02. Horário Oficial do Campus**](./02-relogio-servidor/README.md):  
+   *Situação:* Painel que consulta a data, horário oficial e turno letivo a partir do servidor PHP.  
+   *Conceito:* Primeira requisição `GET` com `fetch('api.php')`, conversão de JSON com `await response.json()` e atualização do DOM via `textContent`.
 
-4. [**Rastreamento Simulado de Entrega**](./simulador-entrega/README.md):  
-   *Situação:* Painel de acompanhamento de entrega de materiais em 4 etapas sequenciais (recebido, separado, em trânsito, entregue).  
-   *Desafio:* Orquestrar uma sequência assíncrona por etapas, tratar falhas controladas com possibilidade de "tentar novamente" retomando exatamente do ponto onde falhou, sem repetir etapas anteriores.
+3. [**03. Consulta de Disciplinas com URLSearchParams**](./03-consulta-disciplina/README.md):  
+   *Situação:* Catálogo acadêmico que exibe ementa, docente e carga horária da disciplina selecionada.  
+   *Conceito:* Composição segura de parâmetros na URL via `new URLSearchParams()`, leitura de `$_GET['sigla']` no PHP e retorno de status `200` ou `404`.
 
-5. [**Monitor de Estações Meteorológicas**](./monitor-estacoes/README.md):  
-   *Situação:* Painel de telemetria que exibe temperatura e umidade de sensores em tempo real.  
-   *Desafio:* Implementar *polling* contínuo seguro com `setTimeout` encadeado para evitar sobreposição, preservar a última leitura válida em caso de erro temporário e alertar quando os dados ficarem defasados.
+4. [**04. Envio de Formulário com FormData**](./04-envio-comentario/README.md):  
+   *Situação:* Mural de dúvidas e sugestões da turma com envio assíncrono.  
+   *Conceito:* Interceptação de `submit` com `e.preventDefault()`, empacotamento automático com `new FormData()`, envio via `POST` e limpeza com `form.reset()`.
+
+5. [**05. Ciclo de Vida da Requisição e Tratamento de Erros**](./05-ciclo-requisicao/README.md):  
+   *Situação:* Consulta de saldo da carteirinha estudantil no refeitório.  
+   *Conceito:* Gestão explícita dos 4 estados da interface (Carregando, Sucesso, Erro e Finalização com `finally`), checagem defensiva de `response.ok` e tratamento de erros `404` e `422`.
+
+### Grupo 2: Desafios — Aplicações Integradas, Concorrência e Resiliência (06 a 10)
+Neste segundo grupo, você enfrentará desafios reais de interface rica, resolvendo problemas de concorrência, cancelamento, ordem de rede e tolerância a falhas:
+
+6. [**06. Painel de Largada com Fases Assíncronas**](./06-painel-largada/README.md):  
+   *Situação:* Painel de largada esportiva com contagem regressiva e fases ("Atenção", "Contagem", "Largada").  
+   *Conceito:* Orquestração de sequências temporais com Promises, botões de pausar e cancelar, e proteção estrita contra cliques concorrentes.
+
+7. [**07. Envio de Ocorrência Escolar com Protocolo**](./07-envio-ocorrencia/README.md):  
+   *Situação:* Sistema completo de registro de chamados pedagógicos e patrimoniais com geração de protocolo no servidor.  
+   *Conceito:* Validação defensiva no PHP, resposta `201 Created` vs `422 Unprocessable Entity`, preservação de dados preenchidos em caso de erro e ciclo completo de feedback.
+
+8. [**08. Busca Cancelável no Acervo da Biblioteca**](./08-busca-acervo/README.md):  
+   *Situação:* Pesquisa instantânea de livros conforme o usuário digita (*live search*).  
+   *Conceito:* Prevenção de sobrecarga com *debounce* (300 ms) e cancelamento de buscas antigas em trânsito com a API `AbortController`, evitando que respostas atrasadas sobrescrevam a tela.
+
+9. [**09. Simulador de Rastreamento de Entregas por Etapas**](./09-simulador-entrega/README.md):  
+   *Situação:* Pipeline de rastreamento logístico de materiais em 4 etapas sequenciais.  
+   *Conceito:* Máquina de estados com simulação de falha controlada (`PED-FALHA`), cancelamento limpo e **retomada inteligente** (*resume from failed step*) sem repetir etapas já concluídas.
+
+10. [**10. Monitor de Telemetria de Estações (Polling Seguro)**](./10-monitor-estacoes/README.md):  
+    *Situação:* Painel de monitoramento de sensores ambientais (CPD, laboratórios, estufa) atualizado periodicamente.  
+    *Conceito:* Implementação de *polling* sequencial não sobreposto com `setTimeout()` no `finally` (em vez do problemático `setInterval`), *backoff* em falhas consecutivas, preservação da última leitura válida e alerta de dados defasados (*stale data*).
 
 ---
 

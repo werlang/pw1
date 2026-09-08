@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Consulta de Disciplinas - IFSul</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="container">
+    <header class="cabecalho">
+      <span class="badge-modulo">Exercício 03 • Parâmetros com URLSearchParams</span>
+      <h1>Consulta de Disciplinas do Curso</h1>
+      <p>Aprenda a enviar parâmetros na URL via GET e ler detalhes no backend sem recarregar a tela.</p>
+    </header>
+
+    <section class="card-painel">
+      <div class="linha-controles">
+        <div class="grupo-campo">
+          <label for="seletor-disciplina">Escolha a disciplina:</label>
+          <select id="seletor-disciplina">
+            <option value="">-- Selecione uma disciplina --</option>
+            <option value="pw1">Programação Web I (PW1)</option>
+            <option value="bd">Banco de Dados (BD)</option>
+            <option value="redes">Redes de Computadores (REDES)</option>
+            <option value="es">Engenharia de Software (ES)</option>
+          </select>
+        </div>
+
+        <button type="button" id="btn-consultar" class="btn-primario">
+          Ver Detalhes
+        </button>
+      </div>
+
+      <div id="status-consulta" class="status status-inicial" role="status" aria-live="polite">
+        Selecione uma disciplina acima e clique em "Ver Detalhes".
+      </div>
+
+      <!-- Card com os detalhes da disciplina selecionada -->
+      <article id="card-detalhes" class="card-detalhes" style="display: none;">
+        <div class="detalhes-cabecalho">
+          <div>
+            <span class="tag-sigla" id="detalhe-sigla">SIGLA</span>
+            <h2 id="detalhe-nome">Nome da Disciplina</h2>
+          </div>
+          <span class="tag-horas" id="detalhe-carga">80h</span>
+        </div>
+
+        <div class="detalhes-corpo">
+          <p><strong>Docente Responsável:</strong> <span id="detalhe-professor">--</span></p>
+          <div class="ementa-box">
+            <strong>Ementa do Curso:</strong>
+            <p id="detalhe-ementa">--</p>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <footer class="painel-didatico">
+      <h3>Dica Didática: URLSearchParams contra caracteres inválidos</h3>
+      <p>
+        Sempre use <code>new URLSearchParams()</code> em vez de concatenar texto na URL. 
+        A classe cuida automaticamente da codificação de acentos, espaços e caracteres especiais (encoding).
+      </p>
+    </footer>
+  </main>
+</body>
+</html>

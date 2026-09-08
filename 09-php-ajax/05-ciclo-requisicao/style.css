@@ -1,0 +1,244 @@
+:root {
+  --cor-fundo: #f8fafc;
+  --cor-superficie: #ffffff;
+  --cor-texto: #1e293b;
+  --cor-texto-suave: #64748b;
+  --cor-primaria: #0f766e;
+  --cor-primaria-hover: #115e59;
+  --cor-borda: #cbd5e1;
+  --cor-sucesso-fundo: #dcfce7;
+  --cor-sucesso: #16a34a;
+  --cor-erro-fundo: #fee2e2;
+  --cor-erro: #dc2626;
+  --cor-carregando-fundo: #e0f2fe;
+  --cor-carregando: #0284c7;
+  --raio-borda: 10px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--cor-fundo);
+  color: var(--cor-texto);
+  line-height: 1.5;
+  padding: 2rem 1rem;
+}
+
+.container {
+  max-width: 620px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.cabecalho {
+  text-align: center;
+}
+
+.badge-modulo {
+  display: inline-block;
+  background-color: #ccfbf1;
+  color: var(--cor-primaria);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.3rem 0.8rem;
+  border-radius: 9999px;
+  margin-bottom: 0.6rem;
+}
+
+.cabecalho h1 {
+  font-size: 1.8rem;
+  color: #0f172a;
+  margin-bottom: 0.4rem;
+}
+
+.cabecalho p {
+  color: var(--cor-texto-suave);
+  font-size: 0.95rem;
+}
+
+.card-painel {
+  background: var(--cor-superficie);
+  padding: 1.75rem;
+  border-radius: var(--raio-borda);
+  border: 1px solid var(--cor-borda);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.linha-busca {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+
+.grupo-campo {
+  flex: 1;
+  min-width: 220px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.grupo-campo label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #334155;
+}
+
+input {
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 1px solid var(--cor-borda);
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input:focus {
+  border-color: var(--cor-primaria);
+  box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.15);
+}
+
+.btn-primario {
+  background-color: var(--cor-primaria);
+  color: #ffffff;
+  padding: 0.75rem 1.25rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s, opacity 0.2s;
+  white-space: nowrap;
+}
+
+.btn-primario:hover:not(:disabled) {
+  background-color: var(--cor-primaria-hover);
+}
+
+.btn-primario:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.status {
+  padding: 0.85rem 1rem;
+  border-radius: 8px;
+  font-size: 0.92rem;
+  text-align: center;
+  font-weight: 500;
+}
+
+.status-inicial {
+  background-color: #f1f5f9;
+  color: var(--cor-texto-suave);
+}
+
+.status-carregando {
+  background-color: var(--cor-carregando-fundo);
+  color: var(--cor-carregando);
+  font-weight: 600;
+}
+
+.status-sucesso {
+  background-color: var(--cor-sucesso-fundo);
+  color: var(--cor-sucesso);
+  font-weight: 600;
+}
+
+.status-erro {
+  background-color: var(--cor-erro-fundo);
+  color: var(--cor-erro);
+  font-weight: 600;
+}
+
+/* Card de Saldo */
+.card-saldo {
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: var(--raio-borda);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.saldo-topo {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 0.85rem;
+}
+
+.saldo-topo h2 {
+  font-size: 1.2rem;
+  color: #0f172a;
+}
+
+.matricula {
+  font-size: 0.85rem;
+  color: var(--cor-texto-suave);
+}
+
+.badge-situacao {
+  background-color: var(--cor-sucesso-fundo);
+  color: var(--cor-sucesso);
+  padding: 0.25rem 0.6rem;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.badge-bloqueada {
+  background-color: var(--cor-erro-fundo);
+  color: var(--cor-erro);
+}
+
+.saldo-destaque {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 1.25rem;
+  text-align: center;
+}
+
+.rotulo-saldo {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+  color: var(--cor-texto-suave);
+}
+
+.valor-saldo {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--cor-primaria);
+  margin-top: 0.2rem;
+}
+
+.painel-didatico {
+  background-color: #f8fafc;
+  border: 1px dashed #94a3b8;
+  border-radius: var(--raio-borda);
+  padding: 1.25rem;
+  font-size: 0.88rem;
+  color: #334155;
+}
+
+.painel-didatico h3 {
+  font-size: 0.95rem;
+  margin-bottom: 0.3rem;
+  color: #0f172a;
+}

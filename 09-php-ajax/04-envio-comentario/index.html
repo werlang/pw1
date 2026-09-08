@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mural de Recados da Aula - IFSul</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="container">
+    <header class="cabecalho">
+      <span class="badge-modulo">Exercício 04 • Envio Assíncrono com POST e FormData</span>
+      <h1>Mural de Dúvidas e Sugestões</h1>
+      <p>Envie informações para o servidor sem recarregar a tela usando o objeto nativo FormData.</p>
+    </header>
+
+    <section class="card-painel">
+      <form id="form-recado" class="formulario">
+        <div class="linha-dupla">
+          <div class="grupo-campo">
+            <label for="campo-nome">Seu Nome Completo:</label>
+            <input 
+              type="text" 
+              id="campo-nome" 
+              name="nome" 
+              placeholder="Ex.: Mariana Silva" 
+              required
+            >
+          </div>
+
+          <div class="grupo-campo">
+            <label for="campo-turma">Sua Turma:</label>
+            <select id="campo-turma" name="turma" required>
+              <option value="">Selecione...</option>
+              <option value="1A">1º Ano A</option>
+              <option value="2A">2º Ano A</option>
+              <option value="3A">3º Ano A</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grupo-campo">
+          <label for="campo-mensagem">Sua Dúvida ou Comentário:</label>
+          <textarea 
+            id="campo-mensagem" 
+            name="mensagem" 
+            rows="3" 
+            placeholder="Escreva sua dúvida sobre o conteúdo da aula..." 
+            required
+          ></textarea>
+        </div>
+
+        <button type="submit" id="btn-enviar" class="btn-primario">
+          Publicar Recado
+        </button>
+      </form>
+
+      <div id="status-envio" class="status status-inicial" role="status" aria-live="polite">
+        Preencha os campos acima para publicar no mural.
+      </div>
+    </section>
+
+    <footer class="painel-didatico">
+      <h3>Dica Didática: Nunca defina o Content-Type com FormData</h3>
+      <p>
+        Ao usar <code>new FormData()</code>, o navegador define automaticamente o cabeçalho 
+        <code>Content-Type: multipart/form-data; boundary=...</code>. Se você tentar configurar 
+        o header manualmente, o delimitador se perde e o PHP receberá <code>$_POST</code> vazio!
+      </p>
+    </footer>
+  </main>
+</body>
+</html>

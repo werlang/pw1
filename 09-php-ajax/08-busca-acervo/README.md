@@ -50,8 +50,8 @@ O grande desafio desta prática é resolver o problema de **concorrência e orde
 ## Estrutura de Arquivos
 
 ```text
-09-php-ajax/busca-acervo/
-├── README.md      # Este enunciado detalhado
+09-php-ajax/08-busca-acervo/
+├── README.md      # Este guia didático com os requisitos
 ├── index.html     # Campo de busca e contêiner do acervo
 ├── style.css      # Estilização da grade de livros e etiquetas de disponibilidade
 ├── script.js      # Debounce, AbortController, fetch() e renderização

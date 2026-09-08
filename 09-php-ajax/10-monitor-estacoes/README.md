@@ -61,7 +61,7 @@ A abordagem robusta e profissional é o **Polling Recursivo via `setTimeout()`**
 ## Estrutura de Arquivos
 
 ```text
-09-php-ajax/monitor-estacoes/
+09-php-ajax/10-monitor-estacoes/
 ├── README.md      # Este guia didático com os requisitos
 ├── index.html     # Painel de telemetria e controles de monitoramento
 ├── style.css      # Estilos da grade de sensores, alertas e estados

@@ -1,0 +1,175 @@
+:root {
+  --cor-fundo: #f8fafc;
+  --cor-superficie: #ffffff;
+  --cor-texto: #1e293b;
+  --cor-texto-suave: #64748b;
+  --cor-primaria: #0284c7;
+  --cor-primaria-hover: #0369a1;
+  --cor-borda: #cbd5e1;
+  --cor-sucesso: #16a34a;
+  --cor-sucesso-fundo: #dcfce7;
+  --cor-carregando-fundo: #e0f2fe;
+  --raio-borda: 10px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--cor-fundo);
+  color: var(--cor-texto);
+  line-height: 1.5;
+  padding: 2rem 1rem;
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.cabecalho {
+  text-align: center;
+}
+
+.badge-modulo {
+  display: inline-block;
+  background-color: #e0f2fe;
+  color: var(--cor-primaria);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.3rem 0.8rem;
+  border-radius: 9999px;
+  margin-bottom: 0.6rem;
+}
+
+.cabecalho h1 {
+  font-size: 1.8rem;
+  color: #0f172a;
+  margin-bottom: 0.4rem;
+}
+
+.cabecalho p {
+  color: var(--cor-texto-suave);
+  font-size: 0.95rem;
+}
+
+.card-painel {
+  background: var(--cor-superficie);
+  padding: 1.75rem;
+  border-radius: var(--raio-borda);
+  border: 1px solid var(--cor-borda);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.btn-primario {
+  background-color: var(--cor-primaria);
+  color: #ffffff;
+  padding: 0.8rem 1.25rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s, opacity 0.2s;
+}
+
+.btn-primario:hover:not(:disabled) {
+  background-color: var(--cor-primaria-hover);
+}
+
+.btn-primario:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.status {
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+.status-inicial {
+  background-color: #f1f5f9;
+  color: var(--cor-texto-suave);
+}
+
+.status-carregando {
+  background-color: var(--cor-carregando-fundo);
+  color: var(--cor-primaria);
+  font-weight: 600;
+}
+
+.status-sucesso {
+  background-color: var(--cor-sucesso-fundo);
+  color: var(--cor-sucesso);
+  font-weight: 600;
+}
+
+.grade-dados {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.item-dado {
+  background-color: #f8fafc;
+  padding: 0.9rem;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.item-dado.destaque {
+  grid-column: span 2;
+  background-color: #f0fdf4;
+  border-color: #bbf7d0;
+  text-align: center;
+}
+
+.rotulo {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--cor-texto-suave);
+}
+
+.valor {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.valor.horario {
+  font-size: 1.8rem;
+  color: var(--cor-sucesso);
+  font-family: monospace;
+}
+
+.painel-didatico {
+  background-color: #f8fafc;
+  border: 1px dashed #94a3b8;
+  border-radius: var(--raio-borda);
+  padding: 1.25rem;
+  font-size: 0.88rem;
+  color: #334155;
+}
+
+.painel-didatico h3 {
+  font-size: 0.95rem;
+  margin-bottom: 0.3rem;
+  color: #0f172a;
+}

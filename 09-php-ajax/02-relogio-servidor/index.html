@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Horário Oficial do Servidor - IFSul</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="container">
+    <header class="cabecalho">
+      <span class="badge-modulo">Exercício 02 • Primeira Requisição com fetch() GET</span>
+      <h1>Horário Oficial do Campus</h1>
+      <p>Consulte dados em tempo real gerados pelo backend PHP sem recarregar a página.</p>
+    </header>
+
+    <section class="card-painel">
+      <button type="button" id="btn-consultar" class="btn-primario">
+        Consultar Horário Oficial
+      </button>
+
+      <div id="status-requisicao" class="status status-inicial" role="status" aria-live="polite">
+        Clique no botão para consultar os dados do servidor.
+      </div>
+
+      <div class="grade-dados">
+        <div class="item-dado">
+          <span class="rotulo">Campus</span>
+          <span class="valor" id="info-campus">--</span>
+        </div>
+
+        <div class="item-dado destaque">
+          <span class="rotulo">Horário do Servidor</span>
+          <span class="valor horario" id="info-horario">--:--:--</span>
+        </div>
+
+        <div class="item-dado">
+          <span class="rotulo">Data</span>
+          <span class="valor" id="info-data">--/--/----</span>
+        </div>
+
+        <div class="item-dado">
+          <span class="rotulo">Turno Atual</span>
+          <span class="valor" id="info-turno">--</span>
+        </div>
+      </div>
+    </section>
+
+    <footer class="painel-didatico">
+      <h3>Dica Didática: Os dois awaits do fetch()</h3>
+      <p>
+        Lembre-se da regra de ouro: precisamos de <code>const resposta = await fetch(...)</code> 
+        para esperar a chegada dos cabeçalhos HTTP, e de <code>const dados = await resposta.json()</code> 
+        para converter o corpo em texto para um objeto JavaScript.
+      </p>
+    </footer>
+  </main>
+</body>
+</html>

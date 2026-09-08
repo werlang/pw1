@@ -620,29 +620,28 @@ function buscarNoAcervo(termo) {
 ---
 
 # Exercícios Práticos
-## Sequência, debounce e envio
+## Grupo 1: Fundamentos do AJAX e Assincronismo
 
-- **Painel de Largada:**
-  Controle de prova de atletismo com contagem regressiva, atenção e largada. Pratica `esperar(ms)` com Promise, `async/await`, pausa e cancelamento sem abrir ciclos concorrentes.
-  `09-php-ajax/painel-largada/`
-- **Busca Cancelável no Acervo:**
-  Consulta ágil em acervo escolar com digitação rápida. Implementa debounce e cancelamento via `AbortController` para que buscas antigas não sobrescrevam resultados recentes.
-  `09-php-ajax/busca-acervo/`
-- **Envio de Ocorrência:**
-  Formulário com `FormData` via POST. Diferencia falha de rede de erro de validação (400) e sucesso (201), mantendo o formulário intacto durante falhas de preenchimento.
-  `09-php-ajax/envio-ocorrencia/`
+Exercícios focados para consolidar a mecânica do `fetch()` e o fluxo assíncrono:
+
+- [**01. Temporizador com Promise:**](../../09-php-ajax/01-temporizador-aviso/) `setTimeout` encapsulado com `async`/`await` e trava de botão
+- [**02. Horário do Servidor:**](../../09-php-ajax/02-relogio-servidor/) primeira requisição `GET`, leitura de JSON e atualização do DOM
+- [**03. Consulta de Disciplina:**](../../09-php-ajax/03-consulta-disciplina/) requisição `GET` com parâmetros via `URLSearchParams`
+- [**04. Envio de Comentário:**](../../09-php-ajax/04-envio-comentario/) interceptação de `submit`, `FormData`, `POST` e limpeza com `reset()`
+- [**05. Ciclo da Requisição:**](../../09-php-ajax/05-ciclo-requisicao/) 4 estados da interface, checagem de `response.ok` e `finally`
 
 ---
 
 # Exercícios Práticos
-## Linha do tempo e monitoramento
+## Grupo 2: Desafios e Aplicações Integradas
 
-- **Rastreamento Simulado de Entrega:**
-  Acompanhamento de pedido escolar em quatro etapas assíncronas. Trata falhas controladas, cancelamento e oferece "tentar novamente" retomando exatamente da etapa que falhou.
-  `09-php-ajax/simulador-entrega/`
-- **Monitor de Estações Meteorológicas:**
-  Painel com atualização contínua de temperatura e umidade. Aplica polling sequencial seguro para não engavetar requisições, preserva a última leitura válida e alerta dados desatualizados.
-  `09-php-ajax/monitor-estacoes/`
+Desafios completos com concorrência, cancelamento e resiliência:
+
+- [**06. Painel de Largada:**](../../09-php-ajax/06-painel-largada/) fases assíncronas, pausa, cancelamento e controle de concorrência
+- [**07. Envio de Ocorrência:**](../../09-php-ajax/07-envio-ocorrencia/) cadastro com protocolo, validação no PHP (201 vs 422) e feedback
+- [**08. Busca no Acervo:**](../../09-php-ajax/08-busca-acervo/) *live search* com *debounce* (300 ms) e cancelamento com `AbortController`
+- [**09. Simulador de Entrega:**](../../09-php-ajax/09-simulador-entrega/) pipeline por etapas, falhas e retomada do ponto de interrupção
+- [**10. Monitor de Estações:**](../../09-php-ajax/10-monitor-estacoes/) *polling* seguro com `setTimeout` recursivo no `finally` e dados defasados
 
 ---
 

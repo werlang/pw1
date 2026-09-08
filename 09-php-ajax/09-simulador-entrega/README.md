@@ -57,7 +57,7 @@ Cada etapa possui um marcador numérico, título, descrição e estado visual:
 ## Estrutura de Arquivos
 
 ```text
-09-php-ajax/simulador-entrega/
+09-php-ajax/09-simulador-entrega/
 ├── README.md      # Este guia didático com os requisitos
 ├── index.html     # Formulário de código, controles e stepper da linha do tempo
 ├── style.css      # Estilização da linha do tempo, estados visuais e animações
