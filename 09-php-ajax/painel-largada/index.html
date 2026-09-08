@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel de Largada - Jogos Escolares IFSul</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <main class="container">
+        <header class="cabecalho">
+            <h1>Painel de Largada</h1>
+            <p class="subtitulo">Jogos Escolares do IFSul - Atletismo</p>
+        </header>
+
+        <section class="painel-principal">
+            <div id="indicador-status" class="status-box status-aguardando">
+                <span id="texto-status">Aguardando atletas na pista</span>
+            </div>
+
+            <div class="mostrador-container">
+                <div id="mostrador" class="mostrador-numero">--</div>
+                <div id="mensagem-guia" class="mensagem-guia">Pressione Iniciar quando os atletas estiverem prontos</div>
+            </div>
+
+            <div class="botoes-controle">
+                <button type="button" id="btn-iniciar" class="btn btn-iniciar">Iniciar Prova</button>
+                <button type="button" id="btn-pausar" class="btn btn-pausar" disabled>Pausar</button>
+                <button type="button" id="btn-cancelar" class="btn btn-cancelar" disabled>Cancelar Largada</button>
+            </div>
+        </section>
+
+        <section class="secao-historico">
+            <h2>Histórico de Tentativas</h2>
+            <ul id="lista-historico" class="lista-historico">
+                <li class="historico-vazio">Nenhuma tentativa registrada nesta sessão.</li>
+            </ul>
+        </section>
+    </main>
+</body>
+</html>

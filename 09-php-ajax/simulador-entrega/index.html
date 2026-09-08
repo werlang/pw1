@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simulador de Rastreamento de Entregas - IFSul</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="container">
+    <header class="cabecalho">
+      <span class="badge-modulo">Exercício 04 • Pipeline Assíncrono e Retomada</span>
+      <h1>Simulador de Rastreamento de Entregas</h1>
+      <p>Acompanhe o avanço por etapas assíncronas, teste falhas controladas e experimente a retomada de processos interrompidos.</p>
+    </header>
+
+    <section class="painel-controle">
+      <form id="form-rastreio" class="form-rastreio">
+        <div class="grupo-campo">
+          <label for="campo-codigo">Código de rastreamento:</label>
+          <input 
+            type="text" 
+            id="campo-codigo" 
+            name="codigo" 
+            placeholder="Ex.: IFSUL-100 ou PED-FALHA" 
+            value="IFSUL-2026"
+            required
+            autocomplete="off"
+          >
+          <span class="dica-campo">Dica: use <code>PED-FALHA</code> para provocar uma falha na 3ª etapa.</span>
+        </div>
+
+        <div class="grupo-botoes">
+          <button type="submit" id="btn-iniciar" class="btn btn-primario">Iniciar Envio</button>
+          <button type="button" id="btn-cancelar" class="btn btn-secundario" disabled>Cancelar Envio</button>
+          <button type="button" id="btn-retomar" class="btn btn-sucesso" style="display: none;">Tentar Novamente</button>
+          <button type="button" id="btn-reiniciar" class="btn btn-neutro" style="display: none;">Novo Rastreamento</button>
+        </div>
+      </form>
+
+      <div id="painel-feedback" class="feedback-caixa feedback-neutro" role="status" aria-live="polite">
+        Informe um código de rastreamento e clique em <strong>Iniciar Envio</strong>.
+      </div>
+    </section>
+
+    <section class="secao-rastreamento">
+      <ol class="timeline" id="linha-tempo">
+        <li class="etapa etapa-pendente" id="etapa-1">
+          <div class="marcador-etapa">1</div>
+          <div class="info-etapa">
+            <h2 class="titulo-etapa">Pedido Recebido</h2>
+            <p class="desc-etapa">Validação fiscal e registro no almoxarifado central.</p>
+            <span class="status-etapa">Aguardando início</span>
+          </div>
+        </li>
+
+        <li class="etapa etapa-pendente" id="etapa-2">
+          <div class="marcador-etapa">2</div>
+          <div class="info-etapa">
+            <h2 class="titulo-etapa">Separação dos Itens</h2>
+            <p class="desc-etapa">Coleta no estoque, conferência e embalagem protetora.</p>
+            <span class="status-etapa">Aguardando início</span>
+          </div>
+        </li>
+
+        <li class="etapa etapa-pendente" id="etapa-3">
+          <div class="marcador-etapa">3</div>
+          <div class="info-etapa">
+            <h2 class="titulo-etapa">Em Transporte</h2>
+            <p class="desc-etapa">Deslocamento da carga pela transportadora até o campus.</p>
+            <span class="status-etapa">Aguardando início</span>
+          </div>
+        </li>
+
+        <li class="etapa etapa-pendente" id="etapa-4">
+          <div class="marcador-etapa">4</div>
+          <div class="info-etapa">
+            <h2 class="titulo-etapa">Entregue ao Destinatário</h2>
+            <p class="desc-etapa">Assinatura do termo de recebimento no setor de protocolo.</p>
+            <span class="status-etapa">Aguardando início</span>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <footer class="painel-didatico">
+      <h3>Dica Didática: Retomada sem Repetição</h3>
+      <p>
+        Observe no arquivo <code>script.js</code> que o índice da etapa atual é guardado em uma variável de estado. 
+        Quando a etapa 3 falha, as etapas 1 e 2 <strong>não</strong> são repetidas: o botão "Tentar Novamente" retoma 
+        a partir do índice exato onde ocorreu a interrupção.
+      </p>
+    </footer>
+  </main>
+</body>
+</html>

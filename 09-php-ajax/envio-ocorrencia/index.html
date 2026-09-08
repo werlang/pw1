@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Ocorrências - Manutenção IFSul</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <main class="container">
+        <header class="cabecalho">
+            <h1>Ouvidoria e Manutenção</h1>
+            <p class="subtitulo">Campus Charqueadas - Registro Rápido de Ocorrências</p>
+        </header>
+
+        <form id="form-ocorrencia" class="formulario" novalidate>
+            <div class="campo">
+                <label for="campo-categoria">Categoria do Problema:</label>
+                <select id="campo-categoria" name="categoria" required>
+                    <option value="">Selecione uma categoria...</option>
+                    <option value="infraestrutura">Infraestrutura Predial (portas, janelas, teto)</option>
+                    <option value="equipamento">Equipamentos (computadores, projetores)</option>
+                    <option value="limpeza">Limpeza e Conservação</option>
+                    <option value="eletrica_hidraulica">Elétrica ou Hidráulica</option>
+                    <option value="outros">Outros assuntos</option>
+                </select>
+            </div>
+
+            <div class="campo">
+                <label for="campo-local">Localização / Sala / Laboratório:</label>
+                <input type="text" id="campo-local" name="local" placeholder="Ex: Laboratório 102, Bloco B" required>
+            </div>
+
+            <div class="campo">
+                <label>Nível de Urgência:</label>
+                <div class="opcoes-urgencia">
+                    <label class="radio-label">
+                        <input type="radio" name="urgencia" value="baixa" checked>
+                        <span>Baixa (não impede aulas)</span>
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="urgencia" value="media">
+                        <span>Média (atrapalha o uso)</span>
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="urgencia" value="alta">
+                        <span>Alta (risco ou paralisação total)</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="campo">
+                <label for="campo-descricao">Descrição Detalhada do Problema:</label>
+                <textarea id="campo-descricao" name="descricao" rows="4" placeholder="Descreva o que ocorreu com detalhes (mínimo de 10 caracteres)..." required></textarea>
+                <small class="dica">Explique claramente o problema para agilizar o atendimento.</small>
+            </div>
+
+            <div id="caixa-feedback" class="caixa-feedback oculta" role="alert"></div>
+
+            <div class="acoes">
+                <button type="submit" id="btn-enviar" class="btn btn-enviar">Registrar Ocorrência</button>
+            </div>
+        </form>
+    </main>
+</body>
+</html>

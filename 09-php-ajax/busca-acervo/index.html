@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Busca no Acervo - Biblioteca IFSul</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="container">
+    <header class="cabecalho">
+      <span class="badge-modulo">Exercício 03 • Requisições GET com Cancelamento</span>
+      <h1>Busca no Acervo da Biblioteca</h1>
+      <p>Consulte títulos, autores e assuntos em tempo real com controle de digitação e requisições canceláveis.</p>
+    </header>
+
+    <section class="painel-pesquisa">
+      <label for="campo-busca" class="rotulo-busca">Pesquisar livros:</label>
+      <div class="campo-wrapper">
+        <input 
+          type="text" 
+          id="campo-busca" 
+          name="busca" 
+          placeholder="Digite o título, autor ou assunto do livro..."
+          autocomplete="off"
+          autofocus
+        >
+        <button type="button" id="btn-limpar" class="btn-limpar" title="Limpar pesquisa" aria-label="Limpar pesquisa">✕</button>
+      </div>
+
+      <div id="status-busca" class="status-busca status-inicial" role="status" aria-live="polite">
+        Digite pelo menos 2 caracteres para pesquisar...
+      </div>
+    </section>
+
+    <section class="secao-resultados">
+      <div id="grade-livros" class="grade-livros">
+        <!-- Cards de livros criados dinamicamente via JavaScript -->
+      </div>
+    </section>
+
+    <footer class="painel-didatico">
+      <h3>Dica Didática: Debounce e AbortController</h3>
+      <p>
+        Abra as ferramentas de desenvolvedor (F12) na aba <strong>Rede (Network)</strong>. 
+        Digite rapidamente um termo como <em>"java"</em> e perceba que requisições em andamento 
+        são canceladas pelo <code>AbortController</code>, impedindo respostas antigas de sobrescrever a tela.
+      </p>
+    </footer>
+  </main>
+</body>
+</html>

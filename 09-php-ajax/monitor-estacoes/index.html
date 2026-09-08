@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Monitor de Telemetria de Estações - IFSul</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="container">
+    <header class="cabecalho">
+      <span class="badge-modulo">Exercício 05 • Polling Seguro e Resiliência</span>
+      <h1>Monitor de Telemetria de Estações</h1>
+      <p>Acompanhe medições ambientais de sensores do campus com sincronização periódica e proteção contra sobreposição.</p>
+    </header>
+
+    <section class="painel-controle">
+      <div class="linha-status">
+        <div class="indicador-conexao">
+          <span class="ponto-status" id="ponto-status"></span>
+          <span class="texto-status" id="texto-status">Monitoramento pausado</span>
+        </div>
+        <div class="contador-tempo" id="info-atualizacao">
+          Última leitura: <strong id="horario-ultima-leitura">--:--:--</strong>
+          <span id="tempo-decorrido">(nenhuma leitura realizada)</span>
+        </div>
+      </div>
+
+      <div class="linha-acoes">
+        <div class="grupo-botoes">
+          <button type="button" id="btn-iniciar" class="btn btn-primario">Iniciar Monitoramento</button>
+          <button type="button" id="btn-pausar" class="btn btn-secundario" disabled>Pausar</button>
+          <button type="button" id="btn-atualizar" class="btn btn-neutro">Atualizar Agora</button>
+        </div>
+
+        <label class="controle-simulacao">
+          <input type="checkbox" id="chk-simular-falha">
+          <span>Simular erro 500 no servidor</span>
+        </label>
+      </div>
+
+      <!-- Banner exibido se os dados ficarem mais de 15 segundos sem atualização bem-sucedida -->
+      <div id="banner-stale" class="banner-stale" style="display: none;" role="alert">
+        ⚠️ <strong>Atenção:</strong> Os dados exibidos podem estar defasados. Falha recente na sincronização com o servidor.
+      </div>
+    </section>
+
+    <section class="secao-telemetria">
+      <div id="grade-estacoes" class="grade-estacoes">
+        <!-- Cartões das estações criados e atualizados via JavaScript -->
+      </div>
+    </section>
+
+    <footer class="painel-didatico">
+      <h3>Dica Didática: Polling Recursivo no <code>finally</code></h3>
+      <p>
+        Note que <strong>não</strong> usamos <code>setInterval()</code>. O próximo ciclo de consulta é agendado 
+        com <code>setTimeout()</code> dentro do bloco <code>finally</code> da função de busca. Dessa forma, 
+        se uma resposta demorar na rede, a requisição seguinte nunca é disparada por cima da atual.
+      </p>
+    </footer>
+  </main>
+</body>
+</html>

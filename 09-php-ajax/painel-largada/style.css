@@ -1,0 +1,219 @@
+:root {
+    --cor-primaria: #1b5e20;
+    --cor-fundo: #f4f6f8;
+    --cor-cartao: #ffffff;
+    --cor-texto: #263238;
+    --cor-sucesso: #2e7d32;
+    --cor-alerta: #f57f17;
+    --cor-erro: #c62828;
+    --cor-borda: #cfd8dc;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    padding: 24px 16px;
+    line-height: 1.5;
+}
+
+.container {
+    max-width: 580px;
+    margin: 0 auto;
+    background: var(--cor-cartao);
+    border-radius: 12px;
+    padding: 32px 24px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.cabecalho {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.cabecalho h1 {
+    font-size: 1.8rem;
+    color: var(--cor-primaria);
+    margin-bottom: 4px;
+}
+
+.subtitulo {
+    font-size: 0.95rem;
+    color: #546e7a;
+}
+
+.painel-principal {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 32px;
+}
+
+.status-box {
+    padding: 14px 18px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-align: center;
+    font-size: 1.05rem;
+    border: 2px solid transparent;
+    transition: background-color 0.25s, border-color 0.25s, color 0.25s;
+}
+
+.status-aguardando {
+    background-color: #eceff1;
+    color: #455a64;
+    border-color: #b0bec5;
+}
+
+.status-atencao {
+    background-color: #fffde7;
+    color: #f57f17;
+    border-color: #fbc02d;
+}
+
+.status-contando {
+    background-color: #e3f2fd;
+    color: #0277bd;
+    border-color: #4fc3f7;
+}
+
+.status-largada {
+    background-color: #e8f5e9;
+    color: var(--cor-sucesso);
+    border-color: #81c784;
+}
+
+.status-cancelado {
+    background-color: #ffebee;
+    color: var(--cor-erro);
+    border-color: #e57373;
+}
+
+.mostrador-container {
+    background-color: #212121;
+    color: #ffffff;
+    border-radius: 12px;
+    padding: 36px 20px;
+    text-align: center;
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.mostrador-numero {
+    font-size: 4rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    font-family: monospace;
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.15s ease;
+}
+
+.mostrador-numero.pulso {
+    transform: scale(1.15);
+}
+
+.mensagem-guia {
+    margin-top: 8px;
+    font-size: 0.95rem;
+    color: #b0bec5;
+}
+
+.botoes-controle {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    flex: 1;
+    min-width: 130px;
+    padding: 12px 16px;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.1s;
+}
+
+.btn:hover:not(:disabled) {
+    opacity: 0.9;
+}
+
+.btn:active:not(:disabled) {
+    transform: scale(0.98);
+}
+
+.btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.btn-iniciar {
+    background-color: var(--cor-primaria);
+    color: #ffffff;
+}
+
+.btn-pausar {
+    background-color: var(--cor-alerta);
+    color: #ffffff;
+}
+
+.btn-cancelar {
+    background-color: var(--cor-erro);
+    color: #ffffff;
+}
+
+.secao-historico {
+    border-top: 1px solid var(--cor-borda);
+    padding-top: 24px;
+}
+
+.secao-historico h2 {
+    font-size: 1.15rem;
+    margin-bottom: 12px;
+    color: #37474f;
+}
+
+.lista-historico {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 220px;
+    overflow-y: auto;
+}
+
+.lista-historico li {
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    background-color: #f5f5f5;
+    border-left: 4px solid #b0bec5;
+}
+
+.lista-historico li.registro-largada {
+    border-left-color: var(--cor-sucesso);
+    background-color: #f1f8e9;
+}
+
+.lista-historico li.registro-cancelado {
+    border-left-color: var(--cor-erro);
+    background-color: #fbe9e7;
+}
+
+.historico-vazio {
+    font-style: italic;
+    color: #78909c;
+    text-align: center;
+    border-left: none !important;
+    background-color: transparent !important;
+}
