@@ -70,7 +70,7 @@ else if ($metodo === "POST") {
     if (!$nome) {
         sendResponse([
             "erro" => true,
-            "mensagem" => "O campo nome é obrigatório",
+            "mensagem" => "Informe o nome do produto",
         ], 400);
     }
 
@@ -108,9 +108,15 @@ else if ($metodo === "PUT") {
 
     $camposPermitidos = [ "nome", "descricao", "preco", "categoria" ];
     foreach($dados as $campo => $valor) {
-        if (in_array($campo, $camposPermitidos)) {
-            $produto[$campo] = $valor;
+        if (!in_array($campo, $camposPermitidos)) {
+            sendResponse([
+                "erro" => true,
+                "mensagem" => "Este campo não existe ou não pode ser alterado",
+                "campo" => $campo,
+            ], 400);
         }
+
+        $produto[$campo] = $valor;
     }
 
     sendResponse([

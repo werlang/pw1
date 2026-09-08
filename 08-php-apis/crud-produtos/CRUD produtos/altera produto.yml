@@ -5,10 +5,10 @@ info:
 
 http:
   method: PUT
-  url: http://localhost/produto/?id=1
+  url: http://localhost/produto/?id=11
   params:
     - name: id
-      value: "1"
+      value: "11"
       type: query
   body:
     type: json
