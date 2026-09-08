@@ -37,26 +37,46 @@
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="2" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
 <header> </header>
 <h1 id="javascript-ass%C3%ADncrono">JavaScript Assíncrono</h1>
-<h2 id="esperar-sem-congelar-a-p%C3%A1gina">Esperar sem congelar a página</h2>
-<div class="grid grid-cols-2 gap-6 h-full">
-<div>
+<h2 id="esperar-sem-congelar-o-navegador">Esperar sem congelar o navegador</h2>
 <ul>
-<li>Temporizadores executam tarefas depois</li>
-<li>Requisições aguardam respostas do servidor</li>
-<li>A interface continua atendendo eventos</li>
-<li>Promises representam resultados futuros</li>
+<li>O JavaScript executa em linha única (<em>single thread</em>)</li>
+<li>Tarefas de rede e temporizadores rodam em segundo plano nos bastidores</li>
+<li>A interface continua responsiva para digitação, rolagem e cliques</li>
+<li>Quando a resposta fica pronta, o JavaScript reage e atualiza o DOM</li>
 </ul>
-</div>
-<div class="media mx-auto">
-    <img class="placeholder" alt="Prompt de IA: atendente malabarista cuidando de relógio, formulário e resposta de servidor sem deixar nada cair, metáfora divertida para assincronismo" />
-</div>
+<div class="media mx-auto flex items-center justify-center">
+    <img class="h-full" src="../../marp/assets/09-async.png" alt="Diagrama de fluxo assíncrono mostrando a interface do navegador ininterrupta enquanto o servidor processa dados em segundo plano." />
 </div>
 <footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="3" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
 <header> </header>
 <h1 id="javascript-ass%C3%ADncrono-1">JavaScript Assíncrono</h1>
-<h2 id="a-ordem-pode-surpreender">A ordem pode surpreender</h2>
+<h2 id="s%C3%ADncrono-vs-ass%C3%ADncrono">Síncrono vs. Assíncrono</h2>
+<div class="grid grid-cols-2 gap-6">
+<div>
+<p><strong>Execução Síncrona (Bloqueante)</strong></p>
+<ul>
+<li>Uma instrução só inicia após a anterior terminar</li>
+<li>Segue ordem linear e rígida</li>
+<li>Se algo demorar, tudo ao redor fica paralisado</li>
+</ul>
+</div>
+<div>
+<p><strong>Execução Assíncrona (Não Bloqueante)</strong></p>
+<ul>
+<li>Tarefas demoradas são agendadas</li>
+<li>O navegador continua atendendo o usuário</li>
+<li>O resultado é processado quando estiver pronto</li>
+</ul>
+</div>
+</div>
+<footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="4" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
+<header> </header>
+<h1 id="javascript-ass%C3%ADncrono-2">JavaScript Assíncrono</h1>
+<h2 id="a-ordem-de-execu%C3%A7%C3%A3o-pode-surpreender">A ordem de execução pode surpreender</h2>
 <pre><code class="language-js"><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;A&#x27;</span>);
 
 <span class="hljs-built_in">setTimeout</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
@@ -65,244 +85,337 @@
 
 <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;C&#x27;</span>);
 </code></pre>
-<p>Saída: <code>A</code>, <code>C</code>, <code>B</code>.</p>
+<p><strong>Saída no console:</strong> <code>A</code>, <code>C</code>, <code>B</code>.</p>
+<ul>
+<li>O código não &quot;dorme&quot; por 1 segundo na linha do temporizador</li>
+<li>A função com <code>B</code> é apenas agendada para daqui a pouco</li>
+<li>A execução principal avança de imediato e imprime <code>C</code></li>
+</ul>
 <footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="4" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="5" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
 <header> </header>
-<h1 id="javascript-ass%C3%ADncrono-2">JavaScript Assíncrono</h1>
-<h2 id="callback-fa%C3%A7a-isso-depois">Callback: faça isso depois</h2>
+<h1 id="javascript-ass%C3%ADncrono-3">JavaScript Assíncrono</h1>
+<h2 id="callback-uma-fun%C3%A7%C3%A3o-para-executar-depois">Callback: uma função para executar depois</h2>
 <pre><code class="language-js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">avisarConclusao</span>(<span class="hljs-params"></span>) {
-    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Tarefa concluída&#x27;</span>);
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Tarefa concluída!&#x27;</span>);
 }
 
 <span class="hljs-built_in">setTimeout</span>(avisarConclusao, <span class="hljs-number">1000</span>);
 </code></pre>
-<p>Uma callback é uma função entregue para ser executada depois.</p>
+<ul>
+<li>Callback é uma função passada como argumento para ser chamada no futuro</li>
+<li>Você já usa callbacks nos eventos do DOM:<br />
+<code>botao.addEventListener('click', aoClicar);</code></li>
+<li>No clique, quem avisa é o usuário; no temporizador, quem avisa é o relógio</li>
+</ul>
 <footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="5" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-class="divider" data-theme="ifsul" lang="pt-BR" class="divider" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--class:divider;--theme:ifsul;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="6" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-class="divider" data-theme="ifsul" lang="pt-BR" class="divider" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--class:divider;--theme:ifsul;">
 <header> </header>
 
-<h1 id="temporizadores">Temporizadores</h1>
-<footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
-</section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="6" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
-<header> </header>
-<h1 id="javascript-ass%C3%ADncrono-3">JavaScript Assíncrono</h1>
-<h2 id="settimeout-uma-execu%C3%A7%C3%A3o"><code>setTimeout()</code>: uma execução</h2>
-<pre><code class="language-js"><span class="hljs-keyword">const</span> id = <span class="hljs-built_in">setTimeout</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
-    mensagem.<span class="hljs-property">textContent</span> = <span class="hljs-string">&#x27;Tempo encerrado&#x27;</span>;
-}, <span class="hljs-number">2000</span>);
-</code></pre>
-<ul>
-<li>O tempo é informado em milissegundos</li>
-<li>A execução ocorre uma vez</li>
-<li><code>clearTimeout(id)</code> cancela o agendamento</li>
-</ul>
+<h1 id="temporizadores-no-navegador">Temporizadores no Navegador</h1>
 <footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="7" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
 <header> </header>
-<h1 id="javascript-ass%C3%ADncrono-4">JavaScript Assíncrono</h1>
-<h2 id="setinterval-execu%C3%A7%C3%A3o-recorrente"><code>setInterval()</code>: execução recorrente</h2>
-<pre><code class="language-js"><span class="hljs-keyword">const</span> id = <span class="hljs-built_in">setInterval</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
-    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Atualização&#x27;</span>);
-}, <span class="hljs-number">1000</span>);
+<h1 id="temporizadores">Temporizadores</h1>
+<h2 id="settimeout-agendamento-de-disparo-%C3%BAnico">setTimeout(): agendamento de disparo único</h2>
+<pre><code class="language-js"><span class="hljs-keyword">const</span> id = <span class="hljs-built_in">setTimeout</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
+    mensagem.<span class="hljs-property">textContent</span> = <span class="hljs-string">&#x27;Aviso exibido após 2 segundos&#x27;</span>;
+}, <span class="hljs-number">2000</span>);
 
-<span class="hljs-built_in">clearInterval</span>(id);
+<span class="hljs-comment">// Para cancelar o agendamento antes do disparo:</span>
+<span class="hljs-built_in">clearTimeout</span>(id);
 </code></pre>
-<p>Guarde o identificador para conseguir parar.</p>
+<ul>
+<li>O tempo é sempre informado em milissegundos (<code>1000 ms = 1 s</code>)</li>
+<li>A função é executada apenas uma vez</li>
+<li><code>clearTimeout(id)</code> cancela a ação se chamado a tempo</li>
+<li>Ideal para esconder notificações temporárias (<em>toast</em>) e criar pausas</li>
+</ul>
 <footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="8" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
 <header> </header>
-<h1 id="javascript-ass%C3%ADncrono-5">JavaScript Assíncrono</h1>
-<h2 id="n%C3%A3o-crie-v%C3%A1rios-cron%C3%B4metros">Não crie vários cronômetros</h2>
-<pre><code class="language-js"><span class="hljs-keyword">let</span> intervalo = <span class="hljs-literal">null</span>;
+<h1 id="temporizadores-1">Temporizadores</h1>
+<h2 id="setinterval-repeti%C3%A7%C3%A3o-peri%C3%B3dica">setInterval(): repetição periódica</h2>
+<pre><code class="language-js"><span class="hljs-keyword">const</span> id = <span class="hljs-built_in">setInterval</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Atualização a cada 1 segundo&#x27;</span>);
+}, <span class="hljs-number">1000</span>);
 
-<span class="hljs-keyword">function</span> <span class="hljs-title function_">iniciar</span>(<span class="hljs-params"></span>) {
-    <span class="hljs-keyword">if</span> (intervalo !== <span class="hljs-literal">null</span>) <span class="hljs-keyword">return</span>;
-
-    intervalo = <span class="hljs-built_in">setInterval</span>(atualizar, <span class="hljs-number">100</span>);
-}
+<span class="hljs-comment">// Para interromper a repetição:</span>
+<span class="hljs-built_in">clearInterval</span>(id);
 </code></pre>
-<p>Uma variável de estado impede intervalos concorrentes.</p>
+<ul>
+<li>Dispara a função repetidamente no intervalo estipulado</li>
+<li>Retorna um identificador numérico que você deve guardar em variável</li>
+<li>Sem guardar o <code>id</code>, você perde o controle e não consegue parar a repetição</li>
+</ul>
 <footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="9" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
 <header> </header>
-<h1 id="javascript-ass%C3%ADncrono-6">JavaScript Assíncrono</h1>
-<h2 id="intervalo-atualiza-rel%C3%B3gio-mede">Intervalo atualiza; relógio mede</h2>
-<pre><code class="language-js"><span class="hljs-keyword">const</span> inicio = performance.<span class="hljs-title function_">now</span>();
+<h1 id="temporizadores-2">Temporizadores</h1>
+<h2 id="o-perigo-do-intervalo-duplicado">O perigo do intervalo duplicado</h2>
+<pre><code class="language-js"><span class="hljs-keyword">let</span> intervalo = <span class="hljs-literal">null</span>;
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">iniciar</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">if</span> (intervalo !== <span class="hljs-literal">null</span>) <span class="hljs-keyword">return</span>; <span class="hljs-comment">// Já está rodando, não duplica!</span>
+
+    intervalo = <span class="hljs-built_in">setInterval</span>(atualizar, <span class="hljs-number">100</span>);
+}
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">pausar</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-built_in">clearInterval</span>(intervalo);
+    intervalo = <span class="hljs-literal">null</span>; <span class="hljs-comment">// Libera para poder iniciar de novo</span>
+}
+</code></pre>
+<ul>
+<li>Cada clique em &quot;Iniciar&quot; sem trava cria um novo loop concorrente</li>
+<li>Múltiplos intervalos deixam o contador acelerado e instável</li>
+<li>O estado <code>null</code> sinaliza com clareza quando não há loop ativo</li>
+</ul>
+<footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="10" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
+<header> </header>
+<h1 id="temporizadores-3">Temporizadores</h1>
+<h2 id="o-intervalo-atualiza-o-rel%C3%B3gio-mede">O intervalo atualiza; o relógio mede</h2>
+<pre><code class="language-js"><span class="hljs-keyword">const</span> inicio = <span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>();
 
 <span class="hljs-built_in">setInterval</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
-    <span class="hljs-keyword">const</span> milissegundos = performance.<span class="hljs-title function_">now</span>() - inicio;
-    mostrador.<span class="hljs-property">textContent</span> =
-        (milissegundos / <span class="hljs-number">1000</span>).<span class="hljs-title function_">toFixed</span>(<span class="hljs-number">1</span>);
+    <span class="hljs-keyword">const</span> decorrido = <span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>() - inicio;
+    mostrador.<span class="hljs-property">textContent</span> = (decorrido / <span class="hljs-number">1000</span>).<span class="hljs-title function_">toFixed</span>(<span class="hljs-number">1</span>);
 }, <span class="hljs-number">100</span>);
 </code></pre>
-<p>O atraso informado é mínimo, não uma garantia de precisão exata.</p>
+<ul>
+<li>O tempo informado no temporizador é um atraso mínimo, não exato</li>
+<li>Se o navegador estiver ocupado, somar <code>+0.1</code> a cada ciclo acumula erro</li>
+<li>Para cronômetros confiáveis, calcule o delta real com <code>Date.now()</code> ou <code>performance.now()</code></li>
+</ul>
 <footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="10" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-class="divider" data-theme="ifsul" lang="pt-BR" class="divider" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--class:divider;--theme:ifsul;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="11" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-class="divider" data-theme="ifsul" lang="pt-BR" class="divider" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--class:divider;--theme:ifsul;">
 <header> </header>
 
-<h1 id="promises-e-await">Promises e <code>await</code></h1>
-<footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
-</section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="11" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
-<header> </header>
-<h1 id="javascript-ass%C3%ADncrono-7">JavaScript Assíncrono</h1>
-<h2 id="promise-um-resultado-futuro">Promise: um resultado futuro</h2>
-<div class="grid grid-cols-3 gap-6">
-<div>
-<p><strong>pending</strong></p>
-<p>Aguardando.</p>
-</div>
-<div>
-<p><strong>fulfilled</strong></p>
-<p>Concluída com valor.</p>
-</div>
-<div>
-<p><strong>rejected</strong></p>
-<p>Concluída com erro.</p>
-</div>
-</div>
+<h1 id="promises-e-fun%C3%A7%C3%B5es-ass%C3%ADncronas">Promises e Funções Assíncronas</h1>
 <footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="12" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
 <header> </header>
-<h1 id="javascript-ass%C3%ADncrono-8">JavaScript Assíncrono</h1>
-<h2 id="encadeando-com-then">Encadeando com <code>.then()</code></h2>
-<pre><code class="language-js"><span class="hljs-title function_">fetch</span>(<span class="hljs-string">&#x27;api/status.php&#x27;</span>)
-    .<span class="hljs-title function_">then</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params">response</span>) {
-        <span class="hljs-keyword">return</span> response.<span class="hljs-title function_">json</span>();
-    })
-    .<span class="hljs-title function_">then</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params">dados</span>) {
-        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(dados);
-    });
-</code></pre>
-<p>Cada etapa recebe o resultado da etapa anterior.</p>
+<h1 id="promises">Promises</h1>
+<h2 id="a-promessa-de-um-resultado-futuro">A promessa de um resultado futuro</h2>
+<div class="grid grid-cols-3 gap-6">
+<div>
+<p><strong>pending</strong></p>
+<p>Aguardando. A operação ainda está sendo executada nos bastidores.</p>
+</div>
+<div>
+<p><strong>fulfilled</strong></p>
+<p>Resolvida com sucesso. O resultado esperado está pronto e disponível.</p>
+</div>
+<div>
+<p><strong>rejected</strong></p>
+<p>Rejeitada. Ocorreu uma falha ou impedimento na execução.</p>
+</div>
+</div>
 <footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="13" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
 <header> </header>
-<h1 id="javascript-ass%C3%ADncrono-9">JavaScript Assíncrono</h1>
-<h2 id="async-e-await"><code>async</code> e <code>await</code></h2>
+<h1 id="promises-1">Promises</h1>
+<h2 id="encadeando-com-then-e-catch">Encadeando com .then() e .catch()</h2>
+<pre><code class="language-js"><span class="hljs-title function_">fetch</span>(<span class="hljs-string">&#x27;api/status.php&#x27;</span>)
+    .<span class="hljs-title function_">then</span>(<span class="hljs-function">(<span class="hljs-params">response</span>) =&gt;</span> {
+        <span class="hljs-keyword">return</span> response.<span class="hljs-title function_">json</span>();
+    })
+    .<span class="hljs-title function_">then</span>(<span class="hljs-function">(<span class="hljs-params">dados</span>) =&gt;</span> {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Sucesso:&#x27;</span>, dados);
+    })
+    .<span class="hljs-title function_">catch</span>(<span class="hljs-function">(<span class="hljs-params">erro</span>) =&gt;</span> {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&#x27;Falha na operação:&#x27;</span>, erro.<span class="hljs-property">message</span>);
+    });
+</code></pre>
+<ul>
+<li>Cada <code>.then()</code> processa a resposta entregue pelo passo anterior</li>
+<li>O <code>.catch()</code> captura falhas que ocorrerem em qualquer ponto da cadeia</li>
+<li>Funciona bem, mas cadeias longas tornam o fluxo mais difícil de ler</li>
+</ul>
+<footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="14" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
+<header> </header>
+<h1 id="fun%C3%A7%C3%B5es-ass%C3%ADncronas">Funções Assíncronas</h1>
+<h2 id="a-clareza-de-async-e-await">A clareza de async e await</h2>
 <pre><code class="language-js"><span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">carregarStatus</span>(<span class="hljs-params"></span>) {
-    <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> <span class="hljs-title function_">fetch</span>(<span class="hljs-string">&#x27;api/status.php&#x27;</span>);
-    <span class="hljs-keyword">const</span> dados = <span class="hljs-keyword">await</span> response.<span class="hljs-title function_">json</span>();
-    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(dados);
+    <span class="hljs-keyword">try</span> {
+        <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> <span class="hljs-title function_">fetch</span>(<span class="hljs-string">&#x27;api/status.php&#x27;</span>);
+        <span class="hljs-keyword">const</span> dados = <span class="hljs-keyword">await</span> response.<span class="hljs-title function_">json</span>();
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Status recebido:&#x27;</span>, dados);
+    } <span class="hljs-keyword">catch</span> (erro) {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&#x27;Erro na requisição:&#x27;</span>, erro.<span class="hljs-property">message</span>);
+    }
 }
 </code></pre>
 <ul>
-<li><code>async</code> faz a função retornar uma Promise</li>
-<li><code>await</code> aguarda uma Promise dentro da função</li>
-<li>A página continua atendendo outros eventos</li>
+<li><code>async</code> declara que a função lida com tarefas assíncronas e retorna uma Promise</li>
+<li><code>await</code> pausa a leitura interna da função até a Promise terminar</li>
+<li>O código é lido de cima para baixo como se fosse síncrono, sem travar o navegador</li>
 </ul>
 <footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="14" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-class="divider" data-theme="ifsul" lang="pt-BR" class="divider" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--class:divider;--theme:ifsul;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="15" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-class="divider" data-theme="ifsul" lang="pt-BR" class="divider" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--class:divider;--theme:ifsul;">
 <header> </header>
 
-<h1 id="ajax-com-fetch">AJAX com <code>fetch()</code></h1>
-<footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
-</section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="15" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
-<header> </header>
-<h1 id="ajax">AJAX</h1>
-<h2 id="o-nome-ficou-o-xml-n%C3%A3o-%C3%A9-obrigat%C3%B3rio">O nome ficou, o XML não é obrigatório</h2>
-<ul>
-<li>AJAX: <em>Asynchronous JavaScript and XML</em></li>
-<li>Hoje JSON é muito mais comum</li>
-<li>A página troca dados sem recarregar inteira</li>
-<li><code>fetch()</code> é a API nativa moderna para requisições</li>
-</ul>
+<h1 id="ajax-com-a-api-fetch">AJAX com a API fetch()</h1>
 <footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="16" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
 <header> </header>
-<h1 id="ajax-1">AJAX</h1>
-<h2 id="fetch-devolve-um-response"><code>fetch()</code> devolve um <code>Response</code></h2>
-<pre><code class="language-js"><span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> <span class="hljs-title function_">fetch</span>(<span class="hljs-string">&#x27;api/alunos.php&#x27;</span>);
-<span class="hljs-keyword">const</span> dados = <span class="hljs-keyword">await</span> response.<span class="hljs-title function_">json</span>();
-</code></pre>
+<h1 id="ajax">AJAX</h1>
+<h2 id="a-grande-virada-na-experi%C3%AAncia-da-web">A grande virada na experiência da Web</h2>
+<div class="grid grid-cols-2 gap-6">
+<div>
+<p><strong>Web Tradicional (sem AJAX)</strong></p>
 <ul>
-<li>A primeira Promise entrega a resposta HTTP</li>
-<li><code>response.json()</code> lê o corpo</li>
-<li>Ler o corpo também é assíncrono</li>
+<li>O formulário envia dados ao servidor</li>
+<li>A página inteira pisca em branco e recarrega</li>
+<li>O servidor gera e devolve um novo HTML completo</li>
+<li>O usuário perde o estado local e a rolagem</li>
 </ul>
+</div>
+<div>
+<p><strong>Web Moderna (com AJAX)</strong></p>
+<ul>
+<li>O JavaScript intercepta o envio em segundo plano</li>
+<li>A página nunca é recarregada</li>
+<li>O servidor devolve apenas dados puros (JSON)</li>
+<li>O DOM atualiza cirurgicamente apenas o necessário</li>
+</ul>
+</div>
+</div>
 <footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="17" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
 <header> </header>
-<h1 id="ajax-2">AJAX</h1>
-<h2 id="404-e-500-n%C3%A3o-rejeitam-automaticamente">404 e 500 não rejeitam automaticamente</h2>
-<pre><code class="language-js"><span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> <span class="hljs-title function_">fetch</span>(<span class="hljs-string">&#x27;api/alunos.php&#x27;</span>);
+<h1 id="ajax-1">AJAX</h1>
+<h2 id="anatomia-do-fetch-por-que-usamos-dois-awaits">Anatomia do fetch(): por que usamos dois awaits?</h2>
+<pre><code class="language-js"><span class="hljs-comment">// 1. Aguarda os cabeçalhos e status HTTP chegarem:</span>
+<span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> <span class="hljs-title function_">fetch</span>(<span class="hljs-string">&#x27;api/alunos.php&#x27;</span>);
 
-<span class="hljs-keyword">if</span> (!response.<span class="hljs-property">ok</span>) {
-    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">`Falha HTTP: <span class="hljs-subst">${response.status}</span>`</span>);
-}
-
+<span class="hljs-comment">// 2. Faz o download do corpo e converte o texto JSON em objeto:</span>
 <span class="hljs-keyword">const</span> dados = <span class="hljs-keyword">await</span> response.<span class="hljs-title function_">json</span>();
 </code></pre>
-<p>Falha HTTP e falha de rede são situações diferentes.</p>
+<ul>
+<li><code>fetch()</code> inicia a requisição HTTP e retorna um objeto <code>Response</code></li>
+<li>No primeiro passo, você já tem acesso ao status (<code>200</code>, <code>404</code>) e cabeçalhos</li>
+<li>O corpo da resposta pode ser pesado e chega em fluxo de dados</li>
+<li>Ler e decodificar o corpo com <code>response.json()</code> também é assíncrono</li>
+</ul>
 <footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="18" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
 <header> </header>
-<h1 id="ajax-3">AJAX</h1>
-<h2 id="tratando-falhas">Tratando falhas</h2>
-<pre><code class="language-js"><span class="hljs-keyword">try</span> {
-    <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> <span class="hljs-title function_">fetch</span>(<span class="hljs-string">&#x27;api/alunos.php&#x27;</span>);
-    <span class="hljs-keyword">const</span> dados = <span class="hljs-keyword">await</span> response.<span class="hljs-title function_">json</span>();
+<h1 id="ajax-2">AJAX</h1>
+<h2 id="a-armadilha-404-e-500-n%C3%A3o-caem-no-catch">A armadilha: 404 e 500 não caem no catch</h2>
+<pre><code class="language-js"><span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> <span class="hljs-title function_">fetch</span>(<span class="hljs-string">&#x27;api/alunos.php&#x27;</span>);
 
-    <span class="hljs-keyword">if</span> (!response.<span class="hljs-property">ok</span>) <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(dados.<span class="hljs-property">message</span>);
-    <span class="hljs-title function_">renderizarAlunos</span>(dados.<span class="hljs-property">result</span>);
-} <span class="hljs-keyword">catch</span> (erro) {
-    mensagem.<span class="hljs-property">textContent</span> = erro.<span class="hljs-property">message</span>;
+<span class="hljs-keyword">if</span> (!response.<span class="hljs-property">ok</span>) {
+    <span class="hljs-comment">// Status fora da faixa 200-299 (ex.: 404, 500)</span>
+    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">`Falha na resposta HTTP: <span class="hljs-subst">${response.status}</span>`</span>);
 }
+
+<span class="hljs-keyword">const</span> dados = <span class="hljs-keyword">await</span> response.<span class="hljs-title function_">json</span>();
 </code></pre>
+<ul>
+<li><code>fetch()</code> só rejeita a Promise por falha de rede (sem internet, DNS inacessível)</li>
+<li>Um status <code>404 Not Found</code> é uma resposta que chegou ao navegador com sucesso!</li>
+<li>Sempre valide <code>response.ok</code> antes de continuar o processamento</li>
+</ul>
 <footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="19" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
 <header> </header>
-<h1 id="ajax-4">AJAX</h1>
-<h2 id="get-com-urlsearchparams">GET com <code>URLSearchParams</code></h2>
-<pre><code class="language-js"><span class="hljs-keyword">const</span> parametros = <span class="hljs-keyword">new</span> <span class="hljs-title class_">URLSearchParams</span>({
-    <span class="hljs-attr">turma</span>: <span class="hljs-string">&#x27;2AT&#x27;</span>,
-    <span class="hljs-attr">pagina</span>: <span class="hljs-string">&#x27;1&#x27;</span>
-});
+<h1 id="ajax-3">AJAX</h1>
+<h2 id="tratamento-robusto-com-trycatch">Tratamento robusto com try...catch</h2>
+<pre><code class="language-js"><span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">carregarLista</span>(<span class="hljs-params"></span>) {
+    mensagem.<span class="hljs-property">textContent</span> = <span class="hljs-string">&#x27;Carregando dados...&#x27;</span>;
 
-<span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> <span class="hljs-title function_">fetch</span>(
-    <span class="hljs-string">`api/alunos.php?<span class="hljs-subst">${parametros}</span>`</span>
-);
+    <span class="hljs-keyword">try</span> {
+        <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> <span class="hljs-title function_">fetch</span>(<span class="hljs-string">&#x27;api/alunos.php&#x27;</span>);
+        <span class="hljs-keyword">const</span> dados = <span class="hljs-keyword">await</span> response.<span class="hljs-title function_">json</span>();
+
+        <span class="hljs-keyword">if</span> (!response.<span class="hljs-property">ok</span>) <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(dados.<span class="hljs-property">message</span> || <span class="hljs-string">&#x27;Falha no servidor&#x27;</span>);
+
+        <span class="hljs-title function_">renderizarAlunos</span>(dados.<span class="hljs-property">alunos</span>);
+        mensagem.<span class="hljs-property">textContent</span> = <span class="hljs-string">&#x27;Lista carregada!&#x27;</span>;
+    } <span class="hljs-keyword">catch</span> (erro) {
+        mensagem.<span class="hljs-property">textContent</span> = erro.<span class="hljs-property">message</span>;
+    }
+}
 </code></pre>
-<p>Evite montar a query string manualmente.</p>
+<ul>
+<li>Unifica o tratamento de quedas de conexão e erros de validação da API</li>
+<li>A interface sempre fornece retorno visual para o usuário</li>
+</ul>
 <footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="20" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="20" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-class="divider" data-theme="ifsul" lang="pt-BR" class="divider" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--class:divider;--theme:ifsul;">
 <header> </header>
-<h1 id="ajax-5">AJAX</h1>
-<h2 id="post-com-formdata">POST com <code>FormData</code></h2>
-<pre><code class="language-js">formulario.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;submit&#x27;</span>, <span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span>(<span class="hljs-params">evento</span>) {
-    evento.<span class="hljs-title function_">preventDefault</span>();
 
-    <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> <span class="hljs-title function_">fetch</span>(<span class="hljs-string">&#x27;cadastro.php&#x27;</span>, {
-        <span class="hljs-attr">method</span>: <span class="hljs-string">&#x27;POST&#x27;</span>,
-        <span class="hljs-attr">body</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormData</span>(formulario)
-    });
-});
-</code></pre>
-<p>O navegador define o <code>Content-Type</code> correto para <code>FormData</code>.</p>
+<h1 id="enviando-dados-ao-servidor">Enviando Dados ao Servidor</h1>
 <footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="21" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
 <header> </header>
-<h1 id="ajax-6">AJAX</h1>
-<h2 id="enviando-json">Enviando JSON</h2>
-<pre><code class="language-js"><span class="hljs-keyword">await</span> <span class="hljs-title function_">fetch</span>(<span class="hljs-string">&#x27;api/alunos.php&#x27;</span>, {
+<h1 id="enviando-dados">Enviando Dados</h1>
+<h2 id="consulta-get-com-urlsearchparams">Consulta GET com URLSearchParams</h2>
+<pre><code class="language-js"><span class="hljs-keyword">const</span> parametros = <span class="hljs-keyword">new</span> <span class="hljs-title class_">URLSearchParams</span>({
+    <span class="hljs-attr">turma</span>: <span class="hljs-string">&#x27;2AT&#x27;</span>,
+    <span class="hljs-attr">ordem</span>: <span class="hljs-string">&#x27;nome&#x27;</span>
+});
+
+<span class="hljs-comment">// Monta a URL: api/alunos.php?turma=2AT&amp;ordem=nome</span>
+<span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> <span class="hljs-title function_">fetch</span>(<span class="hljs-string">`api/alunos.php?<span class="hljs-subst">${parametros}</span>`</span>);
+<span class="hljs-keyword">const</span> dados = <span class="hljs-keyword">await</span> response.<span class="hljs-title function_">json</span>();
+</code></pre>
+<ul>
+<li>Evita concatenar interrogações (<code>?</code>) e caracteres especiais na mão</li>
+<li>Trata espaços e acentuação de forma segura na URL</li>
+<li>No PHP, esses parâmetros chegam normalmente pelo array <code>$_GET</code></li>
+</ul>
+<footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="22" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
+<header> </header>
+<h1 id="enviando-dados-1">Enviando Dados</h1>
+<h2 id="post-com-formdata-ideal-para-formul%C3%A1rios">POST com FormData: ideal para formulários</h2>
+<pre><code class="language-js">formulario.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;submit&#x27;</span>, <span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span>(<span class="hljs-params">evento</span>) {
+    evento.<span class="hljs-title function_">preventDefault</span>(); <span class="hljs-comment">// Impede o recarregamento da página!</span>
+
+    <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> <span class="hljs-title function_">fetch</span>(<span class="hljs-string">&#x27;api/cadastro.php&#x27;</span>, {
+        <span class="hljs-attr">method</span>: <span class="hljs-string">&#x27;POST&#x27;</span>,
+        <span class="hljs-attr">body</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormData</span>(formulario)
+    });
+    <span class="hljs-keyword">const</span> resultado = <span class="hljs-keyword">await</span> response.<span class="hljs-title function_">json</span>();
+});
+</code></pre>
+<ul>
+<li><code>new FormData(formulario)</code> coleta todos os <code>&lt;input name=&quot;...&quot;&gt;</code> automaticamente</li>
+<li><strong>Regra de ouro:</strong> NUNCA configure o cabeçalho <code>Content-Type</code> manualmente aqui!</li>
+<li>O navegador adiciona o <code>multipart/form-data</code> com o separador correto</li>
+<li>No PHP, os campos chegam diretamente em <code>$_POST</code> (e arquivos em <code>$_FILES</code>)</li>
+</ul>
+<footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="23" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
+<header> </header>
+<h1 id="enviando-dados-2">Enviando Dados</h1>
+<h2 id="post-com-json-quando-a-api-exige-objeto-puro">POST com JSON: quando a API exige objeto puro</h2>
+<pre><code class="language-js"><span class="hljs-keyword">const</span> aluno = { <span class="hljs-attr">nome</span>: <span class="hljs-string">&#x27;Ana Souza&#x27;</span>, <span class="hljs-attr">turma</span>: <span class="hljs-string">&#x27;2AT&#x27;</span> };
+
+<span class="hljs-keyword">await</span> <span class="hljs-title function_">fetch</span>(<span class="hljs-string">&#x27;api/alunos.php&#x27;</span>, {
     <span class="hljs-attr">method</span>: <span class="hljs-string">&#x27;POST&#x27;</span>,
     <span class="hljs-attr">headers</span>: {
         <span class="hljs-string">&#x27;Content-Type&#x27;</span>: <span class="hljs-string">&#x27;application/json&#x27;</span>
@@ -310,184 +423,325 @@
     <span class="hljs-attr">body</span>: <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>(aluno)
 });
 </code></pre>
-<p>No PHP, JSON é lido por <code>php://input</code>, não por <code>$_POST</code>.</p>
+<ul>
+<li>Exige avisar o servidor via cabeçalho: <code>'Content-Type': 'application/json'</code></li>
+<li>O objeto JavaScript precisa ser convertido em texto com <code>JSON.stringify()</code></li>
+<li><strong>No PHP:</strong> <code>$_POST</code> fica vazio! O JSON bruto deve ser lido com:<br />
+<code>$dados = json_decode(file_get_contents(&quot;php://input&quot;), true);</code></li>
+</ul>
 <footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="22" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="24" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
 <header> </header>
-<h1 id="ajax-7">AJAX</h1>
-<h2 id="resposta-json-no-php">Resposta JSON no PHP</h2>
-<pre><code class="language-php"><span class="hljs-title function_ invoke__">header</span>(<span class="hljs-string">&quot;Content-Type: application/json; charset=utf-8&quot;</span>);
-
-<span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">json_encode</span>([
-    <span class="hljs-string">&quot;alunos&quot;</span> =&gt; <span class="hljs-variable">$alunos</span>,
-    <span class="hljs-string">&quot;message&quot;</span> =&gt; <span class="hljs-string">&quot;Lista carregada com sucesso&quot;</span>
-]);
-</code></pre>
-<p>Mantenha o contrato previsível em todos os endpoints.</p>
-<footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
-</section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="23" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
-<header> </header>
-<h1 id="ajax-8">AJAX</h1>
-<h2 id="json-e-status-http-trabalham-juntos">JSON e status HTTP trabalham juntos</h2>
+<h1 id="enviando-dados-3">Enviando Dados</h1>
+<h2 id="resumo-dos-formatos-de-envio">Resumo dos formatos de envio</h2>
 <table>
 <thead>
 <tr>
-<th style="text-align:left">Status</th>
-<th style="text-align:left">Significado</th>
+<th style="text-align:left">Formato</th>
+<th style="text-align:left">Construção no JavaScript</th>
+<th style="text-align:left">Cabeçalho Content-Type</th>
+<th style="text-align:left">Leitura no PHP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>GET</strong></td>
+<td style="text-align:left"><code>URLSearchParams</code> na URL</td>
+<td style="text-align:left"><em>(Sem corpo)</em></td>
+<td style="text-align:left"><code>$_GET[&quot;campo&quot;]</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>FormData</strong></td>
+<td style="text-align:left"><code>new FormData(form)</code> no corpo</td>
+<td style="text-align:left"><em>(Automático)</em></td>
+<td style="text-align:left"><code>$_POST[&quot;campo&quot;]</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>JSON</strong></td>
+<td style="text-align:left"><code>JSON.stringify()</code> no corpo</td>
+<td style="text-align:left"><code>'application/json'</code></td>
+<td style="text-align:left"><code>php://input</code></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Para os formulários e rotinas da disciplina, <code>FormData</code> é o formato padrão</li>
+<li>JSON no corpo é comum quando consumimos APIs RESTful completas</li>
+</ul>
+<footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="25" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-class="divider" data-theme="ifsul" lang="pt-BR" class="divider" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--class:divider;--theme:ifsul;">
+<header> </header>
+
+<h1 id="o-backend-em-php-e-status-http">O Backend em PHP e Status HTTP</h1>
+<footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="26" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
+<header> </header>
+<h1 id="backend-em-php">Backend em PHP</h1>
+<h2 id="resposta-padronizada-e-defensiva">Resposta padronizada e defensiva</h2>
+<pre><code class="language-php"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-title function_ invoke__">header</span>(<span class="hljs-string">&quot;Content-Type: application/json; charset=utf-8&quot;</span>);
+
+<span class="hljs-variable">$nome</span> = <span class="hljs-title function_ invoke__">trim</span>(<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&quot;nome&quot;</span>] ?? <span class="hljs-string">&quot;&quot;</span>);
+
+<span class="hljs-keyword">if</span> (<span class="hljs-variable">$nome</span> === <span class="hljs-string">&quot;&quot;</span>) {
+    <span class="hljs-title function_ invoke__">http_response_code</span>(<span class="hljs-number">400</span>); <span class="hljs-comment">// Bad Request</span>
+    <span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">json_encode</span>([<span class="hljs-string">&quot;error&quot;</span> =&gt; <span class="hljs-literal">true</span>, <span class="hljs-string">&quot;message&quot;</span> =&gt; <span class="hljs-string">&quot;O nome é obrigatório&quot;</span>]);
+    <span class="hljs-keyword">exit</span>; <span class="hljs-comment">// Interrompe a execução imediatamente!</span>
+}
+
+<span class="hljs-title function_ invoke__">http_response_code</span>(<span class="hljs-number">201</span>); <span class="hljs-comment">// Created</span>
+<span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">json_encode</span>([<span class="hljs-string">&quot;nome&quot;</span> =&gt; <span class="hljs-variable">$nome</span>, <span class="hljs-string">&quot;message&quot;</span> =&gt; <span class="hljs-string">&quot;Cadastro realizado&quot;</span>]);
+</code></pre>
+<ul>
+<li>Cabeçalho informa ao navegador que a resposta é JSON puro</li>
+<li><code>exit;</code> impede que saídas acidentais corrompam o formato JSON</li>
+<li>Estrutura clara: <code>error</code> presente apenas quando a validação falhar</li>
+</ul>
+<footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="27" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
+<header> </header>
+<h1 id="backend-em-php-1">Backend em PHP</h1>
+<h2 id="o-status-classifica-o-json-explica">O status classifica; o JSON explica</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Status HTTP</th>
+<th style="text-align:left">Nome</th>
+<th style="text-align:left">Quando utilizar no backend</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align:left"><code>200</code></td>
-<td style="text-align:left">operação concluída</td>
+<td style="text-align:left">OK</td>
+<td style="text-align:left">Leitura concluída ou atualização realizada</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>201</code></td>
-<td style="text-align:left">recurso criado</td>
+<td style="text-align:left">Created</td>
+<td style="text-align:left">Novo registro gravado com sucesso</td>
 </tr>
 <tr>
-<td style="text-align:left"><code>401</code></td>
-<td style="text-align:left">autenticação necessária</td>
+<td style="text-align:left"><code>400</code></td>
+<td style="text-align:left">Bad Request</td>
+<td style="text-align:left">Requisição incompleta ou malformada</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>404</code></td>
-<td style="text-align:left">recurso não encontrado</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>422</code></td>
-<td style="text-align:left">campos inválidos</td>
+<td style="text-align:left">Not Found</td>
+<td style="text-align:left">Recurso ou registro procurado não existe</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>500</code></td>
-<td style="text-align:left">falha inesperada</td>
+<td style="text-align:left">Server Error</td>
+<td style="text-align:left">Falha inesperada no script ou no banco</td>
 </tr>
 </tbody>
 </table>
-<p>O status classifica; o JSON explica.</p>
-<footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
-</section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="24" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
-<header> </header>
-<h1 id="ajax-9">AJAX</h1>
-<h2 id="carregando-sucesso-ou-erro">Carregando, sucesso ou erro</h2>
-<pre><code class="language-js">botao.<span class="hljs-property">disabled</span> = <span class="hljs-literal">true</span>;
-
-<span class="hljs-keyword">try</span> {
-    <span class="hljs-keyword">await</span> <span class="hljs-title function_">enviarFormulario</span>();
-    mensagem.<span class="hljs-property">textContent</span> = <span class="hljs-string">&#x27;Enviado&#x27;</span>;
-} <span class="hljs-keyword">catch</span> (erro) {
-    mensagem.<span class="hljs-property">textContent</span> = erro.<span class="hljs-property">message</span>;
-} <span class="hljs-keyword">finally</span> {
-    botao.<span class="hljs-property">disabled</span> = <span class="hljs-literal">false</span>;
-}
-</code></pre>
-<p><code>finally</code> executa nos dois caminhos.</p>
-<footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
-</section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="25" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
-<header> </header>
-<h1 id="ajax-10">AJAX</h1>
-<h2 id="atualiza%C3%A7%C3%B5es-peri%C3%B3dicas-sem-sobreposi%C3%A7%C3%A3o">Atualizações periódicas sem sobreposição</h2>
-<pre><code class="language-js"><span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">atualizarPeriodicamente</span>(<span class="hljs-params"></span>) {
-    <span class="hljs-keyword">try</span> {
-        <span class="hljs-keyword">await</span> <span class="hljs-title function_">atualizarCotacao</span>();
-    } <span class="hljs-keyword">finally</span> {
-        <span class="hljs-built_in">setTimeout</span>(atualizarPeriodicamente, <span class="hljs-number">5000</span>);
-    }
-}
-</code></pre>
-<p>A próxima atualização é marcada depois que a atual termina.</p>
-<footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
-</section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="26" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
-<header> </header>
-<h1 id="ajax-11">AJAX</h1>
-<h2 id="cors-n%C3%A3o-%C3%A9-autentica%C3%A7%C3%A3o">CORS não é autenticação</h2>
 <ul>
-<li>Outra origem significa outro protocolo, domínio ou porta</li>
-<li>O servidor de destino precisa autorizar o navegador</li>
-<li>CORS controla leitura entre origens</li>
-<li>Não decide quem pode acessar um recurso protegido</li>
+<li>O código numérico permite ao JavaScript tomar decisões de fluxo</li>
+<li>O texto do JSON traz a explicação legível para o usuário final</li>
 </ul>
-<p>APIs públicas também podem ter limites e ficar indisponíveis.</p>
 <footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="27" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-class="divider" data-theme="ifsul" lang="pt-BR" class="divider" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--class:divider;--theme:ifsul;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="28" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-class="divider" data-theme="ifsul" lang="pt-BR" class="divider" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--class:divider;--theme:ifsul;">
 <header> </header>
 
-<h1 id="hora-de-praticar">Hora de Praticar</h1>
-<footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
-</section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="28" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
-<header> </header>
-<h1 id="ajax-12">AJAX</h1>
-<h2 id="exemplos-do-reposit%C3%B3rio">Exemplos do repositório</h2>
-<ul>
-<li><strong>Temporizador:</strong> <code>setInterval()</code> e <code>clearInterval()</code><br />
-<code>exemplos/ex09.1/</code></li>
-<li><strong>Cadastro com <code>fetch()</code>:</strong> <code>FormData</code> e resposta JSON<br />
-<code>exemplos/ex09.2/</code></li>
-</ul>
-<p>Observe o ciclo completo antes de ampliar a interface.</p>
+<h1 id="experi%C3%AAncia-de-usu%C3%A1rio-e-fluxos-reais">Experiência de Usuário e Fluxos Reais</h1>
 <footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="29" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
 <header> </header>
-<h1 id="ajax-13">AJAX</h1>
-<h2 id="exerc%C3%ADcios-sequ%C3%AAncia-e-requisi%C3%A7%C3%A3o">Exercícios: sequência e requisição</h2>
+<h1 id="interface-e-assincronismo">Interface e Assincronismo</h1>
+<h2 id="o-ciclo-dos-quatro-estados">O ciclo dos quatro estados</h2>
+<pre><code class="language-js">botao.<span class="hljs-property">disabled</span> = <span class="hljs-literal">true</span>;
+mensagem.<span class="hljs-property">textContent</span> = <span class="hljs-string">&#x27;Enviando dados...&#x27;</span>;
+
+<span class="hljs-keyword">try</span> {
+    <span class="hljs-keyword">await</span> <span class="hljs-title function_">enviarFormulario</span>();
+    mensagem.<span class="hljs-property">textContent</span> = <span class="hljs-string">&#x27;Operação realizada com sucesso!&#x27;</span>;
+} <span class="hljs-keyword">catch</span> (erro) {
+    mensagem.<span class="hljs-property">textContent</span> = erro.<span class="hljs-property">message</span>;
+} <span class="hljs-keyword">finally</span> {
+    botao.<span class="hljs-property">disabled</span> = <span class="hljs-literal">false</span>; <span class="hljs-comment">// Executa SEMPRE: tanto no sucesso quanto no erro!</span>
+}
+</code></pre>
 <ul>
-<li><strong>Painel de Largada:</strong> pausa e cancelamento sem ciclo duplicado<br />
-<code>09-php-ajax/painel-largada/</code></li>
-<li><strong>Busca no Acervo:</strong> debounce, GET e cancelamento da busca anterior<br />
-<code>09-php-ajax/busca-acervo/</code></li>
-<li><strong>Envio de Ocorrência:</strong> POST, validação e estados da interface<br />
-<code>09-php-ajax/envio-ocorrencia/</code></li>
+<li>Desabilitar o botão impede envios acidentais duplicados por duplo clique</li>
+<li>O bloco <code>finally</code> garante que o botão destrave mesmo se houver erro</li>
+<li>A interface nunca deve parecer travada ou sem retorno ao usuário</li>
 </ul>
 <footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="30" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
 <header> </header>
-<h1 id="ajax-14">AJAX</h1>
-<h2 id="exerc%C3%ADcios-fluxo-e-monitoramento">Exercícios: fluxo e monitoramento</h2>
+<h1 id="interface-e-assincronismo-1">Interface e Assincronismo</h1>
+<h2 id="polling-atualiza%C3%A7%C3%B5es-peri%C3%B3dicas-sem-sobreposi%C3%A7%C3%A3o">Polling: atualizações periódicas sem sobreposição</h2>
+<pre><code class="language-js"><span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">monitorarSensores</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">try</span> {
+        <span class="hljs-keyword">await</span> <span class="hljs-title function_">atualizarLeituras</span>();
+    } <span class="hljs-keyword">finally</span> {
+        <span class="hljs-comment">// Agenda a próxima leitura somente DEPOIS que a anterior terminar!</span>
+        <span class="hljs-built_in">setTimeout</span>(monitorarSensores, <span class="hljs-number">5000</span>);
+    }
+}
+
+<span class="hljs-title function_">monitorarSensores</span>();
+</code></pre>
 <ul>
-<li><strong>Rastreamento de Entrega:</strong> falha, retomada e cancelamento por etapa<br />
-<code>09-php-ajax/simulador-entrega/</code></li>
-<li><strong>Monitor de Estações:</strong> polling sequencial e dado desatualizado<br />
-<code>09-php-ajax/monitor-estacoes/</code></li>
+<li>Com <code>setInterval</code>, se uma requisição demorar 6s, elas começam a se atropelar na rede</li>
+<li>Agendar o próximo <code>setTimeout</code> no <code>finally</code> garante um intervalo de descanso real</li>
 </ul>
-<p>Os dois controlam tempo, mas exigem estados e condições de parada diferentes.</p>
 <footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="31" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
 <header> </header>
-<h1 id="ajax-15">AJAX</h1>
-<h2 id="erros-comuns">Erros comuns</h2>
+<h1 id="interface-e-assincronismo-2">Interface e Assincronismo</h1>
+<h2 id="busca-r%C3%A1pida-e-abortcontroller">Busca rápida e AbortController</h2>
+<pre><code class="language-js"><span class="hljs-keyword">let</span> controlador = <span class="hljs-literal">null</span>;
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">buscarNoAcervo</span>(<span class="hljs-params">termo</span>) {
+    <span class="hljs-keyword">if</span> (controlador) controlador.<span class="hljs-title function_">abort</span>(); <span class="hljs-comment">// Cancela a busca anterior!</span>
+    controlador = <span class="hljs-keyword">new</span> <span class="hljs-title class_">AbortController</span>();
+
+    <span class="hljs-title function_">fetch</span>(<span class="hljs-string">`api/busca.php?q=<span class="hljs-subst">${termo}</span>`</span>, { <span class="hljs-attr">signal</span>: controlador.<span class="hljs-property">signal</span> })
+        .<span class="hljs-title function_">then</span>(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> res.<span class="hljs-title function_">json</span>())
+        .<span class="hljs-title function_">then</span>(renderizarResultados)
+        .<span class="hljs-title function_">catch</span>(<span class="hljs-function"><span class="hljs-params">erro</span> =&gt;</span> { <span class="hljs-keyword">if</span> (erro.<span class="hljs-property">name</span> !== <span class="hljs-string">&#x27;AbortError&#x27;</span>) <span class="hljs-keyword">throw</span> erro; });
+}
+</code></pre>
 <ul>
-<li>Esquecer <code>preventDefault()</code></li>
-<li>Esquecer <code>await response.json()</code></li>
-<li>Não verificar <code>response.ok</code></li>
-<li>Criar intervalos duplicados</li>
-<li>Deixar botão travado após erro</li>
-<li>Definir <code>Content-Type</code> manualmente no <code>FormData</code></li>
+<li>Em campos de busca com digitação rápida, uma resposta antiga pode chegar depois da nova</li>
+<li><code>AbortController</code> cancela requisições obsoletas e evita resultados fora de ordem</li>
 </ul>
 <footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="32" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
 <header> </header>
+<h1 id="seguran%C3%A7a-e-rede">Segurança e Rede</h1>
+<h2 id="origem-e-a-pol%C3%ADtica-de-cors">Origem e a política de CORS</h2>
+<ul>
+<li><strong>Mesma Origem:</strong> mesmo protocolo (<code>http</code>), mesmo domínio (<code>site.com</code>) e mesma porta (<code>80</code>)</li>
+<li><strong>CORS (<em>Cross-Origin Resource Sharing</em>):</strong>
+<ul>
+<li>É uma trava de segurança imposta pelo <strong>navegador</strong></li>
+<li>Bloqueia scripts de ler respostas vindas de origens diferentes sem autorização prévia</li>
+</ul>
+</li>
+<li>O servidor de destino precisa liberar expressamente a origem em seus cabeçalhos</li>
+<li><strong>Importante:</strong> CORS é regra de proteção do navegador; não substitui login nem protege sua API contra ferramentas externas</li>
+</ul>
+<footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="33" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-class="divider" data-theme="ifsul" lang="pt-BR" class="divider" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--class:divider;--theme:ifsul;">
+<header> </header>
+
+<h1 id="exemplos-e-exerc%C3%ADcios">Exemplos e Exercícios</h1>
+<footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="34" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
+<header> </header>
+<h1 id="exemplos-de-aula">Exemplos de Aula</h1>
+<h2 id="c%C3%B3digos-de-refer%C3%AAncia-no-reposit%C3%B3rio">Códigos de referência no repositório</h2>
+<div class="grid grid-cols-2 gap-6">
+<div>
+<p><strong>Temporizador e Estado</strong></p>
+<ul>
+<li>Demonstra <code>setInterval()</code>, <code>clearInterval()</code> e animação de texto no botão</li>
+<li>Ensina a travar e liberar o botão durante o ciclo</li>
+<li>Pasta: <code>exemplos/ex09.1/</code></li>
+</ul>
+</div>
+<div>
+<p><strong>Cadastro com fetch() e Toast</strong></p>
+<ul>
+<li>Intercepta <code>submit</code> com <code>e.preventDefault()</code></li>
+<li>Envia <code>FormData</code> e processa JSON no backend PHP</li>
+<li>Notificação temporária de sucesso ou erro</li>
+<li>Pasta: <code>exemplos/ex09.2/</code></li>
+</ul>
+</div>
+</div>
+<footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="35" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
+<header> </header>
+<h1 id="exerc%C3%ADcios-pr%C3%A1ticos">Exercícios Práticos</h1>
+<h2 id="sequ%C3%AAncia-debounce-e-envio">Sequência, debounce e envio</h2>
+<ul>
+<li><strong>Painel de Largada:</strong><br />
+Controle de prova de atletismo com contagem regressiva, atenção e largada. Pratica <code>esperar(ms)</code> com Promise, <code>async/await</code>, pausa e cancelamento sem abrir ciclos concorrentes.<br />
+<code>09-php-ajax/painel-largada/</code></li>
+<li><strong>Busca Cancelável no Acervo:</strong><br />
+Consulta ágil em acervo escolar com digitação rápida. Implementa debounce e cancelamento via <code>AbortController</code> para que buscas antigas não sobrescrevam resultados recentes.<br />
+<code>09-php-ajax/busca-acervo/</code></li>
+<li><strong>Envio de Ocorrência:</strong><br />
+Formulário com <code>FormData</code> via POST. Diferencia falha de rede de erro de validação (400) e sucesso (201), mantendo o formulário intacto durante falhas de preenchimento.<br />
+<code>09-php-ajax/envio-ocorrencia/</code></li>
+</ul>
+<footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="36" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
+<header> </header>
+<h1 id="exerc%C3%ADcios-pr%C3%A1ticos-1">Exercícios Práticos</h1>
+<h2 id="linha-do-tempo-e-monitoramento">Linha do tempo e monitoramento</h2>
+<ul>
+<li><strong>Rastreamento Simulado de Entrega:</strong><br />
+Acompanhamento de pedido escolar em quatro etapas assíncronas. Trata falhas controladas, cancelamento e oferece &quot;tentar novamente&quot; retomando exatamente da etapa que falhou.<br />
+<code>09-php-ajax/simulador-entrega/</code></li>
+<li><strong>Monitor de Estações Meteorológicas:</strong><br />
+Painel com atualização contínua de temperatura e umidade. Aplica polling sequencial seguro para não engavetar requisições, preserva a última leitura válida e alerta dados desatualizados.<br />
+<code>09-php-ajax/monitor-estacoes/</code></li>
+</ul>
+<footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="37" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
+<header> </header>
 <h1 id="ajax-e-javascript-ass%C3%ADncrono-1">AJAX e JavaScript Assíncrono</h1>
+<h2 id="erros-mais-comuns-para-voc%C3%AA-n%C3%A3o-cometer">Erros mais comuns (para você não cometer!)</h2>
+<div class="grid grid-cols-2 gap-6">
+<div>
+<ul>
+<li>Esquecer <code>e.preventDefault()</code> no evento de <code>submit</code> (recarrega a página e mata o <code>fetch</code>)</li>
+<li>Esquecer o segundo <code>await</code> ao ler <code>response.json()</code></li>
+<li>Achar que erros HTTP 404 e 500 caem automaticamente no <code>catch</code></li>
+</ul>
+</div>
+<div>
+<ul>
+<li>Definir <code>Content-Type</code> na mão ao enviar <code>FormData</code></li>
+<li>Iniciar novos intervalos no <code>setInterval</code> sem trava de estado <code>null</code></li>
+<li>Travar o botão da interface desabilitado por esquecer de reabilitá-lo no <code>finally</code></li>
+</ul>
+</div>
+</div>
+<footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="38" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
+<header> </header>
+<h1 id="ajax-e-javascript-ass%C3%ADncrono-2">AJAX e JavaScript Assíncrono</h1>
 <h2 id="o-que-precisa-ficar">O que precisa ficar</h2>
 <ul>
-<li>Callbacks representam ações para depois</li>
-<li>Promises representam resultados futuros</li>
-<li><code>await</code> organiza a leitura do fluxo</li>
-<li><code>fetch()</code> entrega um <code>Response</code></li>
-<li>GET usa a URL; POST pode usar <code>FormData</code> ou JSON</li>
-<li>A interface trata carregamento, sucesso e falha</li>
+<li><strong>Assincronismo mantém a página viva:</strong> tarefas demoradas rodam em segundo plano sem travar a interface</li>
+<li><strong>Promises e async/await:</strong> trazem clareza e estrutura sequencial para operações futuras</li>
+<li><strong>fetch() atualiza sem recarregar:</strong> troca dados com o servidor e atualiza apenas o pedaço necessário do DOM</li>
+<li><strong>Comunicação padronizada:</strong> o status HTTP classifica a resposta; o JSON traz os dados e a mensagem</li>
+<li><strong>A interface faz parte do fluxo:</strong> informe sempre se está carregando, se houve sucesso ou se ocorreu erro</li>
 </ul>
 <footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
 </section>
 <script>!function(){"use strict";const t={h1:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"1"},style:"display: block; font-size: 2em; margin-block-start: 0.67em; margin-block-end: 0.67em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h2:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"2"},style:"display: block; font-size: 1.5em; margin-block-start: 0.83em; margin-block-end: 0.83em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h3:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"3"},style:"display: block; font-size: 1.17em; margin-block-start: 1em; margin-block-end: 1em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h4:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"4"},style:"display: block; margin-block-start: 1.33em; margin-block-end: 1.33em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h5:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"5"},style:"display: block; font-size: 0.83em; margin-block-start: 1.67em; margin-block-end: 1.67em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h6:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"6"},style:"display: block; font-size: 0.67em; margin-block-start: 2.33em; margin-block-end: 2.33em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},span:{proto:()=>HTMLSpanElement},pre:{proto:()=>HTMLElement,style:"display: block; font-family: monospace; white-space: pre; margin: 1em 0; --marp-auto-scaling-white-space: pre;"}},e="data-marp-auto-scaling-wrapper",i="data-marp-auto-scaling-svg",n="data-marp-auto-scaling-container";class s extends HTMLElement{container;containerSize;containerObserver;svg;svgComputedStyle;svgPreserveAspectRatio="xMinYMid meet";wrapper;wrapperSize;wrapperObserver;constructor(){super();const t=t=>([e])=>{const{width:i,height:n}=e.contentRect;this[t]={width:i,height:n},this.updateSVGRect()};this.attachShadow({mode:"open"}),this.containerObserver=new ResizeObserver(t("containerSize")),this.wrapperObserver=new ResizeObserver((...e)=>{t("wrapperSize")(...e),this.flushSvgDisplay()})}static get observedAttributes(){return["data-downscale-only"]}connectedCallback(){this.shadowRoot.innerHTML=`\n<style>\n  svg[${i}] { display: block; width: 100%; height: auto; vertical-align: top; }\n  span[${n}] { display: table; white-space: var(--marp-auto-scaling-white-space, nowrap); width: max-content; }\n</style>\n<div ${e}>\n  <svg part="svg" ${i}>\n    <foreignObject><span ${n}><slot></slot></span></foreignObject>\n  </svg>\n</div>\n    `.split(/\n\s*/).join(""),this.wrapper=this.shadowRoot.querySelector(`div[${e}]`)??void 0;const t=this.svg;this.svg=this.wrapper?.querySelector(`svg[${i}]`)??void 0,this.svg!==t&&(this.svgComputedStyle=this.svg?window.getComputedStyle(this.svg):void 0),this.container=this.svg?.querySelector(`span[${n}]`)??void 0,this.observe()}disconnectedCallback(){this.svg=void 0,this.svgComputedStyle=void 0,this.wrapper=void 0,this.container=void 0,this.observe()}attributeChangedCallback(){this.observe()}flushSvgDisplay(){const{svg:t}=this;t&&(t.style.display="inline",requestAnimationFrame(()=>{t.style.display=""}))}observe(){this.containerObserver.disconnect(),this.wrapperObserver.disconnect(),this.wrapper&&this.wrapperObserver.observe(this.wrapper),this.container&&this.containerObserver.observe(this.container),this.svgComputedStyle&&this.observeSVGStyle(this.svgComputedStyle)}observeSVGStyle(t){const e=()=>{const i=(()=>{const e=t.getPropertyValue("--preserve-aspect-ratio");if(e)return e.trim();return`x${(({textAlign:t,direction:e})=>{if(t.endsWith("left"))return"Min";if(t.endsWith("right"))return"Max";if("start"===t||"end"===t){let i="rtl"===e;return"end"===t&&(i=!i),i?"Max":"Min"}return"Mid"})(t)}YMid meet`})();i!==this.svgPreserveAspectRatio&&(this.svgPreserveAspectRatio=i,this.updateSVGRect()),t===this.svgComputedStyle&&requestAnimationFrame(e)};e()}updateSVGRect(){let t=Math.ceil(this.containerSize?.width??0);const e=Math.ceil(this.containerSize?.height??0);void 0!==this.dataset.downscaleOnly&&(t=Math.max(t,this.wrapperSize?.width??0));const i=this.svg?.querySelector(":scope > foreignObject");if(i?.setAttribute("width",`${t}`),i?.setAttribute("height",`${e}`),this.svg&&(this.svg.setAttribute("viewBox",`0 0 ${t} ${e}`),this.svg.setAttribute("preserveAspectRatio",this.svgPreserveAspectRatio),this.svg.style.height=t<=0||e<=0?"0":""),this.container){const t=this.svgPreserveAspectRatio.toLowerCase();this.container.style.marginLeft=t.startsWith("xmid")||t.startsWith("xmax")?"auto":"0",this.container.style.marginRight=t.startsWith("xmi")?"auto":"0"}}}const r=(t,{attrs:e={},style:i})=>class extends t{constructor(...t){super(...t);for(const[t,i]of Object.entries(e))this.hasAttribute(t)||this.setAttribute(t,i);this._shadow()}static get observedAttributes(){return["data-auto-scaling"]}connectedCallback(){this._update()}attributeChangedCallback(){this._update()}_shadow(){if(!this.shadowRoot)try{this.attachShadow({mode:"open"})}catch(t){if(!(t instanceof Error&&"NotSupportedError"===t.name))throw t}return this.shadowRoot}_update(){const t=this._shadow();if(t){const e=i?`<style>:host { ${i} }</style>`:"";let n="<slot></slot>";const{autoScaling:s}=this.dataset;if(void 0!==s){n=`<marp-auto-scaling exportparts="svg:auto-scaling" ${"downscale-only"===s?"data-downscale-only":""}>${n}</marp-auto-scaling>`}t.innerHTML=e+n}}};let o;const a=()=>o??(o=!!document.createElement("div",{is:"marp-auto-scaling"}).outerHTML.startsWith("<div is"),o),l=Symbol();let c;const d="marpitSVGPolyfill:setZoomFactor,",h=Symbol(),g=Symbol();const p=()=>{const t="Apple Computer, Inc."===navigator.vendor,e=t?[v]:[],i={then:e=>(t?(async()=>{if(void 0===c){const t=document.createElement("canvas");t.width=10,t.height=10;const e=t.getContext("2d"),i=new Image(10,10),n=new Promise(t=>{i.addEventListener("load",()=>t())});i.crossOrigin="anonymous",i.src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2210%22%20height%3D%2210%22%20viewBox%3D%220%200%201%201%22%3E%3CforeignObject%20width%3D%221%22%20height%3D%221%22%20requiredExtensions%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxhtml%22%3E%3Cdiv%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxhtml%22%20style%3D%22width%3A%201px%3B%20height%3A%201px%3B%20background%3A%20red%3B%20position%3A%20relative%22%3E%3C%2Fdiv%3E%3C%2FforeignObject%3E%3C%2Fsvg%3E",await n,e.drawImage(i,0,0),c=e.getImageData(5,5,1,1).data[3]<128}return c})().then(t=>{null==e||e(t?[v]:[])}):null==e||e([]),i)};return Object.assign(e,i)};let m,u;function v(t){const e="object"==typeof t&&t.target||document,i="object"==typeof t?t.zoom:t;window[g]||(Object.defineProperty(window,g,{configurable:!0,value:!0}),document.body.style.zoom=1.0001,document.body.offsetHeight,document.body.style.zoom=1,window.addEventListener("message",({data:t,origin:e})=>{if(e===window.origin)try{if(t&&"string"==typeof t&&t.startsWith(d)){const[,e]=t.split(","),i=Number.parseFloat(e);Number.isNaN(i)||(u=i)}}catch(t){console.error(t)}}));let n=!1;Array.from(e.querySelectorAll("svg[data-marpit-svg]"),t=>{var e,s,r,o;t.style.transform||(t.style.transform="translateZ(0)");const a=i||u||t.currentScale||1;m!==a&&(m=a,n=a);const l=t.getBoundingClientRect(),{length:c}=t.children;for(let i=0;i<c;i+=1){const n=t.children[i];if(n.getScreenCTM){const t=n.getScreenCTM();if(t){const i=null!==(s=null===(e=n.x)||void 0===e?void 0:e.baseVal.value)&&void 0!==s?s:0,c=null!==(o=null===(r=n.y)||void 0===r?void 0:r.baseVal.value)&&void 0!==o?o:0,d=n.children.length;for(let e=0;e<d;e+=1){const s=n.children[e];if("SECTION"===s.tagName){const{style:e}=s;e.transformOrigin||(e.transformOrigin=`${-i}px ${-c}px`),e.transform=`scale(${a}) matrix(${t.a}, ${t.b}, ${t.c}, ${t.d}, ${t.e-l.left}, ${t.f-l.top}) translateZ(0.0001px)`;break}}}}}}),!1!==n&&Array.from(e.querySelectorAll("iframe"),({contentWindow:t})=>{null==t||t.postMessage(`${d}${n}`,"null"===window.origin?"*":window.origin)})}function w({once:t=!1,target:e=document}={}){const i=function(t=document){if(t[h])return t[h];let e=!0;const i=()=>{e=!1,delete t[h]};Object.defineProperty(t,h,{configurable:!0,value:i});let n=[],s=!1;(async()=>{try{n=await p()}finally{s=!0}})();const r=()=>{for(const e of n)e({target:t});s&&0===n.length||e&&window.requestAnimationFrame(r)};return r(),i}(e);return t?(i(),()=>{}):i}m=1,u=void 0;const b=Symbol(),y=(e=document)=>{if("undefined"==typeof window)throw new Error("Marp Core's browser script is valid only in browser context.");if(((e=document)=>{const i=window[l];i||customElements.define("marp-auto-scaling",s);for(const n of Object.keys(t)){const s=`marp-${n}`,o=t[n].proto();a()&&o!==HTMLElement?i||customElements.define(s,r(o,{style:t[n].style}),{extends:n}):(i||customElements.define(s,r(HTMLElement,t[n])),e.querySelectorAll(`${n}[is="${s}"]`).forEach(t=>{t.outerHTML=t.outerHTML.replace(new RegExp(`^<${n}`,"i"),`<${s}`).replace(new RegExp(`</${n}>$`,"i"),`</${s}>`)}))}window[l]=!0})(e),e[b])return e[b];const i=w({target:e}),n=()=>{i(),delete e[b]},o=Object.assign(n,{cleanup:n,update:()=>y(e)});return Object.defineProperty(e,b,{configurable:!0,value:o}),o},f=document.currentScript;y(f?f.getRootNode():document)}();
-</script></foreignObject></svg></div><script>/*!! License: https://unpkg.com/@marp-team/marp-cli@4.5.0/lib/bespoke.js.LICENSE.txt */
+</script></foreignObject></svg></div><div class="bespoke-marp-note" data-index="2" tabindex="0"><p>&lt;div class=&quot;media mx-auto&quot;&gt;
+    &lt;img class=&quot;placeholder&quot; alt=&quot;Prompt de IA: infográfico didático comparando uma fila única de trânsito travada em cancela contra uma via lateral livre onde veículos circulam suavemente&quot;&gt;
+&lt;/div&gt;</p></div><div class="bespoke-marp-note" data-index="11" tabindex="0"><p>&lt;div class=&quot;media mx-auto&quot;&gt;
+    &lt;img class=&quot;placeholder&quot; alt=&quot;Prompt de IA: metáfora ilustrada de um pedido na lanchonete, exibindo o ticket impresso em mãos, a entrega do lanche pronto e o aviso amigável de produto em falta&quot;&gt;
+&lt;/div&gt;</p></div><div class="bespoke-marp-note" data-index="15" tabindex="0"><p>&lt;div class=&quot;media mx-auto&quot;&gt;
+    &lt;img class=&quot;placeholder&quot; alt=&quot;Prompt de IA: infográfico comparando o recarregamento total com tela piscando em branco contra a atualização pontual e suave de um card usando AJAX&quot;&gt;
+&lt;/div&gt;</p></div><div class="bespoke-marp-note" data-index="33" tabindex="0"><p>&lt;div class=&quot;media mx-auto&quot;&gt;
+    &lt;img class=&quot;placeholder&quot; alt=&quot;Prompt de IA: ilustração didática com tela dividida mostrando um cronômetro digital com botões de controle e um formulário web com notificação toast de confirmação&quot;&gt;
+&lt;/div&gt;</p></div><script>/*!! License: https://unpkg.com/@marp-team/marp-cli@4.5.1/lib/bespoke.js.LICENSE.txt */
 !function(){"use strict";function e(e){return e&&e.__esModule&&Object.prototype.hasOwnProperty.call(e,"default")?e.default:e}var t,n,r=(n||(n=1,t={from:function(e,t){var n,r=1===(e.parent||e).nodeType?e.parent||e:document.querySelector(e.parent||e),o=[].filter.call("string"==typeof e.slides?r.querySelectorAll(e.slides):e.slides||r.children,function(e){return"SCRIPT"!==e.nodeName}),i={},a=function(e,t){return(t=t||{}).index=o.indexOf(e),t.slide=e,t},s=function(e,t){i[e]=(i[e]||[]).filter(function(e){return e!==t})},l=function(e,t){return(i[e]||[]).reduce(function(e,n){return e&&!1!==n(t)},!0)},c=function(e,t){o[e]&&(n&&l("deactivate",a(n,t)),n=o[e],l("activate",a(n,t)))},d=function(e,t){var r=o.indexOf(n)+e;l(e>0?"next":"prev",a(n,t))&&c(r,t)},u={off:s,on:function(e,t){return(i[e]||(i[e]=[])).push(t),s.bind(null,e,t)},fire:l,slide:function(e,t){if(!arguments.length)return o.indexOf(n);l("slide",a(o[e],t))&&c(e,t)},next:d.bind(null,1),prev:d.bind(null,-1),parent:r,slides:o,destroy:function(e){l("destroy",a(n,e)),i={}}};return(t||[]).forEach(function(e){e(u)}),n||c(0),u}}),t),o=e(r);const i=document.body,a=(...e)=>history.replaceState(...e),s="",l="presenter",c="next",d="overview",u=["",l,d,c],f="bespoke-marp-",m=`data-${f}`,g=(e,{protocol:t,host:n,pathname:r,hash:o}=location)=>{const i=e.toString();return`${t}//${n}${r}${i?"?":""}${i}${o}`},p=()=>i.dataset.bespokeView,v=e=>new URLSearchParams(location.search).get(e),h=(e,t={})=>{const n={location,setter:a,...t},r=new URLSearchParams(n.location.search);for(const t of Object.keys(e)){const n=e[t];"string"==typeof n?r.set(t,n):r.delete(t)}try{n.setter({...window.history.state??{}},"",g(r,n.location))}catch(e){console.error(e)}},w=(()=>{const e="bespoke-marp";try{return localStorage.setItem(e,e),localStorage.removeItem(e),!0}catch{return!1}})(),y=e=>{try{return localStorage.getItem(e)}catch{return null}},b=(e,t)=>{try{return localStorage.setItem(e,t),!0}catch{return!1}},k=e=>{try{return localStorage.removeItem(e),!0}catch{return!1}},x=(e,t)=>{const n="aria-hidden";t?e.setAttribute(n,"true"):e.removeAttribute(n)},E=e=>{e.parent.classList.add(`${f}parent`),e.slides.forEach(e=>e.classList.add(`${f}slide`)),e.on("activate",t=>{const n=`${f}active`,r=t.slide,o=r.classList,i=!o.contains(n);if(e.slides.forEach(e=>{e.classList.remove(n),x(e,!0)}),o.add(n),x(r,!1),i){const e=`${n}-ready`;o.add(e),document.body.clientHeight,o.remove(e)}})},$=e=>{let t=0,n=0;Object.defineProperty(e,"fragments",{enumerable:!0,value:e.slides.map(e=>[null,...e.querySelectorAll("[data-marpit-fragment]")])});const r=r=>void 0!==e.fragments[t][n+r],o=(r,o)=>{t=r,n=o,e.fragments.forEach((e,t)=>{e.forEach((e,n)=>{if(null==e)return;const i=t<r||t===r&&n<=o;e.setAttribute(`${m}fragment`,(i?"":"in")+"active");const a=`${m}current-fragment`;t===r&&n===o?e.setAttribute(a,"current"):e.removeAttribute(a)})}),e.fragmentIndex=o;const i={slide:e.slides[r],index:r,fragments:e.fragments[r],fragmentIndex:o};e.fire("fragment",i)};e.on("next",({fragment:i=!0})=>{if(i){if(r(1))return o(t,n+1),!1;const i=t+1;e.fragments[i]&&o(i,0)}else{const r=e.fragments[t].length;if(n+1<r)return o(t,r-1),!1;const i=e.fragments[t+1];i&&o(t+1,i.length-1)}}),e.on("prev",({fragment:i=!0})=>{if(r(-1)&&i)return o(t,n-1),!1;const a=t-1;e.fragments[a]&&o(a,e.fragments[a].length-1)}),e.on("slide",({index:t,fragment:n})=>{let r=0;if(void 0!==n){const o=e.fragments[t];if(o){const{length:e}=o;r=-1===n?e-1:Math.min(Math.max(n,0),e-1)}}o(t,r)}),o(0,0)},L=document,S=()=>!(!L.fullscreenEnabled&&!L.webkitFullscreenEnabled),P=()=>!(!L.fullscreenElement&&!L.webkitFullscreenElement),_=e=>{e.fullscreen=()=>{S()&&(async()=>{P()?(L.exitFullscreen||L.webkitExitFullscreen)?.call(L):((e=L.body)=>{(e.requestFullscreen||e.webkitRequestFullscreen)?.call(e)})()})()},document.addEventListener("keydown",t=>{"f"!==t.key&&"F11"!==t.key||t.altKey||t.ctrlKey||t.metaKey||!S()||(e.fullscreen(),t.preventDefault())})},O=`${f}inactive`,T=(e=2e3)=>({parent:t,fire:n})=>{const r=t.classList,o=e=>n(`marp-${e?"":"in"}active`);let i;const a=()=>{i&&clearTimeout(i),i=setTimeout(()=>{r.add(O),o()},e),r.contains(O)&&(r.remove(O),o(!0))};for(const e of["mousedown","mousemove","touchend"])document.addEventListener(e,a);setTimeout(a,0)},I=["AUDIO","BUTTON","INPUT","SELECT","TEXTAREA","VIDEO"],M=e=>{e.parent.addEventListener("keydown",e=>{if(!e.target)return;const t=e.target;(I.includes(t.nodeName)||"true"===t.contentEditable)&&e.stopPropagation()})},A=e=>{window.addEventListener("load",()=>{for(const t of e.slides){const e=t.querySelector("marp-auto-scaling, [data-auto-scaling], [data-marp-fitting]");t.setAttribute(`${m}load`,e?"":"hideable")}})},C=({interval:e=250}={})=>t=>{document.addEventListener("keydown",e=>{if(" "===e.key&&e.shiftKey)t.prev();else if("ArrowLeft"===e.key||"ArrowUp"===e.key||"PageUp"===e.key)t.prev({fragment:!e.shiftKey});else if(" "!==e.key||e.shiftKey)if("ArrowRight"===e.key||"ArrowDown"===e.key||"PageDown"===e.key)t.next({fragment:!e.shiftKey});else if("End"===e.key)t.slide(t.slides.length-1,{fragment:-1});else{if("Home"!==e.key)return;t.slide(0)}else t.next();e.preventDefault()});let n,r,o=0;t.parent.addEventListener("wheel",i=>{let a=!1;const s=(e,t)=>{e&&(a=a||((e,t)=>((e,t)=>{const n="X"===t?"Width":"Height";return e[`client${n}`]<e[`scroll${n}`]})(e,t)&&((e,t)=>{const{overflow:n}=e,r=e[`overflow${t}`];return"auto"===n||"scroll"===n||"auto"===r||"scroll"===r})(getComputedStyle(e),t))(e,t)),e?.parentElement&&s(e.parentElement,t)};if(0!==i.deltaX&&s(i.target,"X"),0!==i.deltaY&&s(i.target,"Y"),a)return;i.preventDefault();const l=Math.sqrt(i.deltaX**2+i.deltaY**2);if(void 0!==i.wheelDelta){if(void 0===i.webkitForce&&Math.abs(i.wheelDelta)<40)return;if(i.deltaMode===i.DOM_DELTA_PIXEL&&l<4)return}else if(i.deltaMode===i.DOM_DELTA_PIXEL&&l<12)return;r&&clearTimeout(r),r=setTimeout(()=>{n=0},e);const c=Date.now()-o<e,d=l<=n;if(n=l,c||d)return;let u;(i.deltaX>0||i.deltaY>0)&&(u="next"),(i.deltaX<0||i.deltaY<0)&&(u="prev"),u&&(t[u](),o=Date.now())})},D=(e=`.${f}osc`)=>{const t=document.querySelector(e);if(!t)return()=>{};const n=(e,n)=>{t.querySelectorAll(`[${m}osc=${JSON.stringify(e)}]`).forEach(n)};if(S()||n("fullscreen",e=>e.style.display="none"),!w){const e=(e,t)=>{e.disabled=!0,e.title=`${t} is disabled due to restricted localStorage.`};n("presenter",t=>e(t,"Presenter view")),n("overview",t=>e(t,"Overview view"))}return e=>{t.addEventListener("click",t=>{if(t.target instanceof HTMLElement){const{bespokeMarpOsc:n}=t.target.dataset;n&&t.target.blur();const r={fragment:!t.shiftKey};"next"===n?e.next(r):"prev"===n?e.prev(r):"fullscreen"===n?e?.fullscreen():"presenter"===n?e.openPresenterView():"overview"===n&&e.toggleOverviewView()}}),e.parent.appendChild(t),e.on("activate",({index:t})=>{n("page",n=>n.textContent=`Page ${t+1} of ${e.slides.length}`)}),e.on("fragment",({index:t,fragments:r,fragmentIndex:o})=>{n("prev",e=>e.disabled=0===t&&0===o),n("next",n=>n.disabled=t===e.slides.length-1&&o===r.length-1)}),e.on("marp-active",()=>x(t,!1)),e.on("marp-inactive",()=>x(t,!0)),S()&&(e=>{for(const t of["","webkit"])L.addEventListener(t+"fullscreenchange",e)})(()=>n("fullscreen",e=>e.classList.toggle("exit",S()&&P())))}},N=e=>{if(e.syncKey&&"string"==typeof e.syncKey)return!0;throw new Error("The current instance of Bespoke.js is incompatible with Marp bespoke sync plugin.")},B=(e={})=>{const t=e.key||window.history.state?.marpBespokeSyncKey||Math.random().toString(36).slice(2),n=`bespoke-marp-sync-${t}`;var r;r={marpBespokeSyncKey:t},h({},{setter:(e,...t)=>a({...e,...r},...t)});const o=()=>{const e=y(n);return e?JSON.parse(e):Object.create(null)},i=e=>{const t=o(),r={...t,...e(t)};return b(n,JSON.stringify(r)),r},s=()=>{window.removeEventListener("pageshow",s),i(e=>({reference:(e.reference||0)+1}))};return e=>{s(),Object.defineProperty(e,"syncKey",{value:t,enumerable:!0});let r=!0;setTimeout(()=>{e.on("fragment",e=>{r&&i(()=>({index:e.index,fragmentIndex:e.fragmentIndex}))})},0),window.addEventListener("storage",t=>{if(t.key===n&&t.oldValue&&t.newValue){const n=JSON.parse(t.oldValue),o=JSON.parse(t.newValue);if(n.index!==o.index||n.fragmentIndex!==o.fragmentIndex)try{r=!1,e.slide(o.index,{fragment:o.fragmentIndex,forSync:!0})}finally{r=!0}}});const a=()=>{const{reference:e}=o();void 0===e||e<=1?k(n):i(()=>({reference:e-1}))};window.addEventListener("pagehide",e=>{e.persisted&&window.addEventListener("pageshow",s),a()}),e.on("destroy",a)}},K=e=>{w&&document.addEventListener("keydown",t=>{("o"!==t.key||t.altKey||t.ctrlKey||t.metaKey)&&"Escape"!==t.key||(t.preventDefault(),e())})};let q=null;const V=({closeOnSelect:e=!0}={})=>t=>{N(t);const n=n=>{const r=(()=>{if(!q||!q.isConnected){q=document.createElement("div"),q.className=`${f}overview`,q.inert=!0;const n=document.createElement("iframe");n.src=(()=>{const n=new URLSearchParams(location.search);return n.set("view","overview"),n.set("sync",t.syncKey),e&&n.set("closeOnSelect","1"),g(n)})(),q.append(n),document.body.append(q)}return q})(),o=n??!r.dataset.open;setTimeout(()=>{if(r.dataset.open=o?"1":"",r.inert=!o,t.skipTransition=o,o){const e=r.querySelector("iframe");try{e?.contentWindow?.focus()}catch{e?.focus()}}else window.focus()},0)};Object.defineProperties(t,{toggleOverviewView:{enumerable:!0,value:n}}),window.addEventListener("message",e=>{e.origin===window.origin&&"closeOverview"===e.data&&n(!1)}),K(n)},j=e=>{const{title:t}=document;document.title="[Overview]"+(t?` - ${t}`:"");const n=!!v("closeOnSelect"),r=()=>{window.parent.postMessage("closeOverview","null"===window.origin?"*":window.origin)};if(e.slides.forEach((t,o)=>{t.tabIndex=0;const i=()=>{e.slide(o,{fragment:-1}),n&&r()};t.addEventListener("click",i),t.addEventListener("keydown",e=>{"Enter"!==e.key&&" "!==e.key||(e.preventDefault(),i())})}),window.addEventListener("keydown",t=>{const n=e.slide(),r=t=>{const r=t=>{const n=e.slides[t].getBoundingClientRect();return[Math.round((n.left+n.right)/2),Math.round((n.top+n.bottom)/2)]};let o=null,i=n;do{const e=r(i);if(o){if(Math.abs(e[0]-o[0])<2)return i}else o=e;i+=t}while(i>=0&&i<e.slides.length);return n};if("ArrowLeft"===t.key)e.slide(Math.max(n-1,0),{fragment:-1});else if("ArrowRight"===t.key)e.slide(Math.min(n+1,e.slides.length-1),{fragment:-1});else if("ArrowUp"===t.key)e.slide(r(-1),{fragment:-1});else if("ArrowDown"===t.key)e.slide(r(1),{fragment:-1});else if("End"===t.key)e.slide(e.slides.length-1,{fragment:-1});else{if("Home"!==t.key)return;e.slide(0,{fragment:-1})}t.preventDefault();const o=e.slide();e.slides[o]?.focus?.(),e.slides[o]?.scrollIntoView?.({behavior:"smooth",block:"nearest"})}),e.on("slide",({index:t})=>{e.slides[t]?.scrollIntoView?.({behavior:"smooth",block:"nearest"})}),window.parent!==window){K(r);const e=document.createElement("header");e.className=`${f}overview-header`;const t=document.createElement("button");t.className=`${f}overview-close`,t.type="button",t.title="Close overview",t.textContent=t.title,t.addEventListener("click",r),e.append(t),document.body.prepend(e)}},F=()=>{const e=p();return{[s]:V(),[l]:V({closeOnSelect:!1}),[d]:j}[e]},U=e=>{window.addEventListener("message",t=>{if(t.origin!==window.origin)return;const[n,r]=t.data.split(":");if("navigate"===n){const[t,n]=r.split(",");let o=Number.parseInt(t,10),i=Number.parseInt(n,10)+1;i>=e.fragments[o].length&&(o+=1,i=0),e.slide(o,{fragment:i})}})};var R,X,H,W,J,Y,z,G={exports:{}},Q=(R||(R=1,G.exports=(X=["area","base","br","col","command","embed","hr","img","input","keygen","link","meta","param","source","track","wbr"],H=function(e){return String(e).replace(/[&<>"']/g,function(e){return"&"+W[e]+";"})},W={"&":"amp","<":"lt",">":"gt",'"':"quot","'":"apos"},J="dangerouslySetInnerHTML",Y={className:"class",htmlFor:"for"},z={},function(e,t){var n=[],r="";t=t||{};for(var o=arguments.length;o-- >2;)n.push(arguments[o]);if("function"==typeof e)return t.children=n.reverse(),e(t);if(e){if(r+="<"+e,t)for(var i in t)!1!==t[i]&&null!=t[i]&&i!==J&&(r+=" "+(Y[i]?Y[i]:H(i))+'="'+H(t[i])+'"');r+=">"}if(-1===X.indexOf(e)){if(t[J])r+=t[J].__html;else for(;n.length;){var a=n.pop();if(a)if(a.pop)for(var s=a.length;s--;)n.push(a[s]);else r+=!0===z[a]?a:H(a)}r+=e?"</"+e+">":""}return z[r]=!0,r})),G.exports),Z=e(Q);const ee=({children:e})=>Z(null,null,...e),te=`${f}presenter-`,ne={container:`${te}container`,dragbar:`${te}dragbar-container`,next:`${te}next`,nextContainer:`${te}next-container`,noteContainer:`${te}note-container`,noteWrapper:`${te}note-wrapper`,noteButtons:`${te}note-buttons`,infoContainer:`${te}info-container`,infoPageArea:`${te}info-page-area`,infoPage:`${te}info-page`,infoPagePrev:`${te}info-page-prev`,infoPageNext:`${te}info-page-next`,noteButtonsBigger:`${te}note-bigger`,noteButtonsSmaller:`${te}note-smaller`,infoTime:`${te}info-time`,infoTimer:`${te}info-timer`},re=e=>{const{title:t}=document;document.title="[Presenter view]"+(t?` - ${t}`:"");const n={},r=e=>(n[e]=n[e]||document.querySelector(`.${e}`),n[e]);document.body.appendChild((e=>{const t=document.createElement("div");return t.className=ne.container,t.appendChild(e),t.insertAdjacentHTML("beforeend",Z(ee,null,Z("div",{class:ne.nextContainer},Z("iframe",{class:ne.next,src:"?view=next"})),Z("div",{class:ne.dragbar}),Z("div",{class:ne.noteContainer},Z("div",{class:ne.noteWrapper}),Z("div",{class:ne.noteButtons},Z("button",{class:ne.noteButtonsSmaller,tabindex:"-1",title:"Smaller notes font size"},"Smaller notes font size"),Z("button",{class:ne.noteButtonsBigger,tabindex:"-1",title:"Bigger notes font size"},"Bigger notes font size"))),Z("div",{class:ne.infoContainer},Z("div",{class:ne.infoPageArea},Z("button",{class:ne.infoPagePrev,tabindex:"-1",title:"Previous"},"Previous"),Z("button",{class:ne.infoPage}),Z("button",{class:ne.infoPageNext,tabindex:"-1",title:"Next"},"Next")),Z("time",{class:ne.infoTime,title:"Current time"}),Z("time",{class:ne.infoTimer,title:"Timer"})))),t})(e.parent)),(e=>{let t=!1;r(ne.dragbar).addEventListener("mousedown",()=>{t=!0,r(ne.dragbar).classList.add("active")}),window.addEventListener("mouseup",()=>{t=!1,r(ne.dragbar).classList.remove("active")}),window.addEventListener("mousemove",e=>{if(!t)return;const n=e.clientX/document.documentElement.clientWidth*100;r(ne.container).style.setProperty("--bespoke-marp-presenter-split-ratio",`${Math.max(0,Math.min(100,n))}%`)}),r(ne.nextContainer).addEventListener("click",()=>e.next());const n=r(ne.next),o=(i=n,(e,t)=>i.contentWindow?.postMessage(`navigate:${e},${t}`,"null"===window.origin?"*":window.origin));var i;n.addEventListener("load",()=>{r(ne.nextContainer).classList.add("active"),o(e.slide(),e.fragmentIndex),e.on("fragment",({index:e,fragmentIndex:t})=>o(e,t))});const a=document.querySelectorAll(".bespoke-marp-note");a.forEach(e=>{e.addEventListener("keydown",e=>e.stopPropagation()),r(ne.noteWrapper).appendChild(e)}),e.on("activate",()=>a.forEach(t=>t.classList.toggle("active",t.dataset.index==e.slide())));let s=0;const l=e=>{s=Math.max(-5,s+e),r(ne.noteContainer).style.setProperty("--bespoke-marp-note-font-scale",(1.2**s).toFixed(4))},c=()=>l(1),d=()=>l(-1),u=r(ne.noteButtonsBigger),f=r(ne.noteButtonsSmaller);u.addEventListener("click",()=>{u.blur(),c()}),f.addEventListener("click",()=>{f.blur(),d()}),document.addEventListener("keydown",e=>{"+"===e.key&&c(),"-"===e.key&&d()},!0);const m=r(ne.infoPage);e.on("activate",({index:t})=>{m.textContent=`${t+1} / ${e.slides.length}`}),m.addEventListener("click",()=>{m.blur(),e.toggleOverviewView()});const g=r(ne.infoPagePrev),p=r(ne.infoPageNext);g.addEventListener("click",t=>{g.blur(),e.prev({fragment:!t.shiftKey})}),p.addEventListener("click",t=>{p.blur(),e.next({fragment:!t.shiftKey})}),e.on("fragment",({index:t,fragments:n,fragmentIndex:r})=>{g.disabled=0===t&&0===r,p.disabled=t===e.slides.length-1&&r===n.length-1});let v=new Date;const h=()=>{const e=new Date,t=e=>`${Math.floor(e)}`.padStart(2,"0"),n=e.getTime()-v.getTime(),o=t(n/1e3%60),i=t(n/1e3/60%60),a=t(n/36e5%24);r(ne.infoTime).textContent=e.toLocaleTimeString(),r(ne.infoTimer).textContent=`${a}:${i}:${o}`};h(),setInterval(h,250),r(ne.infoTimer).addEventListener("click",()=>{v=new Date})})(e)},oe=e=>{N(e),Object.defineProperties(e,{openPresenterView:{enumerable:!0,value:ie},presenterUrl:{enumerable:!0,get:ae}}),w&&document.addEventListener("keydown",t=>{"p"!==t.key||t.altKey||t.ctrlKey||t.metaKey||(t.preventDefault(),e.openPresenterView())})};function ie(){const{max:e,floor:t}=Math,n=e(t(.85*window.innerWidth),640),r=e(t(.85*window.innerHeight),360);return window.open(this.presenterUrl,te+this.syncKey,`width=${n},height=${r},menubar=no,toolbar=no`)}function ae(){const e=new URLSearchParams(location.search);return e.set("view","presenter"),e.set("sync",this.syncKey),g(e)}const se=e=>{const t=p();return t===c&&e.appendChild(document.createElement("span")),{[s]:oe,[l]:re,[c]:U}[t]},le=e=>{e.on("activate",t=>{document.querySelectorAll(".bespoke-progress-parent > .bespoke-progress-bar").forEach(n=>{n.style.flexBasis=100*t.index/(e.slides.length-1)+"%"})})},ce=e=>{const t=Number.parseInt(e,10);return Number.isNaN(t)?null:t},de=(e={})=>{const t={history:!0,...e};return e=>{let n=!0;const r=e=>{const t=n;try{return n=!0,e()}finally{n=t}},o=(t={fragment:!0})=>{let n=t.fragment?ce(v("f")||""):null;((t,n)=>{const{min:r,max:o}=Math,{fragments:i,slides:a}=e,s=o(0,r(t,a.length-1)),l=o(0,r(n||0,i[s].length-1));s===e.slide()&&l===e.fragmentIndex||e.slide(s,{fragment:l})})((()=>{if(location.hash){const[t]=location.hash.slice(1).split(":~:");if(/^\d+$/.test(t))return(ce(t)??1)-1;const r=document.getElementById(t)||document.querySelector(`a[name="${CSS.escape(t)}"]`);if(r){const{length:t}=e.slides;for(let o=0;o<t;o+=1)if(e.slides[o].contains(r)){const t=e.fragments?.[o],i=r.closest("[data-marpit-fragment]");if(t&&i){const e=t.indexOf(i);e>=0&&(n=e)}return o}}}return 0})(),n)};e.on("fragment",({index:e,fragmentIndex:r})=>{n||h({f:0===r||r.toString()},{location:{...location,hash:`#${e+1}`},setter:(...e)=>t.history?history.pushState(...e):history.replaceState(...e)})}),setTimeout(()=>{o(),window.addEventListener("hashchange",()=>r(()=>{o({fragment:!1}),h({f:void 0})})),window.addEventListener("popstate",()=>{n||r(()=>o())}),n=!1},0)}},{PI:ue,abs:fe,sqrt:me,atan2:ge}=Math,pe={passive:!0},ve=({slope:e=-.7,swipeThreshold:t=30}={})=>n=>{let r;const o=n.parent,i=e=>{const t=o.getBoundingClientRect();return{x:e.pageX-(t.left+t.right)/2,y:e.pageY-(t.top+t.bottom)/2}};o.addEventListener("touchstart",({touches:e})=>{r=1===e.length?i(e[0]):void 0},pe),o.addEventListener("touchmove",e=>{if(r)if(1===e.touches.length){e.preventDefault();const t=i(e.touches[0]),n=t.x-r.x,o=t.y-r.y;r.delta=me(fe(n)**2+fe(o)**2),r.radian=ge(n,o)}else r=void 0}),o.addEventListener("touchend",o=>{if(r){if(r.delta&&r.delta>=t&&r.radian){const t=(r.radian-e+ue)%(2*ue)-ue;n[t<0?"next":"prev"](),o.stopPropagation()}r=void 0}},pe)},he=new Map;he.clear(),he.set("none",{backward:{both:void 0,incoming:void 0,outgoing:void 0},forward:{both:void 0,incoming:void 0,outgoing:void 0}});const we={both:"",outgoing:"outgoing-",incoming:"incoming-"},ye={forward:"",backward:"-backward"},be=e=>`--marp-bespoke-transition-animation-${e}`,ke=e=>`--marp-transition-${e}`,xe=be("name"),Ee=be("duration"),$e=e=>new Promise(t=>{const n={},r=document.createElement("div"),o=e=>{r.remove(),t(e)};r.addEventListener("animationstart",()=>o(n)),Object.assign(r.style,{animationName:e,animationDuration:"1s",animationFillMode:"both",animationPlayState:"paused",position:"absolute",pointerEvents:"none"}),document.body.appendChild(r);const i=getComputedStyle(r).getPropertyValue(ke("duration"));i&&Number.parseFloat(i)>=0&&(n.defaultDuration=i),((e,t)=>{requestAnimationFrame(()=>{e.style.animationPlayState="running",requestAnimationFrame(()=>t(void 0))})})(r,o)}),Le=async e=>he.has(e)?he.get(e):(e=>{const t={},n=[];for(const[r,o]of Object.entries(we))for(const[i,a]of Object.entries(ye)){const s=`marp-${o}transition${a}-${e}`;n.push($e(s).then(e=>{t[i]=t[i]||{},t[i][r]=e?{...e,name:s}:void 0}))}return Promise.all(n).then(()=>t)})(e).then(t=>(he.set(e,t),t)),Se=e=>Object.values(e).flatMap(Object.values).every(e=>!e),Pe=(e,{type:t,backward:n})=>{const r=e[n?"backward":"forward"],o=(()=>{const e=r[t],n=e=>({[xe]:e.name});if(e)return n(e);if(r.both){const e=n(r.both);return"incoming"===t&&(e[be("direction")]="reverse"),e}})();return!o&&n?Pe(e,{type:t,backward:!1}):o||{[xe]:"__bespoke_marp_transition_no_animation__"}},_e=e=>{if(e)try{const t=JSON.parse(e);if((e=>{if("object"!=typeof e)return!1;const t=e;return"string"==typeof t.name&&(void 0===t.duration||"string"==typeof t.duration)})(t))return t}catch{}},Oe="_tSId",Te="_tA",Ie="bespoke-marp-transition-warming-up",Me=window.matchMedia("(prefers-reduced-motion: reduce)"),Ae="__bespoke_marp_transition_reduced_outgoing__",Ce="__bespoke_marp_transition_reduced_incoming__",De={forward:{both:void 0,incoming:{name:Ce},outgoing:{name:Ae}},backward:{both:void 0,incoming:{name:Ce},outgoing:{name:Ae}}},Ne=e=>{if(!document.startViewTransition)return;const t=t=>(void 0!==t&&(e._tD=t),e._tD);let n;t(!1),((...e)=>{CSS.registerProperty({name:ke("duration"),syntax:"<time>",inherits:!0,initialValue:"-1s"});const t=[...new Set(e).values()];return Promise.all(t.map(e=>Le(e))).then()})(...Array.from(document.querySelectorAll("section[data-transition], section[data-transition-back]")).flatMap(e=>[e.dataset.transition,e.dataset.transitionBack].flatMap(e=>{const t=_e(e);return[t?.name,t?.builtinFallback?`__builtin__${t.name}`:void 0]}).filter(e=>!!e))).then(()=>{document.querySelectorAll("style").forEach(e=>{e.innerHTML=e.innerHTML.replace(/--marp-transition-duration:[^;}]*[;}]/g,e=>e.slice(0,-1)+"!important"+e.slice(-1))})});const r=(n,{back:r,cond:o})=>i=>{const a=t();if(a)return!!i[Te]||!("object"!=typeof a||(a.skipTransition(),!i.forSync));if(e.skipTransition)return!0;if(!o(i))return!0;const s=e.slides[e.slide()],l=()=>i.back??r,c="data-transition"+(l()?"-back":""),d=s.querySelector(`section[${c}]`);if(!d)return!0;const u=_e(d.getAttribute(c)??void 0);return!u||((async(e,{builtinFallback:t=!0}={})=>{let n=await Le(e);if(Se(n)){if(!t)return;return n=await Le(`__builtin__${e}`),Se(n)?void 0:n}return n})(u.name,{builtinFallback:u.builtinFallback}).then(e=>{if(!e){t(!0);try{n(i)}finally{t(!1)}return}let r=e;Me.matches&&(console.warn("Use a constant animation to transition because preferring reduced motion by viewer has detected."),r=De);const o=document.getElementById(Oe);o&&o.remove();const a=document.createElement("style");a.id=Oe,document.head.appendChild(a),((e,t)=>{const n=[`:root{${ke("direction")}:${t.backward?-1:1};}`,":root:has(.bespoke-marp-inactive){cursor:none;}"],r=t=>{const n=e[t].both?.defaultDuration||e[t].outgoing?.defaultDuration||e[t].incoming?.defaultDuration;return"forward"===t?n:n||r("forward")},o=t.duration||r(t.backward?"backward":"forward");void 0!==o&&n.push(`::view-transition-group(*){${Ee}:${o};}`);const i=e=>Object.entries(e).map(([e,t])=>`${e}:${t};`).join("");return n.push(`::view-transition-old(root){${i(Pe(e,{...t,type:"outgoing"}))}}`,`::view-transition-new(root){${i(Pe(e,{...t,type:"incoming"}))}}`),n})(r,{backward:l(),duration:u.duration}).forEach(e=>a.sheet?.insertRule(e));const s=document.documentElement.classList;s.add(Ie);let c=!1;const d=()=>{c||(n(i),c=!0,s.remove(Ie))},f=()=>{t(!1),a.remove(),s.remove(Ie)};try{t(!0);const e=document.startViewTransition(d);t(e),e.finished.finally(f)}catch(e){console.error(e),d(),f()}}),!1)};e.on("prev",r(t=>e.prev({...t,[Te]:!0}),{back:!0,cond:e=>e.index>0&&!((e.fragment??1)&&n.fragmentIndex>0)})),e.on("next",r(t=>e.next({...t,[Te]:!0}),{cond:t=>t.index+1<e.slides.length&&!(n.fragmentIndex+1<n.fragments.length)})),setTimeout(()=>{e.on("slide",r(t=>e.slide(t.index,{...t,[Te]:!0}),{cond:t=>{const n=e.slide();return t.index!==n&&(t.back=t.index<n,!0)}}))},0),e.on("fragment",e=>{n=e})};let Be;const Ke=()=>(void 0===Be&&(Be="wakeLock"in navigator&&navigator.wakeLock),Be),qe=async()=>{const e=Ke();if(e)try{return await e.request("screen")}catch(e){console.warn(e)}return null},Ve=async()=>{if(!Ke())return;let e;const t=()=>{e&&"visible"===document.visibilityState&&qe()};for(const e of["visibilitychange","fullscreenchange"])document.addEventListener(e,t);return e=await qe(),e};((e=document.getElementById(":$p"))=>{(()=>{const e=v("view");i.dataset.bespokeView=u.some(t=>t&&t===e)?e:""})();const t=(e=>{const t=v(e);return h({[e]:void 0}),t})("sync")||void 0;o.from(e,((...e)=>{const t=u.findIndex(e=>p()===e);return e.map(([e,n])=>e[t]&&n).filter(e=>e)})([[1,1,1,0],B({key:t})],[[1,1,0,1],se(e)],[[1,1,0,0],M],[[1,1,1,1],E],[[1,0,0,0],T()],[[1,1,1,1],A],[[1,1,1,1],de({history:!1})],[[1,1,0,0],C()],[[1,1,1,0],_],[[1,0,0,0],le],[[1,1,0,0],ve()],[[1,0,0,0],D()],[[1,1,1,0],F()],[[1,0,0,0],Ne],[[1,1,1,1],$],[[1,1,1,0],Ve]))})()}();</script></body></html>
