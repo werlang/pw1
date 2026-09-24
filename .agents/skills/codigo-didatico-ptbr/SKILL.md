@@ -31,6 +31,9 @@ Produzir código que:
 - Comentar intenção, fluxo, decisão e armadilha. Não comentar o óbvio linha por linha.
 - Em código didático de frontend, não usar atributos `data-*` nem `dataset` para acionar comportamentos.
 - Para elementos dinâmicos, preferir `createElement`, `append` / `appendChild`, seleção direta de nós criados e `addEventListener` no próprio elemento.
+- Numa lista dinâmica, montar cada item nesta ordem: `createElement` do nó → conteúdo com `innerHTML` **dentro do nó criado** → `addEventListener` no mesmo laço, com o item já na variável do loop → `append` no container. Não acumular HTML numa string (`let html = ''; html += ...`) e jogar tudo de uma vez; não identificar o item clicado com `querySelectorAll` + índice.
+- Pedir mensagens e confirmações pelos componentes do projeto: `showToast()` para avisar e `await confirmar()` (em `teste/componentes/modal.js`) para decidir. Em código novo, evitar `alert()` e `confirm()` nativos.
+- Escrever código com cara de material feito na aula: sem `try/catch` em toda chamada, sem helpers genéricos e sem camadas defensivas que não ensinam nada.
 
 ## Fluxo recomendado
 
@@ -49,7 +52,7 @@ Produzir código que:
 - Usar valores de exemplo concretos e legíveis em vez de placeholders abstratos.
 - Em exercícios e exemplos, deixar claro o estado principal da aplicação: variáveis, arrays, objetos, sessão, formulário ou DOM.
 - Quando houver validação, explicar com comentário curto o motivo da regra.
-- Em renderização dinâmica, construir a árvore de nós passo a passo em vez de depender de `innerHTML` com metadados de ação.
+- Em renderização dinâmica, criar o elemento com `createElement` e preencher só o conteúdo dele com `innerHTML`, ligando os eventos no mesmo laço. Evitar tanto a montagem de HTML em string quanto `innerHTML` com metadados de ação (como `data-id`).
 
 ### PHP misturado com HTML
 

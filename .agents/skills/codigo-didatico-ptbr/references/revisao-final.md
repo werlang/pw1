@@ -12,6 +12,9 @@ Use este checklist antes de concluir qualquer tarefa de código neste repositór
 6. Os comentários explicam intenção, regra ou consequência, e não apenas repetem a linha de código?
 7. O exemplo usa dados concretos e fáceis de reconhecer?
 8. A mudança ficou local à pasta alvo e consistente com o restante da seção?
+9. O item dinâmico é criado com `createElement`, recebe o conteúdo por `innerHTML` dentro dele e tem o evento ligado no mesmo laço?
+10. As mensagens e confirmações passam pelos componentes do projeto (`showToast()`, `confirmar()`), e não por `alert()` ou `confirm()` nativos?
+11. O código evita `try/catch` sem motivo e helpers que só existem para organizar?
 
 ## Sinais de alerta
 
@@ -20,7 +23,11 @@ Use este checklist antes de concluir qualquer tarefa de código neste repositór
 - nomes genéricos como `data`, `item`, `handleThing`, `tmp`;
 - comentários em inglês;
 - comentários excessivos que poluem mais do que ajudam;
-- dependências ou padrões novos sem necessidade pedagógica.
+- dependências ou padrões novos sem necessidade pedagógica;
+- HTML de lista montado numa string e atribuído de uma vez no container;
+- `querySelectorAll` + índice para descobrir qual item foi clicado;
+- `alert()` ou `confirm()` nativos em código novo;
+- `try/catch` em toda chamada, exatamente o visual de código gerado sem contexto de aula.
 
 ## Ajustes comuns
 
