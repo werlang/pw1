@@ -5,4 +5,5 @@ teste
 .env
 share
 .DS_Store
+.playwright-mcp
 TODO.md

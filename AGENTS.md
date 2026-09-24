@@ -35,12 +35,13 @@
 - No Node/Composer/Python build pipeline at repo root.
 - Static lessons: open the target HTML directly. There is no launch config checked in (`.vscode/` is empty), and no build step to run.
 - To check a page visually, prefer `chrome-devtools` `take_screenshot` or reading the DOM with `evaluate`. Playwright MCP screenshots have been observed to come back one navigation late; DOM readings were always reliable.
-- Docker stack (`compose.yaml`) provides MySQL + Apache/PHP for backend lessons.
+- Docker stack provides MySQL + Apache/PHP for backend lessons.
 - `compose.yaml` expects `PUBLIC_DIR`; if missing in `.env`, pass it inline.
+- **Only `compose.dev.yaml` publishes Apache's port** (`${APACHE_PORT}:80`). Plain `compose.yaml` starts Apache without a host port, so `http://localhost/` will not answer — use `-f compose.dev.yaml` when the pages need to be opened in the browser.
 
 ```bash
-docker compose up -d
-PUBLIC_DIR=./exemplos/ex13.1 docker compose up -d
+docker compose -f compose.dev.yaml up -d
+PUBLIC_DIR=./exemplos/ex13.1 docker compose -f compose.dev.yaml up -d
 ```
 
 ## Repository skills and documentation workflows

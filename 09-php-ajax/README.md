@@ -805,7 +805,7 @@ Quando o JavaScript faz requisições AJAX para a **mesma origem** (como é o pa
 
 ## 23. Relação com as práticas do repositório
 
-O repositório disponibiliza dois exemplos reais de referência que demonstram esses conceitos isolados:
+O repositório disponibiliza três exemplos reais de referência que demonstram esses conceitos isolados:
 
 ### 1. Temporizador e animação de interface
 - **Pasta:** [`exemplos/ex09.1/`](../exemplos/ex09.1/)
@@ -814,6 +814,10 @@ O repositório disponibiliza dois exemplos reais de referência que demonstram e
 ### 2. Cadastro assíncrono com `fetch()`, `FormData` e notificação Toast
 - **Pasta:** [`exemplos/ex09.2/`](../exemplos/ex09.2/)
 - **O que observar:** O script intercepta o evento `submit` com `e.preventDefault()`, cria uma instância de `FormData(form)`, envia para `cadastro.php` via `POST` e processa a resposta JSON. No PHP, veja a validação de email e tamanho de senha, e no frontend, observe o uso de `setTimeout()` na função `showToast()` para remover a mensagem da tela após 4 segundos.
+
+### 3. CRUD completo de cinco páginas com `fetch()`
+- **Pasta:** [`11-crud-produtos/`](./11-crud-produtos/) — exemplo completo da seção, não um dos 10 exercícios.
+- **O que observar:** as 4 operações do CRUD espalhadas por cinco páginas: `GET` com filtros na lista, `POST` com `FormData`, `GET ?id=` nas páginas de detalhe e edição, e `PUT` com `JSON.stringify`. Vale olhar o recorte de interface: o `showToast()` para avisar e o `confirmar()` de `componentes/modal.js` no lugar do `confirm()` nativo, e os cartões montados com `createElement` ligando o evento dentro do `forEach`.
 
 ---
 

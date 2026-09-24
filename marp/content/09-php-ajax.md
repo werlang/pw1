@@ -619,6 +619,32 @@ function buscarNoAcervo(termo) {
 
 ---
 
+# Exemplos de Aula
+## CRUD completo com `fetch()` em cinco páginas
+
+<div class="grid grid-cols-2 gap-6">
+<div>
+
+**Cada operação em uma página**
+
+- `GET` com filtros na lista e `GET ?id=` no detalhe e na edição
+- `POST` com `FormData` e `PUT` com `JSON.stringify`
+- `DELETE` só depois da confirmação no modal
+
+</div>
+<div>
+
+**Código feito para ser lido em aula**
+
+- Cartões criados com `createElement`, evento ligado no mesmo `forEach`
+- Aviso com `showToast()` e confirmação com `componentes/modal.js`
+- Pasta: `09-php-ajax/11-crud-produtos/`
+
+</div>
+</div>
+
+---
+
 # Exercícios Práticos
 ## Grupo 1: Fundamentos do AJAX e Assincronismo
 
