@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar produto</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="script.js"></script>
+</head>
+<body>
+    <header class="cabecalho">
+        <div class="cabecalho-conteudo">
+            <h1>✏️ Editar produto</h1>
+
+            <nav class="menu">
+                <a href="../">Início</a>
+                <a href="../lista/" class="ativo">Lista</a>
+                <a href="../cadastro/">Cadastro</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <div id="carregando" class="estado">Carregando produto...</div>
+
+        <form id="form-edicao" class="formulario" hidden>
+            <label class="campo">
+                Nome *
+                <input name="nome" type="text" required>
+            </label>
+
+            <label class="campo">
+                Categoria
+                <select name="categoria">
+                    <option value="Papelaria">Papelaria</option>
+                    <option value="Material Escolar">Material Escolar</option>
+                    <option value="Organização">Organização</option>
+                    <option value="Eletrônicos">Eletrônicos</option>
+                    <option value="Casa">Casa</option>
+                    <option value="Outros">Outros</option>
+                </select>
+            </label>
+
+            <label class="campo">
+                Preço (R$)
+                <input name="preco" type="number" min="0" step="0.10">
+                <small>Use ponto para os centavos: 24.90</small>
+            </label>
+
+            <label class="campo">
+                Descrição
+                <textarea name="descricao"></textarea>
+            </label>
+
+            <button type="submit" class="botao botao-azul">Salvar alterações</button>
+            <a class="botao" href="../lista/">Voltar para a lista</a>
+        </form>
+    </main>
+</body>
+</html>

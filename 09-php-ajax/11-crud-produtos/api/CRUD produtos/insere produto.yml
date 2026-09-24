@@ -1,0 +1,26 @@
+info:
+  name: insere produto
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: http://localhost/api/produto/
+  body:
+    type: form-urlencoded
+    data:
+      - name: nome
+        value: Tênis Nike X
+      - name: descricao
+        value: Um tênis legal
+      - name: preco
+        value: "600"
+      - name: categoria
+        value: Calçados
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

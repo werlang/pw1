@@ -1,0 +1,34 @@
+/* Página inicial: só a lista de atalhos. */
+@import "../componentes/base.css";
+
+.atalhos {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 520px;
+}
+
+.atalhos li {
+    background-color: #fff;
+    border: 1px solid var(--borda);
+    border-radius: var(--raio);
+    padding: 14px 16px;
+}
+
+.atalhos a {
+    font-size: 1.02rem;
+    font-weight: 700;
+    color: var(--azul-escuro);
+    text-decoration: none;
+}
+
+.atalhos a:hover {
+    text-decoration: underline;
+}
+
+.atalhos p {
+    margin-top: 4px;
+    font-size: 0.9rem;
+    color: var(--texto-fraco);
+}

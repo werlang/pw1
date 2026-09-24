@@ -1,0 +1,6 @@
+/* Página de detalhes: a estilização geral está em componentes/base.css. */
+@import "../componentes/base.css";
+
+#produto-detalhe small {
+    color: var(--texto-fraco);
+}

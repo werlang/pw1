@@ -1,0 +1,31 @@
+info:
+  name: lista produtos
+  type: http
+  seq: 2
+
+http:
+  method: GET
+  url: http://localhost/api/produto/?id=50
+  params:
+    - name: categoria
+      value: Eletrônicos
+      type: query
+      disabled: true
+    - name: precomax
+      value: "30"
+      type: query
+      disabled: true
+    - name: precomin
+      value: "20000"
+      type: query
+      disabled: true
+    - name: id
+      value: "50"
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

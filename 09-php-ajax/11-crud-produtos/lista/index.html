@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de produtos</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="script.js"></script>
+</head>
+<body>
+    <header class="cabecalho">
+        <div class="cabecalho-conteudo">
+            <h1>📋 Lista de produtos</h1>
+
+            <nav class="menu">
+                <a href="../">Início</a>
+                <a href="./" class="ativo">Lista</a>
+                <a href="../cadastro/">Cadastro</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <h2>Catálogo</h2>
+
+        <form id="filtros" class="filtros">
+            <label class="campo">
+                Categoria
+                <select name="categoria">
+                    <option value="">Todas</option>
+                    <option value="Papelaria">Papelaria</option>
+                    <option value="Material Escolar">Material Escolar</option>
+                    <option value="Organização">Organização</option>
+                    <option value="Eletrônicos">Eletrônicos</option>
+                    <option value="Casa">Casa</option>
+                    <option value="Outros">Outros</option>
+                </select>
+            </label>
+
+            <label class="campo">
+                Preço mín.
+                <input name="precomin" type="number" min="0" step="1" placeholder="0">
+            </label>
+
+            <label class="campo">
+                Preço máx.
+                <input name="precomax" type="number" min="0" step="1" placeholder="100">
+            </label>
+
+            <button type="submit" class="botao botao-azul">Filtrar</button>
+        </form>
+
+        <div id="status" class="estado">Carregando produtos...</div>
+        <div id="produtos-container" class="lista-cartoes"></div>
+    </main>
+</body>
+</html>

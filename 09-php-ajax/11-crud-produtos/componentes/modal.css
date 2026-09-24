@@ -1,0 +1,49 @@
+/* Caixa de confirmação usada antes de excluir um produto. */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: rgba(15, 23, 42, 0.55);
+    z-index: 100;
+}
+
+.modal {
+    width: 100%;
+    max-width: 360px;
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 20px 40px rgba(15, 23, 42, 0.3);
+}
+
+.modal-mensagem {
+    margin-bottom: 18px;
+    color: #1f2937;
+}
+
+.modal-acoes {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+.modal-acoes button {
+    font: inherit;
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 8px 14px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    background-color: #fff;
+    color: #1f2937;
+    cursor: pointer;
+}
+
+.modal-acoes .modal-confirmar {
+    background-color: #dc2626;
+    border-color: #dc2626;
+    color: #fff;
+}

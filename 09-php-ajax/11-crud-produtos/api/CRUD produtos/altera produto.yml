@@ -1,0 +1,26 @@
+info:
+  name: altera produto
+  type: http
+  seq: 5
+
+http:
+  method: PUT
+  url: http://localhost/api/produto/?id=11
+  params:
+    - name: id
+      value: "11"
+      type: query
+  body:
+    type: json
+    data: |-
+      {
+        "descricao": "Nova descrição do produto",
+        "preco": 450
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

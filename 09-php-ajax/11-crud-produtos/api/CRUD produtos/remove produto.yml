@@ -1,0 +1,21 @@
+info:
+  name: remove produto
+  type: http
+  seq: 4
+
+http:
+  method: DELETE
+  url: http://localhost/api/produto/?id=3
+  params:
+    - name: id
+      value: "3"
+      type: query
+  body:
+    type: form-urlencoded
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

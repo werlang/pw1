@@ -1,0 +1,6 @@
+/* Página de edição: a estilização geral está em componentes/base.css. */
+@import "../componentes/base.css";
+
+.formulario .botao {
+    text-align: center;
+}

@@ -1,0 +1,255 @@
+/* Visual básico do projeto: menu, cartões, botões e formulários. */
+@import "toast.css";
+@import "modal.css";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --azul: #2563eb;
+    --azul-escuro: #1d4ed8;
+    --fundo: #eef1f7;
+    --texto: #1f2937;
+    --texto-fraco: #64748b;
+    --borda: #e2e8f0;
+    --raio: 12px;
+}
+
+body {
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    background-color: var(--fundo);
+    color: var(--texto);
+    line-height: 1.5;
+}
+
+/* ---------- Cabeçalho e menu ---------- */
+
+.cabecalho {
+    background: linear-gradient(135deg, var(--azul-escuro), #7c3aed);
+    color: #fff;
+    padding: 22px 20px;
+}
+
+.cabecalho-conteudo {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.cabecalho h1 {
+    font-size: 1.5rem;
+}
+
+.menu {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 14px;
+}
+
+.menu a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 7px 14px;
+    border-radius: 999px;
+    background-color: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* O link da página atual fica branco. */
+.menu a.ativo {
+    background-color: #fff;
+    color: var(--azul-escuro);
+    border-color: #fff;
+}
+
+/* ---------- Conteúdo ---------- */
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 24px 20px 50px;
+}
+
+h2 {
+    font-size: 1.15rem;
+    margin-bottom: 16px;
+}
+
+/* ---------- Cartões da lista ---------- */
+
+.lista-cartoes {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 14px;
+    margin-top: 18px;
+}
+
+.cartao {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    background-color: #fff;
+    border: 1px solid var(--borda);
+    border-radius: var(--raio);
+    padding: 16px;
+}
+
+.categoria {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #4338ca;
+}
+
+.cartao h3 {
+    font-size: 1rem;
+}
+
+.descricao {
+    font-size: 0.9rem;
+    color: var(--texto-fraco);
+    flex: 1;
+}
+
+.preco {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--azul-escuro);
+}
+
+.acoes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+/* ---------- Botões ---------- */
+
+.botao {
+    font: inherit;
+    font-size: 0.88rem;
+    font-weight: 600;
+    padding: 8px 14px;
+    border-radius: 8px;
+    border: 1px solid var(--borda);
+    background-color: #fff;
+    color: var(--azul-escuro);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.botao-azul {
+    background-color: var(--azul);
+    border-color: var(--azul);
+    color: #fff;
+}
+
+.botao-vermelho {
+    color: #b91c1c;
+    border-color: #fecaca;
+}
+
+/* ---------- Filtros da lista ---------- */
+
+.filtros {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 12px;
+    background-color: #fff;
+    border: 1px solid var(--borda);
+    border-radius: var(--raio);
+    padding: 14px 16px;
+}
+
+/* ---------- Formulários ---------- */
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    font-size: 0.88rem;
+    font-weight: 600;
+}
+
+.campo input,
+.campo select,
+.campo textarea {
+    font: inherit;
+    font-weight: 400;
+    padding: 8px 10px;
+    border: 1px solid var(--borda);
+    border-radius: 8px;
+    background-color: #fff;
+    color: var(--texto);
+}
+
+.campo textarea {
+    min-height: 90px;
+    resize: vertical;
+}
+
+.campo input:focus,
+.campo select:focus,
+.campo textarea:focus {
+    outline: none;
+    border-color: var(--azul);
+}
+
+.campo small {
+    font-weight: 400;
+    font-size: 0.78rem;
+    color: var(--texto-fraco);
+}
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    max-width: 520px;
+    background-color: #fff;
+    border: 1px solid var(--borda);
+    border-radius: var(--raio);
+    padding: 20px;
+}
+
+/* ---------- Estado: carregando, vazio ou erro ---------- */
+
+.estado {
+    background-color: #fff;
+    border: 1px dashed var(--borda);
+    border-radius: var(--raio);
+    padding: 26px;
+    text-align: center;
+    color: var(--texto-fraco);
+}
+
+/* ---------- Painel do produto (detalhe) ---------- */
+
+.painel-produto {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-width: 560px;
+    background-color: #fff;
+    border: 1px solid var(--borda);
+    border-radius: var(--raio);
+    padding: 22px;
+}
+
+.painel-produto .preco {
+    font-size: 1.8rem;
+}
+
+@media (max-width: 600px) {
+    .filtros .campo,
+    .filtros .botao {
+        width: 100%;
+    }
+}

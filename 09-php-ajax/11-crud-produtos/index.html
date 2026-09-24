@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD de Produtos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="cabecalho">
+        <div class="cabecalho-conteudo">
+            <h1>🛒 CRUD de Produtos</h1>
+
+            <nav class="menu">
+                <a href="./" class="ativo">Início</a>
+                <a href="lista/">Lista</a>
+                <a href="cadastro/">Cadastro</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <h2>Escolha uma página</h2>
+
+        <ul class="atalhos">
+            <li>
+                <a href="lista/">Lista de produtos</a>
+                <p>GET — lista tudo e filtra por categoria e preço.</p>
+            </li>
+            <li>
+                <a href="cadastro/">Cadastrar produto</a>
+                <p>POST — envia o formulário para a API.</p>
+            </li>
+            <li>
+                <a href="detalhe/?id=5">Ver detalhes</a>
+                <p>GET com <strong>?id=5</strong> — abre um produto só.</p>
+            </li>
+            <li>
+                <a href="editar/?id=5">Editar produto</a>
+                <p>PUT — carrega o produto e salva as alterações.</p>
+            </li>
+            <li>
+                <a href="api/">Testar a API</a>
+                <p>Abre o JSON direto no navegador.</p>
+            </li>
+        </ul>
+    </main>
+</body>
+</html>
