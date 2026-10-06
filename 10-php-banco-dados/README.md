@@ -30,16 +30,18 @@ Fluxo comum:
 6. PHP organiza o resultado;
 7. o endpoint devolve JSON e um status HTTP.
 
-O navegador não deve se conectar diretamente ao MySQL. Credenciais e comandos de banco ficam no servidor.
+O navegador nunca se conecta direto ao MySQL. Pense assim: o PHP é o único funcionário com a chave do cofre. Usuário, senha e SQL ficam no servidor; para o navegador viaja apenas o JSON de resposta.
 
 ## 3. Conceitos relacionais básicos
 
+Pense em uma planilha com um assunto por aba:
+
 - **banco de dados:** conjunto organizado de estruturas;
-- **tabela:** coleção de registros do mesmo tipo;
-- **linha ou registro:** uma ocorrência, como um usuário;
+- **tabela:** coleção de registros do mesmo tipo, como `users`;
+- **linha ou registro:** uma ocorrência, como a Ana Souza;
 - **coluna ou campo:** uma propriedade, como `email`;
-- **chave primária:** identifica cada linha de forma única;
-- **chave estrangeira:** relaciona uma tabela a outra;
+- **chave primária:** o `id` que identifica cada linha de forma única;
+- **chave estrangeira:** o `id` que relaciona uma tabela a outra;
 - **restrição:** regra aplicada pelo banco, como `NOT NULL` ou `UNIQUE`.
 
 Exemplo:
@@ -99,29 +101,21 @@ Partes importantes:
 - `host` identifica o serviço do banco;
 - `dbname` seleciona o banco;
 - `charset=utf8mb4` permite armazenar o conjunto completo de caracteres UTF-8;
-- `ERRMODE_EXCEPTION` transforma erros em exceções;
-- `FETCH_ASSOC` devolve linhas com chaves iguais aos nomes das colunas.
+- `ERRMODE_EXCEPTION` transforma erros em exceções em vez de falhar em silêncio;
+- `FETCH_ASSOC` devolve linhas com chaves iguais aos nomes das colunas;
+- `EMULATE_PREPARES => false` manda o banco validar os valores de verdade, sem imitar a preparação no PHP.
 
 Em Docker Compose, o host costuma ser o nome do serviço MySQL, não `localhost`.
 
 ## 6. Configuração fora do endpoint
 
-A conexão pode ficar em `connection.php`:
+A conexão fica em `connection.php`, com o mesmo código da seção anterior. Cada endpoint só abre com uma linha:
 
 ```php
 <?php
 
-require __DIR__ . "/config.php";
-
-$conn = new PDO($dsn, $user, $password, $options);
-```
-
-No endpoint:
-
-```php
-<?php
-
-require "connection.php";
+require __DIR__ . "/connection.php";
+// A partir daqui, $conn já existe.
 ```
 
 Credenciais reais não devem ser publicadas no repositório nem devolvidas em respostas JSON. Em projetos reais, use variáveis de ambiente ou um arquivo de configuração não versionado.
@@ -151,9 +145,9 @@ Consultas preparadas devem ser usadas mesmo quando o valor parece numérico ou j
 Marcadores `?` dependem da ordem.
 
 ```php
-$sql = "SELECT * FROM products WHERE category_id = ? AND price <= ?";
+$sql = "SELECT id, name FROM users WHERE name LIKE ? AND id > ?";
 $stmt = $conn->prepare($sql);
-$stmt->execute([$categoryId, $precoMaximo]);
+$stmt->execute([$busca, $idMinimo]);
 ```
 
 O primeiro valor corresponde ao primeiro `?`.
@@ -164,15 +158,15 @@ Marcadores nomeados deixam comandos maiores mais legíveis.
 
 ```php
 $sql = "
-    UPDATE products
-    SET name = :name, price = :price
+    UPDATE users
+    SET name = :name, email = :email
     WHERE id = :id
 ";
 
 $stmt = $conn->prepare($sql);
 $stmt->execute([
     "name" => $nome,
-    "price" => $preco,
+    "email" => $email,
     "id" => $id
 ]);
 ```
@@ -211,6 +205,8 @@ $users = $stmt->fetchAll();
 ```
 
 `fetchAll()` carrega todo o resultado em memória. Para listas muito grandes, use paginação ou leia uma linha por vez.
+
+Liste apenas as colunas que a tela precisa. Evite `SELECT *` em endpoints de usuário: um `*` traz junto a coluna `password` e o hash pode vazar no JSON sem ninguém perceber.
 
 ## 11. Inserção com `INSERT`
 
@@ -256,6 +252,11 @@ $stmt->execute([
     "name" => $nome,
     "id" => $id
 ]);
+
+echo json_encode([
+    "id" => (int)$id,
+    "message" => "Nome atualizado."
+]);
 ```
 
 Antes de atualizar:
@@ -272,6 +273,22 @@ Autenticação responde “quem é o usuário”. Autorização responde “o qu
 ```php
 $stmt = $conn->prepare("DELETE FROM users WHERE id = ?");
 $stmt->execute([$id]);
+
+if ($stmt->rowCount() === 0) {
+    http_response_code(404);
+
+    echo json_encode([
+        "error" => true,
+        "message" => "Nada para excluir."
+    ]);
+
+    exit;
+}
+
+echo json_encode([
+    "id" => (int)$id,
+    "message" => "Usuário removido com sucesso."
+]);
 ```
 
 Excluir é uma operação destrutiva. O endpoint deve validar o alvo e a autorização antes de executar.
@@ -340,6 +357,7 @@ try {
         "message" => "Usuário removido com sucesso."
     ]);
 } catch (PDOException $error) {
+    error_log($error->getMessage());
     http_response_code(500);
 
     echo json_encode([
@@ -359,9 +377,30 @@ O erro técnico deve ir para o log do servidor. Não devolva:
 
 ## 17. Conflitos esperados
 
-Um e-mail com restrição `UNIQUE` pode gerar conflito ao tentar cadastrar uma duplicata.
+Um e-mail com restrição `UNIQUE` pode gerar conflito ao tentar cadastrar uma duplicata. O MySQL sinaliza isso com o código `23000`:
 
-O endpoint pode responder com HTTP 409 e uma mensagem apropriada. A identificação do tipo exato de erro depende do banco e do código retornado pela exceção.
+```php
+try {
+    $stmt->execute([
+        "name" => $nome,
+        "email" => $email,
+        "password" => $hash
+    ]);
+} catch (PDOException $error) {
+    if ($error->getCode() === "23000") {
+        http_response_code(409);
+
+        echo json_encode([
+            "error" => true,
+            "message" => "E-mail já cadastrado."
+        ]);
+
+        exit;
+    }
+
+    throw $error;
+}
+```
 
 Não remova a restrição do banco apenas para evitar tratar o conflito.
 
@@ -373,10 +412,8 @@ Uma transação agrupa operações que precisam funcionar juntas.
 try {
     $conn->beginTransaction();
 
-    $stmtPedido->execute([$userId]);
-    $pedidoId = $conn->lastInsertId();
-
-    $stmtItem->execute([$pedidoId, $productId, $quantidade]);
+    // Confere a sala e a sobreposição de horário antes de inserir.
+    $stmtReserva->execute([$salaId, $inicio, $fim]);
 
     $conn->commit();
 } catch (Throwable $error) {
@@ -403,7 +440,15 @@ LIMIT 20 OFFSET 40
 
 `LIMIT` define quantos registros serão devolvidos; `OFFSET` define quantos serão pulados.
 
-Valores usados em paginação devem ser convertidos e limitados antes de compor a consulta. Nem todo driver aceita parâmetros em todas as posições de `LIMIT` da mesma forma.
+Converta a página para número antes de usar. Nem todo driver aceita parâmetro em todas as posições do `LIMIT` do mesmo jeito, então calcule no PHP:
+
+```php
+$porPagina = 20;
+$pagina = max(1, (int)($_GET["page"] ?? 1));
+$offset = ($pagina - 1) * $porPagina;
+
+$sql = "SELECT id, name, email FROM users ORDER BY id LIMIT $porPagina OFFSET $offset";
+```
 
 ## 20. Organização mínima dos arquivos
 
@@ -436,6 +481,8 @@ Pasta: [`exemplos/ex10.2`](../exemplos/ex10.2/)
 
 Mostra configuração de PDO, parâmetros posicionais e nomeados, `fetch()` e `lastInsertId()`.
 
+Atenção: o `insertuser.php` desse exemplo salva a senha pura para focar no `INSERT`. Em código de verdade, use sempre o `password_hash()` do próximo exemplo.
+
 ### Cadastro com hash
 
 Pasta: [`exemplos/ex10.3`](../exemplos/ex10.3/)
@@ -453,11 +500,13 @@ O primeiro contém interpolação direta de valores no SQL e serve para reconhec
 
 ## 22. Exercícios propostos
 
-- [Fila de Manutenção](./fila-manutencao/README.md): aplica transições válidas e detecta atualização concorrente.
-- [Reserva de Laboratórios](./reserva-laboratorios/README.md): verifica intervalos e confirma uma reserva dentro de transação.
-- [Ranking de Leitura](./ranking-leitura/README.md): produz um relatório agregado com relações e estudantes sem atividade.
-- [Inventário de Equipamentos](./inventario-equipamentos/README.md): combina CRUD, filtros, desativação e paginação no SQL.
-- [API de Sinalização de Salas](./api-sinalizacao/README.md): associa métodos HTTP, transições e contrato JSON.
+Ordem do mais direto ao mais encadeado:
+
+- [Inventário de Equipamentos](./inventario-equipamentos/README.md): um CRUD que continua rápido com muitos registros, com filtros, `UNIQUE` no patrimônio, desativação lógica e paginação no SQL.
+- [Fila de Manutenção](./fila-manutencao/README.md): dois técnicos disputam o mesmo chamado; a transição só anda para frente e o `rowCount()` denuncia quem chegou depois.
+- [API de Sinalização de Salas](./api-sinalizacao/README.md): cada aviso na porta tem estado; o método HTTP diz a operação e o estado diz o que ainda pode mudar, com contrato JSON.
+- [Reserva de Laboratórios](./reserva-laboratorios/README.md): a secretaria tenta encaixar uma aula; o código detecta sobreposição de horário e só confirma dentro de transação.
+- [Ranking de Leitura](./ranking-leitura/README.md): a biblioteca quer o top leitores do mês; `JOIN` e `GROUP BY` somam no banco, incluindo quem leu zero.
 
 ## 23. Erros comuns
 
@@ -466,6 +515,7 @@ O primeiro contém interpolação direta de valores no SQL e serve para reconhec
 - interpolar entrada do usuário no SQL;
 - inverter a ordem dos valores em marcadores posicionais;
 - escrever uma chave diferente do marcador nomeado;
+- usar `SELECT *` e devolver o hash da senha sem perceber;
 - usar `fetchAll()` para uma lista sem limite;
 - devolver senha ou hash na resposta;
 - expor a exceção completa em JSON;
