@@ -1,0 +1,27 @@
+info:
+  name: insere usuario
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: http://localhost/index.php
+  body:
+    type: multipart-form
+    data:
+      - name: name
+        type: text
+        value: João Silva
+      - name: email
+        type: text
+        value: joao.silva@email.com
+      - name: password
+        type: text
+        value: senha123
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
