@@ -41,6 +41,7 @@
 <div class="grid grid-cols-2 gap-6">
 <div>
 <ol>
+<li>O usuário interage com o documento HTML</li>
 <li>O JavaScript envia a requisição</li>
 <li>O PHP valida os dados</li>
 <li>O PDO prepara o SQL e separa os valores</li>
@@ -49,7 +50,7 @@
 </ol>
 </div>
 <div class="media flex h-full items-center justify-end">
-<img class="h-full" src="../../marp/assets/10-banco-dados.png" alt="Desenvolvedor PHP opera máquina ligada a servidor, transformando dados brutos em pacotes JSON enviados para rota de API na nuvem." />
+<img class="h-full" src="../../marp/assets/10-fluxo-web.png" alt="Desenvolvedor PHP opera máquina ligada a servidor, transformando dados brutos em pacotes JSON enviados para rota de API na nuvem." />
 </div>
 </div>
 <footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
@@ -118,15 +119,16 @@
 <header> </header>
 <h1 id="pdo-1">PDO</h1>
 <h2 id="abrindo-a-conex%C3%A3o">Abrindo a conexão</h2>
-<pre><code class="language-php"><span class="hljs-comment">// Dados do ambiente: não aparecem na resposta JSON.</span>
-<span class="hljs-variable">$user</span> = <span class="hljs-string">&quot;root&quot;</span>;
+<pre><code class="language-php"><span class="hljs-variable">$user</span> = <span class="hljs-string">&quot;root&quot;</span>;
 <span class="hljs-variable">$password</span> = <span class="hljs-string">&quot;senha-do-ambiente&quot;</span>;
+<span class="hljs-variable">$host</span> = <span class="hljs-string">&quot;localhost&quot;</span>;
+<span class="hljs-variable">$dbname</span> = <span class="hljs-string">&quot;aula&quot;</span>;
 <span class="hljs-variable">$options</span> = [
-    PDO::<span class="hljs-variable constant_">ATTR_ERRMODE</span> =&gt; PDO::<span class="hljs-variable constant_">ERRMODE_EXCEPTION</span>,
-    PDO::<span class="hljs-variable constant_">ATTR_DEFAULT_FETCH_MODE</span> =&gt; PDO::<span class="hljs-variable constant_">FETCH_ASSOC</span>
+    PDO::<span class="hljs-variable constant_">ATTR_ERRMODE</span> =&gt; PDO::<span class="hljs-variable constant_">ERRMODE_EXCEPTION</span>, <span class="hljs-comment">// lança exceção em erro</span>
+    PDO::<span class="hljs-variable constant_">ATTR_DEFAULT_FETCH_MODE</span> =&gt; PDO::<span class="hljs-variable constant_">FETCH_ASSOC</span> <span class="hljs-comment">// retorna array associativo</span>
 ];
-<span class="hljs-variable">$conn</span> = <span class="hljs-keyword">new</span> <span class="hljs-title function_ invoke__">PDO</span>(
-    <span class="hljs-string">&quot;mysql:host=localhost;dbname=aula;charset=utf8mb4&quot;</span>,
+<span class="hljs-variable">$conn</span> = <span class="hljs-keyword">new</span> <span class="hljs-title function_ invoke__">PDO</span>( <span class="hljs-comment">// abre a conexão</span>
+    <span class="hljs-string">&quot;mysql:host=<span class="hljs-subst">$host</span>;dbname=<span class="hljs-subst">$dbname</span>;charset=utf8mb4&quot;</span>,
     <span class="hljs-variable">$user</span>, <span class="hljs-variable">$password</span>, <span class="hljs-variable">$options</span>
 );
 </code></pre>
@@ -139,16 +141,44 @@
 <h2 id="o-que-existe-no-dsn">O que existe no DSN?</h2>
 <ul>
 <li><code>mysql:</code> seleciona o driver</li>
-<li><code>host=mysql</code> aponta para o serviço Docker</li>
+<li><code>host=localhost</code> aponta para o servidor local</li>
 <li><code>dbname=aula</code> seleciona o banco</li>
 <li><code>charset=utf8mb4</code> preserva os caracteres</li>
 </ul>
-<p>Dentro de containers, o host costuma ser o nome do serviço — não <code>localhost</code>.</p>
+<p>Dentro de containers, o host costuma ser o nome do serviço — por exemplo, <code>mysql</code>.</p>
 <footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="10" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
 <header> </header>
 <h1 id="pdo-3">PDO</h1>
+<h2 id="protegendo-informa%C3%A7%C3%B5es-sens%C3%ADveis">Protegendo informações sensíveis</h2>
+<h3 id="senha-do-servidor-de-banco-deixada-no-connectionphp-mesmo-que-o-arquivo-n%C3%A3o-seja-p%C3%BAblico-%C3%A9-um-risco-de-seguran%C3%A7a">Senha do servidor de banco deixada no <code>connection.php</code>, mesmo que o arquivo não seja público, é um risco de segurança.</h3>
+<ul>
+<li><code>getenv()</code> lê a variável de ambiente no container</li>
+</ul>
+<pre><code class="language-php"><span class="hljs-variable">$password</span> = <span class="hljs-title function_ invoke__">getenv</span>(<span class="hljs-string">&quot;DB_PASSWORD&quot;</span>); <span class="hljs-comment">// pega a senha de variável de ambiente</span>
+</code></pre>
+<div class="grid grid-cols-2 gap-6">
+<div>
+<ul>
+<li>Arquivo <code>.env</code> contém a senha e não vai para o Git</li>
+</ul>
+<pre><code>DB_PASSWORD=senha-do-ambiente
+</code></pre>
+</div>
+<div>
+<ul>
+<li>Arquivo <code>.gitignore</code> impede que o <code>.env</code> seja enviado para o repositório</li>
+</ul>
+<pre><code>.env
+</code></pre>
+</div>
+</div>
+<footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="11" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
+<header> </header>
+<h1 id="pdo-4">PDO</h1>
 <h2 id="separe-a-conex%C3%A3o">Separe a conexão</h2>
 <pre><code class="language-php"><span class="hljs-meta">&lt;?php</span>
 <span class="hljs-comment">// Todo endpoint começa assim:</span>
@@ -157,77 +187,90 @@
 </code></pre>
 <ul>
 <li><code>connection.php</code> abre o banco uma vez e cria <code>$conn</code></li>
-<li>Cada endpoint só cuida da sua operação</li>
-<li>Senha do banco nunca entra no JSON</li>
+<li>Cada endpoint PHP só precisa do <code>require</code> para ter acesso ao banco</li>
 </ul>
 <footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="11" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-class="divider" data-theme="ifsul" lang="pt-BR" class="divider" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--class:divider;--theme:ifsul;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="12" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-class="divider" data-theme="ifsul" lang="pt-BR" class="divider" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--class:divider;--theme:ifsul;">
 <header> </header>
 
 <h1 id="consultas-preparadas">Consultas Preparadas</h1>
 <footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="12" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
-<header> </header>
-<h1 id="pdo-4">PDO</h1>
-<h2 id="sql-injection-quando-dado-vira-comando">SQL Injection: quando dado vira comando</h2>
-<pre><code class="language-php"><span class="hljs-comment">// Não faça isso:</span>
-<span class="hljs-variable">$sql</span> = <span class="hljs-string">&quot;SELECT * FROM users
-        WHERE email = &#x27;<span class="hljs-subst">$email</span>&#x27;&quot;</span>;
-</code></pre>
-<ul>
-<li>O valor entra diretamente no SQL</li>
-<li>Uma entrada maliciosa pode mudar a consulta</li>
-<li>Validar formato não substitui preparar a consulta</li>
-</ul>
-<footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
-</section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="13" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
 <header> </header>
 <h1 id="pdo-5">PDO</h1>
-<h2 id="sql-e-dados-viajam-separados">SQL e dados viajam separados</h2>
-<pre><code class="language-php"><span class="hljs-variable">$sql</span> = <span class="hljs-string">&quot;SELECT * FROM users WHERE email = ?&quot;</span>;
-<span class="hljs-variable">$stmt</span> = <span class="hljs-variable">$conn</span>-&gt;<span class="hljs-title function_ invoke__">prepare</span>(<span class="hljs-variable">$sql</span>);
-<span class="hljs-variable">$stmt</span>-&gt;<span class="hljs-title function_ invoke__">execute</span>([<span class="hljs-variable">$email</span>]);
-<span class="hljs-variable">$user</span> = <span class="hljs-variable">$stmt</span>-&gt;<span class="hljs-title function_ invoke__">fetch</span>();
+<h2 id="sql-injection-quando-dado-vira-comando">SQL Injection: quando dado vira comando</h2>
+<div class="grid grid-cols-2">
+<div>
+<p><strong>Usuário envia</strong></p>
+<ul>
+<li>name: <code>Bob</code></li>
+<li>email: <code>'); DROP TABLE users; --</code></li>
+</ul>
+</div>
+<div>
+<p><strong>API recebe</strong></p>
+<ul>
+<li><code>$name</code>: <code>Bob</code></li>
+<li><code>$email</code>: <code>'); DROP TABLE users; --</code></li>
+</ul>
+</div>
+</div>
+<div>
+<p><strong>SQL injetado</strong></p>
+<pre><code class="language-php"><span class="hljs-variable">$sql</span> = <span class="hljs-string">&quot;INSERT INTO users (name, email) VALUES (&#x27;<span class="hljs-subst">$name</span>&#x27;, &#x27;<span class="hljs-subst">$email</span>&#x27;)&quot;</span>;
+<span class="hljs-variable">$sql</span> = <span class="hljs-string">&quot;INSERT INTO users (name, email) VALUES (&#x27;Bob&#x27;, &#x27;&#x27;); DROP TABLE users; --&#x27;)&quot;</span>;
 </code></pre>
-<p>Consultas preparadas são o padrão para qualquer valor variável.</p>
+</div>
+<ul>
+<li>O valor entra diretamente no SQL</li>
+<li>Uma entrada maliciosa pode mudar a consulta</li>
+</ul>
 <footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="14" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
 <header> </header>
 <h1 id="pdo-6">PDO</h1>
-<h2 id="posicional-ou-nomeado">Posicional ou nomeado?</h2>
-<div class="grid grid-cols-2 gap-6">
-<div>
-<p><strong>Posicional: vale a ordem</strong></p>
-<pre><code class="language-php"><span class="hljs-variable">$stmt</span> = <span class="hljs-variable">$conn</span>-&gt;<span class="hljs-title function_ invoke__">prepare</span>(
-    <span class="hljs-string">&quot;SELECT id, name FROM users WHERE email = ?&quot;</span>
-);
-<span class="hljs-variable">$stmt</span>-&gt;<span class="hljs-title function_ invoke__">execute</span>([<span class="hljs-variable">$email</span>]);
+<h2 id="sql-e-dados-viajam-separados">SQL e dados viajam separados</h2>
+<p>Consultas preparadas são o padrão para qualquer valor variável.</p>
+<h3 id="posicional">Posicional</h3>
+<pre><code class="language-php"><span class="hljs-variable">$sql</span> = <span class="hljs-string">&quot;INSERT INTO users (name, email) VALUES (?, ?)&quot;</span>;
+<span class="hljs-variable">$stmt</span> = <span class="hljs-variable">$conn</span>-&gt;<span class="hljs-title function_ invoke__">prepare</span>(<span class="hljs-variable">$sql</span>);
+<span class="hljs-variable">$stmt</span>-&gt;<span class="hljs-title function_ invoke__">execute</span>([<span class="hljs-variable">$name</span>, <span class="hljs-variable">$email</span>]);
 </code></pre>
-<p>O primeiro valor ocupa o primeiro <code>?</code>.</p>
-</div>
-<div>
-<p><strong>Nomeado: vale o nome</strong></p>
-<pre><code class="language-php"><span class="hljs-variable">$stmt</span> = <span class="hljs-variable">$conn</span>-&gt;<span class="hljs-title function_ invoke__">prepare</span>(
-    <span class="hljs-string">&quot;UPDATE users SET name = :name WHERE id = :id&quot;</span>
-);
-<span class="hljs-variable">$stmt</span>-&gt;<span class="hljs-title function_ invoke__">execute</span>([<span class="hljs-string">&quot;name&quot;</span> =&gt; <span class="hljs-variable">$name</span>, <span class="hljs-string">&quot;id&quot;</span> =&gt; <span class="hljs-variable">$id</span>]);
-</code></pre>
-<p>Trocar a ordem do array não quebra nada.</p>
-</div>
-</div>
+<ul>
+<li>O SQL é enviado primeiro, com <code>?</code> no lugar dos valores</li>
+<li>O banco prepara o comando e espera os valores</li>
+<li>O <code>execute()</code> envia os valores, que não podem alterar o SQL</li>
+</ul>
 <footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="15" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-class="divider" data-theme="ifsul" lang="pt-BR" class="divider" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--class:divider;--theme:ifsul;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="15" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
+<header> </header>
+<h1 id="pdo-7">PDO</h1>
+<h2 id="sql-e-dados-viajam-separados-1">SQL e dados viajam separados</h2>
+<h3 id="nomeado">Nomeado</h3>
+<pre><code class="language-php"><span class="hljs-variable">$sql</span> = <span class="hljs-string">&quot;INSERT INTO users (name, email) VALUES (:name, :email)&quot;</span>;
+<span class="hljs-variable">$stmt</span> = <span class="hljs-variable">$conn</span>-&gt;<span class="hljs-title function_ invoke__">prepare</span>(<span class="hljs-variable">$sql</span>);
+<span class="hljs-variable">$stmt</span>-&gt;<span class="hljs-title function_ invoke__">execute</span>([
+    <span class="hljs-string">&quot;name&quot;</span> =&gt; <span class="hljs-variable">$name</span>,
+    <span class="hljs-string">&quot;email&quot;</span> =&gt; <span class="hljs-variable">$email</span>
+]);
+</code></pre>
+<ul>
+<li>Ao invés de <code>?</code>, o SQL usa <code>:name</code> e <code>:email</code></li>
+<li>O <code>execute()</code> envia um array associativo com os valores</li>
+</ul>
+<footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="16" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-class="divider" data-theme="ifsul" lang="pt-BR" class="divider" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--class:divider;--theme:ifsul;">
 <header> </header>
 
 <h1 id="crud">CRUD</h1>
 <footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="16" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="17" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
 <header> </header>
 <h1 id="banco-de-dados-3">Banco de Dados</h1>
 <h2 id="quatro-opera%C3%A7%C3%B5es-fundamentais">Quatro operações fundamentais</h2>
@@ -265,10 +308,14 @@
 <p>O método HTTP e a autorização devem combinar com a ação.</p>
 <footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="17" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="18" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
 <header> </header>
-<h1 id="pdo-7">PDO</h1>
+<h1 id="pdo-8">PDO</h1>
 <h2 id="fetch-ou-fetchall"><code>fetch()</code> ou <code>fetchAll()</code>?</h2>
+<p><strong>Quando fazemos <code>SELECT</code>, linhas são retornadas do banco de dados</strong></p>
+<ul>
+<li>Precisamos de uma forma de ler essas linhas no PHP</li>
+</ul>
 <div class="grid grid-cols-2 gap-6">
 <div>
 <p><strong><code>fetch()</code></strong></p>
@@ -289,9 +336,9 @@
 </div>
 <footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="18" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="19" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
 <header> </header>
-<h1 id="pdo-8">PDO</h1>
+<h1 id="pdo-9">PDO</h1>
 <h2 id="uma-linha-com-fetch">Uma linha com <code>fetch()</code></h2>
 <pre><code class="language-php"><span class="hljs-variable">$stmt</span> = <span class="hljs-variable">$conn</span>-&gt;<span class="hljs-title function_ invoke__">prepare</span>(<span class="hljs-string">&quot;SELECT id, name, email FROM users WHERE id = ?&quot;</span>);
 <span class="hljs-variable">$stmt</span>-&gt;<span class="hljs-title function_ invoke__">execute</span>([<span class="hljs-variable">$id</span>]);
@@ -307,9 +354,9 @@
 <p>Sem próxima linha, <code>fetch()</code> devolve <code>false</code>.</p>
 <footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="19" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="20" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
 <header> </header>
-<h1 id="pdo-9">PDO</h1>
+<h1 id="pdo-10">PDO</h1>
 <h2 id="v%C3%A1rias-linhas-com-fetchall">Várias linhas com <code>fetchAll()</code></h2>
 <pre><code class="language-php"><span class="hljs-variable">$stmt</span> = <span class="hljs-variable">$conn</span>-&gt;<span class="hljs-title function_ invoke__">prepare</span>(
     <span class="hljs-string">&quot;SELECT id, name, email FROM users ORDER BY id LIMIT 20&quot;</span>
@@ -322,9 +369,9 @@
 <p>Peça só as colunas que a tela usa — nunca o <code>password</code>.</p>
 <footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="20" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="21" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
 <header> </header>
-<h1 id="pdo-10">PDO</h1>
+<h1 id="pdo-11">PDO</h1>
 <h2 id="criando-com-insert">Criando com <code>INSERT</code></h2>
 <pre><code class="language-php"><span class="hljs-variable">$sql</span> = <span class="hljs-string">&quot;INSERT INTO users (name, email, password)
         VALUES (:name, :email, :password)&quot;</span>;
@@ -338,9 +385,9 @@
 </code></pre>
 <footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="21" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="22" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
 <header> </header>
-<h1 id="pdo-11">PDO</h1>
+<h1 id="pdo-12">PDO</h1>
 <h2 id="recuperando-o-novo-identificador">Recuperando o novo identificador</h2>
 <pre><code class="language-php"><span class="hljs-variable">$novoId</span> = <span class="hljs-variable">$conn</span>-&gt;<span class="hljs-title function_ invoke__">lastInsertId</span>();
 
@@ -350,26 +397,31 @@
     <span class="hljs-string">&quot;message&quot;</span> =&gt; <span class="hljs-string">&quot;Usuário cadastrado com sucesso&quot;</span>
 ]);
 </code></pre>
+<ul>
+<li><code>lastInsertId()</code> devolve o <code>id</code> da última linha criada</li>
+</ul>
 <footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="22" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="23" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
 <header> </header>
-<h1 id="pdo-12">PDO</h1>
+<h1 id="pdo-13">PDO</h1>
 <h2 id="atualizar-com-update">Atualizar com <code>UPDATE</code></h2>
 <pre><code class="language-php"><span class="hljs-variable">$stmt</span> = <span class="hljs-variable">$conn</span>-&gt;<span class="hljs-title function_ invoke__">prepare</span>(
     <span class="hljs-string">&quot;UPDATE users SET name = :name WHERE id = :id&quot;</span>
 );
 <span class="hljs-variable">$stmt</span>-&gt;<span class="hljs-title function_ invoke__">execute</span>([<span class="hljs-string">&quot;name&quot;</span> =&gt; <span class="hljs-variable">$name</span>, <span class="hljs-string">&quot;id&quot;</span> =&gt; <span class="hljs-variable">$id</span>]);
 
-<span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">json_encode</span>([<span class="hljs-string">&quot;id&quot;</span> =&gt; (<span class="hljs-keyword">int</span>)<span class="hljs-variable">$id</span>,
-    <span class="hljs-string">&quot;message&quot;</span> =&gt; <span class="hljs-string">&quot;Nome atualizado&quot;</span>]);
+<span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">json_encode</span>([
+    <span class="hljs-string">&quot;id&quot;</span> =&gt; (<span class="hljs-keyword">int</span>)<span class="hljs-variable">$id</span>,
+    <span class="hljs-string">&quot;message&quot;</span> =&gt; <span class="hljs-string">&quot;Nome atualizado&quot;</span>
+]);
 </code></pre>
 <p>Antes de executar: o <code>id</code> é válido e o usuário pode mexer nesse registro?</p>
 <footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="23" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="24" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
 <header> </header>
-<h1 id="pdo-13">PDO</h1>
+<h1 id="pdo-14">PDO</h1>
 <h2 id="excluir-com-delete">Excluir com <code>DELETE</code></h2>
 <pre><code class="language-php"><span class="hljs-variable">$stmt</span> = <span class="hljs-variable">$conn</span>-&gt;<span class="hljs-title function_ invoke__">prepare</span>(<span class="hljs-string">&quot;DELETE FROM users WHERE id = ?&quot;</span>);
 <span class="hljs-variable">$stmt</span>-&gt;<span class="hljs-title function_ invoke__">execute</span>([<span class="hljs-variable">$id</span>]);
@@ -381,50 +433,55 @@
     <span class="hljs-keyword">exit</span>;
 }
 </code></pre>
-<p>Excluir não tem &quot;desfazer&quot;: valide alvo e autorização antes.</p>
+<ul>
+<li><code>rowCount()</code> devolve quantas linhas foram afetadas pelo comando.</li>
+</ul>
 <footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="24" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="25" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
 <header> </header>
 <h1 id="banco-de-dados-4">Banco de Dados</h1>
 <h2 id="senha-se-guarda-como-hash">Senha se guarda como hash</h2>
-<pre><code class="language-php"><span class="hljs-comment">// No cadastro, nunca salve a senha pura:</span>
-<span class="hljs-variable">$hash</span> = <span class="hljs-title function_ invoke__">password_hash</span>(<span class="hljs-variable">$senha</span>, PASSWORD_DEFAULT);
+<h3 id="no-cadastro-nunca-salve-a-senha-pura">No cadastro, nunca salve a senha pura</h3>
+<pre><code class="language-php"><span class="hljs-variable">$hash</span> = <span class="hljs-title function_ invoke__">password_hash</span>(<span class="hljs-variable">$senha</span>, PASSWORD_DEFAULT);
 
 <span class="hljs-variable">$stmt</span> = <span class="hljs-variable">$conn</span>-&gt;<span class="hljs-title function_ invoke__">prepare</span>(
     <span class="hljs-string">&quot;INSERT INTO users (name, email, password)
      VALUES (:name, :email, :password)&quot;</span>
 );
-<span class="hljs-variable">$stmt</span>-&gt;<span class="hljs-title function_ invoke__">execute</span>([<span class="hljs-string">&quot;name&quot;</span> =&gt; <span class="hljs-variable">$n</span>, <span class="hljs-string">&quot;email&quot;</span> =&gt; <span class="hljs-variable">$e</span>,
-    <span class="hljs-string">&quot;password&quot;</span> =&gt; <span class="hljs-variable">$hash</span>]);
+<span class="hljs-variable">$stmt</span>-&gt;<span class="hljs-title function_ invoke__">execute</span>([<span class="hljs-string">&quot;name&quot;</span> =&gt; <span class="hljs-variable">$name</span>, <span class="hljs-string">&quot;email&quot;</span> =&gt; <span class="hljs-variable">$email</span>, <span class="hljs-string">&quot;password&quot;</span> =&gt; <span class="hljs-variable">$hash</span>]);
 </code></pre>
-<p>A coluna precisa de espaço: <code>VARCHAR(255)</code>.</p>
+<ul>
+<li><code>password_hash()</code> cria um hash seguro da senha</li>
+<li>A coluna precisa de espaço: <code>VARCHAR(255)</code>.</li>
+</ul>
 <footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="25" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="26" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
 <header> </header>
 <h1 id="banco-de-dados-5">Banco de Dados</h1>
-<h2 id="login-confere-sem-contar-segredo">Login confere sem contar segredo</h2>
-<pre><code class="language-php"><span class="hljs-keyword">if</span> (!<span class="hljs-variable">$user</span> || !<span class="hljs-title function_ invoke__">password_verify</span>(<span class="hljs-variable">$senhaDigitada</span>,
-        <span class="hljs-variable">$user</span>[<span class="hljs-string">&quot;password&quot;</span>])) {
+<h2 id="login-confere-e-mail-e-senha">Login confere e-mail e senha</h2>
+<pre><code class="language-php"><span class="hljs-keyword">if</span> (!<span class="hljs-variable">$user</span> || !<span class="hljs-title function_ invoke__">password_verify</span>(<span class="hljs-variable">$senhaDigitada</span>, <span class="hljs-variable">$user</span>[<span class="hljs-string">&quot;password&quot;</span>])) {
     <span class="hljs-title function_ invoke__">http_response_code</span>(<span class="hljs-number">401</span>);
-    <span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">json_encode</span>([<span class="hljs-string">&quot;error&quot;</span> =&gt; <span class="hljs-literal">true</span>,
-        <span class="hljs-string">&quot;message&quot;</span> =&gt; <span class="hljs-string">&quot;Credenciais inválidas&quot;</span>]);
+    <span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">json_encode</span>([
+        <span class="hljs-string">&quot;error&quot;</span> =&gt; <span class="hljs-literal">true</span>,
+        <span class="hljs-string">&quot;message&quot;</span> =&gt; <span class="hljs-string">&quot;Credenciais inválidas&quot;</span>
+    ]);
     <span class="hljs-keyword">exit</span>;
 }
 </code></pre>
 <p>A mensagem não conta se o erro foi no e-mail ou na senha.</p>
 <footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="26" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-class="divider" data-theme="ifsul" lang="pt-BR" class="divider" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--class:divider;--theme:ifsul;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="27" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-class="divider" data-theme="ifsul" lang="pt-BR" class="divider" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--class:divider;--theme:ifsul;">
 <header> </header>
 
 <h1 id="falhas-e-consist%C3%AAncia">Falhas e Consistência</h1>
 <footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="27" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="28" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
 <header> </header>
-<h1 id="pdo-14">PDO</h1>
+<h1 id="pdo-15">PDO</h1>
 <h2 id="exce%C3%A7%C3%A3o-t%C3%A9cnica-n%C3%A3o-vai-para-o-cliente">Exceção técnica não vai para o cliente</h2>
 <pre><code class="language-php"><span class="hljs-keyword">try</span> {
     <span class="hljs-variable">$stmt</span>-&gt;<span class="hljs-title function_ invoke__">execute</span>([<span class="hljs-variable">$id</span>]);
@@ -440,34 +497,15 @@
 <p>O detalhe fica no log do servidor, não no JSON.</p>
 <footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="28" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
-<header> </header>
-<h1 id="pdo-15">PDO</h1>
-<h2 id="e-mail-duplicado-vira-409">E-mail duplicado vira 409</h2>
-<pre><code class="language-php"><span class="hljs-keyword">try</span> {
-    <span class="hljs-variable">$stmt</span>-&gt;<span class="hljs-title function_ invoke__">execute</span>([<span class="hljs-string">&quot;name&quot;</span> =&gt; <span class="hljs-variable">$n</span>, <span class="hljs-string">&quot;email&quot;</span> =&gt; <span class="hljs-variable">$e</span>, <span class="hljs-string">&quot;password&quot;</span> =&gt; <span class="hljs-variable">$hash</span>]);
-} <span class="hljs-keyword">catch</span> (PDOException <span class="hljs-variable">$error</span>) {
-    <span class="hljs-keyword">if</span> (<span class="hljs-variable">$error</span>-&gt;<span class="hljs-title function_ invoke__">getCode</span>() === <span class="hljs-string">&quot;23000&quot;</span>) {
-        <span class="hljs-title function_ invoke__">http_response_code</span>(<span class="hljs-number">409</span>);
-        <span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">json_encode</span>([<span class="hljs-string">&quot;error&quot;</span> =&gt; <span class="hljs-literal">true</span>,
-            <span class="hljs-string">&quot;message&quot;</span> =&gt; <span class="hljs-string">&quot;E-mail já cadastrado&quot;</span>]);
-        <span class="hljs-keyword">exit</span>;
-    }
-    <span class="hljs-keyword">throw</span> <span class="hljs-variable">$error</span>;
-}
-</code></pre>
-<p>Não retire o <code>UNIQUE</code> do banco para &quot;evitar o erro&quot;.</p>
-<footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
-</section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="29" data-header=" " data-footer="Instituto Federal Sul-rio-grandense | Campus Charqueadas" data-theme="ifsul" lang="pt-BR" style="--header: ;--footer:Instituto Federal Sul-rio-grandense | Campus Charqueadas;--theme:ifsul;">
 <header> </header>
 <h1 id="pdo-16">PDO</h1>
 <h2 id="transa%C3%A7%C3%A3o-tudo-ou-nada">Transação: tudo ou nada</h2>
 <pre><code class="language-php"><span class="hljs-keyword">try</span> {
     <span class="hljs-variable">$conn</span>-&gt;<span class="hljs-title function_ invoke__">beginTransaction</span>();
-    <span class="hljs-comment">// 1. confere a sala no banco</span>
-    <span class="hljs-comment">// 2. confere sobreposição de horário</span>
-    <span class="hljs-variable">$stmtReserva</span>-&gt;<span class="hljs-title function_ invoke__">execute</span>([<span class="hljs-variable">$salaId</span>, <span class="hljs-variable">$inicio</span>, <span class="hljs-variable">$fim</span>]);
+    <span class="hljs-comment">// 1. Registra uma compra no histórico</span>
+    <span class="hljs-comment">// 2. Atualiza o estoque do produto</span>
+    <span class="hljs-comment">// 3. Cria o pedido do cliente</span>
     <span class="hljs-variable">$conn</span>-&gt;<span class="hljs-title function_ invoke__">commit</span>();
 } <span class="hljs-keyword">catch</span> (<span class="hljs-built_in">Throwable</span> <span class="hljs-variable">$error</span>) {
     <span class="hljs-keyword">if</span> (<span class="hljs-variable">$conn</span>-&gt;<span class="hljs-title function_ invoke__">inTransaction</span>()) <span class="hljs-variable">$conn</span>-&gt;<span class="hljs-title function_ invoke__">rollBack</span>();
@@ -505,7 +543,6 @@ LIMIT <span class="hljs-number">20</span> <span class="hljs-keyword">OFFSET</spa
 <ul>
 <li>Conexão abre o acesso ao banco</li>
 <li>Cada endpoint possui uma operação clara</li>
-<li>Endpoint JSON não mistura HTML da interface</li>
 </ul>
 <footer>Instituto Federal Sul-rio-grandense | Campus Charqueadas</footer>
 </section>

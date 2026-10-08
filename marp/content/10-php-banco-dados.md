@@ -21,16 +21,17 @@ pablowerlang@ifsul.edu.br
 <div class="grid grid-cols-2 gap-6">
 <div>
 
-1. O JavaScript envia a requisição
-2. O PHP valida os dados
-3. O PDO prepara o SQL e separa os valores
-4. O banco executa e devolve linhas
-5. O PHP responde JSON com status HTTP
+1. O usuário interage com o documento HTML
+2. O JavaScript envia a requisição
+3. O PHP valida os dados
+4. O PDO prepara o SQL e separa os valores
+5. O banco executa e devolve linhas
+6. O PHP responde JSON com status HTTP
 
 </div>
 <div class="media flex h-full items-center justify-end">
 
-<img class="h-full" src="../../marp/assets/10-banco-dados.png" alt="Desenvolvedor PHP opera máquina ligada a servidor, transformando dados brutos em pacotes JSON enviados para rota de API na nuvem." />
+<img class="h-full" src="../../marp/assets/10-fluxo-web.png" alt="Desenvolvedor PHP opera máquina ligada a servidor, transformando dados brutos em pacotes JSON enviados para rota de API na nuvem." />
 
 </div>
 </div>
@@ -98,15 +99,16 @@ PDO não substitui o conhecimento de SQL.
 ## Abrindo a conexão
 
 ```php
-// Dados do ambiente: não aparecem na resposta JSON.
 $user = "root";
 $password = "senha-do-ambiente";
+$host = "localhost";
+$dbname = "aula";
 $options = [
-    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
+    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, // lança exceção em erro
+    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC // retorna array associativo
 ];
-$conn = new PDO(
-    "mysql:host=localhost;dbname=aula;charset=utf8mb4",
+$conn = new PDO( // abre a conexão
+    "mysql:host=$host;dbname=$dbname;charset=utf8mb4",
     $user, $password, $options
 );
 ```
@@ -119,11 +121,47 @@ $conn = new PDO(
 ## O que existe no DSN?
 
 - `mysql:` seleciona o driver
-- `host=mysql` aponta para o serviço Docker
+- `host=localhost` aponta para o servidor local
 - `dbname=aula` seleciona o banco
 - `charset=utf8mb4` preserva os caracteres
 
-Dentro de containers, o host costuma ser o nome do serviço — não `localhost`.
+Dentro de containers, o host costuma ser o nome do serviço — por exemplo, `mysql`.
+
+---
+
+# PDO
+## Protegendo informações sensíveis
+
+### Senha do servidor de banco deixada no `connection.php`, mesmo que o arquivo não seja público, é um risco de segurança.
+
+- `getenv()` lê a variável de ambiente no container
+
+```php
+$password = getenv("DB_PASSWORD"); // pega a senha de variável de ambiente
+```
+
+<div class="grid grid-cols-2 gap-6">
+<div>
+
+- Arquivo `.env` contém a senha e não vai para o Git
+
+```
+DB_PASSWORD=senha-do-ambiente
+```
+
+</div>
+<div>
+
+- Arquivo `.gitignore` impede que o `.env` seja enviado para o repositório
+
+```
+.env
+```
+
+</div>
+</div>
+
+
 
 ---
 
@@ -138,8 +176,7 @@ require __DIR__ . "/connection.php";
 ```
 
 - `connection.php` abre o banco uma vez e cria `$conn`
-- Cada endpoint só cuida da sua operação
-- Senha do banco nunca entra no JSON
+- Cada endpoint PHP só precisa do `require` para ter acesso ao banco
 
 ---
 
@@ -152,65 +189,75 @@ require __DIR__ . "/connection.php";
 # PDO
 ## SQL Injection: quando dado vira comando
 
+<div class="grid grid-cols-2">
+<div>
+
+**Usuário envia**
+- name: `Bob`
+- email: `'); DROP TABLE users; --`
+
+</div>
+<div>
+
+**API recebe**
+
+- `$name`: `Bob`
+- `$email`: `'); DROP TABLE users; --`
+
+</div>
+</div>
+
+<div>
+
+**SQL injetado**
+
 ```php
-// Não faça isso:
-$sql = "SELECT * FROM users
-        WHERE email = '$email'";
+$sql = "INSERT INTO users (name, email) VALUES ('$name', '$email')";
+$sql = "INSERT INTO users (name, email) VALUES ('Bob', ''); DROP TABLE users; --')";
 ```
+
+</div>
 
 - O valor entra diretamente no SQL
 - Uma entrada maliciosa pode mudar a consulta
-- Validar formato não substitui preparar a consulta
 
 ---
 
 # PDO
 ## SQL e dados viajam separados
 
+Consultas preparadas são o padrão para qualquer valor variável.
+
+### Posicional
+
 ```php
-$sql = "SELECT * FROM users WHERE email = ?";
+$sql = "INSERT INTO users (name, email) VALUES (?, ?)";
 $stmt = $conn->prepare($sql);
-$stmt->execute([$email]);
-$user = $stmt->fetch();
+$stmt->execute([$name, $email]);
 ```
 
-Consultas preparadas são o padrão para qualquer valor variável.
+- O SQL é enviado primeiro, com `?` no lugar dos valores
+- O banco prepara o comando e espera os valores
+- O `execute()` envia os valores, que não podem alterar o SQL
 
 ---
 
 # PDO
-## Posicional ou nomeado?
+## SQL e dados viajam separados
 
-<div class="grid grid-cols-2 gap-6">
-<div>
-
-**Posicional: vale a ordem**
+### Nomeado
 
 ```php
-$stmt = $conn->prepare(
-    "SELECT id, name FROM users WHERE email = ?"
-);
-$stmt->execute([$email]);
+$sql = "INSERT INTO users (name, email) VALUES (:name, :email)";
+$stmt = $conn->prepare($sql);
+$stmt->execute([
+    "name" => $name,
+    "email" => $email
+]);
 ```
 
-O primeiro valor ocupa o primeiro `?`.
-
-</div>
-<div>
-
-**Nomeado: vale o nome**
-
-```php
-$stmt = $conn->prepare(
-    "UPDATE users SET name = :name WHERE id = :id"
-);
-$stmt->execute(["name" => $name, "id" => $id]);
-```
-
-Trocar a ordem do array não quebra nada.
-
-</div>
-</div>
+- Ao invés de `?`, o SQL usa `:name` e `:email`
+- O `execute()` envia um array associativo com os valores
 
 ---
 
@@ -236,6 +283,10 @@ O método HTTP e a autorização devem combinar com a ação.
 
 # PDO
 ## `fetch()` ou `fetchAll()`?
+
+**Quando fazemos `SELECT`, linhas são retornadas do banco de dados**
+
+- Precisamos de uma forma de ler essas linhas no PHP
 
 <div class="grid grid-cols-2 gap-6">
 <div>
@@ -327,6 +378,8 @@ echo json_encode([
 ]);
 ```
 
+- `lastInsertId()` devolve o `id` da última linha criada
+
 ---
 
 # PDO
@@ -338,8 +391,10 @@ $stmt = $conn->prepare(
 );
 $stmt->execute(["name" => $name, "id" => $id]);
 
-echo json_encode(["id" => (int)$id,
-    "message" => "Nome atualizado"]);
+echo json_encode([
+    "id" => (int)$id,
+    "message" => "Nome atualizado"
+]);
 ```
 
 Antes de executar: o `id` é válido e o usuário pode mexer nesse registro?
@@ -361,38 +416,40 @@ if ($stmt->rowCount() === 0) {
 }
 ```
 
-Excluir não tem "desfazer": valide alvo e autorização antes.
+- `rowCount()` devolve quantas linhas foram afetadas pelo comando.
 
 ---
 
 # Banco de Dados
 ## Senha se guarda como hash
 
+### No cadastro, nunca salve a senha pura
+
 ```php
-// No cadastro, nunca salve a senha pura:
 $hash = password_hash($senha, PASSWORD_DEFAULT);
 
 $stmt = $conn->prepare(
     "INSERT INTO users (name, email, password)
      VALUES (:name, :email, :password)"
 );
-$stmt->execute(["name" => $n, "email" => $e,
-    "password" => $hash]);
+$stmt->execute(["name" => $name, "email" => $email, "password" => $hash]);
 ```
 
-A coluna precisa de espaço: `VARCHAR(255)`.
+- `password_hash()` cria um hash seguro da senha
+- A coluna precisa de espaço: `VARCHAR(255)`.
 
 ---
 
 # Banco de Dados
-## Login confere sem contar segredo
+## Login confere e-mail e senha
 
 ```php
-if (!$user || !password_verify($senhaDigitada,
-        $user["password"])) {
+if (!$user || !password_verify($senhaDigitada, $user["password"])) {
     http_response_code(401);
-    echo json_encode(["error" => true,
-        "message" => "Credenciais inválidas"]);
+    echo json_encode([
+        "error" => true,
+        "message" => "Credenciais inválidas"
+    ]);
     exit;
 }
 ```
@@ -428,35 +485,14 @@ O detalhe fica no log do servidor, não no JSON.
 ---
 
 # PDO
-## E-mail duplicado vira 409
-
-```php
-try {
-    $stmt->execute(["name" => $n, "email" => $e, "password" => $hash]);
-} catch (PDOException $error) {
-    if ($error->getCode() === "23000") {
-        http_response_code(409);
-        echo json_encode(["error" => true,
-            "message" => "E-mail já cadastrado"]);
-        exit;
-    }
-    throw $error;
-}
-```
-
-Não retire o `UNIQUE` do banco para "evitar o erro".
-
----
-
-# PDO
 ## Transação: tudo ou nada
 
 ```php
 try {
     $conn->beginTransaction();
-    // 1. confere a sala no banco
-    // 2. confere sobreposição de horário
-    $stmtReserva->execute([$salaId, $inicio, $fim]);
+    // 1. Registra uma compra no histórico
+    // 2. Atualiza o estoque do produto
+    // 3. Cria o pedido do cliente
     $conn->commit();
 } catch (Throwable $error) {
     if ($conn->inTransaction()) $conn->rollBack();
@@ -496,7 +532,6 @@ api/
 
 - Conexão abre o acesso ao banco
 - Cada endpoint possui uma operação clara
-- Endpoint JSON não mistura HTML da interface
 
 ---
 
