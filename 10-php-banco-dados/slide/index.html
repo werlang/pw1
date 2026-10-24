@@ -127,7 +127,7 @@
     PDO::<span class="hljs-variable constant_">ATTR_ERRMODE</span> =&gt; PDO::<span class="hljs-variable constant_">ERRMODE_EXCEPTION</span>, <span class="hljs-comment">// lança exceção em erro</span>
     PDO::<span class="hljs-variable constant_">ATTR_DEFAULT_FETCH_MODE</span> =&gt; PDO::<span class="hljs-variable constant_">FETCH_ASSOC</span> <span class="hljs-comment">// retorna array associativo</span>
 ];
-<span class="hljs-variable">$conn</span> = <span class="hljs-keyword">new</span> <span class="hljs-title function_ invoke__">PDO</span>( <span class="hljs-comment">// abre a conexão</span>
+<span class="hljs-variable">$conn</span> = <span class="hljs-keyword">new</span> <span class="hljs-title function_ invoke__">PDO</span>( // abre a conexão
     <span class="hljs-string">&quot;mysql:host=<span class="hljs-subst">$host</span>;dbname=<span class="hljs-subst">$dbname</span>;charset=utf8mb4&quot;</span>,
     <span class="hljs-variable">$user</span>, <span class="hljs-variable">$password</span>, <span class="hljs-variable">$options</span>
 );
