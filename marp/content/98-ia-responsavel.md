@@ -450,6 +450,7 @@ Regra de ouro: **se você não consegue explicar, não entregue.**
 - Pedir um trecho de exemplo
 - Comparar duas soluções
 - Pedir a "dica final"
+- Deixar um agente editar
 
 Leia, feche e reescreva sozinho.
 
