@@ -9,7 +9,7 @@ Ao final deste guia, você deve conseguir:
 - explicar o papel de tabelas, linhas, colunas, chaves primárias e estrangeiras em um banco relacional;
 - criar uma conexão PDO com opções adequadas de tratamento de erros e formatação;
 - separar o arquivo de conexão dos endpoints da API;
-- proteger credenciais sensíveis utilizando variáveis de ambiente (`getenv()`, `.env` e `.gitignore`);
+- proteger credenciais sensíveis em um arquivo `.env` lido com `parse_ini_file()` e ignorado pelo `.gitignore`;
 - compreender o perigo do SQL Injection e por que consultas preparadas são obrigatórias;
 - executar comandos `INSERT`, `SELECT`, `UPDATE` e `DELETE` com parâmetros posicionais (`?`) ou nomeados (`:nome`);
 - diferenciar a leitura de uma única linha (`fetch()`) da leitura de múltiplas linhas (`fetchAll()`);
@@ -163,28 +163,33 @@ require __DIR__ . "/connection.php";
 // A partir daqui, a variável $conn já está conectada e pronta para uso.
 ```
 
-### 2. O risco de senhas no código e o uso de variáveis de ambiente
+### 2. O risco de senhas no código e o uso de um arquivo `.env`
 
 Deixar a senha do banco de dados escrita diretamente em texto puro dentro do arquivo `connection.php`, mesmo que o arquivo não seja acessível pelo navegador, é uma falha grave de segurança. Se o projeto for enviado para um repositório no GitHub ou compartilhado com colegas, as credenciais de acesso ficarão expostas a qualquer pessoa.
 
-A prática profissional consiste em carregar credenciais a partir de **variáveis de ambiente**:
+A prática profissional consiste em guardar as credenciais fora do código, em um arquivo `.env`, e ler esses valores com a função `parse_ini_file()`:
 
-- **No código PHP (`connection.php`):** lê a senha do ambiente com a função `getenv()`:
-
-```php
-$user = getenv("DB_USER") ?: "root";
-$password = getenv("DB_PASSWORD") ?: "senha-padrao";
-$host = getenv("DB_HOST") ?: "mysql";
-$dbname = getenv("DB_NAME") ?: "aula";
-```
-
-- **No arquivo `.env` (na raiz do projeto):** armazena as credenciais locais reais sem expô-las no código-fonte:
+- **No arquivo `.env` (na mesma pasta do `connection.php`):** armazena as credenciais locais reais sem expô-las no código-fonte:
 
 ```text
 DB_USER=root
 DB_PASSWORD=senha-do-ambiente
 DB_HOST=mysql
 DB_NAME=aula
+```
+
+- **No código PHP (`connection.php`):** `parse_ini_file()` lê o arquivo `.env` e devolve um array associativo, com uma posição para cada chave escrita nele:
+
+```php
+<?php
+
+// Lê o arquivo .env e guarda os valores em um array
+$env = parse_ini_file(".env");
+
+$user = $env["DB_USER"];
+$password = $env["DB_PASSWORD"];
+$host = $env["DB_HOST"];
+$dbname = $env["DB_NAME"];
 ```
 
 - **No arquivo `.gitignore`:** impede que o arquivo `.env` seja versionado e enviado ao repositório Git:
@@ -779,7 +784,7 @@ Os exercícios propostos para esta seção foram planejados para trabalhar difer
 
 - **Sempre utilize consultas preparadas** em qualquer instrução SQL que envolva valores dinâmicos.
 - **Centralize a conexão** em um arquivo `connection.php` reutilizável e configure `ERRMODE_EXCEPTION`.
-- **Proteja senhas com variáveis de ambiente** utilizando `getenv()`, arquivo `.env` e adicionando `.env` ao `.gitignore`.
+- **Proteja senhas com um arquivo `.env`** lido com `parse_ini_file()`, mantendo esse arquivo fora do Git pelo `.gitignore`.
 - **Armazene senhas exclusivamente como hash** gerado por `password_hash()`, reservando colunas `VARCHAR(255)`.
 - **Responda com códigos de status HTTP semânticos:** `200` (leitura/atualização com sucesso), `201` (novo registro criado), `400` (parâmetros inválidos), `401` (falha de autenticação), `404` (recurso inexistente), `409` (conflito de unicidade) e `500` (falha interna).
 - **Inspecione `rowCount()`** para confirmar se operações de atualização ou exclusão realmente afetaram algum registro.

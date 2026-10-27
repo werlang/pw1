@@ -134,10 +134,12 @@ Dentro de containers, o host costuma ser o nome do serviço — por exemplo, `my
 
 ### Senha do servidor de banco deixada no `connection.php`, mesmo que o arquivo não seja público, é um risco de segurança.
 
-- `getenv()` lê a variável de ambiente no container
+$env = parse_ini_file(".env");
+
+- `parse_ini_file(".env")` lê o arquivo `.env` e devolve um array associativo
 
 ```php
-$password = getenv("DB_PASSWORD"); // pega a senha de variável de ambiente
+$password = $env["DB_PASSWORD"]; // pega a senha do arquivo .env
 ```
 
 <div class="grid grid-cols-2 gap-6">

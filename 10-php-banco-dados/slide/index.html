@@ -153,10 +153,11 @@
 <h1 id="pdo-3">PDO</h1>
 <h2 id="protegendo-informa%C3%A7%C3%B5es-sens%C3%ADveis">Protegendo informações sensíveis</h2>
 <h3 id="senha-do-servidor-de-banco-deixada-no-connectionphp-mesmo-que-o-arquivo-n%C3%A3o-seja-p%C3%BAblico-%C3%A9-um-risco-de-seguran%C3%A7a">Senha do servidor de banco deixada no <code>connection.php</code>, mesmo que o arquivo não seja público, é um risco de segurança.</h3>
+<p>$env = parse_ini_file(&quot;.env&quot;);</p>
 <ul>
-<li><code>getenv()</code> lê a variável de ambiente no container</li>
+<li><code>parse_ini_file(&quot;.env&quot;)</code> lê o arquivo <code>.env</code> e devolve um array associativo</li>
 </ul>
-<pre><code class="language-php"><span class="hljs-variable">$password</span> = <span class="hljs-title function_ invoke__">getenv</span>(<span class="hljs-string">&quot;DB_PASSWORD&quot;</span>); <span class="hljs-comment">// pega a senha de variável de ambiente</span>
+<pre><code class="language-php"><span class="hljs-variable">$password</span> = <span class="hljs-variable">$env</span>[<span class="hljs-string">&quot;DB_PASSWORD&quot;</span>]; <span class="hljs-comment">// pega a senha do arquivo .env</span>
 </code></pre>
 <div class="grid grid-cols-2 gap-6">
 <div>
