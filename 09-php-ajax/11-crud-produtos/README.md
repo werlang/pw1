@@ -5,8 +5,8 @@ As páginas HTML deste projeto consomem a API de produtos do exemplo
 [`08-php-apis/crud-produtos`](../../08-php-apis/crud-produtos/) com `fetch`. Juntas, elas cobrem as
 4 operações do CRUD: **criar, ler, alterar e remover**.
 
-> Esta pasta é cópia de [`teste/`](../../teste/) (o exemplo que servimos na aula). Se mexer em um
-> lado, mexa no outro.
+> Esta pasta nasceu de uma cópia de [`teste/`](../../teste/), mas hoje é um exemplo
+> independente de CRUD de produtos.
 
 > Os produtos ficam em um array na memória (`api/produto/produtos.php`). Quando o Apache reinicia,
 > tudo volta ao original: por isso a lista sempre mostra os mesmos 20 produtos.

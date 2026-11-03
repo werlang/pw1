@@ -11,7 +11,7 @@
 - `exercicios/`: student exercise versions, usually mirroring `exemplos` naming.
 - `provas/<ano>/`: exam snapshots, often with `public/` and `solution/` side by side.
 - Most folders are intentionally **self-contained mini-projects** (`index.html` + `script.js` + `style.css` and optional PHP files).
-- `teste/`: the folder Apache serves in class (`PUBLIC_DIR=./teste` in `.env`): the 5 CRUD pages, a colocated JSON API (`teste/api/`) and shared UI pieces in `teste/componentes/` (`base.css`, toast, modal). See `teste/README.md`.
+- `teste/`: the folder Apache serves in class (`PUBLIC_DIR=./teste` in `.env`): the login, cadastro and tarefas pages, a JSON API split by scope (`teste/api/user/`, `teste/api/task/`) and shared UI pieces in `teste/componentes/` (`base.css`, toast, modal). See `teste/README.md`.
 
 ## Frontend patterns used here
 - Vanilla JS with direct DOM APIs (`querySelector`, `addEventListener`, `textContent`, `insertAdjacentHTML`).
@@ -19,7 +19,7 @@
 - Keep selectors and IDs in Portuguese when already present (e.g., `#btn-finalizar`, `#status`).
 - Example DOM flow: `04-dom/lista-tarefas/script.js`.
 - Avoid `data-*` attributes and `dataset` in didactic exercise code. For dynamic lists, prefer `createElement`, `append` / `appendChild`, and direct `addEventListener` bindings on the created elements.
-- Dynamic list rendering follows one fixed shape (see `teste/lista/script.js`): `createElement` for the item node → `innerHTML` for its **content only** → `addEventListener` inside the same loop, with the item already in scope → `append` to the container. Never accumulate HTML in a string (`let html = ''; html += ...`) and assign it once, and never identify the clicked item by `querySelectorAll` + index.
+- Dynamic list rendering follows one fixed shape (see `teste/tarefas/script.js`): `createElement` for the item node → `innerHTML` for its **content only** → `addEventListener` inside the same loop, with the item already in scope → `append` to the container. Never accumulate HTML in a string (`let html = ''; html += ...`) and assign it once, and never identify the clicked item by `querySelectorAll` + index.
 - Talk to the user through the project's own components: `showToast()` for messages and `await confirmar()` from `teste/componentes/modal.js` for decisions, instead of native `alert()` / `confirm()`. Older exercises under `exercicios/fetch/` still use native `confirm()`; leave them as they are.
 
 ## Backend/API patterns used here
