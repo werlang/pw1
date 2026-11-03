@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrar — Tarefas</title>
+    <link rel="stylesheet" href="../componentes/base.css">
+    <script type="module" src="script.js"></script>
+</head>
+<body class="pagina-centralizada">
+    <main class="cartao-auth">
+        <h1>Entrar</h1>
+        <p class="ajuda">Use o e-mail e a senha do seu cadastro.</p>
+
+        <form class="formulario">
+            <label class="campo">
+                E-mail
+                <input name="email" type="email" placeholder="voce@email.com" autocomplete="email" required>
+            </label>
+
+            <label class="campo">
+                Senha
+                <input name="password" type="password" placeholder="Sua senha" autocomplete="current-password" required>
+            </label>
+
+            <p id="message" class="mensagem" hidden></p>
+
+            <button class="botao botao-azul" type="submit">Entrar</button>
+        </form>
+
+        <p class="rodape">Ainda não tem conta? <a href="../cadastro/">Cadastre-se</a></p>
+    </main>
+</body>
+</html>

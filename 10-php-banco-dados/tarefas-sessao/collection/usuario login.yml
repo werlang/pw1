@@ -1,0 +1,24 @@
+info:
+  name: usuario login
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: http://localhost/api/user/login.php
+  body:
+    type: multipart-form
+    data:
+      - name: email
+        type: text
+        value: maria.silva@email.com
+      - name: password
+        type: text
+        value: asdf1234
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

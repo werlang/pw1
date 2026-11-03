@@ -1,0 +1,15 @@
+info:
+  name: usuario logout
+  type: http
+  seq: 7
+
+http:
+  method: POST
+  url: http://localhost/api/user/logout.php
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

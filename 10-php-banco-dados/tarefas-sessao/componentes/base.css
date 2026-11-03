@@ -1,0 +1,271 @@
+/* Visual compartilhado pelas páginas do projeto. */
+@import "toast.css";
+@import "modal.css";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --azul: #2563eb;
+    --azul-escuro: #1d4ed8;
+    --fundo: #eef1f7;
+    --texto: #1f2937;
+    --texto-fraco: #64748b;
+    --borda: #e2e8f0;
+    --raio: 12px;
+    --perigo: #b91c1c;
+}
+
+body {
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    background-color: var(--fundo);
+    color: var(--texto);
+    line-height: 1.5;
+    min-height: 100vh;
+}
+
+/* ---------- Cabeçalho ---------- */
+
+.cabecalho {
+    background: linear-gradient(135deg, var(--azul-escuro), #7c3aed);
+    color: #fff;
+    padding: 22px 20px;
+}
+
+.cabecalho-conteudo {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.cabecalho-linha {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.cabecalho h1 {
+    font-size: 1.5rem;
+}
+
+.subtitulo {
+    margin-top: 4px;
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+/* ---------- Conteúdo ---------- */
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 28px 20px 60px;
+}
+
+/* ---------- Página centralizada (login e cadastro) ---------- */
+
+.pagina-centralizada {
+    display: grid;
+    place-items: center;
+    padding: 24px;
+}
+
+.cartao-auth {
+    width: 100%;
+    max-width: 420px;
+    background-color: #fff;
+    border: 1px solid var(--borda);
+    border-radius: var(--raio);
+    padding: 28px;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+}
+
+.cartao-auth h1 {
+    font-size: 1.4rem;
+    margin-bottom: 6px;
+}
+
+.ajuda {
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+    color: var(--texto-fraco);
+}
+
+.rodape {
+    margin-top: 18px;
+    font-size: 0.9rem;
+    color: var(--texto-fraco);
+    text-align: center;
+}
+
+.rodape a {
+    color: var(--azul-escuro);
+    font-weight: 600;
+}
+
+/* ---------- Formulários ---------- */
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 0.88rem;
+    font-weight: 600;
+}
+
+.campo input,
+.campo textarea {
+    font: inherit;
+    font-weight: 400;
+    padding: 10px 12px;
+    border: 1px solid var(--borda);
+    border-radius: 8px;
+    background-color: #fff;
+    color: var(--texto);
+}
+
+.campo textarea {
+    min-height: 90px;
+    resize: vertical;
+}
+
+.campo input:focus,
+.campo textarea:focus {
+    outline: 2px solid rgba(37, 99, 235, 0.2);
+    border-color: var(--azul);
+}
+
+/* ---------- Botões ---------- */
+
+.botao {
+    display: inline-flex;
+    justify-content: center;
+    font: inherit;
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 10px 16px;
+    border-radius: 8px;
+    border: 1px solid var(--borda);
+    background-color: #fff;
+    color: var(--azul-escuro);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.botao-azul {
+    background-color: var(--azul);
+    border-color: var(--azul);
+    color: #fff;
+}
+
+.botao-azul:hover {
+    background-color: var(--azul-escuro);
+}
+
+.botao-claro {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.4);
+    color: #fff;
+}
+
+/* ---------- Mensagem de erro do formulário ---------- */
+
+.mensagem {
+    padding: 10px 12px;
+    border: 1px solid #fecaca;
+    border-radius: 8px;
+    background-color: #fef2f2;
+    color: var(--perigo);
+    font-size: 0.9rem;
+}
+
+/* ---------- Painéis e lista de tarefas ---------- */
+
+.painel {
+    background-color: #fff;
+    border: 1px solid var(--borda);
+    border-radius: var(--raio);
+    padding: 20px;
+    margin-bottom: 18px;
+}
+
+.painel h2 {
+    font-size: 1.05rem;
+    margin-bottom: 14px;
+}
+
+.lista-tarefas {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.lista-tarefas li {
+    padding: 12px 14px;
+    border: 1px solid var(--borda);
+    border-radius: 8px;
+    background-color: #f8fafc;
+}
+
+.estado {
+    padding: 18px;
+    border: 1px dashed var(--borda);
+    border-radius: 8px;
+    color: var(--texto-fraco);
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+/* ---------- Atalhos da página inicial ---------- */
+
+.atalhos {
+    list-style: none;
+    display: grid;
+    gap: 14px;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+}
+
+.atalhos li {
+    background-color: #fff;
+    border: 1px solid var(--borda);
+    border-radius: var(--raio);
+    padding: 18px;
+}
+
+.atalhos a {
+    color: var(--azul-escuro);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.atalhos a:hover {
+    text-decoration: underline;
+}
+
+.atalhos p {
+    margin-top: 6px;
+    font-size: 0.88rem;
+    color: var(--texto-fraco);
+}
+
+@media (max-width: 600px) {
+    .cartao-auth {
+        padding: 22px;
+    }
+
+    .cabecalho-linha {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}

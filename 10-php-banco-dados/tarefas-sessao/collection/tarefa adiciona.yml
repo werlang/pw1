@@ -1,0 +1,21 @@
+info:
+  name: tarefa adiciona
+  type: http
+  seq: 5
+
+http:
+  method: POST
+  url: http://localhost/api/task/index.php
+  body:
+    type: multipart-form
+    data:
+      - name: task
+        type: text
+        value: Estudar para a prova
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

@@ -563,6 +563,19 @@ api/
 
 ---
 
+# PDO
+## Um projeto completo: Tarefas
+
+- Cadastro, login, sessão e tarefas por usuário
+- `api/user/` e `api/task/`: um `index.php` por escopo escolhe a operação pelo método HTTP
+- Consultas preparadas, `password_hash()` e `password_verify()`
+- O `id` do usuário vem da sessão, não do formulário
+- Front-end com `fetch()`, `showToast()` e `createElement`
+
+`10-php-banco-dados/tarefas-sessao/`
+
+---
+
 # Banco de Dados
 ## Exercícios: consistência
 

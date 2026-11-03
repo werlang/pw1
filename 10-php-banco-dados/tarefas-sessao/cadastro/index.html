@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar conta — Tarefas</title>
+    <link rel="stylesheet" href="../componentes/base.css">
+    <script type="module" src="script.js"></script>
+</head>
+<body class="pagina-centralizada">
+    <main class="cartao-auth">
+        <h1>Criar conta</h1>
+        <p class="ajuda">Preencha os dados para começar a usar a lista de tarefas.</p>
+
+        <form class="formulario">
+            <label class="campo">
+                Nome
+                <input name="name" type="text" placeholder="Seu nome" autocomplete="name" required>
+            </label>
+
+            <label class="campo">
+                E-mail
+                <input name="email" type="email" placeholder="voce@email.com" autocomplete="email" required>
+            </label>
+
+            <label class="campo">
+                Senha
+                <input name="password" type="password" placeholder="Crie uma senha" autocomplete="new-password" required>
+            </label>
+
+            <label class="campo">
+                Confirmação de senha
+                <input name="confirm" type="password" placeholder="Repita a senha" autocomplete="new-password" required>
+            </label>
+
+            <p id="message" class="mensagem" hidden></p>
+
+            <button class="botao botao-azul" type="submit">Criar conta</button>
+        </form>
+
+        <p class="rodape">Já tem conta? <a href="../login/">Entrar</a></p>
+    </main>
+</body>
+</html>

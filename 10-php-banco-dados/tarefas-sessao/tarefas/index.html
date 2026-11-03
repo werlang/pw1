@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minhas tarefas</title>
+    <link rel="stylesheet" href="../componentes/base.css">
+    <script type="module" src="script.js"></script>
+</head>
+<body>
+    <header class="cabecalho">
+        <div class="cabecalho-conteudo cabecalho-linha">
+            <div>
+                <h1>Minhas tarefas</h1>
+                <p class="subtitulo">Olá, <strong id="user-name">...</strong></p>
+            </div>
+
+            <button id="logout" class="botao botao-claro" type="button">Sair</button>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="painel">
+            <h2>Nova tarefa</h2>
+
+            <form id="form-task" class="formulario">
+                <label class="campo">
+                    Descrição
+                    <textarea name="task" placeholder="O que precisa ser feito?" required></textarea>
+                </label>
+
+                <button class="botao botao-azul" type="submit">Cadastrar</button>
+            </form>
+        </section>
+
+        <section class="painel">
+            <h2>Lista</h2>
+
+            <ul id="task-list" class="lista-tarefas"></ul>
+            <p id="empty" class="estado" hidden>Nenhuma tarefa cadastrada.</p>
+        </section>
+    </main>
+</body>
+</html>

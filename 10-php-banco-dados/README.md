@@ -700,19 +700,43 @@ api/
 - Cada arquivo possui uma responsabilidade única e bem definida.
 - Nenhum endpoint de API deve emitir código HTML; a saída deve ser exclusivamente JSON com o cabeçalho `Content-Type: application/json; charset=utf-8`.
 
+> O exemplo integrador [`tarefas-sessao/`](./tarefas-sessao/) leva essa organização um passo adiante: separa a API por escopo (`api/user/` e `api/task/`) e usa um `index.php` por escopo para escolher a operação pelo método HTTP.
+
 ---
 
 ## 21. Relação com os exemplos e práticas do repositório
 
-O repositório disponibiliza exemplos funcionais focados em demonstrar cada padrão de forma isolada:
+O repositório disponibiliza exemplos funcionais, do menor recorte até uma aplicação completa:
 
 ### Exemplo local da seção: Inserção de Usuário
 - **Pasta:** [`api-db-insert/`](./api-db-insert/)
 - **O que observar:**
   - Exemplo autocontido da própria seção que implementa uma API de inserção com PDO e marcadores nomeados;
   - `connection.php`: centraliza a conexão PDO com tratamento de erros;
-  - `index.php`: recebe `$_POST["name"]` e `$_POST["email"]`, executa a função didática `insert_user($name, $email)` utilizando `$conn->prepare()`, `$stmt->execute()` e `$conn->lastInsertId()`, devolvendo uma resposta JSON com o novo ID e os dados criados;
-  - `collection/`: inclui a coleção de teste para o cliente Bruno / OpenCollection (`collection/insere usuario.yml`), permitindo disparar requisições `POST` com facilidade.
+  - `index.php`: recebe `$_POST["name"]` e `$_POST["email"]`, executa a função didática `insert_user($name, $email)` utilizando `$conn->prepare()`, `$stmt->execute()` e `$conn->lastInsertId()`, devolvendo uma resposta JSON com o novo ID e os dados criados.
+
+### Exemplo integrador da seção: Tarefas
+
+- **Pasta:** [`tarefas-sessao/`](./tarefas-sessao/)
+- **O que observar:**
+  - aplicação completa com cadastro, login, sessão e tarefas por usuário;
+  - `api/connection.php`: lê o `.env` com `parse_ini_file()` e centraliza a conexão PDO;
+  - `api/user/` e `api/task/`: a API separada por escopo, com um `index.php` que usa o método HTTP para listar (`GET`) ou cadastrar (`POST`);
+  - todas as operações usam consultas preparadas; o cadastro usa `password_hash()` e o login usa `password_verify()`;
+  - as tarefas são gravadas com o `id` do usuário que está na sessão, nunca com um `id` enviado pelo formulário;
+  - o front-end usa `fetch()`, `showToast()` e monta a lista com `createElement`.
+- **Roteiro de leitura:** comece por `api/connection.php`, depois `api/user/login.php`, `api/task/add.php` e, por fim, `tarefas/script.js`.
+- **Coleção do Bruno:** [`collection/`](./tarefas-sessao/collection/) traz as requisições na ordem da aula (cadastro, login, usuário logado, tarefas e logout).
+
+Para rodar:
+
+```bash
+cp 10-php-banco-dados/tarefas-sessao/.env.example 10-php-banco-dados/tarefas-sessao/.env
+PUBLIC_DIR=./10-php-banco-dados/tarefas-sessao docker compose -f compose.dev.yaml up -d
+docker exec -i mysql mysql -uroot -pasdf1234 < 10-php-banco-dados/tarefas-sessao/database.sql
+```
+
+O exemplo usa PDO, `.env`, consultas preparadas e hash; a sessão aparece para manter as tarefas separadas por usuário e é aprofundada na seção 11.
 
 ### Exemplos de referência complementares
 

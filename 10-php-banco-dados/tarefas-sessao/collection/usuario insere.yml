@@ -1,0 +1,27 @@
+info:
+  name: usuario insere
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: http://localhost/api/user/index.php
+  body:
+    type: multipart-form
+    data:
+      - name: name
+        type: text
+        value: Maria Silva
+      - name: email
+        type: text
+        value: maria.silva@email.com
+      - name: password
+        type: text
+        value: asdf1234
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
