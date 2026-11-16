@@ -45,7 +45,11 @@ function renderTasks(tasks) {
 
     tasks.forEach((task) => {
         const li = document.createElement("li");
-        li.textContent = task.description;
+        // li.innerHTML = `
+        //     <span>${task.description}</span>
+        //     <button class="btn-edit">EDIT</button>
+        //     <button class="btn-delete">DELETE</button>
+        // `;
         taskList.append(li);
     });
 }
