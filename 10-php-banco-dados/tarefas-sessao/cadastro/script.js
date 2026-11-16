@@ -17,10 +17,11 @@ form.addEventListener("submit", async (event) => {
         return;
     }
 
-    const data = await fetch("/api/user/index.php", {
+    const res = await fetch("/api/user/", {
         method: "POST",
         body: fd,
-    }).then((res) => res.json());
+    });
+    const data = await res.json();
 
     if (data.error) {
         message.textContent = data.message;
