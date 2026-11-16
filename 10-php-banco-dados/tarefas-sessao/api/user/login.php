@@ -44,8 +44,6 @@ try {
     }
 
     session_start();
-    session_regenerate_id(true); // troca o id antigo para evitar sessão fixada
-
     $_SESSION["user"] = [
         "id" => $user["id"],
         "name" => $user["name"],
